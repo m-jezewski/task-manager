@@ -1,0 +1,71 @@
+.select_button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.25rem;
+  font-size: 2rem;
+  width: 100%;
+  font-weight: 300;
+  font-family: inherit;
+  background-color: inherit;
+  text-align: left;
+  border: rgba(0, 0, 0, 0) 4px solid;
+  background-color: #475569;
+  border-radius: 0.25rem;
+  transition: all 150ms ease-out;
+  color: white;
+}
+.select_button:hover {
+  cursor: pointer;
+  border: solid 4px rgba(255, 255, 255, 0.25);
+}
+
+.container {
+  max-width: 100%;
+  position: relative;
+  z-index: 2000;
+}
+
+ul {
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transform: translate(0, -0.5rem);
+}
+
+ul :last-child {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+li {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: none;
+  background-color: white;
+  transition: all 150ms ease-out;
+}
+li:hover {
+  cursor: pointer;
+  background-color: #f1f5f9;
+}
+
+.transition {
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+.transition-enter-from {
+  opacity: 0%;
+}
+
+.transition-enter-to {
+  opacity: 100%;
+}

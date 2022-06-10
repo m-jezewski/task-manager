@@ -1,0 +1,29 @@
+.App {
+  display: flex;
+}
+
+section {
+  padding: 2rem;
+  width: 100%;
+}
+
+section h1 {
+  font-size: 5rem;
+  color: white;
+}
+
+section hr {
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-bottom: 2rem;
+}
+
+main {
+  box-sizing: border-box;
+  background-color: #f4f4f5;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  width: 100%;
+  transition: all 150ms ease-out;
+}

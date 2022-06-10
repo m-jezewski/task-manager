@@ -1,0 +1,13 @@
+.transition {
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in;
+}
+
+.transition-enter-from {
+  opacity: 0;
+}
+
+.transition-enter-to {
+  opacity: 100;
+}
