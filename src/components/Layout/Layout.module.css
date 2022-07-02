@@ -1,0 +1,14 @@
+main {
+  padding: 2rem;
+  width: 100%;
+}
+
+main section {
+  box-sizing: border-box;
+  background-color: #f4f4f5;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  width: 100%;
+  min-width: 18rem;
+  transition: all 150ms ease-out;
+}

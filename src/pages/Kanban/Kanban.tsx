@@ -1,4 +1,6 @@
-import Title from '../../components/Title'
+import Layout from '../../components/Layout/Layout';
+
+import styles from './Kanban.module.css'
 
 interface KanbanProps {
 
@@ -6,7 +8,13 @@ interface KanbanProps {
 
 const Kanban = () => {
     return (
-        <Title>Kanban</Title>
+        <Layout title='Kanban'>
+            <table>
+                <tbody>
+
+                </tbody>
+            </table>
+        </Layout>
     );
 }
 

@@ -1,0 +1,62 @@
+.container {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2000;
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem;
+  margin-left: 0px;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.subtitle {
+  margin: 0.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.container label {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.container input {
+  box-sizing: border-box;
+  margin-top: 0.3rem;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: solid 1px #e5e7eb;
+  background-color: #f3f4f6;
+  padding: 0.5rem;
+}
+
+.container .color_picker {
+  width: 100%;
+  padding: 0px;
+  border: none;
+  margin-top: 0;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.submit_button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  background-color: #e5e7eb;
+}
+
+.submit_button:hover {
+  background-color: #f3f4f6;
+}

@@ -1,4 +1,5 @@
-import Title from '../../components/Title'
+import Title from '../../components/Title/Title'
+import Layout from '../../components/Layout/Layout'
 
 interface CalendarProps {
 
@@ -6,7 +7,9 @@ interface CalendarProps {
 
 const Calendar = () => {
     return (
-        <Title>Calendar</Title>
+        <Layout title='Calendar'>
+            Calendar
+        </Layout>
     );
 }
 

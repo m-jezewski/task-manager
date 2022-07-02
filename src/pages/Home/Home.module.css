@@ -1,0 +1,125 @@
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: rgb(255, 241, 242);
+  background: linear-gradient(
+    197deg,
+    rgba(255, 241, 242, 1) 0%,
+    rgba(243, 244, 246, 1) 50%,
+    rgba(253, 244, 255, 1) 100%
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.container section {
+  flex-basis: 40%;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.img_container {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 700px;
+  height: 800px;
+}
+
+.container h1 {
+  font-size: 6rem;
+  margin: 0;
+  color: #543355;
+}
+
+.container h2 {
+  font-size: 3rem;
+  margin: 0;
+  margin-top: 4rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 3.1rem;
+}
+
+.container p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.button_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.container button {
+  border-radius: 1.5rem;
+  max-width: 10rem;
+  max-height: 4rem;
+  margin: 1rem 1rem 0rem 0rem;
+  padding: 0.4rem;
+  color: white;
+  font-size: 1.3rem;
+  font-family: inherit;
+  transition: all 150ms ease-out;
+  border: none;
+  cursor: pointer;
+}
+
+.container button:hover {
+  filter: brightness(125%);
+}
+
+.signup_button {
+  background-color: #543355;
+  flex-grow: 1;
+}
+
+.login_button {
+  background-color: #334155;
+  flex-grow: 1;
+}
+
+.button_inProgress {
+  background-color: #464646;
+  flex-grow: 1;
+}
+
+.container .return_button {
+  background-color: #262626;
+  font-size: 0rem;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.container form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  min-width: 15rem;
+}
+
+.container label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.container input {
+  font-size: 1rem;
+  padding: 0.8rem;
+  margin-top: 0.1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  background-color: #e2e8f0;
+  font-family: inherit;
+  border: none;
+}

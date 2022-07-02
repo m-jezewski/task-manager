@@ -1,0 +1,22 @@
+.up {
+  background-image: url(../../assets/arrowUp.svg);
+}
+
+.down {
+  background-image: url(../../assets/arrowDown.svg);
+}
+
+.left {
+  background-image: url(../../assets/arrowLeft.svg);
+}
+
+.right {
+  background-image: url(../../assets/arrowRight.svg);
+}
+
+.button {
+  border: none;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}

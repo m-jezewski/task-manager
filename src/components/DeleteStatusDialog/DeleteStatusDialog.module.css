@@ -1,0 +1,47 @@
+.container {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(1px) brightness(90%);
+}
+
+.panel {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.container button {
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  color: black;
+  font-size: 1.3rem;
+  font-family: inherit;
+  transition: all 150ms ease-out;
+  border: 3px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.container button:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.remove_button {
+  background-color: #f87171;
+}
+
+.back_button {
+  background-color: #94a3b8;
+}

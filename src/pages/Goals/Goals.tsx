@@ -1,5 +1,5 @@
-import Title from '../../components/Title'
-
+import Title from '../../components/Title/Title'
+import Layout from '../../components/Layout/Layout'
 
 interface GoalsProps {
 
@@ -7,7 +7,9 @@ interface GoalsProps {
 
 const Goals = () => {
     return (
-        <Title>Goals</Title>
+        <Layout title='Goals'>
+            Goals
+        </Layout>
     );
 }
 

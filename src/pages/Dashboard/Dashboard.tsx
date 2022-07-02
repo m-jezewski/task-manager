@@ -1,4 +1,5 @@
-import Title from '../../components/Title'
+import Title from '../../components/Title/Title'
+import Layout from '../../components/Layout/Layout'
 
 interface DashboardProps {
 
@@ -6,7 +7,9 @@ interface DashboardProps {
 
 const Dashboard = () => {
     return (
-        <Title>Dashboard</Title>
+        <Layout title='Dashboard'>
+            Dashboard
+        </Layout>
     );
 }
 
