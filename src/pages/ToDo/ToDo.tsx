@@ -11,15 +11,16 @@ import Layout from "../../components/Layout/Layout";
 import AddStatusForm from "../../components/AddStatusForm/AddStatusForm";
 import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
 import TaskTable from './TaskTable'
+import useDataContext from '../../hooks/useDataContext';
 
 const Todo = () => {
-    const { tasks, statuses, selectedSpace } = useContext(DataContext) as { tasks: Task[] | null, statuses: Status[] | null, selectedSpace: Space | null }
+    const { tasks, statuses, selectedSpace } = useDataContext()
 
     return (
         <Layout title='To-Do List'>
             <div className='new_status_container'>
-                <AnimatedPopover buttonStyles={'new_status_button'} buttonText="ADD NEW STATUS">
-                    <AddStatusForm statuses={statuses} />
+                <AnimatedPopover buttonClass={'new_status_button darken_border_hover'} buttonText="ADD NEW STATUS">
+                    <AddStatusForm />
                 </AnimatedPopover>
             </div>
             {selectedSpace ? tasks && statuses && statuses.map((status: Status) =>

@@ -2,7 +2,8 @@
   box-sizing: border-box;
   position: absolute;
   z-index: 2000;
-  min-width: 15rem;
+  min-height: 100%;
+  width: 15rem;
   display: flex;
   flex-direction: column;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);

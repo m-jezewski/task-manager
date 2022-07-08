@@ -1,31 +1,29 @@
 import { FormEvent, useContext, useState } from "react";
 import { Status } from '../../interfaces'
 import { UserContext } from '../../contexts/UserContext'
+import { ClosePopoverContext } from "../AnimatedPopover/AnimatedPopover";
 import styles from './AddStatusForm.module.css'
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import useDataContext from "../../hooks/useDataContext";
 
-interface AddStatusFormProps {
-    statuses: Status[] | null
-}
-
-const AddStatusForm = ({ statuses }: AddStatusFormProps) => {
+const AddStatusForm = () => {
     const { user } = useContext(UserContext)
+    const closePopover = useContext(ClosePopoverContext)
+    const { statuses } = useDataContext()
     const [status, setStatus] = useState('')
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState('#FFFFFF')
 
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-
-        const newStatus = {
+        closePopover && closePopover()
+        addDoc(collection(db, 'statuses'), {
             uid: user?.uid,
             status: status,
-            orderIndex: statuses ? statuses.length + 1 : 0,
+            orderIndex: statuses ? statuses[statuses.length - 1].orderIndex + 1 : 0,
             color: color
-        }
-
-        addDoc(collection(db, 'statuses'), newStatus)
+        })
     }
 
     return (

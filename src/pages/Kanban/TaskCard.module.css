@@ -1,0 +1,29 @@
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.container p {
+  margin: 0px;
+}
+
+.container hr {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.info_button_row {
+  display: flex;
+  padding: 0px;
+  justify-content: space-around;
+  position: relative;
+}
+
+.manage_button_row {
+  padding: 0px;
+  display: none;
+  justify-content: space-around;
+}

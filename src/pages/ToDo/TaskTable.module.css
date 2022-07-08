@@ -4,6 +4,13 @@
   border-spacing: 0px 2px;
   margin-bottom: 1rem;
   empty-cells: hide;
+  background-color: inherit;
+}
+
+.list_container tbody,
+th,
+tr {
+  background-color: inherit;
 }
 
 .list_container td {
@@ -63,16 +70,6 @@
   background-color: rgb(219, 219, 219);
   border-radius: 0rem 0rem 1rem 1rem;
   empty-cells: show;
-}
-
-.hideButton {
-  background-color: rgba(0, 0, 0, 0);
-  background-image: url(../../assets/hideArrows.svg) !important;
-  background-size: contain;
-  border: none;
-  width: 1.1rem;
-  height: 1.1rem;
-  cursor: pointer;
 }
 
 .small_cell {

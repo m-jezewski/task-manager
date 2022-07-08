@@ -2,16 +2,15 @@ import { Listbox, Transition } from '@headlessui/react'
 import styles from './Select.module.css'
 import transitionStyles from '../AnimatedPopover/AnimatedPopover.module.css'
 import unfold from '../../assets/unfold.svg'
-import { useContext } from 'react';
-import { DataContext } from '../../contexts/DataContext'
+import useDataContext from '../../hooks/useDataContext';
 
 const Select = () => {
-    const { spaces, selectedSpace, setSelectedSpace } = useContext(DataContext) as any
+    const { spaces, selectedSpace, setSelectedSpace } = useDataContext()
 
     return (
         <>{selectedSpace &&
             <Listbox as='div' className={styles.container} value={selectedSpace} onChange={setSelectedSpace} >
-                <Listbox.Button className={styles.select_button}>{selectedSpace.space} <img src={unfold} alt="" /></Listbox.Button>
+                <Listbox.Button className={`${styles.select_button} lighten_border_hover`}>{selectedSpace.space} <img src={unfold} alt="" /></Listbox.Button>
                 <Transition enter={transitionStyles.transition} enterFrom={transitionStyles.transition_enter_from} enterTo={transitionStyles.transition_enter_to}>
                     <Listbox.Options>
                         {spaces.map((space: any) => (

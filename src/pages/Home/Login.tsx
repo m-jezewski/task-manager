@@ -44,8 +44,8 @@ const Login = ({ handleClosingForms }: LoginProps) => {
                         <img src={arrowback} alt='Go back' />
                     </button>
                     {isPending ?
-                        <button type='submit' disabled className={styles.button_inProgress}>Logging in...</button>
-                        : <button type='submit' className={styles.login_button}>Log in!</button>}
+                        <button type='submit' disabled className={`${styles.button_inProgress} lighten_hover`}>Logging in...</button>
+                        : <button type='submit' className={`${styles.login_button} lighten_hover`}>Log in!</button>}
                 </div>
             </form>
             {error && <p>{error}</p>}

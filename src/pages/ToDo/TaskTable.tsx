@@ -10,8 +10,9 @@ import styles from './TaskTable.module.css'
 import ToDoItem from './ToDoItem'
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/AddTaskForm/AddTaskForm'
-import ChangeStatusOrder from '../../components/ChangeStatusOrder/ChangeStatusOrder'
+import ChangeStatusOrderBtn from '../../components/ChangeStatusOrderBtn/ChangeStatusOrderBtn'
 import DeleteStatusDialog from '../../components/DeleteStatusDialog/DeleteStatusDialog'
+import DropToContainer from '../../components/DropToContainer/DropToContainer'
 
 interface TaskTableProps {
     status: Status
@@ -20,43 +21,41 @@ interface TaskTableProps {
     selectedSpace: Space
 }
 
-const TaskTable = ({ status, tasks, statuses, selectedSpace }: TaskTableProps) => {
+const TaskTable = ({ status, tasks }: TaskTableProps) => {
     const [showTable, setShowTable] = useState(true)
 
     const filteredTasks = tasks.filter((i: Task) => i.status === status.status)
 
     return (
-        <table key={status.id} className={styles.list_container}>
+        <DropToContainer key={status.id} parentStyles={styles.list_container} Parent='table' status={status}>
             <tbody>
                 <>
                     <tr>
                         <th className={styles.small_cell} style={{ padding: '0px', textAlign: 'center' }}>
                             <button
-                                className={`${styles.hideButton}`}
+                                className='hide_button'
                                 onClick={() => { setShowTable(!showTable) }} />
                         </th>
                         <th className={styles.status_th}>
                             <span className={styles.status_text} style={{ backgroundColor: status.color }}>
                                 {status.status.toUpperCase()}
                             </span>
-                            <AnimatedPopover buttonStyles={styles.add_task_button} buttonText='+'>
+                            <AnimatedPopover buttonClass={styles.add_task_button} buttonText='+'>
                                 <AddTaskForm
-                                    tasks={tasks}
-                                    currentSpace={selectedSpace}
-                                    statuses={statuses}
+                                    position='absolute'
+                                    direction='row'
                                     defaultStatus={status}
                                 />
                             </AnimatedPopover>
                         </th>
                         <th />
                         <th className={styles.small_cell}>
-                            <ChangeStatusOrder variant='up' elemId={status.id!} current={status} buttonStyles={{ float: 'left' }} />
-                            <ChangeStatusOrder variant='down' elemId={status.id!} current={status} />
+                            <ChangeStatusOrderBtn variant='up' elemId={status.id!} current={status} buttonStyles={{ float: 'left' }} />
+                            <ChangeStatusOrderBtn variant='down' elemId={status.id!} current={status} />
                         </th>
                         <th className={styles.small_cell}>
                             <DeleteStatusDialog
                                 status={status}
-                                statuses={statuses}
                                 filteredTasks={filteredTasks}
                             />
                         </th>
@@ -72,8 +71,6 @@ const TaskTable = ({ status, tasks, statuses, selectedSpace }: TaskTableProps) =
                                     <ToDoItem
                                         key={task.id}
                                         todo={task}
-                                        statuses={statuses}
-                                        color={status.color}
                                     />))}
                         </> :
                         <tr>
@@ -82,7 +79,7 @@ const TaskTable = ({ status, tasks, statuses, selectedSpace }: TaskTableProps) =
                         </tr>}
                 </>
             </tbody>
-        </table >
+        </DropToContainer >
     );
 }
 

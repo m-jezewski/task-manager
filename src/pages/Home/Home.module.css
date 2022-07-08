@@ -70,10 +70,6 @@
   cursor: pointer;
 }
 
-.container button:hover {
-  filter: brightness(125%);
-}
-
 .signup_button {
   background-color: #543355;
   flex-grow: 1;

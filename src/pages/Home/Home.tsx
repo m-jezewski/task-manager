@@ -30,8 +30,8 @@ const Home = ({ }: HomeProps) => {
                     <p>
                         Keep your goal progress and manage your tasks in a tasklist, calendar or kanban board in my highly customizable task managemant app.
                     </p>
-                    <button className={styles.signup_button} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>
-                    <button className={styles.login_button} onClick={() => { setIsLoginOpen(true) }}>Log In</button>
+                    <button className={`${styles.signup_button} lighten_hover`} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>
+                    <button className={`${styles.login_button} lighten_hover`} onClick={() => { setIsLoginOpen(true) }}>Log In</button>
                 </>}
                 {isSignupOpen &&
                     <Register handleClosingForms={handleClosingForms} />

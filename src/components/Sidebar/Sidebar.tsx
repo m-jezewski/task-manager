@@ -18,22 +18,20 @@ const Sidebar = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.fixed_wrapper}>
-                <div>
-                    <h1>Task Tracker</h1>
-                    <hr />
-                    <nav>
-                        <Link to='/Dashboard'><img src={home} alt='Dashboard' />Dashboard</Link>
-                        <Link to='/Todo'><img src={checklist} alt='Todo List' />To-Do List</Link>
-                        <Link to='/Kanban'><img src={width} alt='Kanban board' /> Kanban</Link>
-                        <Link to='/Calendar'><img src={calendar} alt='Calendar' />Calendar</Link>
-                        <Link to='/Goals'><img src={monitoring} alt='Goals' />Goals</Link>
-                    </nav>
-                </div>
-                <div className={styles.settings}>
-                    <hr />
-                    <button onClick={handleClick}>LOGOUT</button>
-                </div>
+            <div>
+                <h1>Task Tracker</h1>
+                <hr />
+                <nav>
+                    <Link to='/Dashboard'><img src={home} alt='Dashboard' />Dashboard</Link>
+                    <Link to='/Todo'><img src={checklist} alt='Todo List' />To-Do List</Link>
+                    <Link to='/Kanban'><img src={width} alt='Kanban board' /> Kanban</Link>
+                    <Link to='/Calendar'><img src={calendar} alt='Calendar' />Calendar</Link>
+                    <Link to='/Goals'><img src={monitoring} alt='Goals' />Goals</Link>
+                </nav>
+            </div>
+            <div className={styles.settings}>
+                <hr />
+                <button onClick={handleClick}>LOGOUT</button>
             </div>
         </div>
     );

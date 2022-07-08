@@ -4,16 +4,17 @@ import { Status, Task } from "../../interfaces";
 import styles from './DeleteStatusDialog.module.css'
 import { collection, deleteDoc, doc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import useDataContext from "../../hooks/useDataContext";
 
 interface DeleteStatusDialogProps {
     status: Status
-    statuses: Status[]
     filteredTasks: Task[]
 }
 
 
-const DeleteStatusDialog = ({ status, statuses, filteredTasks }: DeleteStatusDialogProps) => {
+const DeleteStatusDialog = ({ status, filteredTasks }: DeleteStatusDialogProps) => {
     const [isOpen, setIsOpen] = useState(false)
+    const { statuses } = useDataContext()
 
     const handleDelete = () => {
         const statusCol = collection(db, 'statuses')

@@ -5,7 +5,7 @@ import { Status, Task } from '../../interfaces'
 import { collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 
-interface ChangeStatusOrderProps {
+interface ChangeStatusOrderBtnProps {
     variant: 'up' | 'down' | 'left' | 'right'
     elemId: string
     current: Status
@@ -13,12 +13,12 @@ interface ChangeStatusOrderProps {
 
 }
 
-const ChangeStatusOrder = ({ variant, elemId, current, buttonStyles }: ChangeStatusOrderProps) => {
+const ChangeStatusOrderBtn = ({ variant, elemId, current, buttonStyles }: ChangeStatusOrderBtnProps) => {
     const { statuses } = useContext(DataContext) as { tasks: Task[], statuses: Status[] }
 
     const handleClick = () => {
         let inc = 0;
-        variant === 'up' || variant === 'right' ? inc = -1 : inc = 1
+        variant === 'up' || variant === 'left' ? inc = -1 : inc = 1
         const adjacent = statuses[statuses.findIndex((status) => status.id === elemId) + inc]
         if (!adjacent) return
 
@@ -37,4 +37,4 @@ const ChangeStatusOrder = ({ variant, elemId, current, buttonStyles }: ChangeSta
     );
 }
 
-export default ChangeStatusOrder;
+export default ChangeStatusOrderBtn;

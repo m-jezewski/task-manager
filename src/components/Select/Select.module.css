@@ -15,10 +15,7 @@
   border-radius: 0.25rem;
   transition: all 150ms ease-out;
   color: white;
-}
-.select_button:hover {
   cursor: pointer;
-  border: solid 4px rgba(255, 255, 255, 0.25);
 }
 
 .container {
@@ -51,9 +48,9 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: none;
   background-color: white;
+  cursor: pointer;
   transition: all 150ms ease-out;
 }
 .container li:hover {
-  cursor: pointer;
   background-color: #f1f5f9;
 }
