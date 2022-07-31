@@ -22,7 +22,8 @@ export const DataContextProvider = ({ children, uid }: SpaceContextProviderProps
     }, [spaces])
 
     const data = {
-        tasks: selectedSpace && tasks?.filter((task: Task) => task.space === selectedSpace.space).sort((a, b) => a.orderIndex - b.orderIndex),
+        unfilteredTasks: tasks,
+        tasks: selectedSpace && tasks?.filter((task: Task) => task.space === selectedSpace.name).sort((a, b) => a.orderIndex - b.orderIndex),
         spaces: spaces,
         statuses: statuses?.sort((a, b) => a.orderIndex - b.orderIndex),
         selectedSpace: selectedSpace,

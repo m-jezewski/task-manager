@@ -1,6 +1,6 @@
 import { useState, MouseEventHandler, FormEvent } from 'react';
 import arrowback from '../../assets/arrowback.svg'
-import styles from './Home.module.css'
+import styles from './Home.module.scss'
 import { useSignup } from '../../hooks/useSignup'
 
 interface RegisterProps {
@@ -16,9 +16,6 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
         signup(email, password, name)
-        setEmail('')
-        setPassword('')
-        setName('')
     }
 
 
@@ -54,9 +51,7 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
                     <button className={styles.return_button} onClick={handleClosingForms}>
                         <img src={arrowback} alt='Go back' />
                     </button>
-                    {isPending ?
-                        <button type='submit' disabled className={styles.button_inProgress}>Signing up...</button>
-                        : <button type='submit' className={styles.login_button}>Sign up!</button>}
+                    <button type='submit' className={`${styles.login_button} text-button`}>Sign up!</button>
                 </div>
             </form>
             {error && <p>{error}</p>}

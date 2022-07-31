@@ -1,0 +1,82 @@
+.list_container {
+  padding: 0;
+  width: 100%;
+  border-spacing: 0px 2px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  empty-cells: hide;
+  background-color: inherit;
+
+  tbody,
+  tr {
+    background-color: inherit;
+  }
+
+  td {
+    padding: 0.4rem;
+    background-color: white;
+  }
+
+  th {
+    background-color: inherit;
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 400;
+    color: rgb(34, 34, 34);
+  }
+
+  .th_dueDate {
+    padding: 0px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .status_th {
+    display: flex;
+    position: absolute;
+    z-index: 500;
+    align-items: flex-end;
+    padding: 0 !important;
+    transform: translate(0px, -3px);
+  }
+  .status_th:focus-within {
+    z-index: 3000;
+  }
+
+  .status_text {
+    padding: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-weight: 500;
+  }
+
+  .add_task_btn {
+    box-sizing: border-box;
+    padding: 0px;
+    font-weight: 600;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0rem 0.5rem 0rem 0rem;
+    border: 2px solid #e4e4e7;
+    background-color: white;
+  }
+
+  .no_tasks {
+    padding-left: 1rem;
+    background-color: rgb(219, 219, 219);
+    font-size: 0.9rem;
+    font-style: italic;
+    border-radius: 0rem 0rem 1rem 1rem;
+  }
+
+  .hidden_table_cell {
+    background-color: rgb(219, 219, 219);
+    border-radius: 0rem 0rem 1rem 1rem;
+    empty-cells: show;
+  }
+
+  .small_cell {
+    width: 2rem;
+    text-align: center;
+  }
+}

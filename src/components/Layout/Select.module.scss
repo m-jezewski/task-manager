@@ -1,0 +1,51 @@
+.select_button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem 0px 1.5rem 0px;
+  border: rgba(0, 0, 0, 0) 4px solid;
+  font-size: 1.7rem;
+  font-weight: 300;
+  text-align: left;
+  color: white;
+  background-color: #334155;
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+  z-index: 3000;
+
+  ul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transform: translate(0, -1.5rem);
+  }
+
+  ul :last-child {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+
+  li {
+    position: relative;
+    z-index: 3000;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+  }
+
+  li:hover {
+    background-color: #f1f5f9;
+  }
+}

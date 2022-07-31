@@ -1,0 +1,80 @@
+.subHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table_headers {
+  display: flex;
+  column-gap: 2px;
+  margin: 0px 2px;
+
+  div {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.5rem 0px;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: calc((100% - 3rem) / 7);
+    font-size: 1rem;
+    font-weight: 500;
+    word-break: break-word;
+    background-color: white;
+  }
+}
+
+.table_container {
+  position: relative;
+
+  table {
+    width: 100%;
+    padding: 0px;
+    border-spacing: 2px 0px;
+    background-color: inherit;
+    box-sizing: border-box;
+    empty-cells: show;
+
+    td {
+      box-sizing: border-box;
+      padding: 0.4rem;
+      border-radius: 1px;
+      background-color: white;
+    }
+
+    tr {
+      height: 2rem;
+    }
+
+    th,
+    td {
+      padding: 0.2rem;
+      box-sizing: border-box;
+    }
+
+    .small_cell {
+      width: 3rem;
+    }
+  }
+
+  .grid {
+    position: absolute;
+    top: 0px;
+    display: grid;
+    grid-template-rows: 1fr;
+    height: 100%;
+    grid-template-columns: 3rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+
+    .weekDayGrid {
+      display: grid;
+      height: 100%;
+      grid-template-rows: repeat(24, 2rem);
+      column-gap: 2px;
+      padding: 2px;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+}

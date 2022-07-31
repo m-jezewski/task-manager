@@ -11,12 +11,11 @@ export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isPending, setisPending] = useState(false)
 
-  const signup = async (email: string, password: string, name: string) => {
+  const signup = (email: string, password: string, name: string) => {
     setisPending(true)
     setError(null)
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        //name update
         updateProfile(userCredential.user, {
           displayName: name,
         }).catch((err) => {

@@ -1,0 +1,47 @@
+.dialogContainer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  backdrop-filter: blur(1px) brightness(90%);
+
+  button {
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    font-family: inherit;
+    color: black;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+  }
+
+  .panel {
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: white;
+
+    .title {
+      font-weight: 400;
+    }
+
+    .container button:hover {
+      border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .remove_button {
+      background-color: #f87171;
+    }
+
+    .back_button {
+      background-color: #94a3b8;
+    }
+  }
+}

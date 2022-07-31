@@ -6,30 +6,36 @@ import { Space, Task, Status } from './interfaces'
 const addDefaultContent = (uid: string) => {
     const defaultSpace: Space = {
         uid: uid,
-        space: 'My awesome default space!'
+        name: 'My awesome default space!'
     }
     const defaultTasks: Task[] = [
         {
             uid: uid,
             orderIndex: 0,
-            text: 'My awesome default task!',
+            description: 'My awesome default task!',
             priority: 'low',
+            dueDate: null,
+            fromDate: null,
             status: 'Open',
             space: 'My awesome default space!',
         },
         {
             uid: uid,
             orderIndex: 1,
-            text: 'My awesome default task!',
+            description: 'My awesome default task!',
             priority: 'medium',
+            dueDate: null,
+            fromDate: null,
             status: 'Open',
             space: 'My awesome default space!',
         },
         {
             uid: uid,
             orderIndex: 2,
-            text: 'My awesome default task!',
+            description: 'My awesome default task!',
             priority: 'low',
+            dueDate: null,
+            fromDate: null,
             status: 'In Progress',
             space: 'My awesome default space!',
         }
@@ -37,19 +43,19 @@ const addDefaultContent = (uid: string) => {
     const defaultStatuses: Status[] = [
         {
             uid: uid,
-            status: 'Open',
+            name: 'Open',
             orderIndex: 1,
             color: '#c7d2fe'
         },
         {
             uid: uid,
-            status: 'In Progress',
+            name: 'In Progress',
             orderIndex: 2,
             color: '#ddd6fe'
         },
         {
             uid: uid,
-            status: 'Finished',
+            name: 'Finished',
             orderIndex: 3,
             color: '#d9f99d'
         },

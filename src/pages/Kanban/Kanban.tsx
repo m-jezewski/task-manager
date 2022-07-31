@@ -1,9 +1,9 @@
-import AddStatusForm from '../../components/AddStatusForm/AddStatusForm';
+import AddStatusForm from '../../components/Forms/AddStatusForm';
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover';
 import Layout from '../../components/Layout/Layout';
 import useDataContext from '../../hooks/useDataContext';
 
-import styles from './Kanban.module.css'
+import styles from './Kanban.module.scss'
 import StatusSection from './StatusSection';
 
 const Kanban = () => {
@@ -23,7 +23,7 @@ const Kanban = () => {
                     />
                 ))}
                 <AnimatedPopover
-                    buttonClass={`${styles.add_status_button} darken_hover`}
+                    buttonClass={`${styles.add_status_button} darken_hover text-button`}
                     buttonText='ADD NEW STATUS'
                     panelStyles={{
                         transform: 'translate(-15.5rem, -0.5rem)',

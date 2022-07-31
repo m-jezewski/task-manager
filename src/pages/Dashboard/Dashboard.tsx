@@ -1,5 +1,5 @@
-import Title from '../../components/Title/Title'
 import Layout from '../../components/Layout/Layout'
+import styles from './Dashboard.module.scss'
 
 interface DashboardProps {
 
@@ -8,7 +8,7 @@ interface DashboardProps {
 const Dashboard = () => {
     return (
         <Layout title='Dashboard'>
-            Dashboard
+            <span>Greetings</span>
         </Layout>
     );
 }

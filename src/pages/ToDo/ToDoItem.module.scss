@@ -1,0 +1,27 @@
+.tr {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+
+  td {
+    border-radius: initial;
+    padding: 0.4rem;
+    background-color: white;
+  }
+
+  .small_cell {
+    width: 2rem;
+    text-align: center;
+  }
+
+  .item_text {
+    margin: 0;
+    word-break: break-word;
+  }
+
+  .item_date {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.95);
+  }
+}

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  height: 100%;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+
+  .add_status_button {
+    box-sizing: border-box;
+    min-width: 15rem;
+    background-color: #e5e7eb;
+  }
+}

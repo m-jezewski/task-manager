@@ -1,6 +1,6 @@
 import { Fragment, ReactNode, createContext, useRef, MutableRefObject } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import styles from './AnimatedPopover.module.css'
+import styles from './AnimatedPopover.module.scss'
 
 interface AnimatedPopoverProps {
     buttonClass: string

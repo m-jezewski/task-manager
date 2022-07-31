@@ -1,7 +1,6 @@
-import Sidebar from "../Sidebar/Sidebar";
-import Select from '../Select/Select'
-import Title from '../Title/Title'
-import styles from './Layout.module.css'
+import Sidebar from "./Sidebar";
+import Select from './Select'
+import styles from './Layout.module.scss'
 
 
 interface LayoutProps {
@@ -13,8 +12,11 @@ const Layout = ({ children, title }: LayoutProps) => {
     return (
         <>
             <Sidebar />
-            <main>
-                <Title>{title}</Title>
+            <main className={styles.main}>
+                <div className={styles.header}>
+                    <h1>{title}</h1>
+                    <hr />
+                </div>
                 <section className={styles.layout_section}>
                     <Select />
                     {children}

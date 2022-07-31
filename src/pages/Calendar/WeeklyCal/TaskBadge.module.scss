@@ -1,0 +1,14 @@
+.badge {
+  border-radius: 0.5rem;
+  min-width: 3rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre-line;
+  box-sizing: border-box;
+  line-height: 1rem;
+  padding: 0.2rem;
+
+  p {
+    margin: 0px;
+  }
+}

@@ -1,7 +1,9 @@
 interface Task {
   id?: string
   uid: string
-  text: string
+  description: string
+  fromDate: number | null
+  dueDate: number | null
   priority: string
   orderIndex: number
   space: string
@@ -11,13 +13,13 @@ interface Task {
 interface Space {
   id?: string
   uid: string
-  space: string
+  name: string
 }
 
 interface Status {
   id?: string
   uid: string
-  status: string
+  name: string
   orderIndex: number
   color: string
 }

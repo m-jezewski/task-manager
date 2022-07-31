@@ -1,6 +1,6 @@
-import { FormEvent, FormEventHandler, MouseEventHandler, useState } from 'react';
+import { FormEvent, MouseEventHandler, useState } from 'react';
 import arrowback from '../../assets/arrowback.svg'
-import styles from './Home.module.css'
+import styles from './Home.module.scss'
 import { useLogin } from '../../hooks/useLogin'
 
 interface LoginProps {
@@ -43,9 +43,7 @@ const Login = ({ handleClosingForms }: LoginProps) => {
                     <button className={styles.return_button} onClick={handleClosingForms}>
                         <img src={arrowback} alt='Go back' />
                     </button>
-                    {isPending ?
-                        <button type='submit' disabled className={`${styles.button_inProgress} lighten_hover`}>Logging in...</button>
-                        : <button type='submit' className={`${styles.login_button} lighten_hover`}>Log in!</button>}
+                    <button type='submit' className={`${styles.login_button} lighten_hover text-button`}>Log in!</button>
                 </div>
             </form>
             {error && <p>{error}</p>}

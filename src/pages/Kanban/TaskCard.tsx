@@ -1,9 +1,9 @@
-import ChangeTaskStatusBtn from "../../components/ChangeTaskStatusBtn/ChangeTaskStatusBtn";
-import DeleteTaskBtn from "../../components/DeleteTaskBtn/DeleteTaskBtn";
-import ChangeTaskPrioBtn from "../../components/ChangeTaskPrioBtn/ChangeTaskPrioBtn";
+import ChangeTaskStatusBtn from "../../components/TaskComponents/ChangeTaskStatusBtn";
+import DeleteTaskBtn from "../../components/TaskComponents/DeleteTaskBtn";
+import ChangeTaskPrioBtn from "../../components/TaskComponents/ChangeTaskPrioBtn";
 import { Task } from "../../interfaces";
-import styles from './TaskCard.module.css'
-import DraggableContainer from '../../components/DraggableContainer/DraggableContainer'
+import styles from './TaskCard.module.scss'
+import DraggableContainer from '../../components/DragAndDrop/DraggableContainer'
 
 interface TaskCardProps {
     task: Task
@@ -12,7 +12,7 @@ interface TaskCardProps {
 const TaskCard = ({ task }: TaskCardProps) => {
     return (
         <DraggableContainer task={task} Parent={"div"} parentStyles={styles.container}>
-            <p>{task.text}</p>
+            <p>{task.description}</p>
             <hr />
             <div className={styles.info_button_row}>
                 <ChangeTaskStatusBtn task={task} />
