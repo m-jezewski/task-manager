@@ -22,7 +22,7 @@ const Login = ({ handleClosingForms }: LoginProps) => {
 
     return (
         <>
-            <h2>Log in</h2>
+            <h2 className={styles.subtitle}>Log in</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Email</span>

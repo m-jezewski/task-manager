@@ -1,13 +1,85 @@
 .container {
+  box-sizing: border-box;
   display: flex;
   height: 100%;
   gap: 0.5rem;
-  overflow-x: auto;
   padding-bottom: 1rem;
+  overflow-x: auto;
 
   .add_status_button {
     box-sizing: border-box;
     min-width: 15rem;
     background-color: #e5e7eb;
+  }
+
+  section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: 15rem;
+    max-width: 15rem;
+  
+    .section_header {
+      display: flex;
+      justify-content: space-between;
+      min-height: 4.5rem;
+      border-radius: 0.5rem;
+  
+      h2 {
+        align-self: center;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: inherit;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+      }
+  
+      button { margin: 0; }
+    }
+  
+    .add_task {
+      margin-top: 0.5rem;
+      border: rgba(0, 0, 0, 0) solid 3px;
+      font-weight: 400;
+      background-color: white;
+    }
+
+    .task_container { 
+      flex-grow: 1; 
+      border-radius: 0.5rem; 
+      
+      .taskCard {
+        box-sizing: border-box;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background-color: white;
+        word-break: break-word;
+      
+        .info_button_row {
+          position: relative;
+          display: flex;
+          justify-content: space-around;
+        }
+      
+        p { margin: 0; }
+        hr { border-color: rgba(0, 0, 0, 0.25); }
+      }
+      .taskCard:hover { color: blue; }
+    }
+  }
+  
+  .section_hidden {
+    min-width: 2rem;
+    max-height: 4.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
 }

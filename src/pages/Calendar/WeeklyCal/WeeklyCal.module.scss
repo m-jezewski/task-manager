@@ -61,7 +61,7 @@
     display: grid;
     grid-template-rows: 1fr;
     height: 100%;
-    grid-template-columns: 3rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 3rem repeat(7, 1fr);
     column-gap: 2px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -72,9 +72,26 @@
       height: 100%;
       grid-template-rows: repeat(24, 2rem);
       column-gap: 2px;
-      padding: 2px;
       overflow-x: auto;
       overflow-y: hidden;
+    }
+  }
+
+  .taskBadge {
+    border-radius: 0.5rem;
+    min-width: 3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-line;
+    filter: brightness(97%);
+    box-sizing: border-box;
+    line-height: 1rem;
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+
+    p {
+      margin: 0px;
     }
   }
 }

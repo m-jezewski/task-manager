@@ -21,7 +21,7 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
 
     return (
         <>
-            <h2>Register</h2>
+            <h2 className={styles.subtitle}>Register</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Email</span>

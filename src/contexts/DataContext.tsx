@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useCollectionSub } from '../hooks/useCollectionSub';
-import { Task, Space, Status } from '../interfaces'
+import { Task, Space, Status, Goal, GoalStep } from '../interfaces'
 
 interface SpaceContextProviderProps {
     children: React.ReactNode
@@ -14,6 +14,8 @@ export const DataContextProvider = ({ children, uid }: SpaceContextProviderProps
     const spaces = useCollectionSub('spaces', uid) as Space[] | null
     const tasks = useCollectionSub('tasks', uid) as Task[] | null
     const statuses = useCollectionSub('statuses', uid) as Status[] | null
+    const goals = useCollectionSub('goals', uid) as Goal[] | null
+    const goalSteps = useCollectionSub('goalSteps', uid) as GoalStep[] | null
 
     useEffect(() => {
         if (spaces) {
@@ -24,10 +26,12 @@ export const DataContextProvider = ({ children, uid }: SpaceContextProviderProps
     const data = {
         unfilteredTasks: tasks,
         tasks: selectedSpace && tasks?.filter((task: Task) => task.space === selectedSpace.name).sort((a, b) => a.orderIndex - b.orderIndex),
-        spaces: spaces,
+        spaces,
         statuses: statuses?.sort((a, b) => a.orderIndex - b.orderIndex),
-        selectedSpace: selectedSpace,
-        setSelectedSpace: setSelectedSpace,
+        selectedSpace,
+        setSelectedSpace,
+        goals,
+        goalSteps
     }
 
     return (

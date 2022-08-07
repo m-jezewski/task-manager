@@ -8,6 +8,10 @@ const addDefaultContent = (uid: string) => {
         uid: uid,
         name: 'My awesome default space!'
     }
+    const defaultSpace2: Space = {
+        uid: uid,
+        name: 'My second awesome default space!'
+    }
     const defaultTasks: Task[] = [
         {
             uid: uid,
@@ -62,6 +66,7 @@ const addDefaultContent = (uid: string) => {
     ]
 
     addDoc(collection(db, 'spaces'), defaultSpace)
+    addDoc(collection(db, 'spaces'), defaultSpace2)
     defaultTasks.forEach(task => {
         addDoc(collection(db, 'tasks'), task)
     });

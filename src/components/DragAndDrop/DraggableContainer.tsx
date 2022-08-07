@@ -1,4 +1,5 @@
-import { ReactNode, useRef } from "react";
+import React, { ReactNode, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Task } from "../../interfaces";
 import styles from './DraggableContainer.module.scss'
 
@@ -10,6 +11,7 @@ interface DraggableContainerProps {
 }
 
 const DraggableContainer = ({ children, task, Parent, parentStyles }: DraggableContainerProps) => {
+    const navigate = useNavigate()
     const divRef = useRef<HTMLDivElement>(null)
 
     const handleDragStart = (e: React.DragEvent) => {
@@ -21,6 +23,11 @@ const DraggableContainer = ({ children, task, Parent, parentStyles }: DraggableC
         divRef.current?.classList.remove(styles.dragging)
     }
 
+    const handleClick = (e: React.MouseEvent) => {
+        e.stopPropagation()
+        navigate(`/Dashboard/${task.id}`)
+    }
+
     return (
         <Parent
             className={parentStyles}
@@ -29,6 +36,7 @@ const DraggableContainer = ({ children, task, Parent, parentStyles }: DraggableC
             ref={divRef}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
+            onClick={handleClick}
         >
             {children}
         </Parent>

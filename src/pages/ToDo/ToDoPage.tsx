@@ -13,7 +13,7 @@ import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
 import TaskTable from './TaskTable'
 import useDataContext from '../../hooks/useDataContext';
 
-const Todo = () => {
+const TodoPage = () => {
     const { tasks, statuses, selectedSpace } = useDataContext()
 
     return (
@@ -37,4 +37,4 @@ const Todo = () => {
     );
 }
 
-export default Todo;
+export default TodoPage;

@@ -86,7 +86,7 @@ code {
 }
 
 .darken_hover:hover {
-  filter: brightness(90%);
+  filter: brightness(90%) !important;
 }
 
 .darken_border_hover:hover {
@@ -125,4 +125,20 @@ code {
 
   cursor: pointer;
   transition: all 150ms ease-out;
+}
+
+.text-input{
+  font-family: inherit;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 12rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: solid 1px #e5e7eb;
+  background-color: #f3f4f6;
+}
+
+input{
+  font-family: inherit;
 }

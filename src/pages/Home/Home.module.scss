@@ -21,7 +21,7 @@
     margin: 2rem;
 
     h1 {
-      margin: 0px;
+      margin: 0;
       font-size: 6rem;
       color: #543355;
     }
@@ -44,8 +44,8 @@
     button {
       max-width: 10rem;
       max-height: 4rem;
-      margin: 1rem 1rem 0rem 0rem;
-      border-radius: 1.3rem;
+      margin: 1rem 1rem 0 0;
+      border-radius: 1rem;
       font-size: 1.3rem;
       color: white;
     }
@@ -78,7 +78,8 @@
       padding: 0;
       border-radius: 50%;
       background-color: #262626;
-      font-size: 0rem;
+      cursor: pointer;
+      font-size: 0;
     }
   }
 

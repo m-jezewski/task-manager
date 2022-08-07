@@ -5,7 +5,6 @@ import DayCal from "./DayCal/DayCal";
 import MonthlyCal from "./MonthlyCal/MonthlyCal";
 import WeeklyCal from "./WeeklyCal/WeeklyCal";
 import styles from './Calendar.module.scss'
-import { useState } from "react";
 import useDataContext from "../../hooks/useDataContext";
 
 const CalPanels = () => {

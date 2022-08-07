@@ -1,3 +1,4 @@
+import React from 'react'
 import useDb from '../../hooks/useDb'
 import { Task } from '../../interfaces'
 
@@ -8,7 +9,8 @@ interface DeleteTaskBtnProps {
 const DeleteTaskBtn = ({ task }: DeleteTaskBtnProps) => {
     const { removeDocument } = useDb('tasks')
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent) => {
+        e.stopPropagation()
         removeDocument(task.id!)
     }
 

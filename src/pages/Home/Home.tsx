@@ -19,7 +19,7 @@ const Home = () => {
                 <h1>Taskify</h1>
                 {!isSignupOpen && !isLoginOpen && <>
                     <p>
-                        <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span>
+                        <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span><br /><br />
                         Keep your goal progress and manage your tasks in a tasklist, calendar or kanban board in my highly customizable task managemant app.
                     </p>
                     <button className={`${styles.signup_button} lighten_hover text-button`} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>

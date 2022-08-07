@@ -3,6 +3,7 @@ import { transform } from "typescript";
 import useDataContext from "../../../hooks/useDataContext";
 import styles from './TaskCard.module.scss'
 import { Status, Task } from "../../../interfaces";
+import { useNavigate } from "react-router-dom";
 
 interface TaskCardProps {
     task: Task
@@ -11,17 +12,19 @@ interface TaskCardProps {
 }
 
 const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
+    const navigate = useNavigate()
     const fromDate = dayjs.unix(task.fromDate!)
     const dueDate = dayjs.unix(task.dueDate!)
 
     return (
         <div
-            className={styles.container}
+            className={`${styles.container} darken_hover`}
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
                 backgroundColor: statuses.filter((status) => task.status === status.name)[0].color,
             }}
+            onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         >
             <p>
                 <span className={styles.time_span} >

@@ -1,6 +1,6 @@
 interface Task {
   id?: string
-  uid: string
+  uid?: string
   description: string
   fromDate: number | null
   dueDate: number | null
@@ -12,16 +12,34 @@ interface Task {
 
 interface Space {
   id?: string
-  uid: string
+  uid?: string
   name: string
 }
 
 interface Status {
   id?: string
-  uid: string
+  uid?: string
   name: string
   orderIndex: number
   color: string
 }
 
-export type { Task, Space, Status }
+interface Goal {
+  id?: string
+  uid?: string
+  title: string
+  description: string
+}
+
+interface GoalStep {
+  goalID?: string
+  uid?: string
+  description?: string
+  type: 'boolean' | 'number' | 'task'
+  value?: boolean
+  target?: number
+  startWith?: number
+  taskID?: string
+}
+
+export type { Task, Space, Status, Goal, GoalStep }

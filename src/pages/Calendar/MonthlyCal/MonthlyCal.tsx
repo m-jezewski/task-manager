@@ -5,6 +5,7 @@ import { Status, Task } from "../../../interfaces";
 import DateLink from "../DateLink";
 import styles from './MonthlyCal.module.scss'
 import TaskBadge from "./TaskBadge";
+import SubHeader from "../SubHeader";
 
 interface MonthlyCalProps {
     date: Dayjs
@@ -44,11 +45,12 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
 
     return (
         <>
-            <div className={styles.subHeader}>
-                <DateLink by='month' move="back" date={date} />
-                <h2>{date.format('MMMM YYYY')}</h2>
-                <DateLink by='month' move="forward" date={date} />
-            </div>
+            <SubHeader
+                date={date}
+                moveBy={'month'}
+                dateHeader={date.format('MMMM YYYY')}
+                statuses={statuses}
+            />
             <div className={styles.week}>
                 {weekDays.map(weekDay => <div key={weekDay.date()} className={styles.weekDay_header}>{weekDay.format('dddd').toUpperCase()}</div>)}
             </div>

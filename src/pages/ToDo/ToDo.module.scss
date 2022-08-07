@@ -1,0 +1,82 @@
+.list_container {
+  border-spacing: 0 2px;
+  margin-bottom: 1rem;
+  empty-cells: hide;
+  background-color: inherit;
+
+  tbody { background-color: inherit; }
+  td { padding: 0.4rem; background-color: white; }
+  
+  th {
+    background-color: inherit;
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 400;
+    color: rgb(34, 34, 34);
+  }
+
+  tr {
+    background-color: inherit;
+
+    .item_text { margin: 0; word-break: break-word; }
+
+    .item_date {
+      margin: 0;
+      font-size: 0.8rem;
+      color: rgba(0, 0, 0, 0.95);
+    }
+  }
+  tr:hover { color: blue; }
+
+  .th_dueDate {
+    padding: 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .th_status {
+    display: flex;
+    position: absolute;
+    z-index: 500;
+    align-items: flex-end;
+    padding: 0;  
+    transform: translate(0, -3px);
+
+    .status_text { 
+      padding: 0.5rem;
+      border-radius: 0.5rem 0.5rem 0 0;
+      font-weight: 500;
+    }
+
+    .add_task_btn {
+      box-sizing: border-box;
+      font-weight: 600;
+      height: 2rem;
+      width: 2rem;
+      padding: 0;
+      border-radius: 0 0.5rem 0 0;
+      border: 2px solid #e4e4e7;
+      background-color: white;
+    }
+
+    :focus-within { z-index: 3000; }
+  }
+
+  .no_tasks {
+    padding-left: 1rem;
+    background-color: rgb(219, 219, 219);
+    font-size: 0.9rem;
+    font-style: italic;
+    border-radius: 0 0 1rem 1rem;
+    color: black;
+  }
+
+  .hidden_table_cell {
+    background-color: rgb(219, 219, 219);
+    border-radius: 0 0 1rem 1rem;
+    empty-cells: show;
+  }
+
+  .small_cell { width: 2rem; text-align: center; }
+}

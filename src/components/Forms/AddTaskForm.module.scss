@@ -5,12 +5,12 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   min-width: 15rem;
   margin-top: 0.5rem;
+  gap: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 4px 1px rgb(0 0 0 / 10%);;
   z-index: 2000;
   background-color: rgba(255, 255, 255, 0.96);
 
@@ -37,7 +37,7 @@
 
   .submit_button {
     padding: 0.5rem 2rem;
-    font-weight: 400;
+    font-weight: 500;
     background-color: #e5e7eb;
   }
 
@@ -45,62 +45,15 @@
     background-color: #f3f4f6;
   }
 
-  .select_input {
-    min-width: 100%;
-    border: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-family: inherit;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-radius: 0.5rem;
-  }
+}
 
-  .date_input {
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-family: inherit;
-    text-transform: uppercase;
-    background-color: #f3f4f6;
-  }
-
-  .dateEnabled_switch {
-    align-self: center;
-    text-align: center;
-
-    .switch {
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      height: 1.5rem;
-      width: 3rem;
-      margin: auto;
-      border: none;
-      border-radius: 1rem;
-      background-color: #334155;
-      transition: all 150ms ease-out;
-
-      .switch_inner {
-        box-sizing: border-box;
-        display: block;
-        height: 1.4rem;
-        width: 1.4rem;
-        border: #334155 solid 2px;
-        border-radius: 1rem;
-        background-color: white;
-        transition: all 150ms ease-out;
-      }
-
-      .switch_inner_enabled {
-        transform: translate(80%);
-        background-color: #86efac;
-      }
-
-      .switch_inner_disabled {
-        transform: translate(-20%);
-        background-color: #bbbbbb;
-      }
-    }
-  }
+.select_input {
+  min-width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
 }

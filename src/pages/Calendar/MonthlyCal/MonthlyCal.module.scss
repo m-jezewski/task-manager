@@ -38,3 +38,13 @@
   gap: 2px;
   overflow: hidden;
 }
+
+.taskBadge {
+  box-sizing: border-box;
+  width: 2rem;
+  height: 1rem;
+  border-radius: 0.3rem;
+  filter: brightness(95%);
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}

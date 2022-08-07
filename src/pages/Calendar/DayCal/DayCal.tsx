@@ -4,8 +4,7 @@ import TaskCard from "./TaskCard";
 import styles from './DayCal.module.scss'
 import isBetween from 'dayjs/plugin/isBetween'
 import { Status, Task } from "../../../interfaces";
-import { Link } from "react-router-dom";
-import DateLink from "../DateLink";
+import SubHeader from '../SubHeader'
 
 interface DayCalProps {
     date: Dayjs
@@ -36,11 +35,12 @@ const DayCal = ({ date, statuses, tasks }: DayCalProps) => {
 
     return (
         <>
-            <div className={styles.subHeader}>
-                <DateLink by='day' move="back" date={date} />
-                <h2>{date.format('dddd DD/MM/YY')}</h2>
-                <DateLink by='day' move="forward" date={date} />
-            </div>
+            <SubHeader
+                date={date}
+                statuses={statuses}
+                moveBy={'day'}
+                dateHeader={date.format('dddd DD/MM/YY')}
+            />
             <div className={styles.table_container}>
                 <table className={styles.daily_table}>
                     <tbody>

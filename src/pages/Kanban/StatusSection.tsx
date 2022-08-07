@@ -1,5 +1,5 @@
 import { Status, Task } from "../../interfaces";
-import styles from './StatusSection.module.scss'
+import styles from './Kanban.module.scss'
 import TaskCard from "./TaskCard";
 import ChangeStatusOrderBtn from '../../components/StatusComponents/ChangeStatusOrderBtn'
 import { useState } from "react";
@@ -57,7 +57,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                         </DropToContainer>
                     </>
                 </section > :
-                <section className={`${styles.section_hidden} ${styles.section}`} style={{ backgroundColor: status.color }}>
+                <section className={`${styles.section} ${styles.section_hidden}`} style={{ backgroundColor: status.color }}>
                     <button className='hide_button' onClick={() => { setShowSection(true) }} />
                 </section>
             }

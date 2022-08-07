@@ -1,22 +1,31 @@
-import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import { useEffect, useReducer, useState } from 'react'
+import { addDoc, collection, deleteDoc, doc, DocumentReference, updateDoc } from 'firebase/firestore'
+import { useContext, useEffect, useReducer, useState } from 'react'
+import { UserContext } from '../contexts/UserContext'
 import { db } from '../firebase/config'
+import { Goal, GoalStep, Space, Task } from '../interfaces'
 
-type ACTIONTYPE = { type: 'DB_ACTION' } | { type: 'ERROR'; payload: any } | { type: 'IS_PENDING' }
+type ACTIONTYPE =
+  | { type: 'DB_ACTION'; payload: DocumentReference | null }
+  | { type: 'ERROR'; payload: string | null }
+  | { type: 'IS_PENDING' }
 
 const initialState = {
   isPending: false,
+  docRef: null,
   error: null,
 }
 
-const dbReducer = (state: { isPending: boolean; error: string | null }, action: ACTIONTYPE) => {
+const dbReducer = (
+  state: { isPending: boolean; error: string | null; docRef: DocumentReference | null },
+  action: ACTIONTYPE
+) => {
   switch (action.type) {
     case 'IS_PENDING':
-      return { isPending: true, error: null }
+      return { isPending: true, error: null, docRef: null }
     case 'DB_ACTION':
-      return { isPending: false, error: null }
+      return { isPending: false, error: null, docRef: action.payload }
     case 'ERROR':
-      return { isPending: false, error: action.payload }
+      return { isPending: false, error: action.payload, docRef: null }
     default:
       return state
   }
@@ -26,6 +35,7 @@ const useDb = (col: string) => {
   const [res, dispatch] = useReducer(dbReducer, initialState)
   const [isUnmounted, setisUnmounted] = useState(false)
   const colRef = collection(db, col)
+  const { user } = useContext(UserContext)
 
   const mountedDispatch = (dispatchValue: ACTIONTYPE) => {
     if (isUnmounted === false) {
@@ -34,7 +44,8 @@ const useDb = (col: string) => {
   }
 
   const addDocument = (doc: any) => {
-    dbFunction(addDoc, colRef, doc)
+    mountedDispatch({ type: 'IS_PENDING' })
+    addDoc(colRef, { ...doc, uid: user?.uid }).then((ref) => mountedDispatch({ type: 'DB_ACTION', payload: ref }))
   }
 
   const removeDocument = (docID: string) => {
@@ -49,7 +60,7 @@ const useDb = (col: string) => {
     mountedDispatch({ type: 'IS_PENDING' })
     try {
       await firebaseFn(...args)
-      mountedDispatch({ type: 'DB_ACTION' })
+      mountedDispatch({ type: 'DB_ACTION', payload: null })
     } catch (error) {
       mountedDispatch({ type: 'ERROR', payload: 'Sorry! Something went wrong.' })
     }

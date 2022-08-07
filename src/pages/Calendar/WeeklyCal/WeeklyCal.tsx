@@ -6,6 +6,7 @@ import DateLink from "../DateLink";
 import isBetween from 'dayjs/plugin/isBetween'
 import styles from './WeeklyCal.module.scss'
 import TaskBadge from "./TaskBadge";
+import SubHeader from "../SubHeader";
 
 interface WeeklyCalProps {
     date: Dayjs
@@ -43,11 +44,12 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
 
     return (
         <>
-            <div className={styles.subHeader}>
-                <DateLink by='week' move="back" date={date}></DateLink>
-                <h2>{`${weekDays[0].format('DD/MM/YY')} - ${weekDays[6].format('DD/MM/YY')}`}</h2>
-                <DateLink by='week' move="forward" date={date}></DateLink>
-            </div>
+            <SubHeader
+                date={date}
+                moveBy={'week'}
+                dateHeader={`${weekDays[0].format('DD/MM/YY')} - ${weekDays[6].format('DD/MM/YY')}`}
+                statuses={statuses}
+            />
             <div className={styles.table_headers}>
                 <span style={{ minWidth: '3rem', width: '3rem' }} />
                 {weekDays.map((weekDay) =>
@@ -68,12 +70,6 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
                 <div className={styles.grid}>
                     <>
                         <div style={{ gridColumn: 1 }}></div>
-                        {/* {weekDays.map(weekDay => (
-                            filteredTasks(weekDay: any).map((task: any) => 
-                                <div style={{ gridColumn: weekDay.day(), gridRow: 'auto' }}>
-                                    hello + {task.description}
-                                </div>
-                        )) */}
                         {weekDays.map(weekDay =>
                             <div className={styles.weekDayGrid} key={weekDay.date()}>
                                 {filteredTasks(weekDay).map((task) => <TaskBadge key={task.id} task={task} weekDay={weekDay} statuses={statuses} />)}

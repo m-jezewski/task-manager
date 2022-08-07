@@ -1,3 +1,4 @@
+import React from 'react';
 import useDataContext from '../../hooks/useDataContext';
 import useDb from '../../hooks/useDb';
 import { Task } from '../../interfaces';
@@ -25,7 +26,7 @@ const ChangeTaskStatusBtn = ({ task }: ChangeTaskStatusBtnProps) => {
                 {statuses.map(({ name, color, id }) => (
                     <button
                         key={id}
-                        onClick={() => { handleStatusChange(name) }}
+                        onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(name) }}
                         className={`${styles.popover_button} darken_border_hover`}
                         style={{ backgroundColor: color }}>
                         {name}

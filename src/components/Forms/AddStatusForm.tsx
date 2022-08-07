@@ -8,7 +8,6 @@ import useDb from "../../hooks/useDb";
 const AddStatusForm = () => {
     const { addDocument, res } = useDb('statuses') // handle error res here
 
-    const { user } = useContext(UserContext)
     const closePopover = useContext(ClosePopoverContext)
     const { statuses } = useDataContext()
     const [name, setName] = useState('')
@@ -19,7 +18,6 @@ const AddStatusForm = () => {
         e.preventDefault()
         closePopover && closePopover()
         addDocument({
-            uid: user?.uid,
             name: name,
             orderIndex: statuses ? statuses[statuses.length - 1].orderIndex + 1 : 0,
             color: color
