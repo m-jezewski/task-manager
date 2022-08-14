@@ -1,14 +1,19 @@
 import { useState, useContext, FormEvent, useEffect } from 'react'
-import { Status, Task } from '../../interfaces'
-import styles from './AddTaskForm.module.scss'
-import { ClosePopoverContext } from '../AnimatedPopover/AnimatedPopover'
-import useDataContext from '../../hooks/useDataContext'
-import useDb from '../../hooks/useDb'
 import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-import StatusSelectInput from './StatusSelectInput'
-import PriorityChangeInput from './PriorityChangeInput'
-import DateInputs from './DateInputs'
+//interaces
+import { Status, Task } from '../../interfaces'
+//styles
+import styles from './AddTaskForm.module.scss'
+//hooks
+import useDataContext from '../../hooks/useDataContext'
+import useDb from '../../hooks/useDb'
+//components
+import { ClosePopoverContext } from '../AnimatedPopover/AnimatedPopover'
+import StatusSelectInput from '../Inputs/StatusSelectInput'
+import PriorityChangeInput from '../Inputs/PriorityChangeInput'
+import DateInputs from '../Inputs/DateInputs'
+import { DocumentReference } from 'firebase/firestore'
 
 interface AddTaskFormProps {
     defaultStatus: Status
@@ -34,7 +39,8 @@ const AddTaskForm = ({
     const { addDocument, res } = useDb('tasks')
     const closePopover = useContext(ClosePopoverContext)
     const { tasks, selectedSpace } = useDataContext()
-    const [timeFrame, setTimeFrame] = useState(defaultTimeFrame)
+    const [openDateInputs, setOpenDateInputs] = useState(defaultTimeFrame)
+    const [taskRef, setTaskRef] = useState<DocumentReference<any> | null>(null)
 
     //form inputs
     const [text, setText] = useState('')
@@ -44,11 +50,8 @@ const AddTaskForm = ({
     const [dueDate, setDueDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
 
     useEffect(() => {
-        // if task is also a goal step add new goalStep with new task id
-        if (res.docRef && addGoalStep) {
-            addGoalStep('task', undefined, res.docRef.id)
-        }
-    }, [addGoalStep, res.docRef])
+        taskRef && addGoalStep && addGoalStep('task', undefined, taskRef.id)
+    }, [taskRef])
 
 
     const handleSubmit = (e: FormEvent) => {
@@ -57,7 +60,7 @@ const AddTaskForm = ({
         const due = dayjs(dueDate, `YYYY-MM-DDThh:mm`)
         closePopover && closePopover()
 
-        const task: Task = {
+        let task: Task = {
             description: text,
             priority: priority,
             orderIndex: tasks ? tasks.length + 1 : 0,
@@ -67,18 +70,25 @@ const AddTaskForm = ({
             dueDate: null,
         }
 
-        if (timeFrame && (from.isBefore(due) || from.isSame(due))) {
-            addDocument({
-                ...task,
-                fromDate: from.unix(),
-                dueDate: due.unix(),
-            })
-        } else { addDocument(task) }
+        if (openDateInputs && (from.isBefore(due) || from.isSame(due))) {
+            task.fromDate = from.unix()
+            task.dueDate = due.unix()
+        }
+
+        addDocument(task).then(ref => {
+            ref && setTaskRef(ref)
+            setText('')
+            setStatus(defaultStatus)
+            setPriority('low')
+            setOpenDateInputs(defaultTimeFrame)
+            setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+            setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+        })
     }
 
     return (
         <form onSubmit={handleSubmit} className={styles.form} style={{ position: position, ...formStyles }}>
-            <div className={styles.inner_container} style={{ flexDirection: direction }}>
+            <div className={styles.innerContainer} style={{ flexDirection: direction }}>
                 <label>
                     Status:
                     <br />
@@ -90,7 +100,7 @@ const AddTaskForm = ({
                     <input
                         type={'text'}
                         required
-                        className={styles.description_input}
+                        className={styles.descriptionInput}
                         maxLength={550}
                         value={text}
                         onChange={(e) => { setText(e.target.value) }}
@@ -101,18 +111,18 @@ const AddTaskForm = ({
                     <PriorityChangeInput priority={priority} setPriority={setPriority} />
                 </label>
             </div>
-            <div className={styles.inner_container} style={{ flexDirection: direction }}>
+            <div className={styles.innerContainer} style={{ flexDirection: direction }}>
                 <DateInputs
                     fromDate={fromDate}
                     setFromDate={setFromDate}
                     dueDate={dueDate}
                     setDueDate={setDueDate}
-                    timeFrame={timeFrame}
-                    setTimeFrame={setTimeFrame}
+                    openSwitch={openDateInputs}
+                    setOpenSwitch={setOpenDateInputs}
                 />
                 <button
                     type={"submit"}
-                    className={`${styles.submit_button} text-button`}
+                    className={styles.submitButton}
                     style={{ alignSelf: direction === 'row' ? 'flex-end' : 'center' }}
                 >
                     Submit</button>

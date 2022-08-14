@@ -50,18 +50,18 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
                 dateHeader={`${weekDays[0].format('DD/MM/YY')} - ${weekDays[6].format('DD/MM/YY')}`}
                 statuses={statuses}
             />
-            <div className={styles.table_headers}>
+            <div className={styles.tableHeaders}>
                 <span style={{ minWidth: '3rem', width: '3rem' }} />
                 {weekDays.map((weekDay) =>
                     <div key={weekDay.date()}>{weekDay.format('dddd').toUpperCase()}</div>
                 )}
             </div>
-            <div className={styles.table_container}>
+            <div className={styles.tableContainer}>
                 <table>
                     <tbody>
                         {hours.map((hour) =>
                             <tr key={hour.hour()}>
-                                <td className={`${styles.small_cell}`}>{hour.format("HH:00")}</td>
+                                <td className={`${styles.smallCell}`}>{hour.format("HH:00")}</td>
                                 {weekDays.map((weekday) => <td key={weekday.date()} />)}
                             </tr>
                         )}

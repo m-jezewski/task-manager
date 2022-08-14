@@ -1,5 +1,7 @@
 import useDb from "../../hooks/useDb";
 import { Task } from "../../interfaces";
+import styles from './ChangeTaskPrioBtn.module.scss'
+
 
 interface ChangeTaskPrioBtnProps {
     task: Task
@@ -16,7 +18,7 @@ const ChangeTaskPrioBtn = ({ task }: ChangeTaskPrioBtnProps) => {
 
     return (
         <button
-            className={`icon circle ${task.priority}_prio`}
+            className={`${styles.prioButton} ${task.priority}_prio`}
             onClick={handleClick}
         />
     );

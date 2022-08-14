@@ -19,19 +19,19 @@ const TaskTableItem = ({ todo }: TaskTableItemProps) => {
             task={todo}
         >
             <td />
-            <td className={styles.small_cell}>
+            <td className={styles.smallCell}>
                 <ChangeTaskStatusBtn task={todo} />
             </td>
-            <td className={styles.td}>
-                <p className={styles.item_text}>{todo.description}</p>
+            <td>
+                <p className={styles.itemText}>{todo.description}</p>
             </td>
-            <td className={styles.small_cell}>
-                <p className={styles.item_date}>{todo.dueDate && dayjs.unix(todo.dueDate).format('DD/MM')}</p>
+            <td className={styles.smallCell}>
+                <p className={styles.itemDate}>{todo.dueDate && dayjs.unix(todo.dueDate).format('DD/MM')}</p>
             </td>
-            <td className={styles.small_cell}>
+            <td className={styles.smallCell}>
                 <ChangeTaskPrioBtn task={todo} />
             </td>
-            <td className={styles.small_cell}>
+            <td className={styles.smallCell}>
                 <DeleteTaskBtn task={todo} />
             </td>
         </DraggableContainer >

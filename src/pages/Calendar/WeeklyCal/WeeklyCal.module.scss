@@ -1,10 +1,13 @@
+@use '../../../placeholders';
+@import '../../../variables';
+
 .subHeader {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.table_headers {
+.tableHeaders {
   display: flex;
   column-gap: 2px;
   margin: 0px 2px;
@@ -18,11 +21,11 @@
     font-size: 1rem;
     font-weight: 500;
     word-break: break-word;
-    background-color: white;
+    background-color: $bright-1;
   }
 }
 
-.table_container {
+.tableContainer {
   position: relative;
 
   table {
@@ -37,27 +40,22 @@
       box-sizing: border-box;
       padding: 0.4rem;
       border-radius: 1px;
-      background-color: white;
+      background-color: $bright-1;
     }
-
-    tr {
-      height: 2rem;
-    }
-
-    th,
-    td {
+    tr { height: 2rem; }
+    th, td {
       padding: 0.2rem;
       box-sizing: border-box;
     }
 
-    .small_cell {
+    .smallCell {
       width: 3rem;
     }
   }
 
   .grid {
     position: absolute;
-    top: 0px;
+    top: 0;
     display: grid;
     grid-template-rows: 1fr;
     height: 100%;
@@ -78,6 +76,7 @@
   }
 
   .taskBadge {
+    @extend %darkeningHover;
     border-radius: 0.5rem;
     min-width: 3rem;
     text-overflow: ellipsis;
@@ -90,8 +89,6 @@
     cursor: pointer;
     transition: all 150ms ease-out;
 
-    p {
-      margin: 0px;
-    }
+    p { margin: 0; }
   }
 }

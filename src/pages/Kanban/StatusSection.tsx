@@ -7,6 +7,7 @@ import DeleteStatusDialog from '../../components/StatusComponents/DeleteStatusDi
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/Forms/AddTaskForm'
 import DropToContainer from "../../components/DragAndDrop/DropToContainer";
+import HideStatusBtn from "../../components/StatusComponents/HideStatusBtn";
 
 interface StatusSectionProps {
     status: Status
@@ -21,13 +22,13 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
         <>
             {showSection ?
                 <section className={styles.section}>
-                    <div className={styles.section_header} style={{ backgroundColor: status.color }}>
-                        <div className={styles.section_header_div}>
-                            <button className='hide_button' onClick={() => { setShowSection(false) }} />
+                    <div className={styles.sectionHeader} style={{ backgroundColor: status.color }}>
+                        <div>
+                            <HideStatusBtn setShowStatus={setShowSection} showStatus={showSection} />
                             <ChangeStatusOrderBtn variant='left' elemId={status.id!} current={status} />
                         </div>
                         <h2>{status.name}</h2>
-                        <div className={styles.section_header_div}>
+                        <div>
                             <DeleteStatusDialog
                                 status={status}
                                 filteredTasks={filteredTasks}
@@ -36,7 +37,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                         </div>
                     </div>
                     <>
-                        <AnimatedPopover buttonClass={`${styles.add_task} darken_border_hover text-button`} buttonText='Add new task'>
+                        <AnimatedPopover buttonClass={styles.addTaskBtn} buttonText='Add new task'>
                             <AddTaskForm
                                 direction='column'
                                 position='relative'
@@ -46,7 +47,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                         <DropToContainer
                             Parent='div'
                             status={status}
-                            parentStyles={styles.task_container}
+                            parentStyles={styles.taskContainer}
                         >
                             {filteredTasks.map(task => (
                                 <TaskCard
@@ -57,8 +58,8 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                         </DropToContainer>
                     </>
                 </section > :
-                <section className={`${styles.section} ${styles.section_hidden}`} style={{ backgroundColor: status.color }}>
-                    <button className='hide_button' onClick={() => { setShowSection(true) }} />
+                <section className={`${styles.section} ${styles.sectionHidden}`} style={{ backgroundColor: status.color }}>
+                    <HideStatusBtn showStatus={showSection} setShowStatus={setShowSection} />
                 </section>
             }
         </>

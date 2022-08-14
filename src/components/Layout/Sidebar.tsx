@@ -12,14 +12,10 @@ import { useLogout } from '../../hooks/useLogout'
 const Sidebar = () => {
     const { logout } = useLogout()
 
-    const handleClick = () => {
-        logout()
-    }
-
     return (
         <div className={styles.container}>
             <div>
-                <span className={styles.logo}>Task Tracker</span>
+                <span className={styles.logo}>Taskify</span>
                 <hr />
                 <nav>
                     <Link to='/Dashboard'><img src={home} alt='Dashboard' />Dashboard</Link>
@@ -30,8 +26,7 @@ const Sidebar = () => {
                 </nav>
             </div>
             <div className={styles.settings}>
-                <hr />
-                <button onClick={handleClick} className='text-button darken_hover'>LOGOUT</button>
+                <button onClick={() => { logout() }}>LOGOUT</button>
             </div>
         </div>
     );

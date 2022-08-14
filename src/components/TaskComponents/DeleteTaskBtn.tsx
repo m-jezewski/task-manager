@@ -1,6 +1,7 @@
 import React from 'react'
 import useDb from '../../hooks/useDb'
 import { Task } from '../../interfaces'
+import styles from './DeleteTaskBtn.module.scss'
 
 interface DeleteTaskBtnProps {
     task: Task
@@ -15,7 +16,7 @@ const DeleteTaskBtn = ({ task }: DeleteTaskBtnProps) => {
     }
 
     return (
-        <button className={'trashcan icon circle'} onClick={handleClick} />
+        <button className={styles.deleteBtn} onClick={handleClick} />
     );
 }
 

@@ -1,6 +1,7 @@
 import React, { ReactNode, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Task } from "../../interfaces";
+//styles
 import styles from './DraggableContainer.module.scss'
 
 interface DraggableContainerProps {

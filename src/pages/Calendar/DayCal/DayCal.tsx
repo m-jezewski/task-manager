@@ -41,13 +41,13 @@ const DayCal = ({ date, statuses, tasks }: DayCalProps) => {
                 moveBy={'day'}
                 dateHeader={date.format('dddd DD/MM/YY')}
             />
-            <div className={styles.table_container}>
-                <table className={styles.daily_table}>
+            <div className={styles.tableContainer}>
+                <table>
                     <tbody>
                         {hours.map((hour) => (
-                            <tr key={hour.hour()} className={styles.tr}>
-                                <td className={`${styles.small_cell} ${styles.td}`} >{hour.format('HH:00')}</td>
-                                <td className={styles.td}></td>
+                            <tr key={hour.hour()}>
+                                <td className={styles.smallCell} >{hour.format('HH:00')}</td>
+                                <td></td>
                             </tr>
                         ))}
                     </tbody>

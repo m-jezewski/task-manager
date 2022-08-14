@@ -32,11 +32,12 @@ interface Goal {
 }
 
 interface GoalStep {
+  id?: string
   goalID?: string
   uid?: string
   description?: string
   type: 'boolean' | 'number' | 'task'
-  value?: boolean
+  done: boolean
   target?: number
   startWith?: number
   taskID?: string

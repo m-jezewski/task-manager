@@ -43,7 +43,7 @@ const Login = ({ handleClosingForms }: LoginProps) => {
                     <button className={styles.return_button} onClick={handleClosingForms}>
                         <img src={arrowback} alt='Go back' />
                     </button>
-                    <button type='submit' className={`${styles.login_button} lighten_hover text-button`}>Log in!</button>
+                    <button type='submit' className={styles.loginBtn}>Log in!</button>
                 </div>
             </form>
             {error && <p>{error}</p>}

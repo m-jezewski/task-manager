@@ -1,3 +1,6 @@
+@use '../../placeholders';
+@import '../../variables';
+
 .container {
   box-sizing: border-box;
   display: flex;
@@ -6,10 +9,12 @@
   padding-bottom: 1rem;
   overflow-x: auto;
 
-  .add_status_button {
+  .addStatusButton {
+    @extend %baseButton;
+    @extend %darkeningHover;
     box-sizing: border-box;
     min-width: 15rem;
-    background-color: #e5e7eb;
+    background-color: $bright-4;
   }
 
   section {
@@ -19,7 +24,7 @@
     min-width: 15rem;
     max-width: 15rem;
   
-    .section_header {
+    .sectionHeader {
       display: flex;
       justify-content: space-between;
       min-height: 4.5rem;
@@ -44,14 +49,15 @@
       button { margin: 0; }
     }
   
-    .add_task {
+    .addTaskBtn {
+      @extend %baseButton;
+      @extend %darkeningBorder;
       margin-top: 0.5rem;
-      border: rgba(0, 0, 0, 0) solid 3px;
       font-weight: 400;
-      background-color: white;
+      background-color: $bright-1;
     }
 
-    .task_container { 
+    .taskContainer { 
       flex-grow: 1; 
       border-radius: 0.5rem; 
       
@@ -60,10 +66,10 @@
         border-radius: 0.5rem;
         margin-top: 0.5rem;
         padding: 0.5rem;
-        background-color: white;
+        background-color: $bright-1;
         word-break: break-word;
       
-        .info_button_row {
+        .infoButtonRow {
           position: relative;
           display: flex;
           justify-content: space-around;
@@ -71,12 +77,14 @@
       
         p { margin: 0; }
         hr { border-color: rgba(0, 0, 0, 0.25); }
+
+        .date{ font-size: 0.85rem; color: rgba(0, 0, 0, 0.75); }
       }
-      .taskCard:hover { color: blue; }
+      .taskCard:hover { color: $font-blue; }
     }
   }
   
-  .section_hidden {
+  .sectionHidden {
     min-width: 2rem;
     max-height: 4.5rem;
     padding: 0.5rem;

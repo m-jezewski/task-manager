@@ -30,7 +30,7 @@ const DeleteStatusDialog = ({ status, filteredTasks }: DeleteStatusDialogProps) 
         <>
             <button
                 onClick={() => { setIsOpen(true) }}
-                className='remove icon'
+                className={styles.openDialogButton}
             />
             <Dialog
                 open={isOpen}
@@ -45,12 +45,12 @@ const DeleteStatusDialog = ({ status, filteredTasks }: DeleteStatusDialogProps) 
 
                     <button
                         onClick={handleDelete}
-                        className={styles.remove_button}>
+                        className={styles.removeButton}>
                         Remove
                     </button>
                     <button
                         onClick={() => setIsOpen(false)}
-                        className={styles.back_button}>
+                        className={styles.backButton}>
                         Go back
                     </button>
                 </Dialog.Panel>

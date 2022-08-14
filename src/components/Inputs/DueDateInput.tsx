@@ -11,7 +11,7 @@ const DueDateInput = ({ fromDate, dueDate, setDueDate }: DueDateInputProps) => {
     return (
         <input
             type={'datetime-local'}
-            className={styles.date_input}
+            className={styles.dateInput}
             required
             min={dayjs(fromDate, `YYYY-MM-DDThh:mm`).format(`YYYY-MM-DDThh:mm`)}
             value={dueDate}

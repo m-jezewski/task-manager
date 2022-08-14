@@ -19,8 +19,8 @@ const SpaceSelect = ({ space, setSpace, buttonStyles, usage }: SpaceSelectProps)
     return (
         <Listbox as='div' className={styles.spaceSelect} value={space} onChange={setSpace} >
             {space && <>
-                <Listbox.Button style={buttonStyles} className={`${styles.select_button} ${styles[usage]} lighten_border_hover text-button`}>{space.name} <img src={unfold} alt="" /></Listbox.Button>
-                <Transition enter={transitionStyles.transition} enterFrom={transitionStyles.transition_enter_from} enterTo={transitionStyles.transition_enter_to}>
+                <Listbox.Button style={buttonStyles} className={`${styles.selectButton} ${styles[usage]}`}>{space.name} <img src={unfold} alt="" /></Listbox.Button>
+                <Transition enter={transitionStyles.transition} enterFrom={transitionStyles.transitionEnterFrom} enterTo={transitionStyles.transitionEnterTo}>
                     <Listbox.Options>
                         {spaces && spaces.map((space: Space) => (
                             <Listbox.Option

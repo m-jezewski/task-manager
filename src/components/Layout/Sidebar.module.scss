@@ -1,5 +1,9 @@
+@use '../../placeholders';
+@import '../../variables';
+
 .container {
   box-sizing: border-box;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,48 +11,29 @@
   min-width: 15rem;
   max-width: 15rem;
   padding: 1rem;
-  color: white;
-  background-color: #262626;
+  color: $bright-1;
+  background-color: $dark-1;
 
-  .logo {
-    font-size: 3.5rem;
-    font-weight: 600;
-  }
-
-  hr {
-    display: block;
-    width: 100%;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-  }
+  .logo { font-size: $font-large; font-weight: 600; }
+  hr { width: 100%; }
 
   a {
+    @extend %baseButton;
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1.1rem;
+    gap: 0.5rem;
+    margin-top: 1rem;
     text-decoration: none;
-    color: white;
-    transition: all 150ms ease-out;
+    color: $bright-1;
   }
-
-  a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
+  a:hover { background-color: $brighterTransparent;}
 }
 
 .settings {
   button {
+    @extend %baseButton;
+    @extend %darkeningHover;
     width: 100%;
-    margin-top: 0.5rem;
-    border-radius: 1.5rem;
-    font-size: 1rem;
-    background-color: #f4f4f5;
+    background-color: $bright-2;
   }
 }

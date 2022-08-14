@@ -9,7 +9,7 @@ const FromDateInput = ({ fromDate, setFromDate }: FromDateInputProps) => {
     return (
         <input
             type={'datetime-local'}
-            className={styles.date_input}
+            className={styles.dateInput}
             value={fromDate}
             required
             min={'2022-01-01T00:00'}

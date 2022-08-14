@@ -23,7 +23,7 @@ const Dashboard = () => {
             <h2 className={styles.subtitle}>
                 {date.format('HH:mm:ss')}
                 <span>
-                    {date.format('dddd mm.MM.YYYY')}
+                    {date.format('dddd DD/MM/YYYY')}
                 </span>
             </h2>
             <div className={styles.grid}>

@@ -1,23 +1,21 @@
+@use '../../placeholders';
+@import '../../variables';
+
 .tab {
+  @extend %baseButton;
+  @extend %darkeningHover;
   margin-right: 0.5rem;
   text-decoration: none;
-  color: black;
-  background-color: white;
+  color: $font-dark;
+  background-color: $font-bright;
 }
 
-.tab_active {
-  color: white;
-  background-color: #334155;
+.tabActive {
+  color: $font-bright;
+  background-color: $blue-1;
 }
 
-.tab_panels {
-  h2 {
-    font-size: 1.7rem;
-    font-weight: 400;
-  }
-}
-
-.date_input {
+.dateInput {
   padding: 0.25rem;
   border: none;
   border-radius: 0.5rem;
@@ -27,14 +25,15 @@
 
 .subHeader {
   display: flex;
+  position: relative;
   align-items: center;
 
   a {
+    @extend %darkeningBorder;
     box-sizing: border-box;
     border-radius: 50%;
-    background-color: white;
-    border: white solid 2.5px;
-    color: white;
+    background-color: $bright-1;
+    border: $bright-1 solid 2.5px;
     width: 1.7rem;
     height: 1.7rem;
     display: flex;
@@ -44,13 +43,15 @@
   }
 
   h2 {
+    @extend %subtitle;
     margin: 1.5rem 0.5rem;
   }
 
   .addTaskButton {
-    box-sizing: border-box;
-    background-color: white;
-    border: white solid 3px;
+    @extend %baseButton;
+    @extend %darkeningBorder;
+    background-color: $bright-1;
     margin-left: auto;
   }
 }
+.subHeader:focus-within{z-index: 3000;}

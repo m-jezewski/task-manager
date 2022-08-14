@@ -15,7 +15,7 @@ const TaskBadge = ({ task, statuses }: TaskBadgeProps) => {
             style={{
                 backgroundColor: statuses.filter((status) => status.name === task.status)[0].color,
             }}
-            className={`${styles.taskBadge} darken_hover`}
+            className={styles.taskBadge}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         />
     );

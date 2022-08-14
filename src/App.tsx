@@ -14,7 +14,7 @@ import Home from './pages/Home/Home';
 import CalPanels from './pages/Calendar/CalPanels';
 import TaskPage from './pages/Dashboard/TaskPage';
 import DashboardHome from './pages/Dashboard/DashboardHome';
-import AddGoal from './pages/Goals/AddGoal';
+import NewGoal from './pages/NewGoal/NewGoal';
 import GoalPage from './pages/Goals/GoalPage';
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
               <Route path=':date' element={<CalPanels />} />
             </Route>
             <Route path="Goals" >
-              <Route path="AddGoal" element={<AddGoal />}></Route>
+              <Route path="NewGoal" element={<NewGoal />}></Route>
               <Route path=":goalID" element={<GoalPage />}></Route>
               <Route index element={<Goals />}></Route>
             </Route>

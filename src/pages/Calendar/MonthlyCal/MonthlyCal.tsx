@@ -20,25 +20,19 @@ const shouldTaskPass = (task: Task, monthDay: Dayjs) => {
     let shouldPass = false
     const from = dayjs.unix(task.fromDate!)
     const due = dayjs.unix(task.dueDate!)
-
     if (monthDay.format('DD/MM/YYYY') === from.format('DD/MM/YYYY')
         || monthDay.format('DD/MM/YYYY') === due.format('DD/MM/YYYY')
         || monthDay.isBetween(from, due)) shouldPass = true
-
     return shouldPass
 }
 
 
 const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
     const monthDays: Dayjs[] = []
-
     const filteredTasks = (monthDay: Dayjs) => { return tasks.filter(task => task.dueDate && task.fromDate && shouldTaskPass(task, monthDay)) }
-
     for (let i = 1; i < date.daysInMonth() + 1; i++) { monthDays.push(date.date(i)) }
-
     const weekDays: Dayjs[] = []
     for (let i = 0; i < 7; i++) { weekDays.push(date.day(i)) }
-
     const weeks = monthDays
         .map(monthDay => monthDay.week())
         .filter((value, index, self) => self.indexOf(value) === index)
@@ -52,7 +46,7 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
                 statuses={statuses}
             />
             <div className={styles.week}>
-                {weekDays.map(weekDay => <div key={weekDay.date()} className={styles.weekDay_header}>{weekDay.format('dddd').toUpperCase()}</div>)}
+                {weekDays.map(weekDay => <div key={weekDay.date()} className={styles.weekDayHeader}>{weekDay.format('dddd').toUpperCase()}</div>)}
             </div>
             {weeks.map(week =>
                 <div className={styles.week} key={week}>

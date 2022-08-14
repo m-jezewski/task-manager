@@ -22,7 +22,7 @@ const TaskBadge = ({ task, weekDay, statuses }: TaskBadgeProps) => {
     return (
         <div
             ref={badgeEl}
-            className={`${styles.taskBadge} darken_hover `}
+            className={styles.taskBadge}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
             style={{
                 gridRowStart: fromDate.isSame(weekDay, 'day') ? fromDate.hour() : 1,

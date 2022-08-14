@@ -1,6 +1,6 @@
 import useDataContext from "../../hooks/useDataContext";
 import { Status } from "../../interfaces";
-import styles from './AddTaskForm.module.scss'
+import styles from './InputStyles.module.scss'
 
 interface StatusSelectInputProps {
     status: Status | null
@@ -13,7 +13,7 @@ const StatusSelectInput = ({ status, setStatus }: StatusSelectInputProps) => {
 
     return (
         status && <select
-            className={styles.select_input}
+            className={styles.selectInput}
             value={status.id}
             onChange={(e) => {
                 setStatus(statuses?.find(i => i.id === e.target.value)!)
@@ -24,7 +24,7 @@ const StatusSelectInput = ({ status, setStatus }: StatusSelectInputProps) => {
                 <option
                     key={status.id}
                     value={status.id}
-                    className={styles.select_input}
+                    className={styles.selectInput}
                     style={{ backgroundColor: status.color }}
                 >
                     {status.name}

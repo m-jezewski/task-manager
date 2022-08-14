@@ -1,7 +1,33 @@
+@import '../../variables';
+
 .container{
     box-sizing: border-box;
     width: 100%;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: #e5e7eb;
+    background-color: $bright-4;
+
+    table{
+        border-spacing: 0 2px;
+        width: 100%;
+        background-color: inherit;
+        
+        tbody { background-color: inherit; }
+        td {
+            box-sizing: border-box; 
+            padding: 0.5rem; 
+            background-color: $bright-1;
+            text-align: center;
+            width: 4rem; 
+        }
+
+        .descriptionCell {
+            text-align: left;
+            width: max-content;
+        }
+
+        .smallCell{
+            width: 2rem;
+        }
+    }
 }

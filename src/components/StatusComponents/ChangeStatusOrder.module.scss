@@ -1,3 +1,5 @@
+@use '../../placeholders';
+
 .up {
   background-image: url(../../assets/arrowUp.svg);
 }
@@ -14,8 +16,8 @@
   background-image: url(../../assets/arrowRight.svg);
 }
 
-.button {
+.orderButton {
+  @extend %icon;
   border: none;
   background-size: contain;
-  background-color: inherit;
 }

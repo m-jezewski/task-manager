@@ -13,6 +13,7 @@ import AddTaskForm from '../../components/Forms/AddTaskForm'
 import ChangeStatusOrderBtn from '../../components/StatusComponents/ChangeStatusOrderBtn'
 import DeleteStatusDialog from '../../components/StatusComponents/DeleteStatusDialog'
 import DropToContainer from '../../components/DragAndDrop/DropToContainer'
+import HideStatusBtn from '../../components/StatusComponents/HideStatusBtn'
 
 interface TaskTableProps {
     status: Status
@@ -29,26 +30,24 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
     return (
         <DropToContainer
             key={status.id}
-            parentStyles={styles.list_container}
+            parentStyles={styles.listContainer}
             Parent='table'
             status={status}>
             <tbody>
                 <tr>
                     <th
-                        className={styles.small_cell}
+                        className={styles.smallCell}
                         style={{ padding: '0px' }}>
-                        <button
-                            className='hide_button'
-                            onClick={() => { setShowTable(!showTable) }} />
+                        <HideStatusBtn showStatus={showTable} setShowStatus={setShowTable} />
                     </th>
-                    <th className={styles.th_status}>
+                    <th className={styles.thStatus}>
                         <span
-                            className={styles.status_text}
+                            className={styles.statusText}
                             style={{ backgroundColor: status.color }}>
                             {status.name.toUpperCase()}
                         </span>
                         <AnimatedPopover
-                            buttonClass={`${styles.add_task_btn} text-button darken_border_hover`}
+                            buttonClass={styles.addTaskBtn}
                             buttonText='+'>
                             <AddTaskForm
                                 position='absolute'
@@ -58,10 +57,10 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                         </AnimatedPopover>
                     </th>
                     <th />
-                    <th className={`${styles.th_dueDate} ${styles.small_cell}`}>
+                    <th className={`${styles.thDueDate} ${styles.smallCell}`}>
                         Due:
                     </th>
-                    <th className={styles.small_cell}>
+                    <th className={styles.smallCell}>
                         <ChangeStatusOrderBtn
                             variant='up'
                             elemId={status.id!}
@@ -72,7 +71,7 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                             elemId={status.id!}
                             current={status} />
                     </th>
-                    <th className={styles.small_cell}>
+                    <th className={styles.smallCell}>
                         <DeleteStatusDialog
                             status={status}
                             filteredTasks={filteredTasks} />
@@ -83,7 +82,7 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                         <tr>
                             <td />
                             <td
-                                className={styles.no_tasks}
+                                className={styles.noTasks}
                                 colSpan={5}>
                                 No tasks
                             </td>
@@ -98,7 +97,7 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                         <td />
                         <td
                             colSpan={5}
-                            className={styles.hidden_table_cell} />
+                            className={styles.hiddenTableCell} />
                     </tr>}
             </tbody>
         </DropToContainer >

@@ -1,3 +1,10 @@
+@use '../../placeholders';
+@import '../../variables';
+
+.outsideBtn{
+  @extend %icon;
+}
+
 .container {
   position: absolute;
   display: flex;
@@ -6,6 +13,7 @@
   transform: translate(-50%, -50%);
 
   button {
+    @extend %darkeningBorder;
     box-sizing: border-box;
     padding: 0.3rem;
     border: rgba(0, 0, 0, 0) solid 3px;
@@ -15,10 +23,6 @@
     text-align: center;
     cursor: pointer;
     transition: all 100ms ease-out;
-  }
-
-  .popover_option {
-    padding: 1rem;
   }
 }
 .container :first-child {

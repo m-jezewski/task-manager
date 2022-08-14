@@ -27,7 +27,7 @@ const SubHeader = ({ date, statuses, moveBy, dateHeader }: SubHeaderProps) => {
                 date={date}
             />
             <AnimatedPopover
-                buttonClass={`${styles.addTaskButton} darken_border_hover text-button`}
+                buttonClass={styles.addTaskButton}
                 buttonText={'Add new task'}>
                 <AddTaskForm
                     defaultStatus={statuses && statuses[0]}

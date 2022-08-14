@@ -1,4 +1,5 @@
-/* kazdy styl podjebany ze status.module.css wiec moze trzeba cos usunac */
+@use '../../placeholders';
+@import '../../variables';
 
 .form {
   box-sizing: border-box;
@@ -12,9 +13,9 @@
   border-radius: 0.5rem;
   box-shadow: 0 3px 4px 1px rgb(0 0 0 / 10%);;
   z-index: 2000;
-  background-color: rgba(255, 255, 255, 0.96);
+  background-color: $bright-1;
 
-  .inner_container {
+  .innerContainer {
     gap: 1rem;
     justify-content: space-between;
     display: flex;
@@ -25,35 +26,17 @@
     padding: 0.5rem;
   }
 
-  .description_input {
-    box-sizing: border-box;
-    width: 100%;
+  .descriptionInput {
+    @extend %baseInput;
     min-width: 12rem;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: solid 1px #e5e7eb;
-    background-color: #f3f4f6;
   }
 
-  .submit_button {
+  .submitButton {
+    @extend %baseButton;
     padding: 0.5rem 2rem;
     font-weight: 500;
-    background-color: #e5e7eb;
+    background-color: $bright-4;
   }
+  .submitButton:hover { background-color: $bright-3; }
 
-  .submit_button:hover {
-    background-color: #f3f4f6;
-  }
-
-}
-
-.select_input {
-  min-width: 100%;
-  border: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-family: inherit;
-  font-weight: 500;
-  text-transform: uppercase;
-  border-radius: 0.5rem;
 }

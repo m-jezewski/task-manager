@@ -51,7 +51,7 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
                     <button className={styles.return_button} onClick={handleClosingForms}>
                         <img src={arrowback} alt='Go back' />
                     </button>
-                    <button type='submit' className={`${styles.login_button} text-button`}>Sign up!</button>
+                    <button type='submit' className={styles.signupBtn}>Sign up!</button>
                 </div>
             </form>
             {error && <p>{error}</p>}

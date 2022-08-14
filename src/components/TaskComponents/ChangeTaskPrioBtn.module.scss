@@ -1,0 +1,5 @@
+@use '../../placeholders';
+
+.prioButton{
+    @extend %circle;
+}

@@ -1,0 +1,22 @@
+@use '../../placeholders';
+@import '../../variables';
+
+.goalTitle{
+    @extend %subtitle;
+    margin: 0.5rem 0;
+}
+
+.deleteButton{
+    @extend %baseButton;
+    @extend %darkeningHover;
+    align-self: flex-start;
+    background-color: $red-1;
+    margin-top: auto;
+}
+
+.openAddStepsBtn{
+    @extend %baseButton;
+    @extend %darkeningHover;
+    margin-top: 1rem;
+    background-color: $bright-1;
+}

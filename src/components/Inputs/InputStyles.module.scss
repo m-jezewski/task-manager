@@ -1,3 +1,6 @@
+@use '../../placeholders';
+@import '../../variables';
+
 .spaceSelect{
     position: relative;
     width: 100%;
@@ -16,19 +19,20 @@
     ul :last-child { border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; }
 
   li {
+    @extend %baseButton;
+    font-weight: 400;
     position: relative;
     z-index: 3000;
-    padding: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid $bright-4;
+    border-radius: 0;
     border-top: none;
-    font-size: 1rem;
-    background-color: white;
-    cursor: pointer;
-    transition: all 150ms ease-out;
+    background-color: $bright-1;
   }
-  li:hover { background-color: #f1f5f9;}
+  li:hover { background-color: $bright-4;}
 
-  .select_button {
+  .selectButton {
+    @extend %baseButton;
+    @extend %lightingBorder;
     box-sizing: border-box;
     margin-bottom: 1.5rem;
     display: flex;
@@ -36,24 +40,23 @@
     align-items: center;
     width: 100%;
     border: rgba(0, 0, 0, 0) 4px solid;
-    color: white;
-    background-color: #334153;
+    color: $bright-1;
+    background-color: $blue-1;
   }
 
   .header{
+    @extend %subtitle;
     margin: 0.5rem 0 1.5rem 0;
-    font-size: 1.7rem;
     font-weight: 300;
   }
   
   .form{
-      font-size: 1.1rem;
-      font-weight: 300;
+      font-weight: 400;
       border-width: 3px;
   }
 }
 
-.dateEnabled_switch {
+.dateEnabledSwitch {
     margin-top: 0.5rem;
 
     .switch {
@@ -64,26 +67,26 @@
       width: 3rem;
       border: none;
       border-radius: 1rem;
-      background-color: #334155;
+      background-color: $blue-1;
       transition: all 150ms ease-out;
+      cursor: pointer;
 
-      .switch_inner {
+      .switchInner {
         box-sizing: border-box;
         display: block;
         height: 1.4rem;
         width: 1.4rem;
-        border: #334155 solid 2px;
+        border: $blue-1 solid 2px;
         border-radius: 1rem;
-        background-color: white;
         transition: all 150ms ease-out;
       }
 
-      .switch_inner_enabled {
+      .switchInnerEnabled {
         transform: translate(80%);
         background-color: #86efac;
       }
 
-      .switch_inner_disabled {
+      .switchInnerDisabled {
         transform: translate(-20%);
         background-color: #bbbbbb;
       }
@@ -98,7 +101,7 @@
   }
 }
 
-.date_input {
+.dateInput {
     border: none;
     width: 100%;
     box-sizing: border-box;
@@ -107,9 +110,17 @@
     font-size: 0.9rem;
     font-family: inherit;
     text-transform: uppercase;
-    background-color: #f3f4f6;
+    background-color: $bright-3;
 }
 
 .PriorityChangeInput{
+  @extend %circle;
   margin: 0.25rem;
+}
+
+.selectInput{
+  @extend %baseButton;
+  text-transform: uppercase;
+  width: 100%;
+  min-width: 10rem;
 }

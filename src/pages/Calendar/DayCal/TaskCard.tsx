@@ -1,6 +1,4 @@
 import dayjs, { Dayjs } from "dayjs";
-import { transform } from "typescript";
-import useDataContext from "../../../hooks/useDataContext";
 import styles from './TaskCard.module.scss'
 import { Status, Task } from "../../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +16,7 @@ const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
 
     return (
         <div
-            className={`${styles.container} darken_hover`}
+            className={styles.container}
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
@@ -27,7 +25,7 @@ const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         >
             <p>
-                <span className={styles.time_span} >
+                <span className={styles.timeSpan} >
                     {fromDate.format('HH:mm')}-{dueDate.format('HH:mm')}
                     <br />
                     {fromDate.format('DD/MM/RRRR') !== dueDate.format('DD/MM/RRRR') && <>{fromDate.format('DD/MM')}-{dueDate.format('DD/MM')}<br /></>}

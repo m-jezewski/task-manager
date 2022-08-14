@@ -9,29 +9,27 @@ interface DateInputsProps {
     dueDate: string
     setFromDate: React.Dispatch<React.SetStateAction<string>>
     setDueDate: React.Dispatch<React.SetStateAction<string>>
-    timeFrame: boolean
-    setTimeFrame: React.Dispatch<React.SetStateAction<boolean>>
+    openSwitch: boolean
+    setOpenSwitch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, timeFrame = false }: DateInputsProps) => {
-    const [dateEnabled, setDateEnabled] = useState(timeFrame)
-
+const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, openSwitch = false, setOpenSwitch }: DateInputsProps) => {
     return (
         <div>
-            <label className={styles.dateEnabled_switch}>
+            <label className={styles.dateEnabledSwitch}>
                 Time frame?
                 <Switch
-                    className={`${styles.switch} ${dateEnabled ? styles.switch_enabled : styles.switch_disabled}`}
-                    checked={dateEnabled}
-                    onChange={setDateEnabled}
+                    className={`${styles.switch} ${openSwitch ? styles.switchEnabled : styles.switchDisabled}`}
+                    checked={openSwitch}
+                    onChange={setOpenSwitch}
                 >
                     <span
-                        className={`${dateEnabled ? styles.switch_inner_enabled : styles.switch_inner_disabled} ${styles.switch_inner}`}
+                        className={`${openSwitch ? styles.switchInnerEnabled : styles.switchInnerDisabled} ${styles.switchInner}`}
                     />
                 </Switch>
             </label>
             <div className={styles.dateInputsContainer}>
-                {dateEnabled && <>
+                {openSwitch && <>
                     <label>
                         From:<br />
                         <FromDateInput

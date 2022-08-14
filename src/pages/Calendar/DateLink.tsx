@@ -14,7 +14,6 @@ interface DateLinkProps {
 const DateLink = ({ move, by, date, children }: DateLinkProps) => {
     return (
         <Link
-            className={`${move}_link darken_border_hover`}
             to={move === 'back' ? `../${date.subtract(1, by).format('DD-MM-YYYY')}` : `../${date.add(1, by).format('DD-MM-YYYY')}`}
             replace={true}
         >

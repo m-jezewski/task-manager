@@ -16,7 +16,7 @@ const PriorityChangeInput = ({ priority, setPriority, style }: PriorityChangeInp
         <input
             type='button'
             style={style}
-            className={`icon circle ${priority}_prio ${styles.PriorityChangeInput}`}
+            className={`${styles.PriorityChangeInput} ${priority}_prio`}
             onClick={handleClick}
         />
     );

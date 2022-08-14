@@ -23,7 +23,7 @@ const Kanban = () => {
                     />
                 ))}
                 <AnimatedPopover
-                    buttonClass={`${styles.add_status_button} darken_hover text-button`}
+                    buttonClass={styles.addStatusButton}
                     buttonText='ADD NEW STATUS'
                     panelStyles={{
                         transform: 'translate(-15.5rem, -0.5rem)',

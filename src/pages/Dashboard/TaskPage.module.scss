@@ -1,3 +1,6 @@
+@use '../../placeholders';
+@import '../../variables';
+
 .taskForm {
   display: flex;
   flex-direction: column;
@@ -15,9 +18,10 @@
     border-radius: 0.5rem;
   }
 
-  .submit_button{
-    background-color: white;
-    border: white solid 3px;
+  .submitButton{
+    @extend %baseButton;
+    @extend %darkeningBorder;
+    background-color: $bright-1;
     align-self: flex-end;
   }
 
@@ -27,7 +31,7 @@
     }
   }
 
-  .dateInputsContainer input { background-color: white; }
+  .dateInputsContainer input { background-color: $bright-1; }
 }
 
 .row{

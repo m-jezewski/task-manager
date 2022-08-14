@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 import styles from './Layout.module.scss'
-import SpaceSelect from "../Forms/SpaceSelect";
+import SpaceSelect from "../Inputs/SpaceSelect";
 import useDataContext from "../../hooks/useDataContext";
 
 
@@ -15,20 +15,20 @@ const Layout = ({ children, title, spaceSelect = true }: LayoutProps) => {
     return (
         <>
             <Sidebar />
-            <main className={styles.main}>
-                <div className={styles.header}>
+            <div className={styles.layoutContainer}>
+                <header className={styles.header}>
                     <h1>{title}</h1>
                     <hr />
-                </div>
-                <section className={styles.layout_section}>
+                </header>
+                <main>
                     {spaceSelect && <SpaceSelect
                         space={selectedSpace}
                         setSpace={setSelectedSpace}
                         usage={'header'}
                     />}
                     {children}
-                </section>
-            </main>
+                </main>
+            </div>
         </>
     );
 }

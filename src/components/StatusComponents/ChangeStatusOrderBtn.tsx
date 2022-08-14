@@ -31,7 +31,7 @@ const ChangeStatusOrderBtn = ({ variant, elemId, current, buttonStyles }: Change
     }
 
     return (
-        <button className={`${styles[variant]} ${styles.button} icon`} style={buttonStyles} onClick={handleClick} />
+        <button className={`${styles[variant]} ${styles.orderButton}`} style={buttonStyles} onClick={handleClick} />
     );
 }
 

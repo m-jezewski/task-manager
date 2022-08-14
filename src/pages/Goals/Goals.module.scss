@@ -1,0 +1,52 @@
+@use '../../placeholders';
+
+.container{
+    h2{
+        @extend %subtitle;
+        text-align: center;
+    }
+    
+    .goalList{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        gap: 0.5rem;
+
+        .goalListItem{
+            @extend %darkeningBorder;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            flex-direction: column;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: white;
+            border: white solid 4px;
+            text-align: center;
+            width: 14rem;
+            height: 14rem;
+            transition: all 150ms ease-out;
+
+            h3{
+                font-weight: 500;
+                margin: 0.5rem 0;
+            }
+
+            p{
+                margin: 0.5rem;
+            }
+
+            .goalProgressCircle{
+                border-radius: 50%;
+                background-color: rgb(209, 209, 209);
+                width: 60%;
+                aspect-ratio: 1/1;
+                min-height: 4rem;
+                min-width: 4rem;
+            }
+        }
+    }
+}

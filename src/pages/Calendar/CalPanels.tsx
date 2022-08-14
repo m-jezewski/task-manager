@@ -21,17 +21,17 @@ const CalPanels = () => {
         <Tab.Group>
             <Tab.List>
                 {({ selectedIndex }: any) => <>
-                    <Tab className={`text-button darken_hover ${styles.tab} ${selectedIndex === 0 && styles.tab_active}`} >DAY</Tab>
-                    <Tab className={`text-button darken_hover ${styles.tab} ${selectedIndex === 1 && styles.tab_active}`} >WEEK</Tab>
-                    <Tab className={`text-button darken_hover ${styles.tab} ${selectedIndex === 2 && styles.tab_active}`} >MONTH</Tab>
+                    <Tab className={`${styles.tab} ${selectedIndex === 0 && styles.tabActive}`} >DAY</Tab>
+                    <Tab className={`${styles.tab} ${selectedIndex === 1 && styles.tabActive}`} >WEEK</Tab>
+                    <Tab className={`${styles.tab} ${selectedIndex === 2 && styles.tabActive}`} >MONTH</Tab>
                     <input
-                        className={styles.date_input}
+                        className={styles.dateInput}
                         value={date.format('YYYY-MM-DD')}
                         type={'date'}
                         onChange={handleChange}
                     /></>}
             </Tab.List>
-            <Tab.Panels className={styles.tab_panels}>
+            <Tab.Panels className={styles.tabPanels}>
                 <Tab.Panel>
                     <DayCal date={date} tasks={tasks} statuses={statuses} />
                 </Tab.Panel>

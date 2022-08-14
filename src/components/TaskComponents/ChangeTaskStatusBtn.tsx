@@ -21,13 +21,12 @@ const ChangeTaskStatusBtn = ({ task }: ChangeTaskStatusBtnProps) => {
     }
 
     return (
-        <AnimatedPopover buttonClass='icon' buttonColor={btnColor}>
+        <AnimatedPopover buttonClass={styles.outsideBtn} buttonColor={btnColor}>
             <div className={styles.container}>
                 {statuses.map(({ name, color, id }) => (
                     <button
                         key={id}
                         onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(name) }}
-                        className={`${styles.popover_button} darken_border_hover`}
                         style={{ backgroundColor: color }}>
                         {name}
                     </button>

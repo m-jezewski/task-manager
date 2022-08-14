@@ -1,0 +1,8 @@
+@use '../../placeholders';
+
+.deleteBtn{
+  @extend %circle;
+  background: url(../../assets/trashcan.svg);
+  border: none;
+  background-size: cover;
+}

@@ -1,4 +1,15 @@
+@use '../../placeholders';
+@import '../../variables';
+
+.openDialogButton{
+  @extend %icon;
+  background: url(../../assets/close.svg);
+  background-size: cover;
+}
+.openDialogButton:hover { background-color: $red-1 }
+
 .dialogContainer {
+  box-sizing: border-box;
   position: fixed;
   display: flex;
   align-items: center;
@@ -11,37 +22,19 @@
   backdrop-filter: blur(1px) brightness(90%);
 
   button {
+    @extend %baseButton;
+    @extend %darkeningHover;
     margin: 1rem;
-    padding: 0.5rem;
-    border: 3px solid rgba(0, 0, 0, 0);
-    border-radius: 0.5rem;
-    font-size: 1.3rem;
-    font-family: inherit;
-    color: black;
-    transition: all 150ms ease-out;
-    cursor: pointer;
   }
 
   .panel {
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
-    background-color: white;
+    background-color: $bright-1;
 
-    .title {
-      font-weight: 400;
-    }
-
-    .container button:hover {
-      border-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .remove_button {
-      background-color: #f87171;
-    }
-
-    .back_button {
-      background-color: #94a3b8;
-    }
+    .title { @extend %subtitle }
+    .removeButton { background-color: $red-1;}
+    .backButton { background-color: $bright-4; }
   }
 }
