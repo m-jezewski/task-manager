@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AddStep from "../../components/GoalsComponents/AddStep";
-import Steps from "../../components/GoalsComponents/Steps";
+import GoalSteps from "../../components/GoalSteps/GoalSteps";
 import Layout from "../../components/Layout/Layout";
 import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
-import { GoalStep } from "../../interfaces";
+import { BooleanGoalStep, GoalStep, NumberGoalStep, TaskGoalStep } from "../../interfaces";
 import styles from './GoalPage.module.scss'
 
 interface GoalPageProps {
@@ -19,7 +19,7 @@ const GoalPage = ({ }: GoalPageProps) => {
     const { removeDocument: removeGoal } = useDb('goals')
     const { removeDocument: removeGoalStep } = useDb('goalSteps')
     const [openAddStep, setOpenAddStep] = useState(false)
-    const [gs, setGs] = useState<GoalStep[] | null>(null)
+    const [gs, setGs] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | null>(null)
     const goal = goals && goals.find(goal => goal.id === goalID)
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const GoalPage = ({ }: GoalPageProps) => {
 
     const handleClick = (goalID: string) => {
         removeGoal(goalID)
-        goalSteps.filter(goalStep => goalStep.goalID === goalID).forEach(goalStep => {
+        goalSteps && goalSteps.filter(goalStep => goalStep.goalID === goalID).forEach(goalStep => {
             removeGoalStep(goalStep.id!)
         })
         navigate(-1)
@@ -39,7 +39,7 @@ const GoalPage = ({ }: GoalPageProps) => {
             {goal && gs && <>
                 <h2 className={styles.goalTitle}>{goal?.title}</h2>
                 {goal.description && <p>{goal.description}</p>}
-                <Steps steps={gs} tasks={tasks} />
+                <GoalSteps steps={gs} tasks={tasks} />
                 {openAddStep ?
                     <AddStep goalID={goalID} />
                     : <button

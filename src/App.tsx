@@ -12,10 +12,9 @@ import Calendar from './pages/Calendar/Calendar';
 import Goals from './pages/Goals/Goals';
 import Home from './pages/Home/Home';
 import CalPanels from './pages/Calendar/CalPanels';
-import TaskPage from './pages/Dashboard/TaskPage';
-import DashboardHome from './pages/Dashboard/DashboardHome';
+import TaskPage from './pages/TaskPage/TaskPage';
 import NewGoal from './pages/NewGoal/NewGoal';
-import GoalPage from './pages/Goals/GoalPage';
+import GoalPage from './pages/GoalPage/GoalPage';
 
 function App() {
   const { user, authReady } = useContext(UserContext)

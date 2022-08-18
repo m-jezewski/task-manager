@@ -124,3 +124,80 @@
   width: 100%;
   min-width: 10rem;
 }
+
+.goalStepSwitch{
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  background-color: $bright-4;
+  margin: auto;
+  border: none;
+
+  span{
+    display: block;
+    border-radius: 50%;
+    height: 1.4rem;
+    width: 1.4rem;
+    background-color: black;
+    transition: all 150ms ease-out;
+  }
+
+  .switchInnerEnabled {
+    transform: translate(45%);
+    background-color: #86efac;
+  }
+
+  .switchInnerDisabled {
+    transform: translate(-20%);
+    background-color: $blue-1;
+  }
+}
+.goalStepNumButtons{
+  button{
+    height: 1.3rem;
+    width: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+  }
+
+  .incButton{
+    @extend %darkeningHover;
+    background-color: $bright-4;
+  }
+
+  .decButton{
+    @extend %lightingHover;
+    background-color: $blue-1;
+    color: $bright-1;
+  }
+}
+
+.goalNumberInputs{
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  background-color: $bright-4;
+  font-weight: 600;
+  
+  input{
+      box-sizing: border-box;
+      width: 50%;
+      text-align: center;
+      border-radius: 0.25rem;
+      font-weight: 400;
+      font-style: italic;
+      background-color: $bright-4;
+      border: none;
+      display: inline;
+  }
+
+  .valueInput { background-color: $bright-4; color: $dark-1;}
+  .targetInput { background-color: $blue-1; color: $bright-1; }
+}

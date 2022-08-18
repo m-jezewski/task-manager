@@ -1,16 +1,16 @@
 import useDataContext from '../../hooks/useDataContext';
-import { GoalStep, Task } from '../../interfaces';
+import { BooleanGoalStep, GoalStep, NumberGoalStep, Task, TaskGoalStep } from '../../interfaces';
 import BooleanStep from './BooleanStep';
 import NumberStep from './NumberStep';
 import styles from './Steps.module.scss'
 import TaskStep from './TaskStep';
 
-interface StepsProps {
-    steps?: GoalStep[]
+interface GoalStepsProps {
+    steps?: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
     tasks?: Task[]
 }
 
-const Steps = ({ steps, tasks }: StepsProps) => {
+const GoalSteps = ({ steps, tasks }: GoalStepsProps) => {
     return (
         <div className={styles.container}>
             Steps: <br />
@@ -31,4 +31,4 @@ const Steps = ({ steps, tasks }: StepsProps) => {
     );
 }
 
-export default Steps;
+export default GoalSteps;

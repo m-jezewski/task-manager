@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { DataContext } from '../contexts/DataContext'
-import { Goal, GoalStep, Space, Status, Task } from '../interfaces'
+import { BooleanGoalStep, Goal, NumberGoalStep, Space, Status, Task, TaskGoalStep } from '../interfaces'
 
 const useDataContext = () => {
   const { tasks, spaces, statuses, selectedSpace, setSelectedSpace, goals, goalSteps } = useContext(DataContext) as {
@@ -8,7 +8,7 @@ const useDataContext = () => {
     spaces: Space[]
     statuses: Status[]
     goals: Goal[]
-    goalSteps: GoalStep[]
+    goalSteps: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | null
     selectedSpace: Space
     setSelectedSpace: React.Dispatch<React.SetStateAction<Space | null>>
   }

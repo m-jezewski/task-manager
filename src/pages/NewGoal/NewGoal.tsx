@@ -3,8 +3,8 @@ import Layout from "../../components/Layout/Layout";
 import useDb from "../../hooks/useDb";
 import styles from './NewGoal.module.scss'
 import AddStep from "../../components/GoalsComponents/AddStep";
-import Steps from "../../components/GoalsComponents/Steps";
-import { Goal, GoalStep } from "../../interfaces";
+import GoalSteps from "../../components/GoalSteps/GoalSteps";
+import { BooleanGoalStep, Goal, GoalStep, NumberGoalStep, TaskGoalStep } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 import { DocumentReference } from "firebase/firestore";
 import useDataContext from "../../hooks/useDataContext";
@@ -18,9 +18,9 @@ const NewGoal = () => {
     const [goalRef, setGoalRef] = useState<DocumentReference<any> | null>(null)
     const { tasks } = useDataContext()
     const [description, setDescription] = useState('')
-    const [steps, setSteps] = useState<GoalStep[]>([])
+    const [steps, setSteps] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]>([])
 
-    const addStep = (step: GoalStep) => {
+    const addStep = (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => {
         setSteps(current => [...current, step])
     }
 
@@ -59,7 +59,7 @@ const NewGoal = () => {
                     Description: (optional)
                     <input className={styles.formInput} type="text" maxLength={200} value={description} onChange={(e) => { setDescription(e.target.value) }} />
                 </label>
-                <Steps steps={steps} tasks={tasks} />
+                <GoalSteps steps={steps} tasks={tasks} />
             </form>
             <AddStep addStep={addStep} newGoal />
             <button className={styles.submitButton} type='submit' form='newGoalForm'>Save new goal</button>

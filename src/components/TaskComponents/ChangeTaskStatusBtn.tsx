@@ -17,6 +17,8 @@ const ChangeTaskStatusBtn = ({ task }: ChangeTaskStatusBtnProps) => {
     const handleStatusChange = (status: string) => {
         if (status !== task.status) {
             updateDocument(task.id!, { status: status })
+            document.body.focus()
+            document.body.click()
         }
     }
 

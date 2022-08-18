@@ -1,18 +1,24 @@
 import React from 'react'
 import useDb from '../../hooks/useDb'
-import { Task } from '../../interfaces'
+import { GoalStep, Task } from '../../interfaces'
 import styles from './DeleteTaskBtn.module.scss'
 
 interface DeleteTaskBtnProps {
     task: Task
+    goalStep?: GoalStep
 }
 
-const DeleteTaskBtn = ({ task }: DeleteTaskBtnProps) => {
-    const { removeDocument } = useDb('tasks')
+const DeleteTaskBtn = ({ task, goalStep }: DeleteTaskBtnProps) => {
+    const { removeDocument: removeTask } = useDb('tasks')
+    const { removeDocument: removeGoalStep } = useDb('goalSteps')
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        removeDocument(task.id!)
+        removeTask(task.id!)
+
+        if (goalStep) {
+            removeGoalStep(goalStep.id!)
+        }
     }
 
     return (

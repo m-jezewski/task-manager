@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { GoalStep } from '../../interfaces';
+import { BooleanGoalStep, GoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
 //styles
 import styles from './AddStep.module.scss'
 //hooks
@@ -8,6 +8,7 @@ import useDataContext from '../../hooks/useDataContext';
 //components
 import { Tab } from '@headlessui/react';
 import AddTaskForm from '../Forms/AddTaskForm';
+import GoalStepSwitch from '../Inputs/GoalStepSwitch';
 
 interface AddStepProps {
     newGoal?: boolean
@@ -20,30 +21,36 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
     const { addDocument } = useDb('goalSteps')
 
     const [description, setDescription] = useState('')
+    const [value, setValue] = useState(0)
     const [startWith, setStartWith] = useState(0)
-    const [value, setValue] = useState(false)
     const [target, setTarget] = useState(0)
 
     const handleSubmit = (type: 'boolean' | 'number' | 'task', e?: FormEvent, taskID?: string) => {
         e && e.preventDefault()
-        let step: GoalStep = {
-            description: description,
+
+        let step: GoalStep | BooleanGoalStep | NumberGoalStep | TaskGoalStep = {
             type: type,
-            done: false,
+            progress: 0,
         }
 
-        switch (type) {
+        switch (step.type) {
             case 'boolean':
-                step = { ...step, done: value }
+                step = { ...step, description: description, progress: value } as BooleanGoalStep
                 break;
             case 'number':
-                step = { ...step, startWith: startWith, target: target }
+                step = { ...step, description: description, value: startWith, target: target } as NumberGoalStep
                 break;
             case 'task':
-                if (taskID) { step = { type: type, taskID: taskID, done: false } }
+                if (taskID) { step = { ...step, taskID: taskID } as TaskGoalStep }
                 break;
         }
+
         newGoal ? addStep(step) : addDocument({ ...step, goalID: goalID })
+
+        setDescription('')
+        setValue(0)
+        setStartWith(0)
+        setTarget(0)
     }
 
     return (
@@ -77,6 +84,7 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
                                 type="number"
                                 className={styles.textInput}
                                 value={target}
+                                pattern="^[0-9]*$"
                                 onChange={(e) => { setTarget(parseInt(e.target.value)) }}
                                 required
                                 placeholder='40' />
@@ -87,6 +95,7 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
                                 type="number"
                                 className={styles.textInput}
                                 value={startWith}
+                                pattern="^[0-9]*$"
                                 onChange={(e) => { setStartWith(parseInt(e.target.value)) }}
                                 required />
                         </label>
@@ -105,7 +114,7 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
                         </label>
                         <label>
                             Value:
-                            True/False tutaj toggle
+                            <GoalStepSwitch newStepValue={value} setNewStepValue={setValue} />
                         </label>
                         <button className={styles.submitButton} type='submit' onClick={(e) => { handleSubmit('boolean', e) }}>
                             Add step

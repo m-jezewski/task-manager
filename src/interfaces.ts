@@ -32,15 +32,28 @@ interface Goal {
 }
 
 interface GoalStep {
-  id?: string
-  goalID?: string
   uid?: string
-  description?: string
+  goalID?: string
+  id?: string
   type: 'boolean' | 'number' | 'task'
-  done: boolean
-  target?: number
-  startWith?: number
-  taskID?: string
+  progress: number
 }
 
-export type { Task, Space, Status, Goal, GoalStep }
+interface NumberGoalStep extends GoalStep {
+  value: number
+  target: number
+  description: string
+  type: 'number'
+}
+
+interface TaskGoalStep extends GoalStep {
+  type: 'task'
+  taskID: string
+}
+
+interface BooleanGoalStep extends GoalStep {
+  type: 'boolean'
+  description: string
+}
+
+export type { Task, Space, Status, Goal, GoalStep, NumberGoalStep, TaskGoalStep, BooleanGoalStep }
