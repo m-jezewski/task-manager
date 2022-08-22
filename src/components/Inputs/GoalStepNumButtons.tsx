@@ -20,7 +20,7 @@ const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalS
     }
     const handleDecButtonClick = () => {
         if (value > 0 && target >= value) {
-            updateDocument(id!, { value: value - 1, progress: value - 1 / target })
+            updateDocument(id!, { value: value - 1, progress: (value - 1) / target })
         }
     }
 

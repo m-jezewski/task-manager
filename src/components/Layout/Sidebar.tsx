@@ -8,6 +8,7 @@ import width from '../../assets/width.svg'
 import monitoring from '../../assets/monitoring.svg'
 
 import { useLogout } from '../../hooks/useLogout'
+import dayjs from 'dayjs';
 
 const Sidebar = () => {
     const { logout } = useLogout()
@@ -21,7 +22,7 @@ const Sidebar = () => {
                     <Link to='/Dashboard'><img src={home} alt='Dashboard' />Dashboard</Link>
                     <Link to='/Todo'><img src={checklist} alt='Todo List' />To-Do List</Link>
                     <Link to='/Kanban'><img src={width} alt='Kanban board' /> Kanban</Link>
-                    <Link to='/Calendar'><img src={calendar} alt='Calendar' />Calendar</Link>
+                    <Link to={`/Calendar/${dayjs().format('DD-MM-YYYY')}`}><img src={calendar} alt='Calendar' />Calendar</Link>
                     <Link to='/Goals'><img src={monitoring} alt='Goals' />Goals</Link>
                 </nav>
             </div>

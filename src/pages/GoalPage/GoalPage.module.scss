@@ -1,9 +1,26 @@
 @use '../../placeholders';
 @import '../../variables';
 
-.goalTitle{
-    @extend %subtitle;
-    margin: 0.5rem 0;
+.subHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    .goalTitle{
+        @extend %subtitle;
+        text-transform: none;
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    .goalProgress{
+        font-size: $font-large;
+        color: $green-1;
+        font-weight: 600;
+        margin-left: 1rem;
+    }
 }
 
 .deleteButton{
@@ -17,6 +34,13 @@
 .openAddStepsBtn{
     @extend %baseButton;
     @extend %darkeningHover;
-    margin-top: 1rem;
     background-color: $bright-1;
+}
+
+.description{
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    word-break: break-word;
+    margin: 1rem 0;
 }

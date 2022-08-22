@@ -21,6 +21,7 @@ const GoalPage = ({ }: GoalPageProps) => {
     const [openAddStep, setOpenAddStep] = useState(false)
     const [gs, setGs] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | null>(null)
     const goal = goals && goals.find(goal => goal.id === goalID)
+    const goalProgress = gs && gs.map(gs => gs.progress).reduce((prev, current) => prev + current, 0) / gs.length * 100
 
     useEffect(() => {
         setGs(goalSteps && goalSteps.filter(gs => gs.goalID === goalID))
@@ -37,9 +38,17 @@ const GoalPage = ({ }: GoalPageProps) => {
     return (
         <Layout title={'Goals'} spaceSelect={false}>
             {goal && gs && <>
-                <h2 className={styles.goalTitle}>{goal?.title}</h2>
-                {goal.description && <p>{goal.description}</p>}
+                <div className={styles.subHeader}>
+                    <h2 className={styles.goalTitle}>
+                        {goal?.title}
+                    </h2>
+                    <span>
+                        Progress:
+                        <span className={styles.goalProgress}>{goalProgress?.toFixed()}%</span>
+                    </span>
+                </div>
                 <GoalSteps steps={gs} tasks={tasks} />
+                {goal.description && <p className={styles.description}>{goal.description}</p>}
                 {openAddStep ?
                     <AddStep goalID={goalID} />
                     : <button

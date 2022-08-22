@@ -26,7 +26,7 @@ const TaskTableItem = ({ todo }: TaskTableItemProps) => {
                 <p className={styles.itemText}>{todo.description}</p>
             </td>
             <td className={styles.smallCell}>
-                <p className={styles.itemDate}>{todo.dueDate && dayjs.unix(todo.dueDate).format('DD/MM')}</p>
+                <p className={styles.itemDate}>{todo.dueDate ? dayjs.unix(todo.dueDate).format('DD/MM') : '-/-'}</p>
             </td>
             <td className={styles.smallCell}>
                 <ChangeTaskPrioBtn task={todo} />

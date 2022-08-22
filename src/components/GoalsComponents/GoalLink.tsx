@@ -8,32 +8,31 @@ interface GoalLinkProps {
     steps: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
 }
 
-const drawCircle = (color: string, percent: number, canvas: HTMLCanvasElement) => {
-    let ctx = canvas.getContext('2d')
-    canvas.width = canvas.height = 112
-    ctx && ctx.translate(112 / 2, 112 / 2)
-    ctx && ctx.rotate(-0.5 * Math.PI)
+const drawCircle = (color: string, percent: number, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     percent = Math.min(Math.max(0, percent), 1)
-    if (ctx) {
-        ctx.beginPath()
-        ctx.arc(0, 0, 53.5, 0, Math.PI * 2 * percent, false)
-        ctx.strokeStyle = color
-        ctx.lineCap = 'round'
-        ctx.lineWidth = 5
-        ctx.stroke()
-    }
+    ctx.beginPath()
+    ctx.arc(0, 0, 53.5, 0, Math.PI * 2 * percent, false)
+    ctx.strokeStyle = color
+    ctx.lineCap = 'round'
+    ctx.lineWidth = 5
+    ctx.stroke()
 }
 
 const GoalLink = ({ goal, steps }: GoalLinkProps) => {
-    let sum = steps.map(step => step.progress).reduce((prev, current) => prev + current, 0)
-    const goalProgress = (sum / steps.length * 100)
+    const goalProgress = steps.map(step => step.progress).reduce((prev, current) => prev + current, 0) / steps.length * 100
     const span = useRef<HTMLSpanElement>(null)
     const canvas = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
         if (canvas.current) {
-            drawCircle('#e5e7eb', 100 / 100, canvas.current);
-            drawCircle('#86efac', goalProgress / 100, canvas.current);
+            const ctx = canvas.current.getContext('2d')
+            canvas.current.width = canvas.current.height = 112
+            if (ctx) {
+                ctx.translate(112 / 2, 112 / 2)
+                ctx.rotate(-0.5 * Math.PI)
+                drawCircle('#e5e7eb', 100 / 100, canvas.current, ctx);
+                drawCircle('#86efac', goalProgress / 100, canvas.current, ctx);
+            }
         }
     }, [])
 
@@ -47,7 +46,7 @@ const GoalLink = ({ goal, steps }: GoalLinkProps) => {
                 className={styles.goalProgressCircle}
                 style={{}}>
                 <span ref={span}>
-                    {goalProgress.toFixed(0)}%
+                    {goalProgress.toFixed()}%
                 </span>
                 <canvas ref={canvas} />
             </div>

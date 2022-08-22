@@ -7,6 +7,7 @@ import isBetween from 'dayjs/plugin/isBetween'
 import styles from './WeeklyCal.module.scss'
 import TaskBadge from "./TaskBadge";
 import SubHeader from "../SubHeader";
+import { Link } from "react-router-dom";
 
 interface WeeklyCalProps {
     date: Dayjs
@@ -53,7 +54,7 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
             <div className={styles.tableHeaders}>
                 <span style={{ minWidth: '3rem', width: '3rem' }} />
                 {weekDays.map((weekDay) =>
-                    <div key={weekDay.date()}>{weekDay.format('dddd').toUpperCase()}</div>
+                    <Link to={weekDay.format('../DD-MM-YYYY')} key={weekDay.date()}>{weekDay.format('dddd').toUpperCase()}</Link>
                 )}
             </div>
             <div className={styles.tableContainer}>

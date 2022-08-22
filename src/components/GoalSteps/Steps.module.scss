@@ -8,16 +8,16 @@
     border-radius: 0.5rem;
     background-color: $bright-4;
 
+    h3{
+        margin: 0 0 0.5rem 0;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
     table{
-        border-spacing: 0 2px;
-        width: 100%;
-        background-color: inherit;
-        
-        tbody { background-color: inherit; }
+        @extend %baseTable;
         td {
-            box-sizing: border-box; 
-            padding: 0.4rem; 
-            background-color: $bright-1;
             text-align: center;
             width: 4rem; 
         }
@@ -27,21 +27,10 @@
             width: max-content;
         }
 
-        .smallCell{
-            width: 2rem;
-        }
-
-        .buttonCell{
-            padding: 0.2rem;
-        }
-
-        .numberInputCell{
-            width: 7rem;
-        }
-
-        .booleanStatusCell{
-            font-style: italic
-        }
+        .smallCell{ width: 2rem; }
+        .buttonCell{ padding: 0.2rem; }
+        .numberInputCell{ width: 7rem; }
+        .booleanStatusCell{ font-style: italic }
     }
 }
 

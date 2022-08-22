@@ -21,6 +21,7 @@
             text-decoration: none;
             color: black;
             flex-direction: column;
+            font-weight: 600;
             padding: 0.5rem;
             border-radius: 0.5rem;
             background-color: white;
@@ -29,24 +30,6 @@
             width: 14rem;
             height: 14rem;
             transition: all 150ms ease-out;
-
-            h3{
-                font-weight: 500;
-                margin: 0.5rem 0;
-            }
-
-            p{
-                margin: 0.5rem;
-            }
-
-            .goalProgressCircle{
-                border-radius: 50%;
-                background-color: rgb(209, 209, 209);
-                width: 60%;
-                aspect-ratio: 1/1;
-                min-height: 4rem;
-                min-width: 4rem;
-            }
         }
     }
 }

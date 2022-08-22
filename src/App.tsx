@@ -13,6 +13,7 @@ import Goals from './pages/Goals/Goals';
 import Home from './pages/Home/Home';
 import CalPanels from './pages/Calendar/CalPanels';
 import TaskPage from './pages/TaskPage/TaskPage';
+
 import NewGoal from './pages/NewGoal/NewGoal';
 import GoalPage from './pages/GoalPage/GoalPage';
 

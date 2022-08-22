@@ -2,22 +2,15 @@
 @import '../../variables';
 
 .listContainer {
-  border-spacing: 0 2px;
+  @extend %baseTable;
   margin-bottom: 1rem;
-  empty-cells: hide;
-  background-color: inherit;
   
-  tbody { background-color: inherit; }
-  td { padding: 0.4rem; background-color: $bright-1 }
   th {
-    background-color: inherit;
     padding: 0.5rem;
     text-align: left;
     font-weight: 400;
-    color: $dark-1;
   }
   tr {
-    background-color: inherit;
     .itemText { margin: 0; word-break: break-word; }
     .itemDate {
       margin: 0;
@@ -39,7 +32,7 @@
     position: absolute;
     align-items: flex-end;
     padding: 0;  
-    transform: translate(0, -3px);
+    transform: translate(0, -4px);
 
     .statusText { 
       padding: 0.5rem;

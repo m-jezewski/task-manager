@@ -27,7 +27,7 @@ const TaskStep = ({ step, task }: TaskStepProps) => {
                 {task.description}
             </td>
             <td>
-                {task.dueDate && dayjs.unix(task.dueDate).format('DD/MM')}
+                {task.dueDate ? dayjs.unix(task.dueDate).format('DD/MM') : '-/-'}
             </td>
             <td className={styles.smallCell}>
                 <ChangeTaskPrioBtn task={task} />

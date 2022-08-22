@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    text-transform: uppercase;
     text-decoration: none;
     color: black;
     flex-direction: column;
@@ -19,6 +20,7 @@
     transition: all 150ms ease-out;
 
     h3{
+        font-size: 1rem;
         font-weight: 500;
         margin: 0.5rem 0;
     }

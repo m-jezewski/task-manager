@@ -1,5 +1,4 @@
-import { FormEvent, useState } from 'react';
-import { BooleanGoalStep, GoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
+import { FormEvent, Fragment } from 'react';
 //styles
 import styles from './AddStep.module.scss'
 //hooks
@@ -8,7 +7,8 @@ import useDataContext from '../../hooks/useDataContext';
 //components
 import { Tab } from '@headlessui/react';
 import AddTaskForm from '../Forms/AddTaskForm';
-import GoalStepSwitch from '../Inputs/GoalStepSwitch';
+import AddNumberStepForm from '../Forms/AddNumberStepForm';
+import AddBooleanStepForm from '../Forms/AddBooleanStepForm';
 
 interface AddStepProps {
     newGoal?: boolean
@@ -20,37 +20,10 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
     const { statuses } = useDataContext()
     const { addDocument } = useDb('goalSteps')
 
-    const [description, setDescription] = useState('')
-    const [value, setValue] = useState(0)
-    const [startWith, setStartWith] = useState(0)
-    const [target, setTarget] = useState(0)
-
     const handleSubmit = (type: 'boolean' | 'number' | 'task', e?: FormEvent, taskID?: string) => {
         e && e.preventDefault()
-
-        let step: GoalStep | BooleanGoalStep | NumberGoalStep | TaskGoalStep = {
-            type: type,
-            progress: 0,
-        }
-
-        switch (step.type) {
-            case 'boolean':
-                step = { ...step, description: description, progress: value } as BooleanGoalStep
-                break;
-            case 'number':
-                step = { ...step, description: description, value: startWith, target: target } as NumberGoalStep
-                break;
-            case 'task':
-                if (taskID) { step = { ...step, taskID: taskID } as TaskGoalStep }
-                break;
-        }
-
+        const step = { type: 'task', progress: 0, taskID: taskID }
         newGoal ? addStep(step) : addDocument({ ...step, goalID: goalID })
-
-        setDescription('')
-        setValue(0)
-        setStartWith(0)
-        setTarget(0)
     }
 
     return (
@@ -68,57 +41,19 @@ const AddStep = ({ newGoal, addStep, goalID }: AddStepProps) => {
                     </>}
                 </Tab.List>
                 <Tab.Panels>
-                    <Tab.Panel as='form' className={styles.tabPanelsForm}>
-                        <label>
-                            Description:
-                            <input
-                                className={styles.textInput}
-                                type="text"
-                                value={description}
-                                onChange={(e) => { setDescription(e.target.value) }}
-                                placeholder='ex. I have to write 40 pages' />
-                        </label>
-                        <label>
-                            Target:
-                            <input
-                                type="number"
-                                className={styles.textInput}
-                                value={target}
-                                pattern="^[0-9]*$"
-                                onChange={(e) => { setTarget(parseInt(e.target.value)) }}
-                                required
-                                placeholder='40' />
-                        </label>
-                        <label>
-                            Begin with:
-                            <input
-                                type="number"
-                                className={styles.textInput}
-                                value={startWith}
-                                pattern="^[0-9]*$"
-                                onChange={(e) => { setStartWith(parseInt(e.target.value)) }}
-                                required />
-                        </label>
-                        <button className={styles.submitButton} type='submit' onClick={(e) => { handleSubmit('number', e) }}>Add step</button>
+                    <Tab.Panel as='div'>
+                        <AddNumberStepForm
+                            newGoal={newGoal!}
+                            addStep={addStep}
+                            goalID={goalID!}
+                        />
                     </Tab.Panel>
-                    <Tab.Panel as='form' className={styles.tabPanelsForm}>
-                        <label>
-                            Description:
-                            <input
-                                className={styles.textInput}
-                                type="text"
-                                placeholder='Is something done or not?'
-                                value={description}
-                                onChange={(e) => { setDescription(e.target.value) }}
-                            />
-                        </label>
-                        <label>
-                            Value:
-                            <GoalStepSwitch newStepValue={value} setNewStepValue={setValue} />
-                        </label>
-                        <button className={styles.submitButton} type='submit' onClick={(e) => { handleSubmit('boolean', e) }}>
-                            Add step
-                        </button>
+                    <Tab.Panel as='div'>
+                        <AddBooleanStepForm
+                            newGoal={newGoal!}
+                            addStep={addStep}
+                            goalID={goalID!}
+                        />
                     </Tab.Panel>
                     <Tab.Panel as={'div'}>
                         {statuses &&

@@ -9,7 +9,7 @@ import StatusSelectInput from "../../components/Inputs/StatusSelectInput";
 import Layout from "../../components/Layout/Layout";
 import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
-import { Space, Status } from "../../interfaces";
+import { Space, Status, Task } from "../../interfaces";
 import styles from './TaskPage.module.scss'
 
 const TaskPage = () => {
@@ -44,20 +44,32 @@ const TaskPage = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        task && updateDocument(task.id!, {
-            description: description,
-            space: space?.name,
-            status: status?.name,
-            priority: priority,
-        })
+        const from = dayjs(fromDate, `YYYY-MM-DDThh:mm`)
+        const due = dayjs(dueDate, `YYYY-MM-DDThh:mm`)
 
+        let updatedTask: Task = {
+            description: description,
+            priority: priority,
+            orderIndex: tasks ? tasks.length + 1 : 0,
+            space: selectedSpace.name,
+            status: status ? status.name : '',
+            fromDate: null,
+            dueDate: null,
+        }
+
+        if (openSwitch && (from.isBefore(due) || from.isSame(due))) {
+            updatedTask.fromDate = dayjs(fromDate, `YYYY-MM-DDThh:mm`).unix()
+            updatedTask.dueDate = dayjs(dueDate, `YYYY-MM-DDThh:mm`).unix()
+        }
+
+        task && updateDocument(task.id!, updatedTask)
         navigate(-1)
     }
 
     return (
         <Layout title='Update task' spaceSelect={false}>
             {task && status &&
-                <form className={styles.taskForm}>
+                <form className={styles.taskForm} onSubmit={handleSubmit}>
                     <textarea value={description} onChange={(e: any) => { setDescription(e.target.value) }} rows={10} />
                     <div className={styles.row}>
                         <label style={{ flexGrow: 1 }}>
@@ -84,7 +96,7 @@ const TaskPage = () => {
                         <SpaceSelect space={space} setSpace={setSpace} usage='form' />
                     </label>
 
-                    <button type={'submit'} onClick={handleSubmit} className={styles.submitButton}>Save changes</button>
+                    <button type='submit' className={styles.submitButton}>Save changes</button>
                 </form>
             }
         </Layout>

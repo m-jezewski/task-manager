@@ -58,3 +58,21 @@
 
 %lightingHover:hover{ filter: brightness(130%); }
 %darkeningHover:hover{filter: brightness(90%);}
+
+%baseTable {
+  width: 100%;
+  border-spacing: 0 2px;
+  background-color: inherit;
+  empty-cells: hide;
+  tbody, tr { background-color: inherit; }
+  td {
+    box-sizing: border-box;
+    padding: 0.4rem; 
+    background-color: $bright-1;
+  }
+  th{
+    background-color: inherit;
+    color: $dark-1;
+  }
+}
+  

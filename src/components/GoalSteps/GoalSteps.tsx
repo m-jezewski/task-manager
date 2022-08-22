@@ -13,7 +13,7 @@ interface GoalStepsProps {
 const GoalSteps = ({ steps, tasks }: GoalStepsProps) => {
     return (
         <div className={styles.container}>
-            Steps: <br />
+            <h3>Current goal steps</h3>
             {steps && tasks && steps.length !== 0 ?
                 <table>
                     <tbody>
