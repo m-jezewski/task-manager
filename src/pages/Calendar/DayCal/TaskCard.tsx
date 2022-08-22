@@ -25,18 +25,13 @@ const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         >
             <p>
+                {task.description}
+                <br />
                 <span className={styles.timeSpan} >
                     {fromDate.format('HH:mm')}-{dueDate.format('HH:mm')}
                     <br />
                     {fromDate.format('DD/MM/RRRR') !== dueDate.format('DD/MM/RRRR') && <>{fromDate.format('DD/MM')}-{dueDate.format('DD/MM')}<br /></>}
                 </span>
-                <br />
-                {task.description}
-                <br>
-                </br>
-                {dayjs.unix(task.fromDate!).format('DD/MM/YYYY HH:mm')}
-                <br></br>
-                {dayjs.unix(task.dueDate!).format('DD/MM/YYYY HH:mm')}
             </p>
         </div>
     );

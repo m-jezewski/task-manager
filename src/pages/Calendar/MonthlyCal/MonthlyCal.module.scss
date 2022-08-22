@@ -19,6 +19,8 @@
   }
 
   .day {
+    color: $font-dark;
+    text-decoration: none;
     box-sizing: border-box;
     min-height: 7rem;
     flex-basis: 14%;
@@ -26,6 +28,10 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: $bright-1;
+    cursor: pointer;
+  }
+  .day:hover{
+    color: $font-blue;
   }
 }
 

@@ -2,16 +2,10 @@ import dayjs, { Dayjs } from "dayjs";
 import weekOfYear from 'dayjs/plugin/weekOfYear'
 import isBetween from 'dayjs/plugin/isBetween'
 import { Status, Task } from "../../../interfaces";
-import DateLink from "../DateLink";
 import styles from './MonthlyCal.module.scss'
 import TaskBadge from "./TaskBadge";
 import SubHeader from "../SubHeader";
-
-interface MonthlyCalProps {
-    date: Dayjs
-    statuses: Status[]
-    tasks: Task[]
-}
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 dayjs.extend(isBetween)
 dayjs.extend(weekOfYear)
@@ -26,8 +20,9 @@ const shouldTaskPass = (task: Task, monthDay: Dayjs) => {
     return shouldPass
 }
 
-
-const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
+const MonthlyCal = () => {
+    const navigate = useNavigate()
+    const { date, tasks, statuses } = useOutletContext() as { date: Dayjs, tasks: Task[], statuses: Status[] }
     const monthDays: Dayjs[] = []
     const filteredTasks = (monthDay: Dayjs) => { return tasks.filter(task => task.dueDate && task.fromDate && shouldTaskPass(task, monthDay)) }
     for (let i = 1; i < date.daysInMonth() + 1; i++) { monthDays.push(date.date(i)) }
@@ -38,7 +33,7 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
         .filter((value, index, self) => self.indexOf(value) === index)
 
     return (
-        <>
+        tasks && statuses && date && <>
             <SubHeader
                 date={date}
                 moveBy={'month'}
@@ -46,7 +41,12 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
                 statuses={statuses}
             />
             <div className={styles.week}>
-                {weekDays.map(weekDay => <div key={weekDay.date()} className={styles.weekDayHeader}>{weekDay.format('dddd').toUpperCase()}</div>)}
+                {weekDays.map(weekDay =>
+                    <div
+                        key={weekDay.date()}
+                        className={styles.weekDayHeader}>
+                        {weekDay.format('dddd').toUpperCase()}
+                    </div>)}
             </div>
             {weeks.map(week =>
                 <div className={styles.week} key={week}>
@@ -56,8 +56,7 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
                             <div
                                 key={monthDay.date()}
                                 className={styles.day}
-                                style={monthDay.date() === date.date() ? { border: '#334155 solid 2px' } : {}}
-                            >
+                                onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}>
                                 <span>
                                     {monthDay.format('YYYY-MM-DD')}
                                 </span>
@@ -67,7 +66,6 @@ const MonthlyCal = ({ date, statuses, tasks }: MonthlyCalProps) => {
                             </div>)}
                 </div>
             )}
-
         </>
     );
 }

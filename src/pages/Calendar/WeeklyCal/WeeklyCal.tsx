@@ -1,13 +1,10 @@
-import { table } from "console";
 import dayjs, { Dayjs } from "dayjs";
-import useDataContext from "../../../hooks/useDataContext";
 import { Status, Task } from "../../../interfaces";
-import DateLink from "../DateLink";
 import isBetween from 'dayjs/plugin/isBetween'
 import styles from './WeeklyCal.module.scss'
 import TaskBadge from "./TaskBadge";
 import SubHeader from "../SubHeader";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 interface WeeklyCalProps {
     date: Dayjs
@@ -27,7 +24,9 @@ const shouldTaskPass = (task: Task, weekDay: Dayjs) => {
     return shouldPass
 }
 
-const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
+const WeeklyCal = () => {
+    const { date, tasks, statuses } = useOutletContext() as { date: Dayjs, tasks: Task[], statuses: Status[] }
+
     const weekDays: Dayjs[] = []
     for (let i = 0; i < 7; i++) { weekDays.push(date.day(i)) }
     const hours: Dayjs[] = []
@@ -44,7 +43,7 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
     }
 
     return (
-        <>
+        tasks && statuses && date && <>
             <SubHeader
                 date={date}
                 moveBy={'week'}
@@ -54,7 +53,11 @@ const WeeklyCal = ({ date, tasks, statuses }: WeeklyCalProps) => {
             <div className={styles.tableHeaders}>
                 <span style={{ minWidth: '3rem', width: '3rem' }} />
                 {weekDays.map((weekDay) =>
-                    <Link to={weekDay.format('../DD-MM-YYYY')} key={weekDay.date()}>{weekDay.format('dddd').toUpperCase()}</Link>
+                    <Link
+                        key={weekDay.date()}
+                        to={`../../${weekDay.format('DD-MM-YYYY')}/Day`}>
+                        {weekDay.format('dddd').toUpperCase()}
+                    </Link>
                 )}
             </div>
             <div className={styles.tableContainer}>

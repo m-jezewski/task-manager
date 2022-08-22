@@ -12,9 +12,14 @@ interface DateLinkProps {
 }
 
 const DateLink = ({ move, by, date, children }: DateLinkProps) => {
+
+    const capitalizeFirstLetter = (text: string) => {
+        return text.charAt(0).toUpperCase() + text.slice(1)
+    }
+
     return (
         <Link
-            to={move === 'back' ? `../${date.subtract(1, by).format('DD-MM-YYYY')}` : `../${date.add(1, by).format('DD-MM-YYYY')}`}
+            to={move === 'back' ? `../../${date.subtract(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}` : `../../${date.add(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}`}
             replace={true}
         >
             {move === "back" && <img src={arrowLeft} alt={`move back to previous ${by}`} />}

@@ -12,7 +12,7 @@
   column-gap: 2px;
   margin: 0px 2px;
 
-  div {
+  a {
     text-align: center;
     box-sizing: border-box;
     padding: 0.5rem 0px;
@@ -21,7 +21,12 @@
     font-size: 1rem;
     font-weight: 500;
     word-break: break-word;
+    text-decoration: none;
+    color: $font-dark;
     background-color: $bright-1;
+  }
+  a:hover{
+    color: $font-blue;
   }
 }
 

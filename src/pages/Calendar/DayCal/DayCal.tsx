@@ -5,12 +5,7 @@ import styles from './DayCal.module.scss'
 import isBetween from 'dayjs/plugin/isBetween'
 import { Status, Task } from "../../../interfaces";
 import SubHeader from '../SubHeader'
-
-interface DayCalProps {
-    date: Dayjs
-    tasks: Task[]
-    statuses: Status[]
-}
+import { useOutletContext, useParams } from "react-router-dom";
 
 dayjs.extend(isBetween)
 
@@ -22,19 +17,19 @@ const shouldTaskPass = (task: Task, hours: Dayjs[]) => {
     return shouldPass
 }
 
-const DayCal = ({ date, statuses, tasks }: DayCalProps) => {
-
+const DayCal = () => {
+    const { tasks, statuses, date } = useOutletContext() as { tasks: Task[] | null, statuses: Status[] | null, date: Dayjs | null }
     const hours: Dayjs[] = []
-    for (let i = 1; i < 25; i++) { hours.push(date.hour(i)) }
+    for (let i = 1; i < 25; i++) { date && hours.push(date.hour(i)) }
 
-    const filteredTasks = tasks && tasks.filter(task =>
+    const filteredTasks = tasks && tasks.filter((task) =>
         task.fromDate &&
         task.dueDate &&
         shouldTaskPass(task, hours)
     )
 
     return (
-        <>
+        date && statuses && tasks && <>
             <SubHeader
                 date={date}
                 statuses={statuses}
