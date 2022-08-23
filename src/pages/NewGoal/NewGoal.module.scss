@@ -1,19 +1,23 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
-.addGoalForm{
-    .formInput { 
-        @extend %baseInput; 
-        margin-bottom: 0.5rem;
-        background-color: $bright-1;
-    }
-    label .goalTitle{ @extend %subtitle;}
-}
-
-.submitButton{
-    @extend %baseButton;
+.addGoalForm {
+  .formInput {
+    @extend %baseInput;
+    margin-bottom: 0.5rem;
     background-color: $bright-1;
-    align-self: flex-end;
-    margin-top: auto;
+  }
+  label .goalTitle {
+    @extend %subtitle;
+  }
 }
-.submitButton:hover{ background-color: $bright-4;}   
+
+.submitButton {
+  @extend %baseButton;
+  background-color: $bright-1;
+  align-self: flex-end;
+  margin-top: auto;
+}
+.submitButton:hover {
+  background-color: $bright-4;
+}

@@ -1,5 +1,5 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
 .container {
   box-sizing: border-box;
@@ -23,20 +23,20 @@
     flex-direction: column;
     min-width: 15rem;
     max-width: 15rem;
-  
+
     .sectionHeader {
       display: flex;
       justify-content: space-between;
       min-height: 4.5rem;
       border-radius: 0.5rem;
-  
+
       h2 {
         align-self: center;
         font-size: 1rem;
         font-weight: 500;
         text-transform: uppercase;
       }
-  
+
       div {
         display: flex;
         flex-direction: column;
@@ -45,10 +45,12 @@
         padding: 0.5rem;
         border-radius: 0.5rem;
       }
-  
-      button { margin: 0; }
+
+      button {
+        margin: 0;
+      }
     }
-  
+
     .addTaskBtn {
       @extend %baseButton;
       @extend %darkeningBorder;
@@ -57,33 +59,40 @@
       background-color: $bright-1;
     }
 
-    .taskContainer { 
-      flex-grow: 1; 
-      border-radius: 0.5rem; 
-      
+    .taskContainer {
+      flex-grow: 1;
+      border-radius: 0.5rem;
+
       .taskCard {
+        @extend %link;
         box-sizing: border-box;
         border-radius: 0.5rem;
         margin-top: 0.5rem;
         padding: 0.5rem;
         background-color: $bright-1;
         word-break: break-word;
-      
+
         .infoButtonRow {
           position: relative;
           display: flex;
           justify-content: space-around;
         }
-      
-        p { margin: 0; }
-        hr { border-color: rgba(0, 0, 0, 0.25); }
 
-        .date{ font-size: 0.85rem; color: rgba(0, 0, 0, 0.75); }
+        p {
+          margin: 0;
+        }
+        hr {
+          border-color: rgba(0, 0, 0, 0.25);
+        }
+
+        .date {
+          font-size: 0.85rem;
+          color: rgba(0, 0, 0, 0.75);
+        }
       }
-      .taskCard:hover { color: $font-blue; }
     }
   }
-  
+
   .sectionHidden {
     min-width: 2rem;
     max-height: 4.5rem;

@@ -1,16 +1,8 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import GoalLink from '../../components/GoalsComponents/GoalLink';
-import GoalSteps from '../../components/GoalSteps/GoalSteps';
-import Layout from '../../components/Layout/Layout'
-import { DataContext } from '../../contexts/DataContext';
+import GoalLink from '../../components/ui/GoalLink/GoalLink';
+import Layout from '../../components/Layout/Layout/Layout'
 import useDataContext from '../../hooks/useDataContext';
-import useDb from '../../hooks/useDb';
 import styles from './Goals.module.scss'
-
-interface GoalsProps {
-
-}
 
 const Goals = () => {
 

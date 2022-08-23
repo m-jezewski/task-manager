@@ -1,0 +1,23 @@
+@use '../../../scss/placeholders';
+
+.up {
+  background-image: url(../../../assets/arrowUp.svg);
+}
+
+.down {
+  background-image: url(../../../assets/arrowDown.svg);
+}
+
+.left {
+  background-image: url(../../../assets/arrowLeft.svg);
+}
+
+.right {
+  background-image: url(../../../assets/arrowRight.svg);
+}
+
+.orderButton {
+  @extend %icon;
+  border: none;
+  background-size: contain;
+}

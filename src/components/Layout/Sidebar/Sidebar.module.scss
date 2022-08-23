@@ -1,0 +1,46 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/variables';
+
+.container {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  min-width: 15rem;
+  max-width: 15rem;
+  padding: 1rem;
+  color: $bright-1;
+  background-color: $dark-1;
+
+  .logo {
+    font-size: $font-large;
+    font-weight: 600;
+  }
+  hr {
+    width: 100%;
+  }
+
+  a {
+    @extend %baseButton;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: $bright-1;
+  }
+  a:hover {
+    background-color: $brighterTransparent;
+  }
+}
+
+.settings {
+  button {
+    @extend %baseButton;
+    @extend %darkeningHover;
+    width: 100%;
+    background-color: $bright-2;
+  }
+}

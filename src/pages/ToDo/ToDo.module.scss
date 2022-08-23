@@ -1,24 +1,28 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
 .listContainer {
   @extend %baseTable;
   margin-bottom: 1rem;
-  
+
   th {
     padding: 0.5rem;
     text-align: left;
     font-weight: 400;
+    cursor: auto;
   }
   tr {
-    .itemText { margin: 0; word-break: break-word; }
+    @extend %link;
+    .itemText {
+      margin: 0;
+      word-break: break-word;
+    }
     .itemDate {
       margin: 0;
       font-size: 0.8rem;
       color: $dark-1;
     }
   }
-  tr:hover { color: $font-blue; }
 
   .thDueDate {
     padding: 0;
@@ -31,10 +35,10 @@
     display: flex;
     position: absolute;
     align-items: flex-end;
-    padding: 0;  
+    padding: 0;
     transform: translate(0, -4px);
 
-    .statusText { 
+    .statusText {
       padding: 0.5rem;
       border-radius: 0.5rem 0.5rem 0 0;
       font-weight: 500;
@@ -54,7 +58,9 @@
       transition: all 150ms ease-out;
     }
   }
-  .thStatus:focus-within{ z-index: 4000;}
+  .thStatus:focus-within {
+    z-index: 4000;
+  }
 
   .noTasks {
     padding-left: 1rem;
@@ -71,7 +77,10 @@
     empty-cells: show;
   }
 
-  .smallCell { width: 2rem; text-align: center; }
+  .smallCell {
+    width: 2rem;
+    text-align: center;
+  }
 }
 
 .newStatusContainer {

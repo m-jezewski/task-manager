@@ -1,5 +1,5 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
 .taskForm {
   display: flex;
@@ -18,23 +18,19 @@
     border-radius: 0.5rem;
   }
 
-  .submitButton{
+  .submitButton {
     @extend %baseButton;
     @extend %darkeningBorder;
     background-color: $bright-1;
     align-self: flex-end;
   }
 
-  label{
-    input, select, div{
-      margin-top: 0.25rem;
-    }
+  .dateInputsContainer input {
+    background-color: $bright-1;
   }
-
-  .dateInputsContainer input { background-color: $bright-1; }
 }
 
-.row{
+.row {
   display: flex;
   gap: 2rem;
 }

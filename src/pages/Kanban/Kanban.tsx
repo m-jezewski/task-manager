@@ -1,6 +1,6 @@
-import AddStatusForm from '../../components/Forms/AddStatusForm';
+import AddStatusForm from '../../components/forms/AddStatusForm/AddStatusForm';
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover';
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout/Layout/Layout';
 import useDataContext from '../../hooks/useDataContext';
 
 import styles from './Kanban.module.scss'
@@ -8,8 +8,6 @@ import StatusSection from './StatusSection';
 
 const Kanban = () => {
     const { statuses, tasks, selectedSpace } = useDataContext()
-
-
     //selectedSpace check patrz todo
 
     return (

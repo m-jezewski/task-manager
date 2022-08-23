@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs";
 import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
-import AddTaskForm from "../../components/Forms/AddTaskForm";
+import AddTaskForm from "../../components/forms/AddTaskForm/AddTaskForm";
 import { Status } from "../../interfaces";
 import DateLink from "./DateLink";
 import styles from './Calendar.module.scss'
@@ -33,7 +33,7 @@ const SubHeader = ({ date, statuses, moveBy, dateHeader }: SubHeaderProps) => {
                     defaultStatus={statuses && statuses[0]}
                     direction={"column"}
                     position={"absolute"}
-                    defaultTimeFrame
+                    openDateInputSwitch
                     formStyles={{ transform: 'translate(calc(-100% - 0.5rem), 1rem)' }}
                     defaultDate={date}
                 />

@@ -1,5 +1,4 @@
-import useDataContext from '../../hooks/useDataContext';
-import { BooleanGoalStep, GoalStep, NumberGoalStep, Task, TaskGoalStep } from '../../interfaces';
+import { BooleanGoalStep, NumberGoalStep, Task, TaskGoalStep } from '../../interfaces';
 import BooleanStep from './BooleanStep';
 import NumberStep from './NumberStep';
 import styles from './Steps.module.scss'
@@ -19,10 +18,18 @@ const GoalSteps = ({ steps, tasks }: GoalStepsProps) => {
                     <tbody>
                         {steps.map(step =>
                             step.type === 'task' ?
-                                <TaskStep key={step.id} step={step} task={tasks.find((task: Task) => task.id === step.taskID)!} /> :
-                                step.type === 'number' ?
-                                    <NumberStep key={step.id} step={step} /> :
-                                    <BooleanStep key={step.id} step={step} />
+                                <TaskStep
+                                    key={step.id!}
+                                    step={step}
+                                    task={tasks.find((task: Task) => task.id === step.taskID)!}
+                                />
+                                : step.type === 'number' ?
+                                    <NumberStep
+                                        key={step.id!}
+                                        step={step} />
+                                    : <BooleanStep
+                                        key={step.id!}
+                                        step={step} />
                         )}
                     </tbody>
                 </table>

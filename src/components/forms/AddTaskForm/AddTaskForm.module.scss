@@ -1,0 +1,43 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/variables';
+
+.form {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 15rem;
+  margin-top: 0.5rem;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 4px 1px rgb(0 0 0 / 10%);
+  z-index: 2000;
+  background-color: $bright-1;
+
+  .innerContainer {
+    gap: 1rem;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  input {
+    font-family: inherit;
+    padding: 0.5rem;
+  }
+
+  .descriptionInput {
+    @extend %baseInput;
+    min-width: 12rem;
+  }
+
+  .submitButton {
+    @extend %baseButton;
+    padding: 0.5rem 2rem;
+    font-weight: 500;
+    background-color: $bright-4;
+  }
+  .submitButton:hover {
+    background-color: $bright-3;
+  }
+}

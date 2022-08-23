@@ -1,5 +1,3 @@
-@import './placeholders';
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
@@ -11,18 +9,12 @@ body {
   min-height: 100vh;
 }
 
-.low_prio { 
+.low_prio {
   background-color: #86efac !important;
 }
-.medium_prio {  
+.medium_prio {
   background-color: #fbbf24 !important;
 }
-.high_prio {   
+.high_prio {
   background-color: #f87171 !important;
-}
-
-.dragOver {
-  filter: brightness(95%);
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: all 150ms ease-out;
 }

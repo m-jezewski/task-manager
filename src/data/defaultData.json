@@ -1,0 +1,56 @@
+{
+  "defaultSpaces": [
+    {
+      "name": "My awesome default space!"
+    },
+    {
+      "name": "My second awesome default space!"
+    }
+  ],
+  "defaultTasks": [
+    {
+      "orderIndex": 0,
+      "description": "My awesome default task!",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null,
+      "status": "Open",
+      "space": "My awesome default space!"
+    },
+    {
+      "orderIndex": 1,
+      "description": "My awesome default task!",
+      "priority": "medium",
+      "dueDate": null,
+      "fromDate": null,
+      "status": "Open",
+      "space": "My awesome default space!"
+    },
+    {
+      "orderIndex": 2,
+      "description": "My awesome default task!",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null,
+      "status": "In Progress",
+      "space": "My awesome default space!"
+    }
+  ],
+  "defaultStatuses": [
+    {
+      "name": "Open",
+      "orderIndex": 1,
+      "color": "#c7d2fe"
+    },
+    {
+      "name": "In Progress",
+      "orderIndex": 2,
+      "color": "#ddd6fe"
+    },
+    {
+      "name": "Finished",
+      "orderIndex": 3,
+      "color": "#d9f99d"
+    }
+  ]
+}

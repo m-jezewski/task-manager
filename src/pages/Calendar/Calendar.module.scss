@@ -1,5 +1,5 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
 .tab {
   @extend %baseButton;
@@ -54,4 +54,6 @@
     margin-left: auto;
   }
 }
-.subHeader:focus-within{z-index: 3000;}
+.subHeader:focus-within {
+  z-index: 3000;
+}

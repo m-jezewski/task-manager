@@ -1,9 +1,9 @@
 import styles from './ToDo.module.scss'
 import { Task } from '../../interfaces'
-import ChangeTaskStatusBtn from '../../components/TaskComponents/ChangeTaskStatusBtn';
-import ChangeTaskPrioBtn from '../../components/TaskComponents/ChangeTaskPrioBtn';
-import DeleteTaskBtn from '../../components/TaskComponents/DeleteTaskBtn';
-import DraggableContainer from '../../components/DragAndDrop/DraggableContainer';
+import TaskStatusChangeBtn from '../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
+import TaskPrioChangeBtn from '../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
+import TaskDeleteBtn from '../../components/ui/TaskDeleteBtn/TaskDeleteBtn';
+import DraggableContainer from '../../components/DragAndDrop/DraggableContainer/DraggableContainer';
 import dayjs from 'dayjs';
 
 interface TaskTableItemProps {
@@ -20,7 +20,7 @@ const TaskTableItem = ({ todo }: TaskTableItemProps) => {
         >
             <td />
             <td className={styles.smallCell}>
-                <ChangeTaskStatusBtn task={todo} />
+                <TaskStatusChangeBtn task={todo} />
             </td>
             <td>
                 <p className={styles.itemText}>{todo.description}</p>
@@ -29,10 +29,10 @@ const TaskTableItem = ({ todo }: TaskTableItemProps) => {
                 <p className={styles.itemDate}>{todo.dueDate ? dayjs.unix(todo.dueDate).format('DD/MM') : '-/-'}</p>
             </td>
             <td className={styles.smallCell}>
-                <ChangeTaskPrioBtn task={todo} />
+                <TaskPrioChangeBtn task={todo} />
             </td>
             <td className={styles.smallCell}>
-                <DeleteTaskBtn task={todo} />
+                <TaskDeleteBtn task={todo} />
             </td>
         </DraggableContainer >
     );

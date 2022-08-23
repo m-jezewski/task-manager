@@ -6,7 +6,7 @@ import styles from './Calendar.module.scss'
 //dayjs
 import dayjs from 'dayjs'
 //components
-import Layout from '../../components/Layout/Layout'
+import Layout from '../../components/Layout/Layout/Layout'
 
 const Calendar = () => {
     const navigate = useNavigate()

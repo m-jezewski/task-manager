@@ -1,0 +1,6 @@
+@use '../../../scss/placeholders';
+
+.PriorityChangeInput {
+  @extend %circle;
+  margin: 0.25rem;
+}

@@ -1,5 +1,5 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
 .container {
   box-sizing: border-box;
@@ -59,8 +59,14 @@
       justify-content: space-between;
       margin-top: 0.5rem;
     }
-    .signupBtn { flex-grow: 1; background-color: $purple-1; }
-    .loginBtn { flex-grow: 1; background-color: $blue-1; }
+    .signupBtn {
+      flex-grow: 1;
+      background-color: $purple-1;
+    }
+    .loginBtn {
+      flex-grow: 1;
+      background-color: $blue-1;
+    }
 
     .return_button {
       width: 2.5rem;

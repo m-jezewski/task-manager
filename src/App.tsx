@@ -12,12 +12,11 @@ import Calendar from './pages/Calendar/Calendar';
 import Goals from './pages/Goals/Goals';
 import Home from './pages/Home/Home';
 import TaskPage from './pages/TaskPage/TaskPage';
-
 import NewGoal from './pages/NewGoal/NewGoal';
 import GoalPage from './pages/GoalPage/GoalPage';
 import DayCal from './pages/Calendar/DayCal/DayCal';
-import WeeklyCal from './pages/Calendar/WeeklyCal/WeeklyCal';
-import MonthlyCal from './pages/Calendar/MonthlyCal/MonthlyCal';
+import WeekCal from './pages/Calendar/WeekCal/WeekCal';
+import MonthCal from './pages/Calendar/MonthCal/MonthlyCal';
 
 function App() {
   const { user, authReady } = useContext(UserContext)
@@ -36,8 +35,8 @@ function App() {
             <Route path="Calendar" element={<Calendar />}>
               <Route path=':date'>
                 <Route element={<DayCal />} path='Day' />
-                <Route element={<WeeklyCal />} path='Week' />
-                <Route element={<MonthlyCal />} path='Month' />
+                <Route element={<WeekCal />} path='Week' />
+                <Route element={<MonthCal />} path='Month' />
               </Route>
             </Route>
             <Route path="Goals" >

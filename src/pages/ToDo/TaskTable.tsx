@@ -9,11 +9,11 @@ import styles from './ToDo.module.scss'
 //components
 import TaskTableItem from './TaskTableItem'
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
-import AddTaskForm from '../../components/Forms/AddTaskForm'
-import ChangeStatusOrderBtn from '../../components/StatusComponents/ChangeStatusOrderBtn'
-import DeleteStatusDialog from '../../components/StatusComponents/DeleteStatusDialog'
-import DropToContainer from '../../components/DragAndDrop/DropToContainer'
-import HideStatusBtn from '../../components/StatusComponents/HideStatusBtn'
+import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
+import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
+import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
+import DropToContainer from '../../components/DragAndDrop/DropToContainer/DropToContainer'
+import StatusHideBtn from '../../components/ui/StatusHideBtn/StatusHideBtn'
 
 interface TaskTableProps {
     status: Status
@@ -38,7 +38,7 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                     <th
                         className={styles.smallCell}
                         style={{ padding: '0px' }}>
-                        <HideStatusBtn showStatus={showTable} setShowStatus={setShowTable} />
+                        <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                     </th>
                     <th className={styles.thStatus}>
                         <span
@@ -61,18 +61,18 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                         Due:
                     </th>
                     <th className={styles.smallCell}>
-                        <ChangeStatusOrderBtn
+                        <StatusOrderChangeBtn
                             variant='up'
                             elemId={status.id!}
                             current={status}
                             buttonStyles={{ float: 'left' }} />
-                        <ChangeStatusOrderBtn
+                        <StatusOrderChangeBtn
                             variant='down'
                             elemId={status.id!}
                             current={status} />
                     </th>
                     <th className={styles.smallCell}>
-                        <DeleteStatusDialog
+                        <StatusDeleteBtn
                             status={status}
                             filteredTasks={filteredTasks} />
                     </th>

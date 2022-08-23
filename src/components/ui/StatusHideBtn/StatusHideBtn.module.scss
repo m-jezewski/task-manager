@@ -1,0 +1,8 @@
+@use '../../../scss/placeholders';
+
+.hideButton {
+  @extend %icon;
+  background-image: url(../../../assets/hideArrows.svg);
+  background-size: cover;
+  border: none;
+}

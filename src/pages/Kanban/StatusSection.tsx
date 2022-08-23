@@ -1,13 +1,13 @@
 import { Status, Task } from "../../interfaces";
 import styles from './Kanban.module.scss'
 import TaskCard from "./TaskCard";
-import ChangeStatusOrderBtn from '../../components/StatusComponents/ChangeStatusOrderBtn'
+import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
 import { useState } from "react";
-import DeleteStatusDialog from '../../components/StatusComponents/DeleteStatusDialog'
+import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
-import AddTaskForm from '../../components/Forms/AddTaskForm'
-import DropToContainer from "../../components/DragAndDrop/DropToContainer";
-import HideStatusBtn from "../../components/StatusComponents/HideStatusBtn";
+import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
+import DropToContainer from "../../components/DragAndDrop/DropToContainer/DropToContainer";
+import StatusHideBtn from "../../components/ui/StatusHideBtn/StatusHideBtn";
 
 interface StatusSectionProps {
     status: Status
@@ -24,16 +24,16 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                 <section className={styles.section}>
                     <div className={styles.sectionHeader} style={{ backgroundColor: status.color }}>
                         <div>
-                            <HideStatusBtn setShowStatus={setShowSection} showStatus={showSection} />
-                            <ChangeStatusOrderBtn variant='left' elemId={status.id!} current={status} />
+                            <StatusHideBtn setShowStatus={setShowSection} showStatus={showSection} />
+                            <StatusOrderChangeBtn variant='left' elemId={status.id!} current={status} />
                         </div>
                         <h2>{status.name}</h2>
                         <div>
-                            <DeleteStatusDialog
+                            <StatusDeleteBtn
                                 status={status}
                                 filteredTasks={filteredTasks}
                             />
-                            <ChangeStatusOrderBtn variant='right' elemId={status.id!} current={status} />
+                            <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>
                     <>
@@ -59,7 +59,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                     </>
                 </section > :
                 <section className={`${styles.section} ${styles.sectionHidden}`} style={{ backgroundColor: status.color }}>
-                    <HideStatusBtn showStatus={showSection} setShowStatus={setShowSection} />
+                    <StatusHideBtn showStatus={showSection} setShowStatus={setShowSection} />
                 </section>
             }
         </>

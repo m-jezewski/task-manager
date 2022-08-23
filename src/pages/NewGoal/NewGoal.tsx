@@ -1,8 +1,8 @@
 import { FormEvent, useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/Layout/Layout";
 import useDb from "../../hooks/useDb";
 import styles from './NewGoal.module.scss'
-import AddStep from "../../components/GoalsComponents/AddStep";
+import AddStep from "../../components/AddStep/AddStep";
 import GoalSteps from "../../components/GoalSteps/GoalSteps";
 import { BooleanGoalStep, Goal, GoalStep, NumberGoalStep, TaskGoalStep } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ const NewGoal = () => {
     const [steps, setSteps] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]>([])
 
     const addStep = (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => {
-        setSteps(current => [...current, step])
+        setSteps(current => [...current, { ...step, id: steps.length.toString() }])
     }
 
     const handleSubmit = (e: FormEvent) => {
@@ -35,7 +35,7 @@ const NewGoal = () => {
 
     useEffect(() => {
         if (goalRef) {
-            steps.forEach(step => { addGoalStep({ ...step, goalID: goalRef.id }) })
+            steps.forEach(step => { delete step.id; addGoalStep({ ...step, goalID: goalRef.id }) })
             navigate(-1)
         }
     }, [goalRef])
@@ -61,7 +61,7 @@ const NewGoal = () => {
                 </label>
                 <GoalSteps steps={steps} tasks={tasks} />
             </form>
-            <AddStep addStep={addStep} newGoal />
+            <AddStep addStepToNewGoal={addStep} />
             <button className={styles.submitButton} type='submit' form='newGoalForm'>Save new goal</button>
         </Layout>
     );

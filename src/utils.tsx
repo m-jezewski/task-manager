@@ -74,14 +74,5 @@ const addDefaultContent = (uid: string) => {
         addDoc(collection(db, 'statuses'), status)
     })
 }
-// add item to used space and status
 
-const remove = () => {
-    // remove item to used space and status
-}
-
-const modify = () => {
-    // modify item to used space and status
-}
-
-export { addDefaultContent, remove, modify }
+export { addDefaultContent }

@@ -1,42 +1,43 @@
-@use '../../placeholders';
-@import '../../variables';
+@use '../../scss/placeholders';
+@import '../../scss/variables';
 
-.container{
-    box-sizing: border-box;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: $bright-4;
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: $bright-4;
 
-    h3{
-        margin: 0 0 0.5rem 0;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 1rem;
-    }
-
-    table{
-        @extend %baseTable;
-        td {
-            text-align: center;
-            width: 4rem; 
-        }
-
-        .descriptionCell {
-            text-align: left;
-            width: max-content;
-        }
-
-        .smallCell{ width: 2rem; }
-        .buttonCell{ padding: 0.2rem; }
-        .numberInputCell{ width: 7rem; }
-        .booleanStatusCell{ font-style: italic }
-    }
-}
-
-.deleteGoalStepBtn{
-    @extend %circle;
-    background: url(../../assets/trashcan.svg);
-    border: none;
-    background-size: cover;
+  h3 {
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
   }
+
+  table {
+    @extend %baseTable;
+    td {
+      text-align: center;
+      width: 4rem;
+    }
+
+    .descriptionCell {
+      text-align: left;
+      width: max-content;
+    }
+
+    .smallCell {
+      width: 2rem;
+    }
+    .buttonCell {
+      padding: 0.2rem;
+    }
+    .numberInputCell {
+      width: 7rem;
+    }
+    .booleanStatusCell {
+      font-style: italic;
+    }
+  }
+}

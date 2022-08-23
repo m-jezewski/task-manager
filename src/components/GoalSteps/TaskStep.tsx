@@ -1,12 +1,9 @@
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
-import useDataContext from "../../hooks/useDataContext";
-import useDb from "../../hooks/useDb";
 import { BooleanGoalStep, GoalStep, NumberGoalStep, Task, TaskGoalStep } from "../../interfaces";
-import ChangeTaskPrioBtn from "../TaskComponents/ChangeTaskPrioBtn";
-import ChangeTaskStatusBtn from "../TaskComponents/ChangeTaskStatusBtn";
-import DeleteTaskBtn from "../TaskComponents/DeleteTaskBtn";
-import GoalStepCheckbox from "../Inputs/GoalStepCheckbox";
+import GoalStepCheckbox from "../ui/GoalStepCheckbox/GoalStepCheckbox";
+import TaskPrioChangeBtn from "../ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
+import TaskStatusChangeBtn from "../ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
+import TaskDeleteBtn from "../ui/TaskDeleteBtn/TaskDeleteBtn";
 import styles from './Steps.module.scss'
 
 interface TaskStepProps {
@@ -16,12 +13,12 @@ interface TaskStepProps {
 
 const TaskStep = ({ step, task }: TaskStepProps) => {
     return (
-        <>{task && <tr>
+        task && <tr>
             <td className={styles.smallCell}>
                 <GoalStepCheckbox goalStep={step} />
             </td>
             <td>
-                <ChangeTaskStatusBtn task={task} />
+                <TaskStatusChangeBtn task={task} />
             </td>
             <td className={styles.descriptionCell}>
                 {task.description}
@@ -30,12 +27,12 @@ const TaskStep = ({ step, task }: TaskStepProps) => {
                 {task.dueDate ? dayjs.unix(task.dueDate).format('DD/MM') : '-/-'}
             </td>
             <td className={styles.smallCell}>
-                <ChangeTaskPrioBtn task={task} />
+                <TaskPrioChangeBtn task={task} />
             </td>
             <td className={styles.smallCell}>
-                <DeleteTaskBtn task={task} goalStep={step} />
+                <TaskDeleteBtn task={task} goalStep={step} />
             </td>
-        </tr>}</>
+        </tr>
     );
 }
 

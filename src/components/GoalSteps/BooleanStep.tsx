@@ -1,7 +1,7 @@
-import { BooleanGoalStep, GoalStep } from "../../interfaces";
-import GoalStepCheckbox from "../Inputs/GoalStepCheckbox";
-import GoalStepSwitch from "../Inputs/GoalStepSwitch";
-import DeleteGoalStepBtn from "./DeleteGoalStepBtn";
+import { BooleanGoalStep } from "../../interfaces";
+import GoalStepCheckbox from "../ui/GoalStepCheckbox/GoalStepCheckbox";
+import GoalStepSwitch from "../ui/GoalStepSwitch/GoalStepSwitch";
+import GoalStepDeleteBtn from "../ui/GoalStepDeleteBtn/GoalStepDeleteBtn";
 import styles from './Steps.module.scss';
 
 interface BooleanStepProps {
@@ -20,7 +20,7 @@ const BooleanStep = ({ step }: BooleanStepProps) => {
                 <GoalStepSwitch goalStep={step} />
             </td>
             <td className={styles.smallCell}>
-                <DeleteGoalStepBtn goalStep={step} />
+                <GoalStepDeleteBtn goalStep={step} />
             </td>
         </tr>
     );

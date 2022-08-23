@@ -3,8 +3,8 @@
 import { Status } from '../../interfaces'
 
 //components
-import Layout from "../../components/Layout/Layout";
-import AddStatusForm from "../../components/Forms/AddStatusForm";
+import Layout from "../../components/Layout/Layout/Layout";
+import AddStatusForm from "../../components/forms/AddStatusForm/AddStatusForm";
 import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
 import TaskTable from './TaskTable'
 import useDataContext from '../../hooks/useDataContext';

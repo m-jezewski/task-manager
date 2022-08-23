@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import AddStep from "../../components/GoalsComponents/AddStep";
+import AddStep from "../../components/AddStep/AddStep";
 import GoalSteps from "../../components/GoalSteps/GoalSteps";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout/Layout/Layout";
 import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
 import { BooleanGoalStep, GoalStep, NumberGoalStep, TaskGoalStep } from "../../interfaces";

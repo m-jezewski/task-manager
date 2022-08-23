@@ -1,9 +1,9 @@
-import ChangeTaskStatusBtn from "../../components/TaskComponents/ChangeTaskStatusBtn";
-import DeleteTaskBtn from "../../components/TaskComponents/DeleteTaskBtn";
-import ChangeTaskPrioBtn from "../../components/TaskComponents/ChangeTaskPrioBtn";
+import TaskStatusChangeBtn from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
+import TaskDeleteBtn from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
+import TaskPrioChangeBtn from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
 import { Task } from "../../interfaces";
 import styles from './Kanban.module.scss'
-import DraggableContainer from '../../components/DragAndDrop/DraggableContainer'
+import DraggableContainer from '../../components/DragAndDrop/DraggableContainer/DraggableContainer'
 import dayjs from "dayjs";
 
 interface TaskCardProps {
@@ -19,9 +19,9 @@ const TaskCard = ({ task }: TaskCardProps) => {
             </span>}
             <hr />
             <div className={styles.infoButtonRow}>
-                <ChangeTaskStatusBtn task={task} />
-                <ChangeTaskPrioBtn task={task} />
-                <DeleteTaskBtn task={task} />
+                <TaskStatusChangeBtn task={task} />
+                <TaskPrioChangeBtn task={task} />
+                <TaskDeleteBtn task={task} />
             </div>
         </DraggableContainer>
     );

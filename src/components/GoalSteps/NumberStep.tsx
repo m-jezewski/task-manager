@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { GoalStep, NumberGoalStep } from "../../interfaces";
-import GoalNumberInputs from "../Inputs/GoalNumberInputs";
-import GoalStepCheckbox from "../Inputs/GoalStepCheckbox";
-import GoalStepNumButtons from "../Inputs/GoalStepNumButtons";
-import DeleteGoalStepBtn from "./DeleteGoalStepBtn";
+import { NumberGoalStep } from "../../interfaces";
+import GoalStepCheckbox from "../ui/GoalStepCheckbox/GoalStepCheckbox";
+import GoalStepNumberInputs from "../ui/GoalStepNumberInputs/GoalStepNumberInputs";
+import GoalStepNumButtons from "../ui/GoalStepNumButtons/GoalStepNumButtons";
+import GoalStepDeleteBtn from "../ui/GoalStepDeleteBtn/GoalStepDeleteBtn";
 import styles from './Steps.module.scss'
 
 interface NumberStepProps {
@@ -17,7 +16,7 @@ const NumberStep = ({ step }: NumberStepProps) => {
                 <GoalStepCheckbox goalStep={step} />
             </td>
             <td className={styles.numberInputCell}>
-                <GoalNumberInputs goalStep={step} />
+                <GoalStepNumberInputs goalStep={step} />
             </td>
             <td className={styles.descriptionCell}>
                 {step.description}
@@ -26,7 +25,7 @@ const NumberStep = ({ step }: NumberStepProps) => {
                 <GoalStepNumButtons goalStep={step} />
             </td>
             <td className={styles.smallCell}>
-                <DeleteGoalStepBtn goalStep={step} />
+                <GoalStepDeleteBtn goalStep={step} />
             </td>
         </tr>
     );
