@@ -4,6 +4,10 @@ import './index.scss';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './contexts/UserContext';
+import locale from 'dayjs/locale/en-gb'
+import dayjs from 'dayjs'
+
+dayjs.locale(locale)
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

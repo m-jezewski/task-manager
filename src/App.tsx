@@ -16,7 +16,7 @@ import NewGoal from './pages/NewGoal/NewGoal';
 import GoalPage from './pages/GoalPage/GoalPage';
 import DayCal from './pages/Calendar/DayCal/DayCal';
 import WeekCal from './pages/Calendar/WeekCal/WeekCal';
-import MonthCal from './pages/Calendar/MonthCal/MonthlyCal';
+import MonthCal from './pages/Calendar/MonthCal/MonthCal';
 
 function App() {
   const { user, authReady } = useContext(UserContext)

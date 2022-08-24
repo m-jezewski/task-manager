@@ -1,35 +1,19 @@
-import dayjs, { Dayjs } from "dayjs";
-import useDataContext from "../../../hooks/useDataContext";
+import { Dayjs } from "dayjs";
 import TaskCard from "./TaskCard";
 import styles from './DayCal.module.scss'
-import isBetween from 'dayjs/plugin/isBetween'
 import { Status, Task } from "../../../interfaces";
 import SubHeader from '../SubHeader'
-import { useOutletContext, useParams } from "react-router-dom";
-
-dayjs.extend(isBetween)
-
-const shouldTaskPass = (task: Task, hours: Dayjs[]) => {
-    let shouldPass = false
-    const from = dayjs.unix(task.fromDate!)
-    const due = dayjs.unix(task.dueDate!)
-    hours.forEach((hour) => { if (hour.isBetween(from, due) || hour.isSame(due, 'hour')) shouldPass = true })
-    return shouldPass
-}
+import { useOutletContext } from "react-router-dom";
+import { getTasksWithinDay } from '../../../utils/getTasksWithinDay'
+import { getHoursOfDate } from "../../../utils/getHoursOfDate";
 
 const DayCal = () => {
-    const { tasks, statuses, date } = useOutletContext() as { tasks: Task[] | null, statuses: Status[] | null, date: Dayjs | null }
-    const hours: Dayjs[] = []
-    for (let i = 1; i < 25; i++) { date && hours.push(date.hour(i)) }
-
-    const filteredTasks = tasks && tasks.filter((task) =>
-        task.fromDate &&
-        task.dueDate &&
-        shouldTaskPass(task, hours)
-    )
+    const { tasks, statuses, date } = useOutletContext() as { tasks: Task[], statuses: Status[], date: Dayjs }
+    const hours = getHoursOfDate(date)
+    const filteredTasks = tasks && getTasksWithinDay(tasks, hours)
 
     return (
-        date && statuses && tasks && <>
+        filteredTasks && statuses && date && <>
             <SubHeader
                 date={date}
                 statuses={statuses}
