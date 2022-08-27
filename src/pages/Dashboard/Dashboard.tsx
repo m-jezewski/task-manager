@@ -1,15 +1,9 @@
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout/Layout'
 import styles from './Dashboard.module.scss'
 
-interface DashboardProps {
-
-}
-
 const Dashboard = () => {
-
     const [date, setDate] = useState(dayjs())
 
     useEffect(() => {

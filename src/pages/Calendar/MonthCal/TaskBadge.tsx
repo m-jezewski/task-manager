@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
+import useDataContext from "../../../hooks/useDataContext";
 import { Status, Task } from "../../../interfaces";
 import styles from './MonthCal.module.scss'
 
 interface TaskBadgeProps {
     task: Task
-    statuses: Status[]
 }
 
-const TaskBadge = ({ task, statuses }: TaskBadgeProps) => {
+const TaskBadge = ({ task }: TaskBadgeProps) => {
+
+    const { statuses } = useDataContext()
+
     return (
         <Link
             style={{
-                backgroundColor: statuses.filter((status) => status.name === task.status)[0].color,
+                backgroundColor: statuses?.find((status) => status.name === task.status)?.color,
             }}
             onClick={(e) => { e.stopPropagation() }}
             to={`/Dashboard/${task.id}`}

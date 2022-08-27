@@ -18,8 +18,6 @@ const TaskPage = () => {
     const { taskID } = useParams()
     const { updateDocument } = useDb('tasks')
     const task = tasks && tasks.find(i => i.id === taskID)
-
-
     const [dueDate, setDueDate] = useState('')
     const [fromDate, setFromDate] = useState('')
     const [priority, setPriority] = useState('low')
@@ -51,15 +49,18 @@ const TaskPage = () => {
             description: description,
             priority: priority,
             orderIndex: tasks ? tasks.length + 1 : 0,
-            space: selectedSpace.name,
+            space: selectedSpace ? selectedSpace.name : '',
             status: status ? status.name : '',
             fromDate: null,
             dueDate: null,
         }
 
         if (openSwitch && (from.isBefore(due) || from.isSame(due))) {
-            updatedTask.fromDate = dayjs(fromDate, `YYYY-MM-DDThh:mm`).unix()
-            updatedTask.dueDate = dayjs(dueDate, `YYYY-MM-DDThh:mm`).unix()
+            updatedTask = {
+                ...updatedTask,
+                fromDate: from.unix(),
+                dueDate: due.unix()
+            }
         }
 
         task && updateDocument(task.id!, updatedTask)
@@ -67,38 +68,36 @@ const TaskPage = () => {
     }
 
     return (
-        <Layout title='Update task' spaceSelect={false}>
-            {task && status &&
-                <form className={styles.taskForm} onSubmit={handleSubmit}>
-                    <textarea value={description} onChange={(e: any) => { setDescription(e.target.value) }} rows={10} />
-                    <div className={styles.row}>
-                        <label style={{ flexGrow: 1 }}>
-                            Status:<br />
-                            <StatusSelectInput status={status} setStatus={setStatus} />
-                        </label>
-                        <label>
-                            Priority:
-                            <PriorityChangeInput priority={priority} setPriority={setPriority} />
-                        </label>
-                    </div>
-                    <div className={styles.dateInputsContainer}>
-                        <DateInputs
-                            dueDate={dueDate}
-                            setDueDate={setDueDate}
-                            fromDate={fromDate}
-                            setFromDate={setFromDate}
-                            openSwitch={openSwitch}
-                            setOpenSwitch={setOpenSwitch}
-                        />
-                    </div>
-                    <label>
-                        Space:<br />
-                        <SpaceSelect space={space} setSpace={setSpace} usage='form' />
+        <Layout title='Update task' showSpaceSelect={false}>
+            <form className={styles.taskForm} onSubmit={handleSubmit}>
+                <textarea value={description} onChange={(e: any) => { setDescription(e.target.value) }} rows={10} />
+                <div className={styles.row}>
+                    <label style={{ flexGrow: 1 }}>
+                        Status:<br />
+                        <StatusSelectInput status={status} setStatus={setStatus} />
                     </label>
+                    <label>
+                        Priority:
+                        <PriorityChangeInput priority={priority} setPriority={setPriority} />
+                    </label>
+                </div>
+                <div className={styles.dateInputsContainer}>
+                    <DateInputs
+                        dueDate={dueDate}
+                        setDueDate={setDueDate}
+                        fromDate={fromDate}
+                        setFromDate={setFromDate}
+                        openSwitch={openSwitch}
+                        setOpenSwitch={setOpenSwitch}
+                    />
+                </div>
+                <label>
+                    Space:<br />
+                    <SpaceSelect space={space} setSpace={setSpace} usage='form' />
+                </label>
 
-                    <button type='submit' className={styles.submitButton}>Save changes</button>
-                </form>
-            }
+                <button type='submit' className={styles.submitButton}>Save changes</button>
+            </form>
         </Layout>
     );
 }

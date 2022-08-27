@@ -5,27 +5,19 @@ import GoalSteps from "../../components/GoalSteps/GoalSteps";
 import Layout from "../../components/Layout/Layout/Layout";
 import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
-import { BooleanGoalStep, GoalStep, NumberGoalStep, TaskGoalStep } from "../../interfaces";
 import styles from './GoalPage.module.scss'
+import { getGoalStepProgess } from "../../utils/getGoalStepProgress";
 
-interface GoalPageProps {
-
-}
-
-const GoalPage = ({ }: GoalPageProps) => {
+const GoalPage = () => {
     const { goalID } = useParams()
     const navigate = useNavigate()
-    const { goals, goalSteps, tasks } = useDataContext()
+    const { goals, goalSteps } = useDataContext()
     const { removeDocument: removeGoal } = useDb('goals')
     const { removeDocument: removeGoalStep } = useDb('goalSteps')
     const [openAddStep, setOpenAddStep] = useState(false)
-    const [gs, setGs] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | null>(null)
-    const goal = goals && goals.find(goal => goal.id === goalID)
-    const goalProgress = gs && gs.map(gs => gs.progress).reduce((prev, current) => prev + current, 0) / gs.length * 100
-
-    useEffect(() => {
-        setGs(goalSteps && goalSteps.filter(gs => gs.goalID === goalID))
-    }, [goalSteps])
+    const gs = goalSteps?.filter(gs => gs.goalID === goalID)
+    const goal = goals?.find(goal => goal.id === goalID)
+    const goalProgress = getGoalStepProgess(gs)
 
     const handleClick = (goalID: string) => {
         removeGoal(goalID)
@@ -36,18 +28,18 @@ const GoalPage = ({ }: GoalPageProps) => {
     }
 
     return (
-        <Layout title={'Goals'} spaceSelect={false}>
-            {goal && gs && <>
+        <Layout title={'Goals'} showSpaceSelect={false}>
+            {goal && <>
                 <div className={styles.subHeader}>
                     <h2 className={styles.goalTitle}>
-                        {goal?.title}
+                        {goal.title}
                     </h2>
                     <span>
                         Progress:
-                        <span className={styles.goalProgress}>{goalProgress?.toFixed()}%</span>
+                        <span className={styles.goalProgress}>{goalProgress.toFixed()}%</span>
                     </span>
                 </div>
-                <GoalSteps steps={gs} tasks={tasks} />
+                <GoalSteps steps={gs} />
                 {goal.description && <p className={styles.description}>{goal.description}</p>}
                 {openAddStep ?
                     <AddStep goalID={goalID} />

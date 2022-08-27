@@ -8,21 +8,21 @@ import { increment } from "firebase/firestore";
 
 interface DeleteStatusDialogProps {
     status: Status
-    filteredTasks: Task[]
 }
 
 
-const DeleteStatusDialog = ({ status, filteredTasks }: DeleteStatusDialogProps) => {
+const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
     const { removeDocument: removeStatus, updateDocument: updateStatus, res } = useDb('statuses') // handle error res here
     const { removeDocument: removeTask } = useDb('tasks')
+    const { tasks, statuses } = useDataContext()
 
+    const statusTasks = tasks?.filter(task => task.status === status.name)
     const [isOpen, setIsOpen] = useState(false)
-    const { statuses } = useDataContext()
 
     const handleDelete = () => {
-        statuses.forEach(status => { updateStatus(status.id!, { orderIndex: increment(-1) }) });
+        statuses?.forEach(status => { updateStatus(status.id!, { orderIndex: increment(-1) }) });
         removeStatus(status.id!)
-        filteredTasks.forEach(task => { removeTask(task.id!) })
+        statusTasks && statusTasks.forEach(task => { removeTask(task.id!) })
         setIsOpen(false)
     }
 

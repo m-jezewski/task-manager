@@ -1,16 +1,17 @@
 import { FormEvent, useState } from 'react'
 import useDb from '../../../hooks/useDb'
+import useNewGoalContext from '../../../hooks/useNewGoalContext'
 import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../../interfaces'
 import styles from './AddGoalStepForm.module.scss'
 
 interface AddNumberStepFormProps {
-    addStepToNewGoal?: (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => void
-    goalID: string
+    goalID: string | undefined
 }
 
-const AddNumberStepForm = ({ addStepToNewGoal, goalID }: AddNumberStepFormProps) => {
+const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
 
     const { addDocument } = useDb('goalSteps')
+    const newGoalCtx = useNewGoalContext()
     const [description, setDescription] = useState('')
     const [target, setTarget] = useState(0)
     const [value, setValue] = useState(0)
@@ -23,10 +24,10 @@ const AddNumberStepForm = ({ addStepToNewGoal, goalID }: AddNumberStepFormProps)
             description: description,
             value: value,
             target: target,
-            progress: value / target
+            progress: target !== 0 ? value / target : 1
         }
 
-        addStepToNewGoal ? addStepToNewGoal(step) : addDocument({ ...step, goalID: goalID })
+        newGoalCtx ? newGoalCtx.addStepInNewGoal(step) : addDocument({ ...step, goalID: goalID })
         setDescription('')
         setValue(0)
         setTarget(0)
@@ -52,6 +53,7 @@ const AddNumberStepForm = ({ addStepToNewGoal, goalID }: AddNumberStepFormProps)
                     className={styles.textInput}
                     value={target}
                     pattern="^[0-9]*$"
+                    min={1}
                     onChange={(e) => { setTarget(parseInt(e.target.value)) }}
                     required={true}
                     placeholder='40' />
@@ -62,6 +64,7 @@ const AddNumberStepForm = ({ addStepToNewGoal, goalID }: AddNumberStepFormProps)
                     type="number"
                     className={styles.textInput}
                     value={value}
+                    min={0}
                     pattern="^[0-9]*$"
                     onChange={(e) => { setValue(parseInt(e.target.value) > target ? target : parseInt(e.target.value)) }}
                     required={true} />

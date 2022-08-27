@@ -8,22 +8,21 @@ import { getTasksWithinMonth } from '../../../utils/getTasksWithinMonth'
 import { getDaysOfMonth } from '../../../utils/getDaysOfMonth'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import weekOfYear from 'dayjs/plugin/weekOfYear'
+import { useCalendarOutletContext } from "../Calendar";
 dayjs.extend(weekOfYear)
 
 const MonthCal = () => {
     const navigate = useNavigate()
-    const { date, tasks, statuses } = useOutletContext() as { date: Dayjs, tasks: Task[], statuses: Status[] }
+    const { date, tasks } = useCalendarOutletContext()
     const monthDays = getDaysOfMonth(date)
     const weekDays = getDaysOfWeek(date)
     const weeksId = monthDays.map(monthDay => monthDay.week()).filter((value, index, self) => self.indexOf(value) === index)
 
     return (
-        tasks && statuses && date && <>
+        <>
             <SubHeader
-                date={date}
                 moveBy={'month'}
                 dateHeader={date.format('MMMM YYYY')}
-                statuses={statuses}
             />
             <div className={styles.week}>
                 {weekDays.map(weekDay =>
@@ -46,7 +45,11 @@ const MonthCal = () => {
                                     {monthDay.format('YYYY-MM-DD')}
                                 </span>
                                 <div className={styles.taskBadgeContainer}>
-                                    {getTasksWithinMonth(tasks, monthDay).map((task) => <TaskBadge key={task.id} task={task} statuses={statuses} />)}
+                                    {tasks && getTasksWithinMonth(tasks, monthDay).map((task) =>
+                                        <TaskBadge
+                                            key={task.id}
+                                            task={task}
+                                        />)}
                                 </div>
                             </div>)}
                 </div>

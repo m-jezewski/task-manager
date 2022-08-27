@@ -3,6 +3,11 @@
 .statusSelectInput {
   @extend %baseButton;
   text-transform: uppercase;
+  font-weight: 600;
   width: 100%;
   min-width: 10rem;
+
+  option {
+    font-weight: 500;
+  }
 }

@@ -14,19 +14,16 @@ const TodoPage = () => {
     const { tasks, statuses, selectedSpace } = useDataContext()
 
     return (
-        <Layout title='To-Do List'>
+        statuses && tasks && <Layout title='To-Do List'>
             <div className={styles.newStatusContainer}>
                 <AnimatedPopover buttonClass={styles.newStatusButton} buttonText="ADD NEW STATUS">
                     <AddStatusForm />
                 </AnimatedPopover>
             </div>
-            {selectedSpace ? tasks && statuses && statuses.map((status: Status) =>
+            {selectedSpace ? statuses.map((status: Status) =>
                 <TaskTable
                     key={status.id}
                     status={status}
-                    tasks={tasks}
-                    statuses={statuses}
-                    selectedSpace={selectedSpace}
                 />) :
                 <>Create at least one space to add new tasks!</>
             }

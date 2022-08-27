@@ -12,7 +12,7 @@ interface TaskStatusChangeBtnProps {
 const TaskStatusChangeBtn = ({ task }: TaskStatusChangeBtnProps) => {
     const { updateDocument, res } = useDb('tasks') // handle error res here
     const { statuses } = useDataContext()
-    const btnColor = statuses.filter(status => status.name === task.status)[0].color
+    const btnColor = statuses?.find(status => status.name === task.status)!.color
 
     const handleStatusChange = (status: string) => {
         if (status !== task.status) {
@@ -25,7 +25,7 @@ const TaskStatusChangeBtn = ({ task }: TaskStatusChangeBtnProps) => {
     return (
         <AnimatedPopover buttonClass={styles.outsideBtn} buttonColor={btnColor}>
             <div className={styles.container}>
-                {statuses.map(({ name, color, id }) => (
+                {statuses && statuses.map(({ name, color, id }) => (
                     <button
                         key={id}
                         onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(name) }}

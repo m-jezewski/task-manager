@@ -7,10 +7,10 @@ import useDataContext from "../../../hooks/useDataContext";
 interface LayoutProps {
     children: React.ReactNode
     title: string
-    spaceSelect?: boolean
+    showSpaceSelect?: boolean
 }
 
-const Layout = ({ children, title, spaceSelect = true }: LayoutProps) => {
+const Layout = ({ children, title, showSpaceSelect = true }: LayoutProps) => {
     const { selectedSpace, setSelectedSpace } = useDataContext()
     return (
         <>
@@ -21,7 +21,7 @@ const Layout = ({ children, title, spaceSelect = true }: LayoutProps) => {
                     <hr />
                 </header>
                 <main>
-                    {spaceSelect && <SpaceSelect
+                    {showSpaceSelect && <SpaceSelect
                         space={selectedSpace}
                         setSpace={setSelectedSpace}
                         usage={'header'}

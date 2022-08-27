@@ -12,7 +12,7 @@ interface AnimatedPopoverProps {
     buttonColor?: string
 }
 
-export const ClosePopoverContext = createContext<Function | null>(null)
+export const ClosePopoverContext = createContext<(() => void) | null>(null)
 
 const AnimatedPopover = ({ buttonClass, buttonText, children, buttonColor, panelStyles }: AnimatedPopoverProps) => {
 

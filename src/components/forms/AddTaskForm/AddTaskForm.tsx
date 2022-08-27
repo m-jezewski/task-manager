@@ -14,9 +14,10 @@ import StatusSelectInput from '../../ui/StatusSelect/StatusSelectInput'
 import PriorityChangeInput from '../../ui/PriorityChangeButton/PriorityChangeInput'
 import DateInputs from '../../ui/DateInputs/DateInputs'
 import { DocumentReference } from 'firebase/firestore'
+import useNewGoalContext from '../../../hooks/useNewGoalContext'
 
 interface AddTaskFormProps {
-    defaultStatus: Status
+    defaultStatus?: Status
     direction: 'column' | 'row'
     position: 'absolute' | 'relative'
     openDateInputSwitch?: boolean
@@ -24,7 +25,6 @@ interface AddTaskFormProps {
     defaultDate?: Dayjs
     addGoalStep?: boolean
     goalID?: string
-    addStepToNewGoal?: (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => void
 }
 
 dayjs.extend(customParseFormat)
@@ -37,28 +37,29 @@ const AddTaskForm = ({
     formStyles,
     defaultDate = dayjs(),
     goalID,
-    addStepToNewGoal,
     addGoalStep
 }: AddTaskFormProps) => {
     const { addDocument: addTaskDocument } = useDb('tasks')
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
     const closePopover = useContext(ClosePopoverContext)
-    const { tasks, selectedSpace } = useDataContext()
+    const newGoalCtx = useNewGoalContext()
+    const { tasks, selectedSpace, statuses } = useDataContext()
     const [openDateInputs, setOpenDateInputs] = useState(openDateInputSwitch)
     const [taskRef, setTaskRef] = useState<DocumentReference<any> | null>(null)
     //form inputs
     const [text, setText] = useState('')
-    const [status, setStatus] = useState<Status | null>(defaultStatus)
+    const [status, setStatus] = useState<Status | null>(defaultStatus ? defaultStatus : statuses && statuses[0])
     const [priority, setPriority] = useState('low')
     const [fromDate, setFromDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
     const [dueDate, setDueDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
 
     useEffect(() => {
         if (taskRef && addGoalStep) {
-            console.log('now i should add goalStep')
-            addStepToNewGoal ?
-                addStepToNewGoal({ type: 'task', progress: 0, taskID: taskRef.id! })
-                : addGoalStepDocument({ type: 'task', progress: 0, taskID: taskRef.id!, goalID: goalID })
+            if (newGoalCtx) {
+                newGoalCtx.addStepInNewGoal({ type: 'task', progress: 0, taskID: taskRef.id! })
+            } else {
+                addGoalStepDocument({ type: 'task', progress: 0, taskID: taskRef.id!, goalID: goalID })
+            }
         }
     }, [taskRef])
 
@@ -73,24 +74,20 @@ const AddTaskForm = ({
             description: text,
             priority: priority,
             orderIndex: tasks ? tasks.length + 1 : 0,
-            space: selectedSpace.name,
+            space: selectedSpace ? selectedSpace.name : '',
             status: status ? status.name : '',
             fromDate: null,
             dueDate: null,
         }
 
         if (openDateInputs && (from.isBefore(due) || from.isSame(due))) {
-            task = {
-                ...task,
-                fromDate: from.unix(),
-                dueDate: due.unix()
-            }
+            task = { ...task, fromDate: from.unix(), dueDate: due.unix() }
         }
 
         addTaskDocument(task).then(ref => {
             ref && setTaskRef(ref)
             setText('')
-            setStatus(defaultStatus)
+            setStatus(defaultStatus ? defaultStatus : statuses && statuses[0])
             setPriority('low')
             setOpenDateInputs(openDateInputSwitch)
             setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))

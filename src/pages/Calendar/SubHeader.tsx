@@ -4,15 +4,16 @@ import AddTaskForm from "../../components/forms/AddTaskForm/AddTaskForm";
 import { Status } from "../../interfaces";
 import DateLink from "./DateLink";
 import styles from './Calendar.module.scss'
+import { useCalendarOutletContext } from "./Calendar";
 
 interface SubHeaderProps {
-    date: Dayjs
-    statuses: Status[]
     moveBy: 'day' | 'week' | 'month'
     dateHeader: string
 }
 
-const SubHeader = ({ date, statuses, moveBy, dateHeader }: SubHeaderProps) => {
+const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
+    const { date } = useCalendarOutletContext()
+
     return (
         <div className={styles.subHeader}>
             <DateLink
@@ -30,7 +31,6 @@ const SubHeader = ({ date, statuses, moveBy, dateHeader }: SubHeaderProps) => {
                 buttonClass={styles.addTaskButton}
                 buttonText={'Add new task'}>
                 <AddTaskForm
-                    defaultStatus={statuses && statuses[0]}
                     direction={"column"}
                     position={"absolute"}
                     openDateInputSwitch

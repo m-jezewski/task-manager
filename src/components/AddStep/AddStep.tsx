@@ -1,25 +1,19 @@
-import { FormEvent, Fragment } from 'react';
+import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
 //styles
 import styles from './AddStep.module.scss'
 //hooks
-import useDb from '../../hooks/useDb';
 import useDataContext from '../../hooks/useDataContext';
 //components
 import { Tab } from '@headlessui/react';
 import AddTaskForm from '../forms/AddTaskForm/AddTaskForm';
 import AddNumberStepForm from '../forms/GoalStepForms/AddNumberStepForm';
 import AddBooleanStepForm from '../forms/GoalStepForms/AddBooleanStepForm';
-import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
 
 interface AddStepProps {
-    addStepToNewGoal?: (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => void
     goalID?: string
 }
 
-const AddStep = ({ addStepToNewGoal, goalID }: AddStepProps) => {
-    const { statuses } = useDataContext()
-    const { addDocument } = useDb('goalSteps')
-
+const AddStep = ({ goalID }: AddStepProps) => {
     return (
         <div className={styles.container}>
             <Tab.Group>
@@ -28,7 +22,7 @@ const AddStep = ({ addStepToNewGoal, goalID }: AddStepProps) => {
                     How would you like to follow the progress of this step?
                 </h2>
                 <Tab.List className={styles.tabList}>
-                    {({ selectedIndex }: any) => <>
+                    {({ selectedIndex }) => <>
                         <Tab className={`${styles.tab} ${selectedIndex === 0 && styles.tabActive}`} >Number</Tab>
                         <Tab className={`${styles.tab} ${selectedIndex === 1 && styles.tabActive}`} >True or False</Tab>
                         <Tab className={`${styles.tab} ${selectedIndex === 2 && styles.tabActive}`} >Task</Tab>
@@ -37,26 +31,19 @@ const AddStep = ({ addStepToNewGoal, goalID }: AddStepProps) => {
                 <Tab.Panels>
                     <Tab.Panel as='div'>
                         <AddNumberStepForm
-                            addStepToNewGoal={addStepToNewGoal}
-                            goalID={goalID!}
+                            goalID={goalID}
                         />
                     </Tab.Panel>
                     <Tab.Panel as='div'>
-                        <AddBooleanStepForm
-                            addStepToNewGoal={addStepToNewGoal}
-                            goalID={goalID!}
-                        />
+                        <AddBooleanStepForm goalID={goalID} />
                     </Tab.Panel>
                     <Tab.Panel as={'div'}>
-                        {statuses &&
-                            <AddTaskForm
-                                direction="column"
-                                position="relative"
-                                defaultStatus={statuses[0]}
-                                addStepToNewGoal={addStepToNewGoal}
-                                goalID={goalID!}
-                                addGoalStep
-                            />}
+                        <AddTaskForm
+                            direction="column"
+                            position="relative"
+                            goalID={goalID!}
+                            addGoalStep
+                        />
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>

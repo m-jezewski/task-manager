@@ -14,18 +14,16 @@ import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/Statu
 import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
 import DropToContainer from '../../components/DragAndDrop/DropToContainer/DropToContainer'
 import StatusHideBtn from '../../components/ui/StatusHideBtn/StatusHideBtn'
+import useDataContext from '../../hooks/useDataContext'
 
 interface TaskTableProps {
     status: Status
-    tasks: Task[]
-    statuses: Status[]
-    selectedSpace: Space
 }
 
-const TaskTable = ({ status, tasks }: TaskTableProps) => {
+const TaskTable = ({ status }: TaskTableProps) => {
+    const { tasks } = useDataContext()
     const [showTable, setShowTable] = useState(true)
-
-    const filteredTasks = tasks.filter((i: Task) => i.status === status.name)
+    const statusTasks = tasks?.filter((i: Task) => i.status === status.name)
 
     return (
         <DropToContainer
@@ -72,13 +70,11 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                             current={status} />
                     </th>
                     <th className={styles.smallCell}>
-                        <StatusDeleteBtn
-                            status={status}
-                            filteredTasks={filteredTasks} />
+                        <StatusDeleteBtn status={status} />
                     </th>
                 </tr>
                 {showTable ? <>
-                    {filteredTasks.length === 0 ?
+                    {!statusTasks || statusTasks.length === 0 ?
                         <tr>
                             <td />
                             <td
@@ -87,7 +83,7 @@ const TaskTable = ({ status, tasks }: TaskTableProps) => {
                                 No tasks
                             </td>
                         </tr>
-                        : filteredTasks.map((task: Task) => (
+                        : statusTasks.map((task: Task) => (
                             <TaskTableItem
                                 key={task.id}
                                 todo={task} />

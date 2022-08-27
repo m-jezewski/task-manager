@@ -1,29 +1,29 @@
 import { Switch } from "@headlessui/react";
 import useDb from "../../../hooks/useDb";
+import useNewGoalContext from "../../../hooks/useNewGoalContext";
 import { BooleanGoalStep } from "../../../interfaces";
 import styles from './GoalStepSwitch.module.scss'
 
 interface GoalStepSwitchProps {
-    goalStep?: BooleanGoalStep
-    newStepValue?: number
-    setNewStepValue?: React.Dispatch<React.SetStateAction<number>>
+    goalStep: BooleanGoalStep
 }
 
-const GoalStepSwitch = ({ goalStep, newStepValue, setNewStepValue }: GoalStepSwitchProps) => {
+const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
 
     const { updateDocument } = useDb('goalSteps')
+    const newGoalCtx = useNewGoalContext()
 
     const handleChange = () => {
-        goalStep ? updateDocument(goalStep.id!, { progress: goalStep.progress === 1 ? 0 : 1 }) : setNewStepValue!(newStepValue === 1 ? 0 : 1)
+        newGoalCtx ? newGoalCtx.updateStepInNewGoal(goalStep.id!, { progress: goalStep?.progress === 1 ? 0 : 1 }) : updateDocument(goalStep.id!, { progress: goalStep.progress === 1 ? 0 : 1 })
     }
 
     return (
         <Switch
             className={styles.goalStepSwitch}
-            checked={goalStep ? goalStep.progress === 1 : newStepValue === 1}
+            checked={goalStep.progress === 1}
             onChange={handleChange}
         >
-            <span className={`${(goalStep && goalStep.progress === 1) || newStepValue! ? styles.switchInnerEnabled : styles.switchInnerDisabled}`} />
+            <span className={(goalStep.progress === 1) ? styles.switchInnerEnabled : styles.switchInnerDisabled} />
         </Switch>
     );
 }

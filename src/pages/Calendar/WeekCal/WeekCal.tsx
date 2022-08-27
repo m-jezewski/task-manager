@@ -1,25 +1,23 @@
 import { Dayjs } from "dayjs";
-import { Status, Task } from "../../../interfaces";
 import styles from './WeekCal.module.scss'
-import TaskBadge from "./TaskBadge";
+import TaskCard from "./TaskCard";
 import SubHeader from "../SubHeader";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getTasksWithinWeek } from '../../../utils/getTasksWithinWeek'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
+import { useCalendarOutletContext } from "../Calendar";
 
 const WeekCal = () => {
-    const { date, tasks, statuses } = useOutletContext() as { date: Dayjs, tasks: Task[], statuses: Status[] }
+    const { date, tasks } = useCalendarOutletContext()
     const weekDays: Dayjs[] = getDaysOfWeek(date)
     const hours = getHoursOfDate(date)
 
     return (
-        tasks && statuses && date && <>
+        <>
             <SubHeader
-                date={date}
                 moveBy={'week'}
                 dateHeader={`${weekDays[0].format('DD/MM/YY')} - ${weekDays[6].format('DD/MM/YY')}`}
-                statuses={statuses}
             />
             <div className={styles.tableHeaders}>
                 <span />
@@ -47,7 +45,12 @@ const WeekCal = () => {
                         <div style={{ gridColumn: 1 }}></div>
                         {weekDays.map(weekDay =>
                             <div className={styles.weekDayGrid} key={weekDay.date()}>
-                                {getTasksWithinWeek(tasks, weekDay).map((task) => <TaskBadge key={task.id} task={task} weekDay={weekDay} statuses={statuses} />)}
+                                {tasks && getTasksWithinWeek(tasks, weekDay).map((task) =>
+                                    <TaskCard
+                                        key={task.id}
+                                        task={task}
+                                        weekDay={weekDay}
+                                    />)}
                             </div>
                         )}
                     </>

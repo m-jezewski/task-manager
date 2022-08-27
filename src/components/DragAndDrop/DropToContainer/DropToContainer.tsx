@@ -15,7 +15,7 @@ const DropToContainer = ({ children, status, parentStyles, Parent }: DropToConta
     const { updateDocument } = useDb('tasks')
 
     const debounceDragOver = (() => {
-        let timeout: any
+        let timeout: NodeJS.Timeout
         return () => {
             clearTimeout(timeout)
             timeout = setTimeout(() => {

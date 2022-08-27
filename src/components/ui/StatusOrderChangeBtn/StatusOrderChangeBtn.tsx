@@ -3,6 +3,7 @@ import { CSSProperties, useContext } from 'react'
 import { DataContext } from '../../../contexts/DataContext'
 import { Status, Task } from '../../../interfaces'
 import useDb from '../../../hooks/useDb'
+import useDataContext from '../../../hooks/useDataContext'
 
 interface StatusOrderChangeBtnProps {
     variant: 'up' | 'down' | 'left' | 'right'
@@ -13,13 +14,13 @@ interface StatusOrderChangeBtnProps {
 }
 
 const StatusOrderChangeBtn = ({ variant, elemId, current, buttonStyles }: StatusOrderChangeBtnProps) => {
-    const { statuses } = useContext(DataContext) as { tasks: Task[], statuses: Status[] }
+    const { statuses } = useDataContext()
     const { updateDocument } = useDb('statuses')
 
     const handleClick = () => {
         let inc = 0;
         variant === 'up' || variant === 'left' ? inc = -1 : inc = 1
-        const adjacent = statuses[statuses.findIndex((status) => status.id === elemId) + inc]
+        const adjacent = statuses && statuses[statuses.findIndex((status) => status.id === elemId) + inc]
         if (!adjacent) return
 
         updateDocument(elemId, {

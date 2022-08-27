@@ -8,14 +8,15 @@ import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
 import DropToContainer from "../../components/DragAndDrop/DropToContainer/DropToContainer";
 import StatusHideBtn from "../../components/ui/StatusHideBtn/StatusHideBtn";
+import useDataContext from "../../hooks/useDataContext";
 
 interface StatusSectionProps {
     status: Status
-    tasks: Task[]
 }
 
-const StatusSection = ({ status, tasks }: StatusSectionProps) => {
-    const filteredTasks = tasks.filter((i: Task) => i.status === status.name)
+const StatusSection = ({ status }: StatusSectionProps) => {
+    const { tasks } = useDataContext()
+    const statusTasks = tasks?.filter((task: Task) => task.status === status.name)
     const [showSection, setShowSection] = useState(true)
 
     return (
@@ -29,10 +30,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                         </div>
                         <h2>{status.name}</h2>
                         <div>
-                            <StatusDeleteBtn
-                                status={status}
-                                filteredTasks={filteredTasks}
-                            />
+                            <StatusDeleteBtn status={status} />
                             <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>
@@ -49,7 +47,7 @@ const StatusSection = ({ status, tasks }: StatusSectionProps) => {
                             status={status}
                             parentStyles={styles.taskContainer}
                         >
-                            {filteredTasks.map(task => (
+                            {statusTasks?.map(task => (
                                 <TaskCard
                                     key={task.id}
                                     task={task}

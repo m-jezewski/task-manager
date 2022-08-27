@@ -2,15 +2,16 @@ import dayjs, { Dayjs } from "dayjs";
 import styles from './TaskCard.module.scss'
 import { Status, Task } from "../../../interfaces";
 import { useNavigate } from "react-router-dom";
+import useDataContext from "../../../hooks/useDataContext";
 
 interface TaskCardProps {
     task: Task
     date: Dayjs
-    statuses: Status[]
 }
 
-const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
+const TaskCard = ({ task, date }: TaskCardProps) => {
     const navigate = useNavigate()
+    const { statuses } = useDataContext()
     const fromDate = dayjs.unix(task.fromDate!)
     const dueDate = dayjs.unix(task.dueDate!)
 
@@ -20,7 +21,7 @@ const TaskCard = ({ task, date, statuses }: TaskCardProps) => {
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
-                backgroundColor: statuses.filter((status) => task.status === status.name)[0].color,
+                backgroundColor: statuses?.find((status) => task.status === status.name)?.color,
             }}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         >

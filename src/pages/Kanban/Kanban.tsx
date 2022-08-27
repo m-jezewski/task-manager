@@ -7,17 +7,15 @@ import styles from './Kanban.module.scss'
 import StatusSection from './StatusSection';
 
 const Kanban = () => {
-    const { statuses, tasks, selectedSpace } = useDataContext()
-    //selectedSpace check patrz todo
+    const { statuses } = useDataContext()
 
     return (
         <Layout title='Kanban'>
             <div className={styles.container}>
-                {statuses && tasks && statuses.map(status => (
+                {statuses?.map(status => (
                     <StatusSection
                         key={status.id}
                         status={status}
-                        tasks={tasks}
                     />
                 ))}
                 <AnimatedPopover

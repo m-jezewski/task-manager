@@ -1,9 +1,9 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
-import { Task, Space, Status } from '../interfaces'
+import { Task, Space, Status, GoalStep, Goal } from '../interfaces'
 import { useState, useEffect } from 'react'
 import { db } from '../firebase/config'
 
-type Data = Task[] | Space[] | Status[]
+type Data = Task[] | Space[] | Status[] | Goal[] | GoalStep[]
 
 export const useCollectionSub = (c: string, uid: string) => {
   const [data, setData] = useState<Data | null>(null)

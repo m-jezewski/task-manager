@@ -4,16 +4,17 @@ import { Status, Task } from "../../../interfaces";
 import styles from './WeekCal.module.scss'
 import isBetween from 'dayjs/plugin/isBetween'
 import { useNavigate } from "react-router-dom";
+import useDataContext from "../../../hooks/useDataContext";
 
 dayjs.extend(isBetween)
 
-interface TaskBadgeProps {
+interface TaskCardProps {
     task: Task
     weekDay: Dayjs
-    statuses: Status[]
 }
 
-const TaskBadge = ({ task, weekDay, statuses }: TaskBadgeProps) => {
+const TaskCard = ({ task, weekDay }: TaskCardProps) => {
+    const { statuses } = useDataContext()
     const navigate = useNavigate()
     const fromDate = dayjs.unix(task.fromDate!)
     const dueDate = dayjs.unix(task.dueDate!)
@@ -21,12 +22,12 @@ const TaskBadge = ({ task, weekDay, statuses }: TaskBadgeProps) => {
     return (
         <div
             ref={badgeEl}
-            className={styles.taskBadge}
+            className={styles.TaskCard}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
             style={{
                 gridRowStart: fromDate.isSame(weekDay, 'day') ? fromDate.hour() : 1,
                 gridRowEnd: dueDate.isSame(weekDay, 'day') ? dueDate.hour() + 1 : 25,
-                backgroundColor: statuses && statuses.filter((status) => status.name === task.status)[0]!.color,
+                backgroundColor: statuses?.find((status) => status.name === task.status)?.color,
             }}
         >
             {task.description}
@@ -34,4 +35,4 @@ const TaskBadge = ({ task, weekDay, statuses }: TaskBadgeProps) => {
     );
 }
 
-export default TaskBadge;
+export default TaskCard;

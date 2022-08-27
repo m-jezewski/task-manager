@@ -1,14 +1,15 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { BooleanGoalStep, Goal, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
+import { getGoalStepProgess } from "../../../utils/getGoalStepProgress";
 import styles from './GoalLink.module.scss'
 
 interface GoalLinkProps {
     goal: Goal
-    steps: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
+    steps?: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
 }
 
-const drawCircle = (color: string, percent: number, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+const drawCircle = (color: string, percent: number, ctx: CanvasRenderingContext2D) => {
     percent = Math.min(Math.max(0, percent), 1)
     ctx.beginPath()
     ctx.arc(0, 0, 53.5, 0, Math.PI * 2 * percent, false)
@@ -19,8 +20,7 @@ const drawCircle = (color: string, percent: number, canvas: HTMLCanvasElement, c
 }
 
 const GoalLink = ({ goal, steps }: GoalLinkProps) => {
-    const goalProgress = steps.map(step => step.progress).reduce((prev, current) => prev + current, 0) / steps.length * 100
-    const span = useRef<HTMLSpanElement>(null)
+    const goalProgress = getGoalStepProgess(steps)
     const canvas = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
@@ -30,8 +30,8 @@ const GoalLink = ({ goal, steps }: GoalLinkProps) => {
             if (ctx) {
                 ctx.translate(112 / 2, 112 / 2)
                 ctx.rotate(-0.5 * Math.PI)
-                drawCircle('#e5e7eb', 100 / 100, canvas.current, ctx);
-                drawCircle('#86efac', goalProgress / 100, canvas.current, ctx);
+                drawCircle('#e5e7eb', 100 / 100, ctx);
+                drawCircle('#86efac', goalProgress / 100, ctx);
             }
         }
     }, [])
@@ -45,7 +45,7 @@ const GoalLink = ({ goal, steps }: GoalLinkProps) => {
             <div
                 className={styles.goalProgressCircle}
                 style={{}}>
-                <span ref={span}>
+                <span>
                     {goalProgress.toFixed()}%
                 </span>
                 <canvas ref={canvas} />

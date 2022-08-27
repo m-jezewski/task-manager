@@ -1,17 +1,23 @@
-import { useNavigate, Outlet, useParams, NavLink } from 'react-router-dom'
+import { useNavigate, Outlet, useParams, NavLink, useOutletContext } from 'react-router-dom'
 //contexts
 import useDataContext from '../../hooks/useDataContext'
 //styles
 import styles from './Calendar.module.scss'
 //dayjs
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 //components
 import Layout from '../../components/Layout/Layout/Layout'
+import { Status, Task } from '../../interfaces'
+
+
+export const useCalendarOutletContext = () => {
+    return useOutletContext<{ date: Dayjs, tasks: Task[] | null, statuses: Status[] | null }>()
+}
 
 const Calendar = () => {
     const navigate = useNavigate()
     const { date: dateParams } = useParams()
-    const { tasks, statuses } = useDataContext()
+    const { tasks } = useDataContext()
     const date = dayjs(dateParams, 'DD-MM-YYYY').isValid() ? dayjs(dateParams, 'DD-MM-YYYY') : dayjs()
 
     const handleChange = (e: any) => {
@@ -43,7 +49,7 @@ const Calendar = () => {
                     onChange={handleChange}
                 />
             </div>
-            <Outlet context={{ date, tasks, statuses }} />
+            <Outlet context={{ date, tasks }} />
         </Layout>
     );
 }

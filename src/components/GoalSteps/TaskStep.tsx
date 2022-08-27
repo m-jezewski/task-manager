@@ -5,15 +5,18 @@ import TaskPrioChangeBtn from "../ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
 import TaskStatusChangeBtn from "../ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
 import TaskDeleteBtn from "../ui/TaskDeleteBtn/TaskDeleteBtn";
 import styles from './Steps.module.scss'
+import useDataContext from "../../hooks/useDataContext";
 
 interface TaskStepProps {
-    step: NumberGoalStep | BooleanGoalStep | TaskGoalStep
-    task: Task
+    step: TaskGoalStep
 }
 
-const TaskStep = ({ step, task }: TaskStepProps) => {
+const TaskStep = ({ step }: TaskStepProps) => {
+    const { tasks } = useDataContext()
+    const task = tasks?.find(task => task.id === step.taskID)!
+
     return (
-        task && <tr>
+        <tr>
             <td className={styles.smallCell}>
                 <GoalStepCheckbox goalStep={step} />
             </td>
@@ -30,7 +33,7 @@ const TaskStep = ({ step, task }: TaskStepProps) => {
                 <TaskPrioChangeBtn task={task} />
             </td>
             <td className={styles.smallCell}>
-                <TaskDeleteBtn task={task} goalStep={step} />
+                <TaskDeleteBtn task={task} />
             </td>
         </tr>
     );

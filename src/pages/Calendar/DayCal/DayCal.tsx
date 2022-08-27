@@ -1,22 +1,17 @@
-import { Dayjs } from "dayjs";
 import TaskCard from "./TaskCard";
 import styles from './DayCal.module.scss'
-import { Status, Task } from "../../../interfaces";
 import SubHeader from '../SubHeader'
-import { useOutletContext } from "react-router-dom";
 import { getTasksWithinDay } from '../../../utils/getTasksWithinDay'
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
+import { useCalendarOutletContext } from "../Calendar";
 
 const DayCal = () => {
-    const { tasks, statuses, date } = useOutletContext() as { tasks: Task[], statuses: Status[], date: Dayjs }
+    const { tasks, date } = useCalendarOutletContext()
     const hours = getHoursOfDate(date)
-    const filteredTasks = tasks && getTasksWithinDay(tasks, hours)
 
     return (
-        filteredTasks && statuses && date && <>
+        <>
             <SubHeader
-                date={date}
-                statuses={statuses}
                 moveBy={'day'}
                 dateHeader={date.format('dddd DD/MM/YY')}
             />
@@ -32,9 +27,13 @@ const DayCal = () => {
                     </tbody>
                 </table>
                 <div className={styles.grid}>
-                    <div style={{ gridColumn: 1, gridRowStart: 1, gridRowEnd: 25, }}></div>
-                    {filteredTasks && filteredTasks.map((task) =>
-                        <TaskCard key={task.id} task={task} date={date} statuses={statuses} />
+                    <div style={{ gridColumn: 1, gridRowStart: 1, gridRowEnd: 25, }} />
+                    {tasks && getTasksWithinDay(tasks, hours).map((task) =>
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            date={date}
+                        />
                     )}
                 </div>
             </div>

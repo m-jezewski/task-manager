@@ -19,7 +19,9 @@ const DateLink = ({ move, by, date, children }: DateLinkProps) => {
 
     return (
         <Link
-            to={move === 'back' ? `../../${date.subtract(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}` : `../../${date.add(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}`}
+            to={move === 'back' ?
+                `../../${date.subtract(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}` :
+                `../../${date.add(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}`}
             replace={true}
         >
             {move === "back" && <img src={arrowLeft} alt={`move back to previous ${by}`} />}
