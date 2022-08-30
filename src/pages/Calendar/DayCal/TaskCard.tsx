@@ -19,7 +19,7 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
         <div
             className={styles.container}
             style={{
-                gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() : 1,
+                gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() + 1 : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
                 backgroundColor: statuses?.find((status) => task.status === status.name)?.color,
             }}

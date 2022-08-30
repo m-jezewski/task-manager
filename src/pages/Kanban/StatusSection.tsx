@@ -34,27 +34,23 @@ const StatusSection = ({ status }: StatusSectionProps) => {
                             <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>
-                    <>
+                    <DropToContainer
+                        Parent='div'
+                        status={status}
+                        parentStyles={styles.taskContainer}
+                    >
                         <AnimatedPopover buttonClass={styles.addTaskBtn} buttonText='Add new task'>
                             <AddTaskForm
-                                direction='column'
-                                position='relative'
                                 defaultStatus={status}
                             />
                         </AnimatedPopover>
-                        <DropToContainer
-                            Parent='div'
-                            status={status}
-                            parentStyles={styles.taskContainer}
-                        >
-                            {statusTasks?.map(task => (
-                                <TaskCard
-                                    key={task.id}
-                                    task={task}
-                                />
-                            ))}
-                        </DropToContainer>
-                    </>
+                        {statusTasks?.map(task => (
+                            <TaskCard
+                                key={task.id}
+                                task={task}
+                            />
+                        ))}
+                    </DropToContainer>
                 </section > :
                 <section className={`${styles.section} ${styles.sectionHidden}`} style={{ backgroundColor: status.color }}>
                     <StatusHideBtn showStatus={showSection} setShowStatus={setShowSection} />

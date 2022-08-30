@@ -1,5 +1,6 @@
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Layout.module.scss'
+import { useState } from 'react'
 import SpaceSelect from "../../ui/SpaceSelect/SpaceSelect";
 import useDataContext from "../../../hooks/useDataContext";
 
@@ -12,6 +13,7 @@ interface LayoutProps {
 
 const Layout = ({ children, title, showSpaceSelect = true }: LayoutProps) => {
     const { selectedSpace, setSelectedSpace } = useDataContext()
+
     return (
         <>
             <Sidebar />

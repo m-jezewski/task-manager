@@ -1,31 +1,36 @@
 @import './variables';
 
-@mixin smMinBreakPoint {
+@mixin maxSmScreen {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin smScreen {
   @media (min-width: #{$screen-sm}) {
     @content;
   }
 }
 
-@mixin mdMinBreakPoint {
+@mixin mdScreen {
   @media (min-width: #{$screen-md}) {
     @content;
-    font-size: 14px;
   }
 }
 
-@mixin lgMinBreakPoint {
+@mixin lgScreen {
   @media (min-width: #{$screen-lg}) {
     @content;
   }
 }
 
-@mixin xlMinBreakPoint {
+@mixin xlScreen {
   @media (min-width: #{$screen-xl}) {
     @content;
   }
 }
 
-@mixin xxlMinBreakPoint {
+@mixin xxlScreen {
   @media (min-width: #{$screen-xxl}) {
     @content;
   }

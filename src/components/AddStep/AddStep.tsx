@@ -1,8 +1,5 @@
-import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
 //styles
 import styles from './AddStep.module.scss'
-//hooks
-import useDataContext from '../../hooks/useDataContext';
 //components
 import { Tab } from '@headlessui/react';
 import AddTaskForm from '../forms/AddTaskForm/AddTaskForm';
@@ -39,8 +36,7 @@ const AddStep = ({ goalID }: AddStepProps) => {
                     </Tab.Panel>
                     <Tab.Panel as={'div'}>
                         <AddTaskForm
-                            direction="column"
-                            position="relative"
+                            formStyles={{ width: '100%' }}
                             goalID={goalID!}
                             addGoalStep
                         />

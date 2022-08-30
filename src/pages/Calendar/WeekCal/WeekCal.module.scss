@@ -7,10 +7,17 @@
   gap: 0.5rem;
 }
 
+.calendarWrapper {
+  overflow-x: scroll;
+}
+
 .tableHeaders {
   display: flex;
+  box-sizing: border-box;
   column-gap: 2px;
-  margin: 0px 2px;
+  padding: 0 2px;
+  min-width: 55rem;
+  width: 100%;
 
   span {
     min-width: 3rem;
@@ -22,7 +29,7 @@
     box-sizing: border-box;
     padding: 0.5rem 0;
     border-radius: 0.5rem 0.5rem 0 0;
-    width: calc((100% - 3rem) / 7);
+    width: calc((100% - 51px) / 7);
     font-weight: 500;
     word-break: break-word;
     background-color: $bright-1;
@@ -31,6 +38,7 @@
 
 .tableContainer {
   position: relative;
+  min-width: 55rem;
 
   table {
     width: 100%;

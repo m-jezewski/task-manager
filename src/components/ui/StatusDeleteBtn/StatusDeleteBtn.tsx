@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { useState } from "react";
-import { Status, Task } from "../../../interfaces";
+import { Status } from "../../../interfaces";
 import styles from './StatusDeleteBtn.module.scss'
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
@@ -38,7 +38,7 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
                 className={styles.dialogContainer}
             >
                 <Dialog.Panel className={styles.panel}>
-                    <Dialog.Title className={styles.title}>Are you sure?</Dialog.Title>
+                    <Dialog.Title className={styles.title}>Remove Status</Dialog.Title>
                     <Dialog.Description className={styles.description}>
                         This action will pernamently remove this status and all associated with it tasks
                     </Dialog.Description>
@@ -51,7 +51,7 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
                     <button
                         onClick={() => setIsOpen(false)}
                         className={styles.backButton}>
-                        Go back
+                        Cancel
                     </button>
                 </Dialog.Panel>
             </Dialog>

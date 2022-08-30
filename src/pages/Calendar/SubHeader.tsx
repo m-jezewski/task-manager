@@ -1,7 +1,5 @@
-import { Dayjs } from "dayjs";
 import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
 import AddTaskForm from "../../components/forms/AddTaskForm/AddTaskForm";
-import { Status } from "../../interfaces";
 import DateLink from "./DateLink";
 import styles from './Calendar.module.scss'
 import { useCalendarOutletContext } from "./Calendar";
@@ -31,10 +29,8 @@ const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
                 buttonClass={styles.addTaskButton}
                 buttonText={'Add new task'}>
                 <AddTaskForm
-                    direction={"column"}
-                    position={"absolute"}
+                    formStyles={{ position: 'absolute', transform: 'translate(calc(-100% - 0.5rem))', width: '100%' }}
                     openDateInputSwitch
-                    formStyles={{ transform: 'translate(calc(-100% - 0.5rem), 1rem)' }}
                     defaultDate={date}
                 />
             </AnimatedPopover>

@@ -1,39 +1,101 @@
 @use '../../../scss/placeholders';
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+%sideBarButton {
+}
+
+.sideBarOpen {
+  display: flex !important;
+  animation: moveFormRight 0.25s forwards;
+}
 
 .container {
   box-sizing: border-box;
   position: fixed;
-  display: flex;
+  z-index: 5000;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0.5rem;
   min-height: 100vh;
-  min-width: 15rem;
-  max-width: 15rem;
-  padding: 1rem;
+  height: 100%;
+  padding-top: 3.5rem;
   color: $bright-1;
+  width: 4.5rem;
   background-color: $dark-1;
+  animation: moveFormLeft 0.25s forwards;
+
+  @include smScreen {
+    padding: 0.5rem;
+    display: flex;
+    position: fixed;
+    animation: none;
+  }
+
+  @include xlScreen {
+    padding: 1rem;
+    width: 13rem;
+  }
 
   .logo {
+    display: none;
     font-size: $font-large;
     font-weight: 600;
-  }
-  hr {
-    width: 100%;
+
+    hr {
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+
+    @include xlScreen {
+      display: inline;
+    }
   }
 
   a {
     @extend %baseButton;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     margin-top: 1rem;
     text-decoration: none;
     color: $bright-1;
+
+    span {
+      display: none;
+    }
+
+    @include xlScreen {
+      justify-content: flex-start;
+      span {
+        display: block;
+      }
+    }
   }
   a:hover {
     background-color: $brighterTransparent;
   }
+}
+
+.toggleSidebar {
+  @extend %lightingHover;
+  @extend %baseButton;
+  box-sizing: border-box;
+  position: absolute;
+  margin: 0.5rem;
+  padding-bottom: 0.25rem;
+  z-index: 6000;
+  width: 3.5rem;
+  top: 0.5rem;
+  left: 0;
+  @include smScreen {
+    display: none;
+  }
+}
+.toggleSidebar:hover {
+  background-color: $brighterTransparent;
 }
 
 .settings {
@@ -42,5 +104,34 @@
     @extend %darkeningHover;
     width: 100%;
     background-color: $bright-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    span {
+      display: none;
+      @include xlScreen {
+        display: inline;
+      }
+    }
+  }
+}
+
+@keyframes moveFormLeft {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes moveFromRight {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-100%);
   }
 }

@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 .layoutContainer {
   box-sizing: border-box;
@@ -6,9 +7,19 @@
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  max-width: calc(100% - 15rem);
-  margin-left: 15rem;
-  padding: 2rem;
+  padding: 1rem 0.5rem;
+
+  @include smScreen {
+    max-width: calc(100% - 4.5rem);
+    margin-left: 4.5rem;
+    padding: 1rem;
+  }
+
+  @include xlScreen {
+    padding: 2rem;
+    margin-left: 13rem;
+    max-width: calc(100% - 13rem);
+  }
 
   main {
     box-sizing: border-box;
@@ -18,24 +29,54 @@
     width: 100%;
     min-height: calc(100% - 9rem);
     flex-grow: 1;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 0.5rem;
     border-radius: 6px;
     background-color: $bright-2;
+
+    @include smScreen {
+      padding: 1rem;
+    }
+
+    @include xlScreen {
+      padding: 1rem 2rem 2rem 2rem;
+    }
   }
 
   header {
+    .openSidebarBtn {
+      position: absolute;
+      z-index: 5000;
+      width: 3rem;
+      height: 3rem;
+
+      @include smScreen {
+        display: none;
+      }
+    }
+
     h1 {
       margin: 0;
-      font-size: $font-large;
-      line-height: $font-large;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
       color: $bright-1;
+      text-align: center;
+
+      @include smScreen {
+        text-align: left;
+        font-size: $font-large;
+        line-height: $font-large;
+      }
     }
 
     hr {
       width: 100%;
       height: 1px;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       background-color: $bright-1;
+
+      @include xlScreen {
+        margin-bottom: 2rem;
+      }
     }
   }
 }

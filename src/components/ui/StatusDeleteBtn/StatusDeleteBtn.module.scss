@@ -11,17 +11,7 @@
 }
 
 .dialogContainer {
-  box-sizing: border-box;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  padding: 1rem;
-  backdrop-filter: blur(1px) brightness(90%);
+  @extend %baseModalContainer;
 
   button {
     @extend %baseButton;
@@ -30,10 +20,7 @@
   }
 
   .panel {
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    background-color: $bright-1;
+    @extend %baseModalPanel;
 
     .title {
       @extend %subtitle;

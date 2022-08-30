@@ -1,12 +1,12 @@
 @use '../../../scss/placeholders';
 @import '../../../scss/variables';
+@import '../../../scss//mixins';
 
 .form {
   box-sizing: border-box;
-  position: absolute;
   display: flex;
   flex-direction: column;
-  min-width: 15rem;
+  width: 12rem;
   margin-top: 0.5rem;
   gap: 1rem;
   padding: 1rem;
@@ -15,20 +15,18 @@
   z-index: 2000;
   background-color: $bright-1;
 
-  .innerContainer {
-    gap: 1rem;
-    justify-content: space-between;
-    display: flex;
+  @include smScreen {
+    width: 14rem;
   }
 
-  input {
-    font-family: inherit;
-    padding: 0.5rem;
+  @include maxSmScreen {
+    transform: none !important;
+    right: 0;
+    left: 0;
   }
-
   .descriptionInput {
     @extend %baseInput;
-    min-width: 12rem;
+    min-width: 10rem;
   }
 
   .submitButton {

@@ -1,9 +1,14 @@
 @use '../../../scss/placeholders';
 @import '../../../scss/variables';
 
+.calendarWrapper {
+  overflow-x: auto;
+}
+
 .week {
   display: flex;
   width: 100%;
+  min-width: 55rem;
 
   .weekDayHeader {
     box-sizing: border-box;

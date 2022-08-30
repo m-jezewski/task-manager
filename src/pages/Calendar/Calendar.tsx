@@ -26,7 +26,7 @@ const Calendar = () => {
 
     return (
         <Layout title='Calendar'>
-            <div>
+            <div className={styles.calendarNav}>
                 <NavLink
                     to={`${date.format('DD-MM-YYYY')}/Day`}
                     className={({ isActive }) => `${styles.tab} ${isActive && styles.tabActive}`}>

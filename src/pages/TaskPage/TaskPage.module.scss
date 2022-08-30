@@ -4,6 +4,7 @@
 .taskForm {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 1rem;
 
   textarea {
@@ -18,11 +19,24 @@
     border-radius: 0.5rem;
   }
 
-  .submitButton {
-    @extend %baseButton;
-    @extend %darkeningBorder;
-    background-color: $bright-1;
-    align-self: flex-end;
+  .buttonRow {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+
+    .returnButton {
+      @extend %baseButton;
+      @extend %darkeningBorder;
+      background-color: $bright-1;
+    }
+
+    .submitButton {
+      @extend %baseButton;
+      @extend %lightingHover;
+      background-color: $blue-1;
+      color: $bright-1;
+      margin-left: auto;
+    }
   }
 
   .dateInputsContainer input {

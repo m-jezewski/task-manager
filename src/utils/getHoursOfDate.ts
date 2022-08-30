@@ -4,7 +4,7 @@ import { Dayjs } from 'dayjs'
 
 export const getHoursOfDate = (date: Dayjs) => {
   const hours = []
-  for (let i = 1; i < 25; i++) {
+  for (let i = 0; i < 24; i++) {
     hours.push(date.hour(i))
   }
   return hours

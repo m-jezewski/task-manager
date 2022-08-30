@@ -22,7 +22,7 @@ const TaskCard = ({ task, weekDay }: TaskCardProps) => {
     return (
         <div
             ref={badgeEl}
-            className={styles.TaskCard}
+            className={styles.taskCard}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
             style={{
                 gridRowStart: fromDate.isSame(weekDay, 'day') ? fromDate.hour() : 1,

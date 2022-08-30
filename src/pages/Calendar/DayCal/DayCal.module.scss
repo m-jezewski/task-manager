@@ -12,7 +12,13 @@
     empty-cells: show;
 
     .smallCell {
-      width: 2.5rem;
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 1000;
+      width: 3rem;
+      height: 35px;
+      border-bottom: 2px solid $bright-3;
+      padding: 0.4rem 0.2rem;
     }
 
     tr {

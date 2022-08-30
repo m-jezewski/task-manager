@@ -11,6 +11,7 @@ import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
 import { Space, Status, Task } from "../../interfaces";
 import styles from './TaskPage.module.scss'
+import TaskDeleteModal from "../../components/ui/TaskDeleteModal/TaskDeleteModal";
 
 const TaskPage = () => {
     const navigate = useNavigate()
@@ -62,7 +63,6 @@ const TaskPage = () => {
                 dueDate: due.unix()
             }
         }
-
         task && updateDocument(task.id!, updatedTask)
         navigate(-1)
     }
@@ -95,8 +95,20 @@ const TaskPage = () => {
                     Space:<br />
                     <SpaceSelect space={space} setSpace={setSpace} usage='form' />
                 </label>
-
-                <button type='submit' className={styles.submitButton}>Save changes</button>
+                <div className={styles.buttonRow}>
+                    <button
+                        type='button'
+                        className={styles.returnButton}
+                        onClick={() => { navigate(-1) }}>
+                        Go back
+                    </button>
+                    {task && <TaskDeleteModal task={task} />}
+                    <button
+                        type='submit'
+                        className={styles.submitButton}>
+                        Save changes
+                    </button>
+                </div>
             </form>
         </Layout>
     );

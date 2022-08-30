@@ -34,8 +34,7 @@ const TaskTable = ({ status }: TaskTableProps) => {
             <tbody>
                 <tr>
                     <th
-                        className={styles.smallCell}
-                        style={{ padding: '0px' }}>
+                        className={`${styles.smallCell} ${styles.hideStatusBtn}`}>
                         <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                     </th>
                     <th className={styles.thStatus}>
@@ -48,8 +47,7 @@ const TaskTable = ({ status }: TaskTableProps) => {
                             buttonClass={styles.addTaskBtn}
                             buttonText='+'>
                             <AddTaskForm
-                                position='absolute'
-                                direction='row'
+                                formStyles={{ position: 'absolute' }}
                                 defaultStatus={status}
                             />
                         </AnimatedPopover>

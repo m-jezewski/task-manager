@@ -1,5 +1,6 @@
 @use '../../scss/placeholders';
 @import '../../scss/variables';
+@import '../../scss/mixins';
 
 .container {
   box-sizing: border-box;
@@ -8,6 +9,7 @@
   gap: 0.5rem;
   padding-bottom: 1rem;
   overflow-x: auto;
+  background-color: inherit;
 
   .addStatusButton {
     @extend %baseButton;
@@ -18,10 +20,12 @@
   }
 
   section {
+    position: relative;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    min-width: 15rem;
+    background-color: inherit;
+    min-width: 12rem;
     max-width: 15rem;
 
     .sectionHeader {
@@ -35,6 +39,7 @@
         font-size: 1rem;
         font-weight: 500;
         text-transform: uppercase;
+        text-align: center;
       }
 
       div {
@@ -54,14 +59,20 @@
     .addTaskBtn {
       @extend %baseButton;
       @extend %darkeningBorder;
-      margin-top: 0.5rem;
       font-weight: 400;
       background-color: $bright-1;
+      width: 100%;
+      margin-top: 0.5rem;
     }
 
     .taskContainer {
       flex-grow: 1;
       border-radius: 0.5rem;
+      background-color: inherit;
+      overflow-y: auto;
+      position: absolute;
+      bottom: 0;
+      top: 4.5rem;
 
       .taskCard {
         @extend %link;
@@ -90,6 +101,14 @@
           color: rgba(0, 0, 0, 0.75);
         }
       }
+
+      @include smScreen {
+        position: static;
+      }
+    }
+
+    @include xlScreen {
+      min-width: 15rem;
     }
   }
 

@@ -86,6 +86,7 @@
     background-color: $bright-1;
   }
   th {
+    box-sizing: border-box;
     background-color: inherit;
     color: $dark-1;
   }
@@ -99,4 +100,25 @@
 }
 %link:hover {
   color: $font-blue;
+}
+
+%baseModalContainer {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  backdrop-filter: blur(1px) brightness(90%);
+}
+
+%baseModalPanel {
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: $bright-1;
 }

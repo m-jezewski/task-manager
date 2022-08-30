@@ -24,36 +24,38 @@ const MonthCal = () => {
                 moveBy={'month'}
                 dateHeader={date.format('MMMM YYYY')}
             />
-            <div className={styles.week}>
-                {weekDays.map(weekDay =>
-                    <div
-                        key={weekDay.date()}
-                        className={styles.weekDayHeader}>
-                        {weekDay.format('dddd').toUpperCase()}
-                    </div>)}
-            </div>
-            {weeksId.map(weekId =>
-                <div className={styles.week} key={weekId}>
-                    {monthDays
-                        .filter((monthDay) => monthDay.week() === weekId)
-                        .map(monthDay =>
-                            <div
-                                key={monthDay.date()}
-                                className={styles.day}
-                                onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}>
-                                <span>
-                                    {monthDay.format('YYYY-MM-DD')}
-                                </span>
-                                <div className={styles.taskBadgeContainer}>
-                                    {tasks && getTasksWithinMonth(tasks, monthDay).map((task) =>
-                                        <TaskBadge
-                                            key={task.id}
-                                            task={task}
-                                        />)}
-                                </div>
-                            </div>)}
+            <div className={styles.calendarWrapper}>
+                <div className={styles.week}>
+                    {weekDays.map(weekDay =>
+                        <div
+                            key={weekDay.date()}
+                            className={styles.weekDayHeader}>
+                            {weekDay.format('dddd').toUpperCase()}
+                        </div>)}
                 </div>
-            )}
+                {weeksId.map(weekId =>
+                    <div className={styles.week} key={weekId}>
+                        {monthDays
+                            .filter((monthDay) => monthDay.week() === weekId)
+                            .map(monthDay =>
+                                <div
+                                    key={monthDay.date()}
+                                    className={styles.day}
+                                    onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}>
+                                    <span>
+                                        {monthDay.format('YYYY-MM-DD')}
+                                    </span>
+                                    <div className={styles.taskBadgeContainer}>
+                                        {tasks && getTasksWithinMonth(tasks, monthDay).map((task) =>
+                                            <TaskBadge
+                                                key={task.id}
+                                                task={task}
+                                            />)}
+                                    </div>
+                                </div>)}
+                    </div>
+                )}
+            </div>
         </>
     );
 }

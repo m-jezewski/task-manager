@@ -2,7 +2,7 @@ import { useState, useContext, FormEvent, useEffect } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 //interaces
-import { BooleanGoalStep, NumberGoalStep, Status, Task, TaskGoalStep } from '../../../interfaces'
+import { Status, Task } from '../../../interfaces'
 //styles
 import styles from './AddTaskForm.module.scss'
 //hooks
@@ -18,8 +18,6 @@ import useNewGoalContext from '../../../hooks/useNewGoalContext'
 
 interface AddTaskFormProps {
     defaultStatus?: Status
-    direction: 'column' | 'row'
-    position: 'absolute' | 'relative'
     openDateInputSwitch?: boolean
     formStyles?: {}
     defaultDate?: Dayjs
@@ -29,16 +27,7 @@ interface AddTaskFormProps {
 
 dayjs.extend(customParseFormat)
 
-const AddTaskForm = ({
-    defaultStatus,
-    direction,
-    position,
-    openDateInputSwitch = false,
-    formStyles,
-    defaultDate = dayjs(),
-    goalID,
-    addGoalStep
-}: AddTaskFormProps) => {
+const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, formStyles, defaultDate = dayjs(), goalID, addGoalStep }: AddTaskFormProps) => {
     const { addDocument: addTaskDocument } = useDb('tasks')
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
     const closePopover = useContext(ClosePopoverContext)
@@ -96,46 +85,41 @@ const AddTaskForm = ({
     }
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form} style={{ position: position, ...formStyles }}>
-            <div className={styles.innerContainer} style={{ flexDirection: direction }}>
-                <label>
-                    Status:
-                    <br />
-                    <StatusSelectInput status={status} setStatus={setStatus} />
-                </label>
-                <label style={{ flexGrow: 1 }}>
-                    Description:
-                    <br />
-                    <input
-                        type={'text'}
-                        required
-                        className={styles.descriptionInput}
-                        maxLength={550}
-                        value={text}
-                        onChange={(e) => { setText(e.target.value) }}
-                    />
-                </label>
-                <label>
-                    Priority:
-                    <PriorityChangeInput priority={priority} setPriority={setPriority} />
-                </label>
-            </div>
-            <div className={styles.innerContainer} style={{ flexDirection: direction }}>
-                <DateInputs
-                    fromDate={fromDate}
-                    setFromDate={setFromDate}
-                    dueDate={dueDate}
-                    setDueDate={setDueDate}
-                    openSwitch={openDateInputs}
-                    setOpenSwitch={setOpenDateInputs}
+        <form onSubmit={handleSubmit} className={styles.form} style={{ ...formStyles }}>
+            <label>
+                Status:
+                <br />
+                <StatusSelectInput status={status} setStatus={setStatus} />
+            </label>
+            <label style={{ flexGrow: 1 }}>
+                Description:
+                <br />
+                <input
+                    type={'text'}
+                    required
+                    className={styles.descriptionInput}
+                    maxLength={550}
+                    value={text}
+                    onChange={(e) => { setText(e.target.value) }}
                 />
-                <button
-                    type={"submit"}
-                    className={styles.submitButton}
-                    style={{ alignSelf: direction === 'row' ? 'flex-end' : 'center' }}
-                >
-                    Submit</button>
-            </div>
+            </label>
+            <label>
+                Priority:
+                <PriorityChangeInput priority={priority} setPriority={setPriority} />
+            </label>
+            <DateInputs
+                fromDate={fromDate}
+                setFromDate={setFromDate}
+                dueDate={dueDate}
+                setDueDate={setDueDate}
+                openSwitch={openDateInputs}
+                setOpenSwitch={setOpenDateInputs}
+            />
+            <button
+                type={"submit"}
+                className={styles.submitButton}
+            >
+                Submit</button>
         </form>
     )
 }
