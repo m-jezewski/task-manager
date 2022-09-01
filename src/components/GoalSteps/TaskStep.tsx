@@ -17,24 +17,28 @@ const TaskStep = ({ step }: TaskStepProps) => {
 
     return (
         <tr>
-            <td className={styles.smallCell}>
-                <GoalStepCheckbox goalStep={step} />
-            </td>
-            <td>
-                <TaskStatusChangeBtn task={task} />
-            </td>
-            <td className={styles.descriptionCell}>
-                {task.description}
-            </td>
-            <td>
-                {task.dueDate ? dayjs.unix(task.dueDate).format('DD/MM') : '-/-'}
-            </td>
-            <td className={styles.smallCell}>
-                <TaskPrioChangeBtn task={task} />
-            </td>
-            <td className={styles.smallCell}>
-                <TaskDeleteBtn task={task} />
-            </td>
+            {task && <>
+                <td className={styles.smallCell}>
+                    <GoalStepCheckbox goalStep={step} />
+                </td>
+                <td>
+                    <div className={styles.icon}>
+                        <TaskStatusChangeBtn task={task} />
+                    </div>
+                </td>
+                <td className={styles.descriptionCell}>
+                    {task.description}
+                </td>
+                <td className={styles.dueDate}>
+                    {task.dueDate ? dayjs.unix(task.dueDate).format('DD/MM') : ' '}
+                </td>
+                <td className={styles.smallCell}>
+                    <TaskPrioChangeBtn task={task} />
+                </td>
+                <td className={styles.smallCell}>
+                    <TaskDeleteBtn task={task} />
+                </td>
+            </>}
         </tr>
     );
 }

@@ -21,18 +21,7 @@ const Dashboard = () => {
                 </span>
             </h2>
             <div className={styles.grid}>
-                <section className={styles.todaysTasks}>
-                    <h3>Today's Tasks:</h3>
-                </section>
-                <section className={styles.highPriorityTasks}>
-                    <h3>Current high priority tasks:</h3>
-                </section>
-                <section className={styles.goalProgress}>
-                    <h3>Goal progress:</h3>
-                </section>
-                <section className={styles.incomingDeadlines}>
-                    <h3>Incoming Deadlines:</h3>
-                </section>
+
             </div>
         </Layout>
     );

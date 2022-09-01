@@ -6,7 +6,7 @@ import Layout from "../../components/Layout/Layout/Layout";
 import useDataContext from "../../hooks/useDataContext";
 import styles from './GoalPage.module.scss'
 import { getGoalStepProgess } from "../../utils/getGoalStepProgress";
-import GoalDeleteModal from "../../components/ui/GoalDeleteModal/GoalDeleteModal";
+import GoalDeleteModal from "./GoalDeleteModal/GoalDeleteModal";
 
 const GoalPage = () => {
     const { goalID } = useParams()

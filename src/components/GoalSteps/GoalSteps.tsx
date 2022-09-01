@@ -11,29 +11,30 @@ interface GoalStepsProps {
 
 const GoalSteps = ({ steps }: GoalStepsProps) => {
     return (
-        <div className={styles.container}>
-            <h3>Current goal steps</h3>
-            {steps !== undefined && steps.length !== 0 ?
-                <table>
-                    <tbody>
-                        {steps.map(step =>
-                            step.type === 'task' ?
-                                <TaskStep
+        <table className={styles.gsTable}>
+            <caption>Current targets</caption>
+            <tbody>
+                {steps !== undefined && steps.length !== 0 ?
+                    steps.map(step =>
+                        step.type === 'task' ?
+                            <TaskStep
+                                key={step.id!}
+                                step={step}
+                            />
+                            : step.type === 'number' ?
+                                <NumberStep
                                     key={step.id!}
-                                    step={step}
-                                />
-                                : step.type === 'number' ?
-                                    <NumberStep
-                                        key={step.id!}
-                                        step={step} />
-                                    : <BooleanStep
-                                        key={step.id!}
-                                        step={step} />
-                        )}
-                    </tbody>
-                </table>
-                : <div>You did not created any steps yet</div>}
-        </div>
+                                    step={step} />
+                                : <BooleanStep
+                                    key={step.id!}
+                                    step={step} />
+                    )
+                    :
+                    <tr>
+                        <td>You did not created any steps yet</td>
+                    </tr>}
+            </tbody>
+        </table>
     );
 }
 

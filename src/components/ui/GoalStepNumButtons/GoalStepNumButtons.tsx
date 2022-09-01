@@ -41,10 +41,10 @@ const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalS
     }
 
     return (
-        <div className={styles.goalStepNumButtons}>
-            <button onClick={handleIncButtonClick} className={styles.incButton}>+ 1</button>
-            <button onClick={handleDecButtonClick} className={styles.decButton}>- 1</button>
-        </div>
+        <>
+            <button onClick={handleIncButtonClick} className={`${styles.incButton} ${styles.numButton}`}>+</button>
+            <button onClick={handleDecButtonClick} className={`${styles.decButton} ${styles.numButton}`}>-</button>
+        </>
     );
 }
 

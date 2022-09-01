@@ -10,7 +10,7 @@ const Goals = () => {
     return (
         <Layout title='Goals' showSpaceSelect={false}>
             <div className={styles.container}>
-                <h2 className={styles.subtitle}>Track the progress of your goals!</h2>
+                <h2 className={styles.subtitle}>Break your goals into small targets, track their progress and make your dreams come true!</h2>
                 <section className={styles.goalList}>
                     {goals?.map(goal =>
                         <GoalLink

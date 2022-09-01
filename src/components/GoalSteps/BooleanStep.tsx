@@ -16,7 +16,7 @@ const BooleanStep = ({ step }: BooleanStepProps) => {
             </td>
             <td className={styles.booleanStatusCell}>{step.progress === 1 ? "True" : "False"}</td>
             <td className={styles.descriptionCell}>{step.description}</td>
-            <td colSpan={2} className={styles.buttonCell}>
+            <td colSpan={2}>
                 <GoalStepSwitch goalStep={step} />
             </td>
             <td className={styles.smallCell}>

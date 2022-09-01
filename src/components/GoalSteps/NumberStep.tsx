@@ -21,7 +21,7 @@ const NumberStep = ({ step }: NumberStepProps) => {
             <td className={styles.descriptionCell}>
                 {step.description}
             </td>
-            <td colSpan={2} className={styles.buttonCell}>
+            <td colSpan={2}>
                 <GoalStepNumButtons goalStep={step} />
             </td>
             <td className={styles.smallCell}>

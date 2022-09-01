@@ -11,7 +11,7 @@ import useDataContext from "../../hooks/useDataContext";
 import useDb from "../../hooks/useDb";
 import { Space, Status, Task } from "../../interfaces";
 import styles from './TaskPage.module.scss'
-import TaskDeleteModal from "../../components/ui/TaskDeleteModal/TaskDeleteModal";
+import TaskDeleteModal from "./TaskDeleteModal/TaskDeleteModal";
 
 const TaskPage = () => {
     const navigate = useNavigate()

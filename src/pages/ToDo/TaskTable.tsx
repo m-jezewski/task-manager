@@ -31,28 +31,28 @@ const TaskTable = ({ status }: TaskTableProps) => {
             parentStyles={styles.listContainer}
             Parent='table'
             status={status}>
+            <caption>
+                <span
+                    className={styles.statusText}
+                    style={{ backgroundColor: status.color }}>
+                    {status.name.toUpperCase()}
+                </span>
+                <AnimatedPopover
+                    buttonClass={styles.addTaskBtn}
+                    buttonText='+'>
+                    <AddTaskForm
+                        formStyles={{ position: 'absolute', transform: '' }}
+                        defaultStatus={status}
+                    />
+                </AnimatedPopover>
+            </caption>
             <tbody>
                 <tr>
                     <th
                         className={`${styles.smallCell} ${styles.hideStatusBtn}`}>
                         <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                     </th>
-                    <th className={styles.thStatus}>
-                        <span
-                            className={styles.statusText}
-                            style={{ backgroundColor: status.color }}>
-                            {status.name.toUpperCase()}
-                        </span>
-                        <AnimatedPopover
-                            buttonClass={styles.addTaskBtn}
-                            buttonText='+'>
-                            <AddTaskForm
-                                formStyles={{ position: 'absolute' }}
-                                defaultStatus={status}
-                            />
-                        </AnimatedPopover>
-                    </th>
-                    <th />
+                    <th colSpan={2} />
                     <th className={`${styles.thDueDate} ${styles.smallCell}`}>
                         Due:
                     </th>

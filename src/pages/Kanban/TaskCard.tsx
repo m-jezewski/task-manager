@@ -19,8 +19,10 @@ const TaskCard = ({ task }: TaskCardProps) => {
             </span>}
             <hr />
             <div className={styles.infoButtonRow}>
-                <TaskStatusChangeBtn task={task} />
                 <TaskPrioChangeBtn task={task} />
+                <div>
+                    <TaskStatusChangeBtn task={task} />
+                </div>
                 <TaskDeleteBtn task={task} />
             </div>
         </DraggableContainer>

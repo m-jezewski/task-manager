@@ -31,12 +31,12 @@
     font-weight: 500;
   }
 
-  .thStatus {
+  caption {
     display: flex;
     position: absolute;
+    text-align: left;
     align-items: flex-end;
-    padding: 0;
-    transform: translate(0, 12.5px);
+    transform: translate(1.25rem, 14.5px);
 
     .statusText {
       padding: 0.5rem;
@@ -47,18 +47,18 @@
     .addTaskBtn {
       @extend %darkeningBorder;
       box-sizing: border-box;
-      font-weight: 600;
+      font-weight: 500;
       height: 2rem;
       width: 2rem;
-      padding: 0;
+
       border-radius: 0 0.5rem 0 0;
-      border: 2px solid #e4e4e7;
+      border: 2px solid $bright-4;
       background-color: $bright-1;
       cursor: pointer;
       transition: all 150ms ease-out;
     }
   }
-  .thStatus:focus-within {
+  caption:focus-within {
     z-index: 4000;
   }
 
