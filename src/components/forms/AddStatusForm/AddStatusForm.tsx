@@ -11,7 +11,7 @@ const AddStatusForm = () => {
     const { addDocument, res } = useDb('statuses') // handle error res here
 
     const closePopover = useContext(ClosePopoverContext)
-    const { statuses } = useDataContext()
+    const { statuses, selectedSpace } = useDataContext()
     const [name, setName] = useState('')
     const [color, setColor] = useState('#FFFFFF')
 
@@ -21,8 +21,9 @@ const AddStatusForm = () => {
         closePopover && closePopover()
         addDocument({
             name: name,
-            orderIndex: statuses ? statuses[statuses.length - 1].orderIndex + 1 : 0,
-            color: color
+            orderIndex: statuses && statuses.length !== 0 ? statuses[statuses.length - 1].orderIndex + 1 : 0,
+            color: color,
+            spaceId: selectedSpace?.id
         })
     }
 

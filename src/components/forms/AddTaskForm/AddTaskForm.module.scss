@@ -6,7 +6,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 12rem;
+  min-width: 12rem;
   margin-top: 0.5rem;
   gap: 1rem;
   padding: 1rem;
@@ -21,6 +21,7 @@
 
   @include maxSmScreen {
     transform: none !important;
+    width: 100%;
     right: 0;
     left: 0;
   }

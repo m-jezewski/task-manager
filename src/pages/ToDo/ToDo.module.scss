@@ -4,6 +4,7 @@
 .listContainer {
   @extend %baseTable;
   margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
 
   th {
     padding: 0.5rem;
@@ -13,10 +14,7 @@
   }
   tr {
     @extend %link;
-    .itemText {
-      margin: 0;
-      word-break: break-word;
-    }
+
     .itemDate {
       margin: 0;
       font-size: 0.8rem;
@@ -36,12 +34,12 @@
     position: absolute;
     text-align: left;
     align-items: flex-end;
-    transform: translate(1.25rem, 14.5px);
+    background-color: inherit;
+    transform: translate(-1.25rem, 14.5px);
 
     .statusText {
-      padding: 0.5rem;
-      border-radius: 0.5rem 0.5rem 0 0;
-      font-weight: 500;
+      @extend %baseTableCaption;
+      margin-left: 0.25rem;
     }
 
     .addTaskBtn {
@@ -69,6 +67,7 @@
     font-style: italic;
     border-radius: 0 0 1rem 1rem;
     color: $font-dark;
+    cursor: auto;
   }
 
   .hiddenTableCell {

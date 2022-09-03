@@ -8,10 +8,10 @@ interface DraggableContainerProps {
     children: ReactNode
     task: Task
     Parent: React.ElementType
-    parentStyles?: string
+    className?: string
 }
 
-const DraggableContainer = ({ children, task, Parent, parentStyles }: DraggableContainerProps) => {
+const DraggableContainer = ({ children, task, Parent, className }: DraggableContainerProps) => {
     const navigate = useNavigate()
     const divRef = useRef<HTMLDivElement>(null)
 
@@ -31,8 +31,7 @@ const DraggableContainer = ({ children, task, Parent, parentStyles }: DraggableC
 
     return (
         <Parent
-            className={parentStyles}
-            style={{ cursor: 'pointer' }}
+            className={className}
             draggable={true}
             ref={divRef}
             onDragStart={handleDragStart}

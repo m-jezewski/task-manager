@@ -21,7 +21,7 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() + 1 : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
-                backgroundColor: statuses?.find((status) => task.status === status.name)?.color,
+                backgroundColor: statuses?.find((status) => task.statusId === status.id!)?.color,
             }}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
         >

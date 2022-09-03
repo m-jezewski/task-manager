@@ -12,13 +12,11 @@ interface TaskStatusChangeBtnProps {
 const TaskStatusChangeBtn = ({ task }: TaskStatusChangeBtnProps) => {
     const { updateDocument, res } = useDb('tasks') // handle error res here
     const { statuses } = useDataContext()
-    const btnColor = statuses?.find(status => status.name === task.status)!.color
+    const btnColor = statuses?.find(status => status.id === task.statusId)!.color
 
-    const handleStatusChange = (status: string) => {
-        if (status !== task.status) {
-            updateDocument(task.id!, { status: status })
-            document.body.focus()
-            document.body.click()
+    const handleStatusChange = (statusId: string) => {
+        if (statusId !== task.statusId) {
+            updateDocument(task.id!, { statusId: statusId })
         }
     }
 
@@ -28,7 +26,7 @@ const TaskStatusChangeBtn = ({ task }: TaskStatusChangeBtnProps) => {
                 {statuses && statuses.map(({ name, color, id }) => (
                     <button
                         key={id}
-                        onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(name) }}
+                        onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(id!) }}
                         style={{ backgroundColor: color }}>
                         {name}
                     </button>

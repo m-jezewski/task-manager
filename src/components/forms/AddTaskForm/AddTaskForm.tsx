@@ -63,8 +63,8 @@ const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, formStyles, d
             description: text,
             priority: priority,
             orderIndex: tasks ? tasks.length + 1 : 0,
-            space: selectedSpace ? selectedSpace.name : '',
-            status: status ? status.name : '',
+            spaceId: selectedSpace ? selectedSpace.id! : '',
+            statusId: status ? status.id! : '',
             fromDate: null,
             dueDate: null,
         }

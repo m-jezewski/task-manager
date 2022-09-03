@@ -31,7 +31,7 @@ const TaskPage = () => {
         if (task && statuses && selectedSpace) {
             setDescription(task.description)
             setSpace(selectedSpace)
-            setStatus(statuses.find(status => status.name === task?.status)!)
+            setStatus(statuses.find(status => status.id === task?.statusId)!)
             setPriority(task?.priority)
             if (task.dueDate && task.fromDate) {
                 setOpenSwitch(true)
@@ -50,8 +50,8 @@ const TaskPage = () => {
             description: description,
             priority: priority,
             orderIndex: tasks ? tasks.length + 1 : 0,
-            space: selectedSpace ? selectedSpace.name : '',
-            status: status ? status.name : '',
+            spaceId: space ? space.id! : '',
+            statusId: status ? status.id! : '',
             fromDate: null,
             dueDate: null,
         }

@@ -6,8 +6,8 @@ interface Task {
   dueDate: number | null
   priority: string
   orderIndex: number
-  space: string
-  status: string
+  spaceId: string
+  statusId: string
 }
 
 interface Space {
@@ -21,6 +21,7 @@ interface Status {
   uid?: string
   name: string
   orderIndex: number
+  spaceId: string
   color: string
 }
 

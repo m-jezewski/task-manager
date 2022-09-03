@@ -27,7 +27,7 @@ const TaskCard = ({ task, weekDay }: TaskCardProps) => {
             style={{
                 gridRowStart: fromDate.isSame(weekDay, 'day') ? fromDate.hour() : 1,
                 gridRowEnd: dueDate.isSame(weekDay, 'day') ? dueDate.hour() + 1 : 25,
-                backgroundColor: statuses?.find((status) => status.name === task.status)?.color,
+                backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
         >
             {task.description}

@@ -1,0 +1,18 @@
+@import '../../scss/variables';
+
+.tableRow {
+  .smallCell {
+    width: 1rem;
+  }
+
+  .itemDate {
+    margin: 0;
+    font-size: 0.8rem;
+    color: $dark-1;
+  }
+}
+
+.tableRow:hover {
+  color: $font-blue;
+  cursor: pointer;
+}

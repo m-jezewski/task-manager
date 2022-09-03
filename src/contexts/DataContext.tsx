@@ -27,7 +27,8 @@ export const DataContextProvider = ({ children, uid }: DataContextProviderProps)
     const goalSteps = useCollectionSub('goalSteps', uid) as (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
 
     const [selectedSpace, setSelectedSpace] = useState<Space | null>(null)
-    const filteredTasks = selectedSpace && tasks?.filter((task: Task) => task.space === selectedSpace.name).sort((a, b) => a.orderIndex - b.orderIndex)
+    const filteredTasks = selectedSpace && tasks?.filter((task) => task.spaceId === selectedSpace.id).sort((a, b) => a.orderIndex - b.orderIndex)
+    const filteredStatuses = selectedSpace && statuses.filter((status) => status.spaceId === selectedSpace.id).sort((a, b) => a.orderIndex - b.orderIndex)
 
     useEffect(() => {
         spaces && setSelectedSpace(spaces[0])
@@ -36,7 +37,7 @@ export const DataContextProvider = ({ children, uid }: DataContextProviderProps)
     const data: DataContextInterface = {
         tasks: filteredTasks ? filteredTasks : null,
         spaces,
-        statuses: statuses?.sort((a, b) => a.orderIndex - b.orderIndex)!,
+        statuses: filteredStatuses && filteredStatuses,
         selectedSpace,
         setSelectedSpace,
         goals,

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Fragment } from 'react'
 
 //interfaces
 import { Space, Status, Task } from '../../interfaces'
@@ -7,7 +8,6 @@ import { Space, Status, Task } from '../../interfaces'
 import styles from './ToDo.module.scss'
 
 //components
-import TaskTableItem from './TaskTableItem'
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
 import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
@@ -15,6 +15,8 @@ import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn
 import DropToContainer from '../../components/DragAndDrop/DropToContainer/DropToContainer'
 import StatusHideBtn from '../../components/ui/StatusHideBtn/StatusHideBtn'
 import useDataContext from '../../hooks/useDataContext'
+import TaskTableItem from '../../components/TaskTableItem/TaskTableItem'
+import DraggableContainer from '../../components/DragAndDrop/DraggableContainer/DraggableContainer'
 
 interface TaskTableProps {
     status: Status
@@ -23,15 +25,16 @@ interface TaskTableProps {
 const TaskTable = ({ status }: TaskTableProps) => {
     const { tasks } = useDataContext()
     const [showTable, setShowTable] = useState(true)
-    const statusTasks = tasks?.filter((i: Task) => i.status === status.name)
+    const statusTasks = tasks?.filter((i: Task) => i.statusId === status.id)
 
     return (
         <DropToContainer
             key={status.id}
-            parentStyles={styles.listContainer}
+            className={styles.listContainer}
             Parent='table'
             status={status}>
             <caption>
+                <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                 <span
                     className={styles.statusText}
                     style={{ backgroundColor: status.color }}>
@@ -48,10 +51,6 @@ const TaskTable = ({ status }: TaskTableProps) => {
             </caption>
             <tbody>
                 <tr>
-                    <th
-                        className={`${styles.smallCell} ${styles.hideStatusBtn}`}>
-                        <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
-                    </th>
                     <th colSpan={2} />
                     <th className={`${styles.thDueDate} ${styles.smallCell}`}>
                         Due:
@@ -74,7 +73,6 @@ const TaskTable = ({ status }: TaskTableProps) => {
                 {showTable ? <>
                     {!statusTasks || statusTasks.length === 0 ?
                         <tr>
-                            <td />
                             <td
                                 className={styles.noTasks}
                                 colSpan={5}>
@@ -82,13 +80,10 @@ const TaskTable = ({ status }: TaskTableProps) => {
                             </td>
                         </tr>
                         : statusTasks.map((task: Task) => (
-                            <TaskTableItem
-                                key={task.id}
-                                todo={task} />
+                            <TaskTableItem task={task} />
                         ))}</>
                     :
                     <tr>
-                        <td />
                         <td
                             colSpan={5}
                             className={styles.hiddenTableCell} />

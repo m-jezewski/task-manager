@@ -5,17 +5,17 @@
 .spaceSelect {
   position: relative;
   width: 100%;
+  margin: 0.5rem 0 1rem 0;
   z-index: 3000;
 
   ul {
+    @extend %baseList;
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
     z-index: 3000;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    transform: translate(0, -1.5rem);
+    transform: translate(0, 100%);
   }
   ul :last-child {
     border-bottom-left-radius: 1rem;
@@ -24,13 +24,8 @@
 
   li {
     @extend %baseButton;
-    font-weight: 400;
     position: relative;
     z-index: 3000;
-    border: 1px solid $bright-4;
-    border-radius: 0;
-    border-top: none;
-    background-color: $bright-1;
   }
   li:hover {
     background-color: $bright-4;
@@ -51,7 +46,6 @@
 
   .header {
     @extend %subtitle;
-    margin: 0.5rem 0 1rem 0;
     font-weight: 300;
     font-size: 1.3rem;
 

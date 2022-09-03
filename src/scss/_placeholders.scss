@@ -83,12 +83,23 @@
     box-sizing: border-box;
     padding: 0.4rem;
     background-color: $bright-1;
+
+    p {
+      word-break: break-word;
+      margin: 0;
+    }
   }
   th {
     box-sizing: border-box;
     background-color: inherit;
     color: $dark-1;
   }
+}
+
+%baseTableCaption {
+  padding: 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 500;
 }
 
 %link {
@@ -120,4 +131,20 @@
   border-radius: 1rem;
   text-align: center;
   background-color: $bright-1;
+}
+
+%baseList {
+  list-style: none;
+  border-top: $bright-4 solid 1px;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-weight: 400;
+    border: 1px solid $bright-4;
+    padding: 0.5rem;
+    border-radius: 0;
+    border-top: none;
+    background-color: $bright-1;
+  }
 }

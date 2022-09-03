@@ -6,11 +6,13 @@ import { Space, Task, Status } from './interfaces'
 const addDefaultContent = (uid: string) => {
     const defaultSpace: Space = {
         uid: uid,
-        name: 'My awesome default space!'
+        name: 'My awesome default space!',
+        id: uid
     }
     const defaultSpace2: Space = {
         uid: uid,
-        name: 'My second awesome default space!'
+        name: 'My second awesome default space!',
+        id: uid,
     }
     const defaultTasks: Task[] = [
         {
@@ -20,8 +22,8 @@ const addDefaultContent = (uid: string) => {
             priority: 'low',
             dueDate: null,
             fromDate: null,
-            status: 'Open',
-            space: 'My awesome default space!',
+            statusId: 'Open',
+            spaceId: uid,
         },
         {
             uid: uid,
@@ -30,8 +32,8 @@ const addDefaultContent = (uid: string) => {
             priority: 'medium',
             dueDate: null,
             fromDate: null,
-            status: 'Open',
-            space: 'My awesome default space!',
+            statusId: 'Open',
+            spaceId: uid,
         },
         {
             uid: uid,
@@ -40,8 +42,8 @@ const addDefaultContent = (uid: string) => {
             priority: 'low',
             dueDate: null,
             fromDate: null,
-            status: 'In Progress',
-            space: 'My awesome default space!',
+            statusId: 'In Progress',
+            spaceId: uid,
         }
     ]
     const defaultStatuses: Status[] = [
@@ -49,19 +51,22 @@ const addDefaultContent = (uid: string) => {
             uid: uid,
             name: 'Open',
             orderIndex: 1,
-            color: '#c7d2fe'
+            color: '#c7d2fe',
+            spaceId: uid
         },
         {
             uid: uid,
             name: 'In Progress',
             orderIndex: 2,
-            color: '#ddd6fe'
+            color: '#ddd6fe',
+            spaceId: uid
         },
         {
             uid: uid,
             name: 'Finished',
             orderIndex: 3,
-            color: '#d9f99d'
+            color: '#d9f99d',
+            spaceId: uid,
         },
     ]
 

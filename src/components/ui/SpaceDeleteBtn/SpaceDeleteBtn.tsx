@@ -1,28 +1,26 @@
+import { Space } from "../../../interfaces";
+import { useState } from 'react'
+import styles from './SpaceDeleteBtn.module.scss'
 import { Dialog } from "@headlessui/react";
-import { useState } from "react";
-import { Status } from "../../../interfaces";
-import styles from './StatusDeleteBtn.module.scss'
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
-import { increment } from "firebase/firestore";
 
-interface DeleteStatusDialogProps {
-    status: Status
+interface SpaceDeleteBtnProps {
+    space: Space
+    buttonStyles?: string
 }
 
-
-const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
-    const { removeDocument: removeStatus, updateDocument: updateStatus, res } = useDb('statuses') // handle error res here
-    const { removeDocument: removeTask } = useDb('tasks')
-    const { tasks, statuses } = useDataContext()
-
-    const statusTasks = tasks?.filter(task => task.statusId === status.id)
+const SpaceDeleteBtn = ({ space, buttonStyles }: SpaceDeleteBtnProps) => {
     const [isOpen, setIsOpen] = useState(false)
+    const { tasks, statuses } = useDataContext()
+    const { removeDocument: removeTask } = useDb('tasks')
+    const { removeDocument: removeStatus } = useDb('statuses')
+    const { removeDocument: removeSpace } = useDb('spaces')
 
     const handleDelete = () => {
-        statuses?.forEach(status => { updateStatus(status.id!, { orderIndex: increment(-1) }) });
-        removeStatus(status.id!)
-        statusTasks && statusTasks.forEach(task => { removeTask(task.id!) })
+        tasks?.filter(task => task.spaceId === space.id).forEach(task => removeTask(task.id!))
+        statuses?.filter(status => status.spaceId === space.id).forEach(space => removeStatus(space.id!))
+        removeSpace(space.id!)
         setIsOpen(false)
     }
 
@@ -30,7 +28,7 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
         <>
             <button
                 onClick={() => { setIsOpen(true) }}
-                className={styles.openDialogButton}
+                className={`${styles.openDialogButton} ${buttonStyles}`}
             />
             <Dialog
                 open={isOpen}
@@ -38,9 +36,10 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
                 className={styles.dialogContainer}
             >
                 <Dialog.Panel className={styles.panel}>
-                    <Dialog.Title className={styles.title}>Remove Status</Dialog.Title>
+                    <Dialog.Title className={styles.title}>Remove Space</Dialog.Title>
                     <Dialog.Description className={styles.description}>
-                        This action will pernamently remove this status and all associated with it tasks
+                        This action will pernamently remove this space and all associated with it statuses and tasks.<br />
+                        Are you absolutely sure?
                     </Dialog.Description>
 
                     <button
@@ -59,4 +58,4 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
     );
 }
 
-export default DeleteStatusDialog;
+export default SpaceDeleteBtn;

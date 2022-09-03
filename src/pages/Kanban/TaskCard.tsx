@@ -12,7 +12,7 @@ interface TaskCardProps {
 
 const TaskCard = ({ task }: TaskCardProps) => {
     return (
-        <DraggableContainer task={task} Parent={"div"} parentStyles={styles.taskCard}>
+        <DraggableContainer task={task} Parent={"div"} className={styles.taskCard}>
             <p>{task.description}</p>
             {task.dueDate && task.fromDate && <span className={styles.date}>
                 {dayjs.unix(task.fromDate).format('DD/MM HH:mm')}  -  {dayjs.unix(task.dueDate).format('DD/MM HH:mm')}

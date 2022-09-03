@@ -7,10 +7,10 @@ interface DropToContainerProps {
     children: ReactNode
     status: Status
     Parent: React.ElementType
-    parentStyles?: string
+    className?: string
 }
 
-const DropToContainer = ({ children, status, parentStyles, Parent }: DropToContainerProps) => {
+const DropToContainer = ({ children, status, className, Parent }: DropToContainerProps) => {
     const divRef = useRef<HTMLDivElement>(null)
     const { updateDocument } = useDb('tasks')
 
@@ -35,7 +35,7 @@ const DropToContainer = ({ children, status, parentStyles, Parent }: DropToConta
         try {
             const task = JSON.parse(e.dataTransfer.getData('text/json'))
             if (status.name !== task.status) {
-                updateDocument(task.id, { status: status.name })
+                updateDocument(task.id, { statusId: status.id! })
             }
             divRef.current?.classList.remove(styles.dragOver)
         } catch (e) {
@@ -46,7 +46,7 @@ const DropToContainer = ({ children, status, parentStyles, Parent }: DropToConta
     return (
         <Parent
             ref={divRef}
-            className={parentStyles}
+            className={className}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
         >

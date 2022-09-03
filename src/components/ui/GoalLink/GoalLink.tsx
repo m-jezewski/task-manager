@@ -38,7 +38,7 @@ const GoalLink = ({ goal, steps }: GoalLinkProps) => {
 
     return (
         <Link
-            to={`${goal.id}`}
+            to={`../../Goals/${goal.id}`}
             key={goal.id}
             className={styles.link}>
             <h3>{goal.title}</h3>

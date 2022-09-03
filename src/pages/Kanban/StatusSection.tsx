@@ -16,7 +16,7 @@ interface StatusSectionProps {
 
 const StatusSection = ({ status }: StatusSectionProps) => {
     const { tasks } = useDataContext()
-    const statusTasks = tasks?.filter((task: Task) => task.status === status.name)
+    const statusTasks = tasks?.filter((task: Task) => task.statusId === status.id)
     const [showSection, setShowSection] = useState(true)
 
     return (
@@ -37,7 +37,7 @@ const StatusSection = ({ status }: StatusSectionProps) => {
                     <DropToContainer
                         Parent='div'
                         status={status}
-                        parentStyles={styles.taskContainer}
+                        className={styles.taskContainer}
                     >
                         <AnimatedPopover buttonClass={styles.addTaskBtn} buttonText='Add new task'>
                             <AddTaskForm

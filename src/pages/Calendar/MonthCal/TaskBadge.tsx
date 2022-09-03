@@ -14,7 +14,7 @@ const TaskBadge = ({ task }: TaskBadgeProps) => {
     return (
         <Link
             style={{
-                backgroundColor: statuses?.find((status) => status.name === task.status)?.color,
+                backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
             onClick={(e) => { e.stopPropagation() }}
             to={`/Dashboard/${task.id}`}
