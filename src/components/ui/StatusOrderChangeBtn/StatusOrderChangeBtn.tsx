@@ -1,7 +1,5 @@
 import styles from './StatusOrderChangeBtn.module.scss'
-import { CSSProperties, useContext } from 'react'
-import { DataContext } from '../../../contexts/DataContext'
-import { Status, Task } from '../../../interfaces'
+import { Status } from '../../../interfaces'
 import useDb from '../../../hooks/useDb'
 import useDataContext from '../../../hooks/useDataContext'
 
@@ -9,11 +7,9 @@ interface StatusOrderChangeBtnProps {
     variant: 'up' | 'down' | 'left' | 'right'
     elemId: string
     current: Status
-    buttonStyles?: CSSProperties
-
 }
 
-const StatusOrderChangeBtn = ({ variant, elemId, current, buttonStyles }: StatusOrderChangeBtnProps) => {
+const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtnProps) => {
     const { statuses, selectedSpace } = useDataContext()
     const currentSpaceStatuses = statuses?.filter(s => s.spaceId === selectedSpace?.id!)
     const { updateDocument } = useDb('statuses')
@@ -32,7 +28,7 @@ const StatusOrderChangeBtn = ({ variant, elemId, current, buttonStyles }: Status
     }
 
     return (
-        <button className={`${styles[variant]} ${styles.orderButton}`} style={buttonStyles} onClick={handleClick} />
+        <button className={`${styles[variant]} ${styles.orderButton}`} onClick={handleClick} />
     );
 }
 

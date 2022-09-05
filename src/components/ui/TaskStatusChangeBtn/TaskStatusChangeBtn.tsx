@@ -22,7 +22,7 @@ const TaskStatusChangeBtn = ({ task }: TaskStatusChangeBtnProps) => {
     }
 
     return (
-        <AnimatedPopover buttonClass={styles.outsideBtn} buttonColor={btnColor}>
+        <AnimatedPopover className={styles.outsideBtn} style={{ backgroundColor: btnColor }}>
             <div className={styles.container}>
                 {statuses && statuses.map((status) => (
                     <button

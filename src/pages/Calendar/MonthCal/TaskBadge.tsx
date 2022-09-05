@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useDataContext from "../../../hooks/useDataContext";
-import { Status, Task } from "../../../interfaces";
+import { Task } from "../../../interfaces";
 import styles from './MonthCal.module.scss'
 
 interface TaskBadgeProps {
@@ -8,7 +8,6 @@ interface TaskBadgeProps {
 }
 
 const TaskBadge = ({ task }: TaskBadgeProps) => {
-
     const { statuses } = useDataContext()
 
     return (

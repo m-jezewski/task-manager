@@ -9,7 +9,6 @@ import useDb from "../../../hooks/useDb";
 
 const AddStatusForm = () => {
     const { addDocument, res } = useDb('statuses') // handle error res here
-
     const closePopover = useContext(ClosePopoverContext)
     const { statuses, selectedSpace } = useDataContext()
     const [name, setName] = useState('')

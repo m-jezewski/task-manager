@@ -1,5 +1,5 @@
 import { Space } from "../../../interfaces";
-import { useState } from 'react'
+import { useState, ComponentPropsWithoutRef } from 'react'
 import styles from './SpaceDeleteBtn.module.scss'
 import { Dialog } from "@headlessui/react";
 import useDataContext from "../../../hooks/useDataContext";
@@ -7,10 +7,10 @@ import useDb from "../../../hooks/useDb";
 
 interface SpaceDeleteBtnProps {
     space: Space
-    buttonStyles?: string
+    className: string
 }
 
-const SpaceDeleteBtn = ({ space, buttonStyles }: SpaceDeleteBtnProps) => {
+const SpaceDeleteBtn = ({ space, className, ...props }: SpaceDeleteBtnProps & ComponentPropsWithoutRef<'button'>) => {
     const [isOpen, setIsOpen] = useState(false)
     const { tasks, statuses } = useDataContext()
     const { removeDocument: removeTask } = useDb('tasks')
@@ -28,7 +28,8 @@ const SpaceDeleteBtn = ({ space, buttonStyles }: SpaceDeleteBtnProps) => {
         <>
             <button
                 onClick={() => { setIsOpen(true) }}
-                className={`${styles.openDialogButton} ${buttonStyles}`}
+                className={`${styles.openDialogButton} ${className}`}
+                {...props}
             />
             <Dialog
                 open={isOpen}

@@ -2,9 +2,9 @@ import styles from './SpacesSection.module.scss'
 import AddSpaceForm from "../../../components/forms/AddSpaceForm/AddSpaceForm";
 import SpaceDeleteBtn from "../../../components/ui/SpaceDeleteBtn/SpaceDeleteBtn";
 import useDataContext from '../../../hooks/useDataContext';
-import { useState } from 'react'
+import { useState, ComponentPropsWithoutRef } from 'react'
 
-const SpacesSection = ({ ...props }) => {
+const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
     const { spaces, statuses, tasks } = useDataContext()
     const [showAddSpace, setShowAddSpace] = useState(false)
     const handleShowAddSpace = () => {
@@ -27,12 +27,12 @@ const SpacesSection = ({ ...props }) => {
                                 <span className={styles.itemDescription}>
                                     {statuses?.filter(t => t.spaceId === space.id!).length} statuses, {tasks?.filter(t => t.spaceId === space.id!).length} tasks
                                 </span>
-                                <SpaceDeleteBtn space={space} buttonStyles={styles.spaceDeleteBtn} />
+                                <SpaceDeleteBtn space={space} className={styles.spaceDeleteBtn} />
                             </li>
                         )}
                 </ul>
                 {showAddSpace ?
-                    <AddSpaceForm handleShowAddSpace={handleShowAddSpace} />
+                    <AddSpaceForm handleShowAddSpaceForm={handleShowAddSpace} />
                     : <button className={styles.showAddSpaceBtn} onClick={handleShowAddSpace}>
                         Add new space
                     </button>

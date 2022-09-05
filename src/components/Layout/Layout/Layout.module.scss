@@ -1,3 +1,4 @@
+@use '../../../scss/placeholders';
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
 
@@ -77,6 +78,16 @@
       @include xlScreen {
         margin-bottom: 2rem;
       }
+    }
+  }
+
+  .spaceSelect {
+    @extend %subtitle;
+    font-weight: 300;
+    font-size: 1.3rem;
+
+    @include smScreen {
+      font-size: 1.7rem;
     }
   }
 }

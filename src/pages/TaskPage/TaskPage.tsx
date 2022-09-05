@@ -92,7 +92,7 @@ const TaskPage = () => {
                 </div>
                 <label>
                     Space:<br />
-                    <SpaceSelect space={space} setSpace={setSpace} usage='form' />
+                    <SpaceSelect space={space} setSpace={setSpace} className={styles.spaceSelect} />
                 </label>
                 <div className={styles.buttonRow}>
                     <button

@@ -7,9 +7,11 @@ import { getTasksWithinWeek } from '../../../utils/getTasksWithinWeek'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
 import { useCalendarOutletContext } from "../Calendar";
+import useDataContext from "../../../hooks/useDataContext";
 
 const WeekCal = () => {
-    const { date, tasks } = useCalendarOutletContext()
+    const { date } = useCalendarOutletContext()
+    const { tasks } = useDataContext()
     const weekDays: Dayjs[] = getDaysOfWeek(date)
     const hours = getHoursOfDate(date)
 

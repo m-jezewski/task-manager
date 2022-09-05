@@ -1,10 +1,8 @@
-interface NoStatusesProps {
-    elemStyles: string
-}
+import { ComponentPropsWithoutRef } from 'react'
 
-const NoStatuses = ({ elemStyles }: NoStatusesProps) => {
+const NoStatuses = ({ ...props }: ComponentPropsWithoutRef<'div'>) => {
     return (
-        <div className={elemStyles}>
+        <div {...props}>
             You need to create at least one status to add new tasks
         </div>
     );

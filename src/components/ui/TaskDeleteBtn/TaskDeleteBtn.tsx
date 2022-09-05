@@ -1,14 +1,12 @@
 import React from 'react'
 import useDataContext from '../../../hooks/useDataContext'
 import useDb from '../../../hooks/useDb'
-import { GoalStep, Task } from '../../../interfaces'
+import { Task } from '../../../interfaces'
 import styles from './TaskDeleteBtn.module.scss'
 
 interface TaskDeleteBtnProps {
     task: Task
 }
-
-// handle situation when task is deleted outside of goal page
 
 const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
     const { removeDocument: removeTask } = useDb('tasks')
@@ -20,7 +18,6 @@ const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
         removeTask(task.id!)
 
         const goalStep = goalSteps?.find(goalStep => goalStep.type === 'task' && goalStep.taskID === task.id)
-
         if (goalStep) {
             removeGoalStep(goalStep.id!)
         }

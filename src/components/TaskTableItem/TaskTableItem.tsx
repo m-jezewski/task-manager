@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { forwardRef, useRef } from 'react';
+import { forwardRef, ComponentPropsWithoutRef } from 'react';
 import { Task } from '../../interfaces';
 import { withDraggable } from '../DragAndDrop/withDraggable';
 import TaskDeleteBtn from '../ui/TaskDeleteBtn/TaskDeleteBtn';
@@ -11,7 +11,7 @@ interface TaskTableItemProps {
     task: Task
 }
 
-const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps, ref) => {
+const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps & ComponentPropsWithoutRef<'tr'>, ref) => {
     return (
         <tr className={styles.tableRow} {...props} ref={ref as React.LegacyRef<HTMLTableRowElement>}>
             <td className={styles.smallCell}>

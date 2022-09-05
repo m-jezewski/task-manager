@@ -19,7 +19,7 @@ const TodoPage = () => {
             {selectedSpace ?
                 tasks && statuses && <>
                     <div className={styles.newStatusContainer}>
-                        <AnimatedPopover buttonClass={styles.newStatusButton} buttonText="ADD NEW STATUS">
+                        <AnimatedPopover className={styles.newStatusButton} buttonText="ADD NEW STATUS">
                             <AddStatusForm />
                         </AnimatedPopover>
                     </div>

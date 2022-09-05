@@ -1,19 +1,20 @@
-import dayjs, { Dayjs } from "dayjs";
-import { Status, Task } from "../../../interfaces";
+import dayjs from "dayjs";
 import styles from './MonthCal.module.scss'
 import TaskBadge from "./TaskBadge";
 import SubHeader from "../SubHeader";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getTasksWithinMonth } from '../../../utils/getTasksWithinMonth'
 import { getDaysOfMonth } from '../../../utils/getDaysOfMonth'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import weekOfYear from 'dayjs/plugin/weekOfYear'
 import { useCalendarOutletContext } from "../Calendar";
+import useDataContext from "../../../hooks/useDataContext";
 dayjs.extend(weekOfYear)
 
 const MonthCal = () => {
     const navigate = useNavigate()
-    const { date, tasks } = useCalendarOutletContext()
+    const { date } = useCalendarOutletContext()
+    const { tasks } = useDataContext()
     const monthDays = getDaysOfMonth(date)
     const weekDays = getDaysOfWeek(date)
     const weeksId = monthDays.map(monthDay => monthDay.week()).filter((value, index, self) => self.indexOf(value) === index)

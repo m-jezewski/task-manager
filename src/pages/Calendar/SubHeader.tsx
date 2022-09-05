@@ -26,11 +26,11 @@ const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
                 date={date}
             />
             <AnimatedPopover
-                buttonClass={styles.addTaskButton}
+                className={styles.addTaskButton}
                 buttonText={'Add new task'}>
                 <AddTaskForm
-                    customStyles={styles.addTaskForm}
-                    openDateInputSwitch
+                    className={styles.addTaskForm}
+                    showDateInputs
                     defaultDate={date}
                 />
             </AnimatedPopover>

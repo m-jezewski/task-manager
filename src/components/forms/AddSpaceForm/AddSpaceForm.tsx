@@ -3,10 +3,10 @@ import useDb from '../../../hooks/useDb'
 import styles from './AddSpaceForm.module.scss'
 
 interface AddSpaceFormProps {
-    handleShowAddSpace: () => void
+    handleShowAddSpaceForm: () => void
 }
 
-const AddSpaceForm = ({ handleShowAddSpace }: AddSpaceFormProps) => {
+const AddSpaceForm = ({ handleShowAddSpaceForm }: AddSpaceFormProps) => {
     const [name, setName] = useState('')
     const { addDocument } = useDb('spaces')
 
@@ -14,7 +14,7 @@ const AddSpaceForm = ({ handleShowAddSpace }: AddSpaceFormProps) => {
         e.preventDefault()
         addDocument({ name: name })
         setName('')
-        handleShowAddSpace()
+        handleShowAddSpaceForm()
     }
 
     return (

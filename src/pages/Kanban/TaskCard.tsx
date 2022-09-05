@@ -5,13 +5,13 @@ import { Task } from "../../interfaces";
 import styles from './Kanban.module.scss'
 import { withDraggable } from "../../components/DragAndDrop/withDraggable";
 import dayjs from "dayjs";
-import { forwardRef } from "react";
+import { forwardRef, ComponentPropsWithoutRef } from "react";
 
 interface TaskCardProps {
     task: Task
 }
 
-const TaskCard = forwardRef(({ task, ...props }: TaskCardProps, ref) => {
+const TaskCard = forwardRef(({ task, ...props }: TaskCardProps & ComponentPropsWithoutRef<'div'>, ref) => {
     return (
         <div className={styles.taskCard} ref={ref as React.LegacyRef<HTMLDivElement>} {...props}>
             <p>{task.description}</p>

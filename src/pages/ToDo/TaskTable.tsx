@@ -1,11 +1,8 @@
-import { forwardRef, useState } from 'react'
-
+import { forwardRef, useState, ComponentPropsWithoutRef } from 'react'
 //interfaces
 import { Status, Task } from '../../interfaces'
-
 //css
 import styles from './ToDo.module.scss'
-
 //components
 import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
@@ -20,7 +17,7 @@ interface TaskTableProps {
     status: Status
 }
 
-const TaskTable = forwardRef(({ status, ...props }: TaskTableProps, ref) => {
+const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPropsWithoutRef<'table'>, ref) => {
     const { tasks } = useDataContext()
     const [showTable, setShowTable] = useState(true)
     const statusTasks = tasks?.filter((i: Task) => i.statusId === status.id)
@@ -35,10 +32,10 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps, ref) => {
                     {status.name.toUpperCase()}
                 </span>
                 <AnimatedPopover
-                    buttonClass={styles.addTaskBtn}
+                    className={styles.addTaskBtn}
                     buttonText='+'>
                     <AddTaskForm
-                        customStyles={styles.addTaskForm}
+                        className={styles.addTaskForm}
                         defaultStatus={status}
                     />
                 </AnimatedPopover>
@@ -54,7 +51,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps, ref) => {
                             variant='up'
                             elemId={status.id!}
                             current={status}
-                            buttonStyles={{ float: 'left' }} />
+                        />
                         <StatusOrderChangeBtn
                             variant='down'
                             elemId={status.id!}

@@ -1,5 +1,4 @@
-import useDataContext from '../../hooks/useDataContext';
-import { BooleanGoalStep, NumberGoalStep, Task, TaskGoalStep } from '../../interfaces';
+import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../interfaces';
 import BooleanStep from './BooleanStep';
 import NumberStep from './NumberStep';
 import styles from './Steps.module.scss'
@@ -14,8 +13,8 @@ const GoalSteps = ({ steps }: GoalStepsProps) => {
         <table className={styles.gsTable}>
             <caption>Current targets</caption>
             <tbody>
-                {steps !== undefined && steps.length !== 0 ?
-                    steps.map(step =>
+                {steps !== undefined && steps.length !== 0
+                    ? steps.map(step =>
                         step.type === 'task' ?
                             <TaskStep
                                 key={step.id!}
@@ -28,8 +27,7 @@ const GoalSteps = ({ steps }: GoalStepsProps) => {
                                 : <BooleanStep
                                     key={step.id!}
                                     step={step} />
-                    )
-                    :
+                    ) :
                     <tr>
                         <td>You did not created any steps yet</td>
                     </tr>}

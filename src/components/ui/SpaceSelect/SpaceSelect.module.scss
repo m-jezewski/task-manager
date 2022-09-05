@@ -43,21 +43,6 @@
     color: $bright-1;
     background-color: $blue-1;
   }
-
-  .header {
-    @extend %subtitle;
-    font-weight: 300;
-    font-size: 1.3rem;
-
-    @include smScreen {
-      font-size: 1.7rem;
-    }
-  }
-
-  .form {
-    font-weight: 400;
-    border-width: 3px;
-  }
 }
 
 .transition {

@@ -4,9 +4,11 @@ import SubHeader from '../SubHeader'
 import { getTasksWithinDay } from '../../../utils/getTasksWithinDay'
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
 import { useCalendarOutletContext } from "../Calendar";
+import useDataContext from "../../../hooks/useDataContext";
 
 const DayCal = () => {
-    const { tasks, date } = useCalendarOutletContext()
+    const { date } = useCalendarOutletContext()
+    const { tasks } = useDataContext()
     const hours = getHoursOfDate(date)
 
     return (

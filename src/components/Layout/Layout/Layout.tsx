@@ -1,6 +1,5 @@
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Layout.module.scss'
-import { useState } from 'react'
 import SpaceSelect from "../../ui/SpaceSelect/SpaceSelect";
 import useDataContext from "../../../hooks/useDataContext";
 
@@ -26,7 +25,7 @@ const Layout = ({ children, title, showSpaceSelect = true }: LayoutProps) => {
                     {showSpaceSelect && <SpaceSelect
                         space={selectedSpace}
                         setSpace={setSelectedSpace}
-                        usage={'header'}
+                        className={styles.spaceSelect}
                     />}
                     {children}
                 </main>

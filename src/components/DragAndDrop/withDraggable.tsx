@@ -1,5 +1,4 @@
-import React, { Ref, useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './DragAndDrop.module.scss'
 import { Task } from '../../interfaces'

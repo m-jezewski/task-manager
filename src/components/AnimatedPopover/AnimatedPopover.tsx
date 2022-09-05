@@ -1,20 +1,18 @@
-import { Fragment, ReactNode, createContext, useRef } from 'react'
+import { Fragment, ReactNode, createContext, useRef, ComponentPropsWithoutRef, CSSProperties } from 'react'
 //components
 import { Popover, Transition } from '@headlessui/react'
 //styles
 import styles from './AnimatedPopover.module.scss'
 
 interface AnimatedPopoverProps {
-    buttonClass: string
-    panelStyles?: {}
+    panelStyles?: CSSProperties
     children: ReactNode
     buttonText?: ReactNode
-    buttonColor?: string
 }
 
 export const ClosePopoverContext = createContext<(() => void) | null>(null)
 
-const AnimatedPopover = ({ buttonClass, buttonText, children, buttonColor, panelStyles }: AnimatedPopoverProps) => {
+const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }: AnimatedPopoverProps & ComponentPropsWithoutRef<'button'>) => {
 
     const closeButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -26,10 +24,8 @@ const AnimatedPopover = ({ buttonClass, buttonText, children, buttonColor, panel
         <Popover as={Fragment}>
             <Popover.Button
                 ref={closeButtonRef}
-                className={buttonClass}
-                style={{
-                    backgroundColor: buttonColor,
-                }}>
+                {...props}
+            >
                 {buttonText}
             </Popover.Button>
             <Transition enter={styles.transition} enterFrom={styles.transitionEnterFrom} enterTo={styles.transitionEnterTo}>

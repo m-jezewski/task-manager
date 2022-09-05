@@ -1,4 +1,4 @@
-import { useState, useContext, FormEvent, useEffect } from 'react'
+import { useState, useContext, FormEvent, useEffect, ComponentPropsWithoutRef } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 //interaces
@@ -19,22 +19,30 @@ import NoStatuses from '../../NoStatuses/NoStatuses'
 
 interface AddTaskFormProps {
     defaultStatus?: Status
-    openDateInputSwitch?: boolean
-    customStyles?: string
+    showDateInputs?: boolean
     defaultDate?: Dayjs
     addGoalStep?: boolean
     goalID?: string
+    className?: string
 }
 
 dayjs.extend(customParseFormat)
 
-const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, customStyles, defaultDate = dayjs(), goalID, addGoalStep }: AddTaskFormProps) => {
+const AddTaskForm = ({
+    defaultStatus,
+    showDateInputs = false,
+    defaultDate = dayjs(),
+    goalID,
+    addGoalStep,
+    className,
+    ...props
+}: AddTaskFormProps & ComponentPropsWithoutRef<'form'>) => {
     const { addDocument: addTaskDocument } = useDb('tasks')
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
     const closePopover = useContext(ClosePopoverContext)
     const newGoalCtx = useNewGoalContext()
     const { tasks, selectedSpace, statuses } = useDataContext()
-    const [openDateInputs, setOpenDateInputs] = useState(openDateInputSwitch)
+    const [openDateInputs, setOpenDateInputs] = useState(showDateInputs)
     const [taskRef, setTaskRef] = useState<DocumentReference<any> | null>(null)
     //form inputs
     const [text, setText] = useState('')
@@ -42,14 +50,15 @@ const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, customStyles,
     const [priority, setPriority] = useState('low')
     const [fromDate, setFromDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
     const [dueDate, setDueDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
+    let classNames = [styles.form, className].filter(Boolean).join(" ").trim();
 
     useEffect(() => {
-        if (taskRef && addGoalStep) {
-            if (newGoalCtx) {
-                newGoalCtx.addStepInNewGoal({ type: 'task', progress: 0, taskID: taskRef.id! })
-            } else {
-                addGoalStepDocument({ type: 'task', progress: 0, taskID: taskRef.id!, goalID: goalID })
-            }
+        if (!taskRef || !addGoalStep) return
+
+        if (newGoalCtx) {
+            newGoalCtx.addStepInNewGoal({ type: 'task', progress: 0, taskID: taskRef.id! })
+        } else {
+            addGoalStepDocument({ type: 'task', progress: 0, taskID: taskRef.id!, goalID: goalID })
         }
     }, [taskRef])
 
@@ -74,22 +83,23 @@ const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, customStyles,
             task = { ...task, fromDate: from.unix(), dueDate: due.unix() }
         }
 
-        addTaskDocument(task).then(ref => {
-            ref && setTaskRef(ref)
-            setText('')
-            setStatus(defaultStatus ? defaultStatus : statuses && statuses[0])
-            setPriority('low')
-            setOpenDateInputs(openDateInputSwitch)
-            setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
-            setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
-        })
+        addTaskDocument(task)
+            .then(ref => {
+                ref && setTaskRef(ref)
+                setText('')
+                setStatus(defaultStatus || (statuses && statuses[0]))
+                setPriority('low')
+                setOpenDateInputs(showDateInputs)
+                setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+                setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+            })
     }
 
     return (
         !statuses || statuses.length === 0 ?
-            <NoStatuses elemStyles={`${styles.form} ${customStyles}`} />
+            <NoStatuses className={classNames} />
             :
-            <form onSubmit={handleSubmit} className={`${styles.form} ${customStyles}`}>
+            <form onSubmit={handleSubmit} className={classNames} {...props}>
                 <label>
                     Status:
                     <br />
