@@ -2,7 +2,6 @@ import React from 'react'
 import useDataContext from '../../../hooks/useDataContext'
 import useDb from '../../../hooks/useDb'
 import { GoalStep, Task } from '../../../interfaces'
-import { addDefaultContent } from '../../../utils/addDefaultContent'
 import styles from './TaskDeleteBtn.module.scss'
 
 interface TaskDeleteBtnProps {
@@ -18,14 +17,13 @@ const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        addDefaultContent(task.uid!)
-        //removeTask(task.id!)
-        //
-        //const goalStep = goalSteps?.find(goalStep => goalStep.type === 'task' && goalStep.taskID === task.id)
-        //
-        //if (goalStep) {
-        //    removeGoalStep(goalStep.id!)
-        //}
+        removeTask(task.id!)
+
+        const goalStep = goalSteps?.find(goalStep => goalStep.type === 'task' && goalStep.taskID === task.id)
+
+        if (goalStep) {
+            removeGoalStep(goalStep.id!)
+        }
     }
 
     return (
