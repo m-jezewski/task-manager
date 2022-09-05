@@ -14,15 +14,15 @@ interface StatusOrderChangeBtnProps {
 }
 
 const StatusOrderChangeBtn = ({ variant, elemId, current, buttonStyles }: StatusOrderChangeBtnProps) => {
-    const { statuses } = useDataContext()
+    const { statuses, selectedSpace } = useDataContext()
+    const currentSpaceStatuses = statuses?.filter(s => s.spaceId === selectedSpace?.id!)
     const { updateDocument } = useDb('statuses')
 
     const handleClick = () => {
         let inc = 0;
         variant === 'up' || variant === 'left' ? inc = -1 : inc = 1
-        const adjacent = statuses && statuses[statuses.findIndex((status) => status.id === elemId) + inc]
+        const adjacent = currentSpaceStatuses && currentSpaceStatuses[currentSpaceStatuses.findIndex((status) => status.id === elemId) + inc]
         if (!adjacent) return
-
         updateDocument(elemId, {
             orderIndex: adjacent.orderIndex
         })

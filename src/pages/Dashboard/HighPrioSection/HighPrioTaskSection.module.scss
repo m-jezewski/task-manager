@@ -1,0 +1,34 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.highPrioSection {
+  @include mdScreen {
+    grid-column: 1;
+  }
+
+  table {
+    @extend %baseTable;
+    height: calc(100% - 37px);
+    border-radius: 0 0 0.5rem 0.5rem;
+    @include smScreen {
+      border-radius: 0 0.5rem 0.5rem 0.5rem;
+    }
+
+    caption {
+      @extend %baseTableCaption;
+
+      @include smScreen {
+        width: fit-content;
+      }
+    }
+  }
+
+  .highPrioTasksCaption {
+    background-color: $red-1;
+  }
+
+  .noTasks {
+    @extend %noTasks;
+  }
+}

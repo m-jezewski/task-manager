@@ -15,11 +15,12 @@ import PriorityChangeInput from '../../ui/PriorityChangeButton/PriorityChangeInp
 import DateInputs from '../../ui/DateInputs/DateInputs'
 import { DocumentReference } from 'firebase/firestore'
 import useNewGoalContext from '../../../hooks/useNewGoalContext'
+import NoStatuses from '../../NoStatuses/NoStatuses'
 
 interface AddTaskFormProps {
     defaultStatus?: Status
     openDateInputSwitch?: boolean
-    formStyles?: {}
+    customStyles?: string
     defaultDate?: Dayjs
     addGoalStep?: boolean
     goalID?: string
@@ -27,7 +28,7 @@ interface AddTaskFormProps {
 
 dayjs.extend(customParseFormat)
 
-const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, formStyles, defaultDate = dayjs(), goalID, addGoalStep }: AddTaskFormProps) => {
+const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, customStyles, defaultDate = dayjs(), goalID, addGoalStep }: AddTaskFormProps) => {
     const { addDocument: addTaskDocument } = useDb('tasks')
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
     const closePopover = useContext(ClosePopoverContext)
@@ -85,42 +86,45 @@ const AddTaskForm = ({ defaultStatus, openDateInputSwitch = false, formStyles, d
     }
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form} style={{ ...formStyles }}>
-            <label>
-                Status:
-                <br />
-                <StatusSelectInput status={status} setStatus={setStatus} />
-            </label>
-            <label style={{ flexGrow: 1 }}>
-                Description:
-                <br />
-                <input
-                    type={'text'}
-                    required
-                    className={styles.descriptionInput}
-                    maxLength={550}
-                    value={text}
-                    onChange={(e) => { setText(e.target.value) }}
+        !statuses || statuses.length === 0 ?
+            <NoStatuses elemStyles={`${styles.form} ${customStyles}`} />
+            :
+            <form onSubmit={handleSubmit} className={`${styles.form} ${customStyles}`}>
+                <label>
+                    Status:
+                    <br />
+                    <StatusSelectInput status={status} setStatus={setStatus} />
+                </label>
+                <label style={{ flexGrow: 1 }}>
+                    Description:
+                    <br />
+                    <input
+                        type={'text'}
+                        required
+                        className={styles.descriptionInput}
+                        maxLength={550}
+                        value={text}
+                        onChange={(e) => { setText(e.target.value) }}
+                    />
+                </label>
+                <label>
+                    Priority:
+                    <PriorityChangeInput priority={priority} setPriority={setPriority} />
+                </label>
+                <DateInputs
+                    fromDate={fromDate}
+                    setFromDate={setFromDate}
+                    dueDate={dueDate}
+                    setDueDate={setDueDate}
+                    openSwitch={openDateInputs}
+                    setOpenSwitch={setOpenDateInputs}
                 />
-            </label>
-            <label>
-                Priority:
-                <PriorityChangeInput priority={priority} setPriority={setPriority} />
-            </label>
-            <DateInputs
-                fromDate={fromDate}
-                setFromDate={setFromDate}
-                dueDate={dueDate}
-                setDueDate={setDueDate}
-                openSwitch={openDateInputs}
-                setOpenSwitch={setOpenDateInputs}
-            />
-            <button
-                type={"submit"}
-                className={styles.submitButton}
-            >
-                Submit</button>
-        </form>
+                <button
+                    type={"submit"}
+                    className={styles.submitButton}
+                >
+                    Submit</button>
+            </form>
     )
 }
 

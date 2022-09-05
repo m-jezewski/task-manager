@@ -28,7 +28,8 @@ const Sidebar = () => {
             <div className={` ${toggleSidebar && styles.sideBarOpen} ${styles.container}`} ref={sidebarPanelRef}>
                 <div>
                     <span className={styles.logo}>
-                        Taskify
+                        Task<br />
+                        Manager
                         <hr />
                     </span>
                     <nav>

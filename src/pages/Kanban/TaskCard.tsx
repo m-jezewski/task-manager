@@ -3,16 +3,17 @@ import TaskDeleteBtn from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
 import TaskPrioChangeBtn from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
 import { Task } from "../../interfaces";
 import styles from './Kanban.module.scss'
-import DraggableContainer from '../../components/DragAndDrop/DraggableContainer/DraggableContainer'
+import { withDraggable } from "../../components/DragAndDrop/withDraggable";
 import dayjs from "dayjs";
+import { forwardRef } from "react";
 
 interface TaskCardProps {
     task: Task
 }
 
-const TaskCard = ({ task }: TaskCardProps) => {
+const TaskCard = forwardRef(({ task, ...props }: TaskCardProps, ref) => {
     return (
-        <DraggableContainer task={task} Parent={"div"} className={styles.taskCard}>
+        <div className={styles.taskCard} ref={ref as React.LegacyRef<HTMLDivElement>} {...props}>
             <p>{task.description}</p>
             {task.dueDate && task.fromDate && <span className={styles.date}>
                 {dayjs.unix(task.fromDate).format('DD/MM HH:mm')}  -  {dayjs.unix(task.dueDate).format('DD/MM HH:mm')}
@@ -25,8 +26,10 @@ const TaskCard = ({ task }: TaskCardProps) => {
                 </div>
                 <TaskDeleteBtn task={task} />
             </div>
-        </DraggableContainer>
+        </div>
     );
-}
+})
 
-export default TaskCard;
+const DraggableTaskCard = withDraggable(TaskCard)
+
+export default DraggableTaskCard;

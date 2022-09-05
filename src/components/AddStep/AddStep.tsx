@@ -36,7 +36,7 @@ const AddStep = ({ goalID }: AddStepProps) => {
                     </Tab.Panel>
                     <Tab.Panel as={'div'}>
                         <AddTaskForm
-                            formStyles={{ width: '100%' }}
+                            customStyles={styles.addTaskForm}
                             goalID={goalID!}
                             addGoalStep
                         />

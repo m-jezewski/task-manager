@@ -8,11 +8,11 @@ interface SubheaderProps {
 
 const Subheader = () => {
     const [date, setDate] = useState(dayjs())
-    useEffect(() => {
-        setInterval(() => {
-            setDate(dayjs())
-        }, 1000)
-    })
+    //useEffect(() => {
+    //    setInterval(() => {
+    //        setDate(dayjs())
+    //    }, 1000)
+    //})
 
     return (
         <div className={styles.subheader}>

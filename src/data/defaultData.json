@@ -1,39 +1,131 @@
 {
   "defaultSpaces": [
     {
-      "name": "My awesome default space!"
+      "name": "My awesome default space! #1"
     },
     {
-      "name": "My second awesome default space!"
+      "name": "My awesome default space! #2"
     }
   ],
   "defaultTasks": [
     {
       "orderIndex": 0,
-      "description": "My awesome default task!",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis iaculis tortor quis eros pretium euismod. In vulputate porta ante, quis cursus ante mattis vel.",
       "priority": "low",
       "dueDate": null,
-      "fromDate": null,
-      "status": "Open",
-      "space": "My awesome default space!"
+      "fromDate": null
     },
     {
       "orderIndex": 1,
-      "description": "My awesome default task!",
+      "description": "Proin pellentesque mauris nec dui vehicula, vel maximus quam ultricies. Suspendisse ut imperdiet nibh, non sagittis elit. Sed vitae commodo ante.",
       "priority": "medium",
       "dueDate": null,
-      "fromDate": null,
-      "status": "Open",
-      "space": "My awesome default space!"
+      "fromDate": null
     },
     {
       "orderIndex": 2,
-      "description": "My awesome default task!",
+      "description": "Nulla ut sapien dui. Maecenas congue consequat erat at tempor. Duis dui neque, posuere dignissim arcu suscipit, feugiat eleifend leo. Sed ac ipsum ornare, fermentum nunc sit amet, dapibus ante. Sed vulputate vehicula convallis.",
       "priority": "low",
       "dueDate": null,
-      "fromDate": null,
-      "status": "In Progress",
-      "space": "My awesome default space!"
+      "fromDate": null
+    },
+    {
+      "orderIndex": 3,
+      "description": "Maecenas sagittis id ligula nec luctus. Aenean pulvinar nulla ipsum, eu volutpat tellus rhoncus vitae. Vestibulum blandit pulvinar justo sit amet dignissim. Aliquam sed accumsan est.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 4,
+      "description": "Nulla ut sapien dui. Maecenas congue consequat erat at tempor. Duis dui neque, posuere dignissim arcu suscipit, feugiat eleifend leo. Sed ac ipsum ornare, fermentum nunc sit amet, dapibus ante. Sed vulputate vehicula convallis.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 5,
+      "description": "Nulla ut sapien dui. Maecenas congue consequat erat at tempor. Duis dui neque, posuere dignissim arcu suscipit, feugiat eleifend leo. Sed ac ipsum ornare, fermentum nunc sit amet, dapibus ante. Sed vulputate vehicula convallis.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 6,
+      "description": "Proin sit amet ipsum sit amet nibh varius rhoncus. Vivamus lobortis tellus eu mattis rhoncus. Vivamus mauris orci, porttitor sit amet sagittis nec, consectetur at ipsum. Duis tristique lorem id volutpat bibendum. Vivamus lobortis pellentesque magna vel varius. Cras eleifend id sapien vel malesuada. Nunc lacinia euismod metus, at scelerisque urna faucibus ultricies.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 7,
+      "description": "Nunc ac congue est, eleifend aliquet tellus. Nam sem nisl, tempus eget urna eget, dictum facilisis dui. Nunc non mi mi. Nullam tristique pharetra dolor, et lobortis felis fermentum vel. Mauris molestie bibendum est ac consectetur. Nullam sagittis semper blandit. Proin elementum non dui nec vehicula.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 8,
+      "description": "Cras ultrices leo eu lacus vehicula, quis molestie nisl egestas.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 9,
+      "description": "Aenean iaculis scelerisque ornare. Donec vitae nunc ac mauris maximus sagittis nec sit amet lorem.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 10,
+      "description": "Fusce eu risus tristique, pretium urna ut, maximus quam. Sed vitae suscipit orci. Morbi commodo laoreet elit, vel efficitur dui fermentum in.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 11,
+      "description": "In vehicula mattis quam, ut commodo sapien egestas tempus. In eleifend lorem non enim condimentum, vitae viverra justo faucibus.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 12,
+      "description": "Etiam vehicula massa quis libero pretium faucibus. Suspendisse mollis, tortor ut ornare sodales, ipsum lectus aliquet mauris, sed accumsan orci justo sed ex.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 13,
+      "description": "Donec sed tortor elementum, maximus turpis quis, tristique ex. Etiam ut scelerisque dui, in placerat eros. In at consequat lectus. Sed et pretium tortor, quis sollicitudin erat. Curabitur suscipit arcu vel neque malesuada eleifend. Praesent facilisis elit sed elit blandit elementum.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 14,
+      "description": "Curabitur ornare aliquet urna nec imperdiet. Donec gravida metus ac nulla varius dictum.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 15,
+      "description": "Nunc dignissim viverra ante, sit amet luctus eros gravida ac. Mauris dapibus rhoncus aliquam. Suspendisse potenti.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
+    },
+    {
+      "orderIndex": 16,
+      "description": "Vestibulum at porttitor sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus eget nibh tincidunt, vehicula nibh at, venenatis justo. Aliquam facilisis mi eget dolor mattis, et molestie massa ultricies.",
+      "priority": "low",
+      "dueDate": null,
+      "fromDate": null
     }
   ],
   "defaultStatuses": [
@@ -51,6 +143,66 @@
       "name": "Finished",
       "orderIndex": 3,
       "color": "#d9f99d"
+    }
+  ],
+  "defaultGoals": [
+    {
+      "title": "Default goal #1!",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis iaculis tortor quis eros pretium euismod. In vulputate porta ante, quis cursus ante mattis vel."
+    },
+    {
+      "title": "Default goal #2!",
+      "description": "Etiam purus metus, porta sed placerat eget, condimentum quis tortor. Maecenas tempus nibh vitae orci convallis, id suscipit enim tempus."
+    }
+  ],
+  "defaultGoalSteps": [
+    {
+      "value": 12,
+      "target": 45,
+      "description": "",
+      "type": "number",
+      "progress": 0.26
+    },
+    {
+      "value": 5,
+      "target": 10,
+      "description": "",
+      "type": "number",
+      "progress": 0.5
+    },
+    {
+      "value": 11,
+      "target": 35,
+      "description": "",
+      "type": "",
+      "progress": 0.314
+    },
+    {
+      "value": 15,
+      "target": 60,
+      "description": "",
+      "type": "number",
+      "progress": 0.25
+    },
+    {
+      "type": "boolean",
+      "description": "",
+      "progress": 1
+    },
+    {
+      "type": "boolean",
+      "description": "",
+      "progress": 0
+    },
+    {
+      "type": "task",
+      "progress": 0,
+      "taskID": ""
+    },
+    {
+      "type": "task",
+      "progress": 1,
+      "taskID": ""
     }
   ]
 }

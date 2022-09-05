@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useCollectionSub } from '../hooks/useCollectionSub';
-import { Task, Space, Status, Goal, GoalStep, NumberGoalStep, BooleanGoalStep, TaskGoalStep } from '../interfaces'
+import { Task, Space, Status, Goal, NumberGoalStep, BooleanGoalStep, TaskGoalStep } from '../interfaces'
 
 interface DataContextProviderProps {
     children: React.ReactNode
@@ -25,19 +25,16 @@ export const DataContextProvider = ({ children, uid }: DataContextProviderProps)
     const statuses = useCollectionSub('statuses', uid) as Status[]
     const goals = useCollectionSub('goals', uid) as Goal[]
     const goalSteps = useCollectionSub('goalSteps', uid) as (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
-
     const [selectedSpace, setSelectedSpace] = useState<Space | null>(null)
-    const filteredTasks = selectedSpace && tasks?.filter((task) => task.spaceId === selectedSpace.id).sort((a, b) => a.orderIndex - b.orderIndex)
-    const filteredStatuses = selectedSpace && statuses.filter((status) => status.spaceId === selectedSpace.id).sort((a, b) => a.orderIndex - b.orderIndex)
 
     useEffect(() => {
         spaces && setSelectedSpace(spaces[0])
     }, [spaces])
 
     const data: DataContextInterface = {
-        tasks: filteredTasks ? filteredTasks : null,
+        tasks: tasks && tasks.sort((a, b) => a.orderIndex - b.orderIndex),
         spaces,
-        statuses: filteredStatuses && filteredStatuses,
+        statuses: statuses && statuses.sort((a, b) => a.orderIndex - b.orderIndex),
         selectedSpace,
         setSelectedSpace,
         goals,

@@ -1,0 +1,70 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.spacesSection {
+  @include mdScreen {
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+
+  .spaces {
+    height: calc(100% - 37px);
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: $bright-1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include smScreen {
+      border-radius: 0 0.5rem 0.5rem 0.5rem;
+    }
+
+    ul {
+      @extend %baseList;
+
+      li {
+        position: relative;
+        .itemDescription {
+          margin-left: 1rem;
+          margin-right: auto;
+          font-size: 0.9rem;
+          font-style: italic;
+        }
+
+        .spaceDeleteBtn {
+          display: inline-block;
+          position: absolute;
+          right: 1rem;
+          top: 1.4rem;
+        }
+      }
+    }
+
+    .showAddSpaceBtn {
+      @extend %baseButton;
+      @extend %darkeningBorder;
+      margin: auto 1rem 1rem 1rem;
+      background-color: $bright-3;
+    }
+  }
+
+  .spacesCaption {
+    @extend %baseTableCaption;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    color: $bright-1;
+    background-color: $purple-1;
+    width: 100%;
+
+    @include smScreen {
+      width: fit-content;
+    }
+  }
+
+  .noTasks {
+    @extend %noTasks;
+  }
+}

@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
+import { forwardRef, useRef } from 'react';
 import { Task } from '../../interfaces';
-import DraggableContainer from '../DragAndDrop/DraggableContainer/DraggableContainer';
+import { withDraggable } from '../DragAndDrop/withDraggable';
 import TaskDeleteBtn from '../ui/TaskDeleteBtn/TaskDeleteBtn';
 import TaskPrioChange from '../ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
 import TaskStatusChangeBtn from '../ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
@@ -10,10 +11,9 @@ interface TaskTableItemProps {
     task: Task
 }
 
-const TaskTableItem = ({ task }: TaskTableItemProps) => {
-
+const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps, ref) => {
     return (
-        <DraggableContainer task={task} Parent='tr' className={styles.tableRow}>
+        <tr className={styles.tableRow} {...props} ref={ref as React.LegacyRef<HTMLTableRowElement>}>
             <td className={styles.smallCell}>
                 <TaskStatusChangeBtn task={task} />
             </td>
@@ -29,8 +29,10 @@ const TaskTableItem = ({ task }: TaskTableItemProps) => {
             <td className={styles.smallCell}>
                 <TaskDeleteBtn task={task} />
             </td>
-        </DraggableContainer>
+        </tr>
     );
-}
+})
 
-export default TaskTableItem;
+const DraggableTaskTableItem = withDraggable(TaskTableItem)
+
+export default DraggableTaskTableItem;

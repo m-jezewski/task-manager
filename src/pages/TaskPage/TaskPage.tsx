@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
-import { updateDoc } from "firebase/firestore";
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import DateInputs from "../../components/ui/DateInputs/DateInputs";
 import PriorityChangeInput from "../../components/ui/PriorityChangeButton/PriorityChangeInput";
@@ -15,7 +14,7 @@ import TaskDeleteModal from "./TaskDeleteModal/TaskDeleteModal";
 
 const TaskPage = () => {
     const navigate = useNavigate()
-    const { tasks, statuses, selectedSpace } = useDataContext()
+    const { tasks, statuses, spaces } = useDataContext()
     const { taskID } = useParams()
     const { updateDocument } = useDb('tasks')
     const task = tasks && tasks.find(i => i.id === taskID)
@@ -28,9 +27,9 @@ const TaskPage = () => {
     const [openSwitch, setOpenSwitch] = useState(false)
 
     useEffect(() => {
-        if (task && statuses && selectedSpace) {
+        if (task && statuses && spaces) {
             setDescription(task.description)
-            setSpace(selectedSpace)
+            setSpace(spaces.find(space => space.id! === task.spaceId)!)
             setStatus(statuses.find(status => status.id === task?.statusId)!)
             setPriority(task?.priority)
             if (task.dueDate && task.fromDate) {
@@ -39,7 +38,7 @@ const TaskPage = () => {
                 setFromDate(dayjs.unix(task.fromDate).format('YYYY-MM-DDThh:mm'))
             }
         }
-    }, [statuses, task, selectedSpace])
+    }, [statuses, task, spaces])
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()

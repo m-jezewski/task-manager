@@ -55,19 +55,21 @@
       cursor: pointer;
       transition: all 150ms ease-out;
     }
+
+    .addTaskForm {
+      position: absolute;
+      transform: none;
+    }
   }
   caption:focus-within {
     z-index: 4000;
   }
 
   .noTasks {
+    @extend %noTasks;
     padding-left: 1rem;
-    background-color: $bright-4;
-    font-size: 0.9rem;
-    font-style: italic;
     border-radius: 0 0 1rem 1rem;
     color: $font-dark;
-    cursor: auto;
   }
 
   .hiddenTableCell {

@@ -4,7 +4,6 @@
 
 %sectionChild {
   height: calc(100% - 37px);
-  background-color: $bright-1;
   border-radius: 0 0 0.5rem 0.5rem;
   @include smScreen {
     border-radius: 0 0.5rem 0.5rem 0.5rem;
@@ -19,103 +18,8 @@
   gap: 1rem;
 
   @include mdScreen {
-    align-content: flex-end;
+    align-content: flex-start;
     grid-template-columns: minmax(0, 1fr) 1fr;
-
-    .todaySection,
-    .highPrioSection,
-    .goalProgressSection {
-      grid-column: 1;
-    }
-
-    .spacesSection {
-      grid-column: 2;
-      grid-row-start: 1;
-      grid-row-end: 4;
-    }
-  }
-
-  section {
-    table {
-      @extend %sectionChild;
-      @extend %baseTable;
-
-      caption {
-        @extend %baseTableCaption;
-
-        @include smScreen {
-          width: fit-content;
-        }
-      }
-    }
-
-    .goalLinks {
-      @extend %sectionChild;
-      position: relative;
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-    }
-
-    .spaces {
-      @extend %sectionChild;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      ul {
-        @extend %baseList;
-
-        li {
-          position: relative;
-          .itemDescription {
-            margin-left: 1rem;
-            margin-right: auto;
-            font-size: 0.9rem;
-            font-style: italic;
-          }
-
-          .spaceDeleteBtn {
-            display: inline-block;
-            position: absolute;
-            right: 1rem;
-            top: 1.4rem;
-          }
-        }
-      }
-
-      .showAddSpaceBtn {
-        @extend %baseButton;
-        @extend %darkeningBorder;
-        margin: auto 1rem 1rem 1rem;
-        background-color: $bright-3;
-      }
-    }
-
-    .sectionHeader {
-      @extend %baseTableCaption;
-      display: block;
-      box-sizing: border-box;
-      text-align: center;
-      width: 100%;
-
-      @include smScreen {
-        width: fit-content;
-      }
-    }
-
-    .todaysTasksCaption {
-      background-color: $green-1;
-    }
-    .highPrioTasksCaption {
-      background-color: $red-1;
-    }
-    .goalProgressCaption {
-      background-color: $yellow-1;
-    }
-    .spacesCaption {
-      background-color: $purple-1;
-      color: $bright-1;
-    }
+    grid-template-rows: auto auto 1fr;
   }
 }

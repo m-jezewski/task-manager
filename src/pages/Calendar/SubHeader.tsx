@@ -29,7 +29,7 @@ const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
                 buttonClass={styles.addTaskButton}
                 buttonText={'Add new task'}>
                 <AddTaskForm
-                    formStyles={{ position: 'absolute', transform: 'translate(calc(-100% - 0.5rem))' }}
+                    customStyles={styles.addTaskForm}
                     openDateInputSwitch
                     defaultDate={date}
                 />

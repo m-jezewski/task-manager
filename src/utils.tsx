@@ -1,4 +1,4 @@
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 import { db } from './firebase/config'
 import { Space, Task, Status } from './interfaces'
 
@@ -7,12 +7,10 @@ const addDefaultContent = (uid: string) => {
     const defaultSpace: Space = {
         uid: uid,
         name: 'My awesome default space!',
-        id: uid
     }
     const defaultSpace2: Space = {
         uid: uid,
         name: 'My second awesome default space!',
-        id: uid,
     }
     const defaultTasks: Task[] = [
         {
@@ -70,8 +68,8 @@ const addDefaultContent = (uid: string) => {
         },
     ]
 
-    addDoc(collection(db, 'spaces'), defaultSpace)
-    addDoc(collection(db, 'spaces'), defaultSpace2)
+    setDoc(doc(db, 'spaces', uid), defaultSpace)
+    setDoc(doc(db, 'spaces', uid + 'xd'), defaultSpace2)
     defaultTasks.forEach(task => {
         addDoc(collection(db, 'tasks'), task)
     });

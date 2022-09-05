@@ -148,3 +148,9 @@
     background-color: $bright-1;
   }
 }
+
+%noTasks {
+  font-size: 0.9rem;
+  font-style: italic;
+  cursor: auto;
+}

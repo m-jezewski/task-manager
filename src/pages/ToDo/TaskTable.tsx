@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import { Fragment } from 'react'
+import { forwardRef, useState } from 'react'
 
 //interfaces
-import { Space, Status, Task } from '../../interfaces'
+import { Status, Task } from '../../interfaces'
 
 //css
 import styles from './ToDo.module.scss'
@@ -12,27 +11,22 @@ import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
 import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
 import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
 import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
-import DropToContainer from '../../components/DragAndDrop/DropToContainer/DropToContainer'
 import StatusHideBtn from '../../components/ui/StatusHideBtn/StatusHideBtn'
 import useDataContext from '../../hooks/useDataContext'
 import TaskTableItem from '../../components/TaskTableItem/TaskTableItem'
-import DraggableContainer from '../../components/DragAndDrop/DraggableContainer/DraggableContainer'
+import { withOnDrop } from '../../components/DragAndDrop/withOnDrop'
 
 interface TaskTableProps {
     status: Status
 }
 
-const TaskTable = ({ status }: TaskTableProps) => {
+const TaskTable = forwardRef(({ status, ...props }: TaskTableProps, ref) => {
     const { tasks } = useDataContext()
     const [showTable, setShowTable] = useState(true)
     const statusTasks = tasks?.filter((i: Task) => i.statusId === status.id)
 
     return (
-        <DropToContainer
-            key={status.id}
-            className={styles.listContainer}
-            Parent='table'
-            status={status}>
+        <table className={styles.listContainer} ref={ref as React.LegacyRef<HTMLTableElement>} {...props}>
             <caption>
                 <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                 <span
@@ -44,7 +38,7 @@ const TaskTable = ({ status }: TaskTableProps) => {
                     buttonClass={styles.addTaskBtn}
                     buttonText='+'>
                     <AddTaskForm
-                        formStyles={{ position: 'absolute', transform: '' }}
+                        customStyles={styles.addTaskForm}
                         defaultStatus={status}
                     />
                 </AnimatedPopover>
@@ -80,7 +74,7 @@ const TaskTable = ({ status }: TaskTableProps) => {
                             </td>
                         </tr>
                         : statusTasks.map((task: Task) => (
-                            <TaskTableItem task={task} />
+                            <TaskTableItem key={task.id} task={task} />
                         ))}</>
                     :
                     <tr>
@@ -89,8 +83,10 @@ const TaskTable = ({ status }: TaskTableProps) => {
                             className={styles.hiddenTableCell} />
                     </tr>}
             </tbody>
-        </DropToContainer >
+        </table >
     );
-}
+})
 
-export default TaskTable;
+const DropToTaskTable = withOnDrop(TaskTable)
+
+export default DropToTaskTable;

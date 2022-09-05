@@ -79,6 +79,11 @@
     }
   }
 
+  .addTaskForm {
+    position: absolute;
+    transform: translate(calc(-100% - 0.5rem));
+  }
+
   div {
     margin-top: 1rem;
   }

@@ -25,7 +25,7 @@ const Calendar = () => {
     }
 
     return (
-        <Layout title='Calendar'>
+        <Layout title='Calendar' showSpaceSelect={false}>
             <div className={styles.calendarNav}>
                 <NavLink
                     to={`${date.format('DD-MM-YYYY')}/Day`}
