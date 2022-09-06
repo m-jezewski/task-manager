@@ -73,7 +73,7 @@ const TaskPage = () => {
                 <div className={styles.row}>
                     <label style={{ flexGrow: 1 }}>
                         Status:<br />
-                        <StatusSelectInput status={status} setStatus={setStatus} />
+                        <StatusSelectInput status={status} setStatus={setStatus} space={space} />
                     </label>
                     <label>
                         Priority:

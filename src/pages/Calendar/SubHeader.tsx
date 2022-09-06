@@ -31,6 +31,7 @@ const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
                 <AddTaskForm
                     className={styles.addTaskForm}
                     showDateInputs
+                    showSpaceSelect
                     defaultDate={date}
                 />
             </AnimatedPopover>

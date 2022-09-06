@@ -36,6 +36,7 @@ const AddStep = ({ goalID }: AddStepProps) => {
                     </Tab.Panel>
                     <Tab.Panel as={'div'}>
                         <AddTaskForm
+                            showSpaceSelect
                             className={styles.addTaskForm}
                             goalID={goalID!}
                             addGoalStep

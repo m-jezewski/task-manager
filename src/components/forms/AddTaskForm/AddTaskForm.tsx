@@ -16,10 +16,12 @@ import DateInputs from '../../ui/DateInputs/DateInputs'
 import { DocumentReference } from 'firebase/firestore'
 import useNewGoalContext from '../../../hooks/useNewGoalContext'
 import NoStatuses from '../../NoStatuses/NoStatuses'
+import SpaceSelect from '../../ui/SpaceSelect/SpaceSelect'
 
 interface AddTaskFormProps {
     defaultStatus?: Status
     showDateInputs?: boolean
+    showSpaceSelect?: boolean
     defaultDate?: Dayjs
     addGoalStep?: boolean
     goalID?: string
@@ -31,6 +33,7 @@ dayjs.extend(customParseFormat)
 const AddTaskForm = ({
     defaultStatus,
     showDateInputs = false,
+    showSpaceSelect = false,
     defaultDate = dayjs(),
     goalID,
     addGoalStep,
@@ -45,6 +48,7 @@ const AddTaskForm = ({
     const [openDateInputs, setOpenDateInputs] = useState(showDateInputs)
     const [taskRef, setTaskRef] = useState<DocumentReference<any> | null>(null)
     //form inputs
+    const [space, setSpace] = useState(selectedSpace)
     const [text, setText] = useState('')
     const [status, setStatus] = useState<Status | null>(defaultStatus ? defaultStatus : statuses && statuses[0])
     const [priority, setPriority] = useState('low')
@@ -100,10 +104,16 @@ const AddTaskForm = ({
             <NoStatuses className={classNames} />
             :
             <form onSubmit={handleSubmit} className={classNames} {...props}>
+                {showSpaceSelect && <div>
+                    <label htmlFor='spaceSelect'>
+                        Space:
+                    </label>
+                    <SpaceSelect space={space} setSpace={setSpace} className={styles.spaceSelect} />
+                </div>}
                 <label>
                     Status:
                     <br />
-                    <StatusSelectInput status={status} setStatus={setStatus} />
+                    <StatusSelectInput status={status} setStatus={setStatus} space={space} />
                 </label>
                 <label style={{ flexGrow: 1 }}>
                     Description:
