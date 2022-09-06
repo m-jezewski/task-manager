@@ -11,8 +11,6 @@ const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
         setShowAddSpace(!showAddSpace)
     }
 
-    console.log(props)
-
     return (
         <section className={styles.spacesSection} {...props}>
             <span className={`${styles.sectionHeader} ${styles.spacesCaption}`}>Spaces</span>

@@ -48,7 +48,6 @@ const TaskPage = () => {
         let updatedTask: Task = {
             description: description,
             priority: priority,
-            orderIndex: tasks ? tasks.length + 1 : 0,
             spaceId: space ? space.id! : '',
             statusId: status ? status.id! : '',
             fromDate: null,

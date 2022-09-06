@@ -76,7 +76,6 @@ const AddTaskForm = ({
         let task: Task = {
             description: text,
             priority: priority,
-            orderIndex: tasks ? tasks.length + 1 : 0,
             spaceId: selectedSpace ? selectedSpace.id! : '',
             statusId: status ? status.id! : '',
             fromDate: null,

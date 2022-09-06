@@ -5,7 +5,7 @@ interface Task {
   fromDate: number | null
   dueDate: number | null
   priority: string
-  orderIndex: number
+
   spaceId: string
   statusId: string
 }

@@ -32,7 +32,7 @@ export const DataContextProvider = ({ children, uid }: DataContextProviderProps)
     }, [spaces])
 
     const data: DataContextInterface = {
-        tasks: tasks && tasks.sort((a, b) => a.orderIndex - b.orderIndex),
+        tasks,
         spaces,
         statuses: statuses && statuses.sort((a, b) => a.orderIndex - b.orderIndex),
         selectedSpace,

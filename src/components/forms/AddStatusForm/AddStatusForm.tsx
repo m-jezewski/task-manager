@@ -14,7 +14,6 @@ const AddStatusForm = () => {
     const [name, setName] = useState('')
     const [color, setColor] = useState('#FFFFFF')
 
-
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
         closePopover && closePopover()

@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { UserContext } from '../contexts/UserContext'
 import { useContext } from 'react'
 import { addDoc, collection } from 'firebase/firestore'
-import { addDefaultContent } from '../utils'
+import { addDefaultContent } from '../utils/addDefaultContent'
 
 export const useSignup = () => {
   const { dispatch } = useContext(UserContext)
