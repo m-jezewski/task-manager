@@ -1,4 +1,5 @@
 import styles from './Home.module.scss'
+import homeimg from '../../assets/homeimg.png'
 import { useState } from 'react';
 
 import Login from './Login'
@@ -16,7 +17,7 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <section>
-                <h1>Taskify</h1>
+                <h1>Task <br /> Manager</h1>
                 {!isSignupOpen && !isLoginOpen && <>
                     <p>
                         <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span><br /><br />
@@ -32,9 +33,6 @@ const Home = () => {
                     <Login handleClosingForms={handleClosingForms} />
                 }
             </section >
-            <div className={styles.img_container}>
-
-            </div>
         </div >
     );
 }

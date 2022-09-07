@@ -34,7 +34,7 @@
     },
     {
       "description": "Nulla ut sapien dui. Maecenas congue consequat erat at tempor. Duis dui neque, posuere dignissim arcu suscipit, feugiat eleifend leo. Sed ac ipsum ornare, fermentum nunc sit amet, dapibus ante. Sed vulputate vehicula convallis.",
-      "priority": "high",
+      "priority": "medium",
       "dueDate": null,
       "fromDate": null
     },

@@ -11,11 +11,10 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
     const { signup, error, isPending } = useSignup()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [name, setName] = useState('')
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        signup(email, password, name)
+        signup(email, password)
     }
 
 
@@ -38,20 +37,11 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </label>
-                <label>
-                    <span>Name</span>
-                    <input
-                        type='text'
-                        maxLength={15}
-                        onChange={e => setName(e.target.value)}
-                        value={name}
-                    ></input>
-                </label>
                 <div className={styles.button_row}>
-                    <button className={styles.return_button} onClick={handleClosingForms}>
+                    <button type='submit' className={styles.signupBtn}>Sign up!</button>
+                    <button className={styles.return_button} onClick={handleClosingForms} type='button'>
                         <img src={arrowback} alt='Go back' />
                     </button>
-                    <button type='submit' className={styles.signupBtn}>Sign up!</button>
                 </div>
             </form>
             {error && <p>{error}</p>}
