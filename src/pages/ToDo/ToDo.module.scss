@@ -1,5 +1,24 @@
 @use '../../scss/placeholders';
 @import '../../scss/variables';
+@import '../../scss/mixins';
+
+.row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .spaceSelect {
+    @extend %subtitle;
+    font-weight: 300;
+    font-size: 1.3rem;
+
+    @include smScreen {
+      font-size: 1.7rem;
+    }
+  }
+}
 
 .listContainer {
   @extend %baseTable;

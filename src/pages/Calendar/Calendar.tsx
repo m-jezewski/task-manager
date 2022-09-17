@@ -5,6 +5,7 @@ import styles from './Calendar.module.scss'
 import dayjs, { Dayjs } from 'dayjs'
 //components
 import Layout from '../../components/Layout/Layout/Layout'
+import CalendarHelp from './CalendarHelp'
 
 
 export const useCalendarOutletContext = () => {
@@ -21,7 +22,7 @@ const Calendar = () => {
     }
 
     return (
-        <Layout title='Calendar' showSpaceSelect={false}>
+        <Layout title='Calendar'>
             <div className={styles.calendarNav}>
                 <NavLink
                     to={`${date.format('DD-MM-YYYY')}/Day`}
@@ -44,6 +45,7 @@ const Calendar = () => {
                     type={'date'}
                     onChange={handleChange}
                 />
+                <CalendarHelp />
             </div>
             <Outlet context={{ date }} />
         </Layout>

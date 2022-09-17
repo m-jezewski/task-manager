@@ -34,16 +34,6 @@
     border-radius: 6px;
     background-color: $bright-2;
 
-    .spaceSelect {
-      @extend %subtitle;
-      font-weight: 300;
-      font-size: 1.3rem;
-
-      @include smScreen {
-        font-size: 1.7rem;
-      }
-    }
-
     @include smScreen {
       padding: 1rem;
     }
@@ -84,10 +74,6 @@
       height: 1px;
       margin-bottom: 1rem;
       background-color: $bright-1;
-
-      @include xlScreen {
-        margin-bottom: 2rem;
-      }
     }
   }
 }

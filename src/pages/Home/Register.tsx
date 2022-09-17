@@ -1,5 +1,5 @@
 import { useState, MouseEventHandler, FormEvent } from 'react';
-import arrowback from '../../assets/arrowback.svg'
+import arrowback from '../../assets/icons/arrowback.svg'
 import styles from './Home.module.scss'
 import { useSignup } from '../../hooks/useSignup'
 

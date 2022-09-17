@@ -28,8 +28,6 @@ export const addDefaultContent = (uid: string) => {
     const fromDateShift = getRandomIntFromInterval(randomDateOffset, 20 + randomDateOffset)
     const dueDateShift = getRandomIntFromInterval(randomDateOffset, 35 + randomDateOffset)
 
-    console.log(index < 9 ? uid + getRandomIntFromInterval(0, 6) : uid + getRandomIntFromInterval(6, 10))
-
     await setDoc(doc(db, 'tasks', uid + index), {
       ...item,
       spaceId: index < 9 ? uid + 0 : uid + 1,
@@ -41,7 +39,7 @@ export const addDefaultContent = (uid: string) => {
   })
 
   defaultGoals.forEach(async (item, index) => {
-    await addDoc(collection(db, 'goals'), {
+    await setDoc(doc(db, 'goals', uid + index), {
       ...item,
       uid: uid,
     })
@@ -50,11 +48,16 @@ export const addDefaultContent = (uid: string) => {
   defaultGoalSteps.forEach(async (item) => {
     if (item.type === 'task') {
       await addDoc(collection(db, 'goalSteps'), {
+        ...item,
         taskID: uid + Math.floor(Math.random() * 15),
+        goalID: uid + getRandomIntFromInterval(0, 1),
+        uid: uid,
       })
     } else {
       await addDoc(collection(db, 'goalSteps'), {
         ...item,
+        goalID: uid + getRandomIntFromInterval(0, 1),
+        uid: uid,
       })
     }
   })

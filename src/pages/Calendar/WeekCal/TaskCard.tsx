@@ -30,7 +30,7 @@ const TaskCard = ({ task, weekDay }: TaskCardProps) => {
                 backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
         >
-            {task.description}
+            <p>{task.description}</p>
         </div>
     );
 }

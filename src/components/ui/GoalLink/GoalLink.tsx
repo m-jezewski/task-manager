@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import useDataContext from "../../../hooks/useDataContext";
 import { BooleanGoalStep, Goal, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
 import { getGoalStepProgess } from "../../../utils/getGoalStepProgress";
 import styles from './GoalLink.module.scss'
 
 interface GoalLinkProps {
     goal: Goal
-    steps?: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]
 }
 
 const drawCircle = (color: string, percent: number, ctx: CanvasRenderingContext2D) => {
@@ -19,8 +19,10 @@ const drawCircle = (color: string, percent: number, ctx: CanvasRenderingContext2
     ctx.stroke()
 }
 
-const GoalLink = ({ goal, steps }: GoalLinkProps) => {
-    const goalProgress = getGoalStepProgess(steps)
+const GoalLink = ({ goal }: GoalLinkProps) => {
+    const { goalSteps } = useDataContext()
+    const steps = goalSteps && goalSteps.filter(gs => gs.goalID === goal.id!)
+    const goalProgress = steps ? getGoalStepProgess(steps) : 0
     const canvas = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {

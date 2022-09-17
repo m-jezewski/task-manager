@@ -12,7 +12,7 @@ const GoalProgressSection = () => {
                 {!goals || goals.length === 0 ?
                     <div className={styles.noTasks}>You don't have any goals created</div>
                     :
-                    goals.slice(0, 5).map(goal => <GoalLink goal={goal} />)
+                    goals.slice(0, 5).map(goal => <GoalLink key={goal.id} goal={goal} />)
                 }
             </div>
         </section>

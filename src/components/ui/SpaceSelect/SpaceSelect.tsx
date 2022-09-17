@@ -2,13 +2,13 @@ import { Listbox, Transition } from "@headlessui/react";
 import { Space } from "../../../interfaces";
 import { ComponentPropsWithoutRef, Fragment } from 'react'
 import styles from './SpaceSelect.module.scss'
-import unfold from '../../../assets/unfold.svg'
+import unfold from '../../../assets/icons/unfold.svg'
 import useDataContext from "../../../hooks/useDataContext";
 
 interface SpaceSelectProps {
     space: Space | null
     setSpace: React.Dispatch<React.SetStateAction<Space | null>>
-    className: string
+    className?: string
 }
 
 const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps & ComponentPropsWithoutRef<'div'>) => {

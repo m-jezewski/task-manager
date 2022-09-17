@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NewGoalContext } from '../pages/NewGoal/NewGoal'
+import { NewGoalContext } from '../pages/Goals/NewGoal/NewGoal'
 
 const useNewGoalContext = () => {
   return useContext(NewGoalContext)

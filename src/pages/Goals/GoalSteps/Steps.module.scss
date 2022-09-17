@@ -1,0 +1,56 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/variables';
+@import '../../../scss//mixins';
+
+.gsTable {
+  @extend %baseTable;
+  empty-cells: show;
+  td {
+    padding: 0.2rem;
+    @include smScreen {
+      padding: 0.4rem;
+    }
+  }
+
+  .descriptionCell {
+    text-align: left;
+    width: max-content;
+  }
+
+  .numberInputCell {
+    width: 6rem;
+  }
+
+  .smallCell {
+    width: 1rem;
+  }
+
+  .booleanStatusCell {
+    text-align: center;
+    font-style: italic;
+  }
+  .dueDate {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+    color: $dark-1;
+  }
+
+  .centerCell {
+    text-align: center;
+  }
+
+  caption {
+    @extend %baseTableCaption;
+    background-color: gold;
+
+    @include smScreen {
+      width: fit-content;
+    }
+  }
+
+  .icon {
+    margin: auto;
+    width: fit-content;
+  }
+}

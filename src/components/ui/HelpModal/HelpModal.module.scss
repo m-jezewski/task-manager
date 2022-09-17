@@ -1,0 +1,71 @@
+@use '../../../scss/placeholders';
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.modalContainer {
+  @extend %baseModalContainer;
+
+  button {
+    @extend %baseButton;
+    @extend %darkeningHover;
+  }
+
+  .panel {
+    @extend %baseModalPanel;
+    padding: 0.5rem;
+
+    @include smScreen {
+      padding: 2rem;
+    }
+
+    .title {
+      @extend %subtitle;
+    }
+
+    .description {
+      margin: 1rem auto;
+      max-width: 320px;
+    }
+
+    .presentation {
+      background-color: $bright-4;
+      margin: auto;
+      width: 250px;
+      height: 150px;
+
+      @include smScreen {
+        width: 375px;
+        height: 225px;
+      }
+
+      @include xlScreen {
+        width: 500px;
+        height: 300px;
+      }
+    }
+  }
+
+  .tabList {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.25rem;
+  }
+
+  .tab {
+    background-color: $bright-4;
+    border-radius: 50%;
+  }
+
+  .tabActive {
+    background-color: $blue-1;
+  }
+}
+
+.openHelp {
+  @extend %baseButton;
+  @extend %darkeningHover;
+  padding: 0;
+  margin-left: auto;
+  line-height: 0;
+}

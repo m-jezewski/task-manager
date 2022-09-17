@@ -10,11 +10,8 @@ interface StatusSelectInputProps {
 }
 
 const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInputProps) => {
-
     const { statuses, selectedSpace } = useDataContext()
     const spaceStatuses = space ? statuses?.filter(s => s.spaceId === space.id) : statuses?.filter(s => s.spaceId === selectedSpace?.id)
-
-    console.log(spaceStatuses)
 
     useEffect(() => {
         spaceStatuses?.find(s => s.id === status?.id) === undefined && setStatus((spaceStatuses && spaceStatuses[0]) || null)

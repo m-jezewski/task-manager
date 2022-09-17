@@ -66,7 +66,7 @@ const TaskPage = () => {
     }
 
     return (
-        <Layout title='Update task' showSpaceSelect={false}>
+        <Layout title='Update task'>
             <form className={styles.taskForm} onSubmit={handleSubmit}>
                 <textarea value={description} onChange={(e: any) => { setDescription(e.target.value) }} rows={10} />
                 <div className={styles.row}>

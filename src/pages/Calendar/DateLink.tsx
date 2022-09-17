@@ -1,7 +1,7 @@
 import { Dayjs } from "dayjs";
 import { Link } from "react-router-dom";
-import arrowLeft from '../../assets/arrowLeft.svg'
-import arrowRight from '../../assets/arrowRight.svg'
+import arrowLeft from '../../assets/icons/arrowLeft.svg'
+import arrowRight from '../../assets/icons/arrowRight.svg'
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
 
 interface DateLinkProps {

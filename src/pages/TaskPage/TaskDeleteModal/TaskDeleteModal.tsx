@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../../components/ui/DeleteModal/DeleteModal";
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
 import { Task } from "../../../interfaces";
@@ -35,21 +36,14 @@ const TaskDeleteModal = ({ task }: TaskDeleteModalProps) => {
                 onClick={() => { setIsOpen(true) }}>
                 Delete task
             </button>
-            <Dialog
-                open={isOpen}
-                onClose={() => { setIsOpen(false) }}
-                className={styles.dialogContainer}
-            >
-                <Dialog.Panel className={styles.dialogPanel}>
-                    <Dialog.Title className={styles.title}>Remove Task</Dialog.Title>
-                    <Dialog.Description>
-                        This action will permanently remove this task. <br />
-                        If this task was created as a step of goal, it will be also removed from goal page.
-                    </Dialog.Description>
-                    <button className={styles.removeButton} onClick={handleDelete}>Remove</button>
-                    <button className={styles.closeButton} onClick={() => { setIsOpen(false) }}>Cancel</button>
-                </Dialog.Panel>
-            </Dialog>
+            <DeleteModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title='Remove Task'
+                description='This action will permanently remove this task.
+                If this task was created as a step of goal, it will be also removed from goal page.'
+                handleDeleteBtnClick={handleDelete}
+            />
         </>
     );
 }

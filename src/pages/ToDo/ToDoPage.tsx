@@ -10,12 +10,22 @@ import TaskTable from './TaskTable'
 import useDataContext from '../../hooks/useDataContext';
 import styles from './ToDo.module.scss'
 import NoSpaces from '../../components/NoSpaces/NoSpaces';
+import SpaceSelect from '../../components/ui/SpaceSelect/SpaceSelect';
+import ListHelp from './ListHelp';
 
 const TodoPage = () => {
-    const { tasks, statuses, selectedSpace } = useDataContext()
+    const { tasks, statuses, selectedSpace, setSelectedSpace } = useDataContext()
 
     return (
         <Layout title='To-Do List'>
+            <div className={styles.row}>
+                <SpaceSelect
+                    space={selectedSpace}
+                    setSpace={setSelectedSpace}
+                    className={styles.spaceSelect}
+                />
+                <ListHelp />
+            </div>
             {selectedSpace ?
                 tasks && statuses && <>
                     <div className={styles.newStatusContainer}>

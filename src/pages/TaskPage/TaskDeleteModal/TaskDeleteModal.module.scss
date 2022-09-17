@@ -6,27 +6,3 @@
   @extend %darkeningBorder;
   background-color: $red-1;
 }
-.dialogContainer {
-  @extend %baseModalContainer;
-}
-
-.dialogPanel {
-  @extend %baseModalPanel;
-
-  .title {
-    @extend %subtitle;
-  }
-
-  button {
-    @extend %baseButton;
-    margin: 0.5rem;
-  }
-
-  .removeButton {
-    background-color: $red-1;
-  }
-
-  .closeButton {
-    background-color: $bright-4;
-  }
-}

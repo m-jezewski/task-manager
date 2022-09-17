@@ -4,6 +4,7 @@ import styles from './SpaceDeleteBtn.module.scss'
 import { Dialog } from "@headlessui/react";
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 interface SpaceDeleteBtnProps {
     space: Space
@@ -31,30 +32,13 @@ const SpaceDeleteBtn = ({ space, className, ...props }: SpaceDeleteBtnProps & Co
                 className={`${styles.openDialogButton} ${className}`}
                 {...props}
             />
-            <Dialog
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-                className={styles.dialogContainer}
-            >
-                <Dialog.Panel className={styles.panel}>
-                    <Dialog.Title className={styles.title}>Remove Space</Dialog.Title>
-                    <Dialog.Description className={styles.description}>
-                        This action will pernamently remove this space and all associated with it statuses and tasks.<br />
-                        Are you absolutely sure?
-                    </Dialog.Description>
-
-                    <button
-                        onClick={handleDelete}
-                        className={styles.removeButton}>
-                        Remove
-                    </button>
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        className={styles.backButton}>
-                        Cancel
-                    </button>
-                </Dialog.Panel>
-            </Dialog>
+            <DeleteModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title='Remove Space'
+                description='This action will pernamently remove this space and all associated with it statuses and tasks. Are you absolutely sure?'
+                handleDeleteBtnClick={handleDelete}
+            />
         </>
     );
 }

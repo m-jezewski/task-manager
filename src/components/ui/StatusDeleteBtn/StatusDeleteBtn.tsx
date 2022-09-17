@@ -1,10 +1,10 @@
-import { Dialog } from "@headlessui/react";
 import { useState } from "react";
 import { Status } from "../../../interfaces";
 import styles from './StatusDeleteBtn.module.scss'
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
 import { increment } from "firebase/firestore";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 interface DeleteStatusDialogProps {
     status: Status
@@ -32,29 +32,13 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
                 onClick={() => { setIsOpen(true) }}
                 className={styles.openDialogButton}
             />
-            <Dialog
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-                className={styles.dialogContainer}
-            >
-                <Dialog.Panel className={styles.panel}>
-                    <Dialog.Title className={styles.title}>Remove Status</Dialog.Title>
-                    <Dialog.Description className={styles.description}>
-                        This action will pernamently remove this status and all associated with it tasks
-                    </Dialog.Description>
-
-                    <button
-                        onClick={handleDelete}
-                        className={styles.removeButton}>
-                        Remove
-                    </button>
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        className={styles.backButton}>
-                        Cancel
-                    </button>
-                </Dialog.Panel>
-            </Dialog>
+            <DeleteModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                title='Remove Status'
+                description='This action will pernamently remove this status and all associated with it tasks'
+                handleDeleteBtnClick={handleDelete}
+            />
         </>
     );
 }

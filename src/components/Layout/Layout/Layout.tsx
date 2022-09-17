@@ -1,18 +1,13 @@
 import Sidebar from "../Sidebar/Sidebar";
 import styles from './Layout.module.scss'
-import SpaceSelect from "../../ui/SpaceSelect/SpaceSelect";
-import useDataContext from "../../../hooks/useDataContext";
 
 
 interface LayoutProps {
     children: React.ReactNode
     title: string
-    showSpaceSelect?: boolean
 }
 
-const Layout = ({ children, title, showSpaceSelect = true }: LayoutProps) => {
-    const { selectedSpace, setSelectedSpace } = useDataContext()
-
+const Layout = ({ children, title }: LayoutProps) => {
     return (
         <>
             <Sidebar />
@@ -22,11 +17,6 @@ const Layout = ({ children, title, showSpaceSelect = true }: LayoutProps) => {
                     <hr />
                 </header>
                 <main>
-                    {showSpaceSelect && <SpaceSelect
-                        space={selectedSpace}
-                        setSpace={setSelectedSpace}
-                        className={styles.spaceSelect}
-                    />}
                     {children}
                 </main>
             </div>

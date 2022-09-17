@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import styles from './Sidebar.module.scss'
-import calendar from '../../../assets/calendar.svg'
-import checklist from '../../../assets/checklist.svg'
-import home from '../../../assets/home.svg'
-import width from '../../../assets/width.svg'
-import monitoring from '../../../assets/monitoring.svg'
-import menu from '../../../assets/menu.svg'
-import logoutIcon from '../../../assets/logout.svg'
+import calendar from '../../../assets/icons/calendar.svg'
+import checklist from '../../../assets/icons/checklist.svg'
+import home from '../../../assets/icons/home.svg'
+import width from '../../../assets/icons/width.svg'
+import monitoring from '../../../assets/icons/monitoring.svg'
+import menu from '../../../assets/icons/menu.svg'
+import logoutIcon from '../../../assets/icons/logout.svg'
 import { useLogout } from '../../../hooks/useLogout'
 import { onClickOutside } from '../../../utils/onClickOutside';
 import dayjs from 'dayjs';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 const Sidebar = () => {
     const { logout } = useLogout()
