@@ -8,9 +8,9 @@ import PANEL_STATUSORDER from '../../assets/helpModalAssets/PANEL-STATUSORDER.we
 import PANEL_TASKLINK from '../../assets/helpModalAssets/PANEL-TASKLINK.webp'
 import PANEL_TASKPRIO from '../../assets/helpModalAssets/PANEL-TASKPRIO.webp'
 import PANEL_TASKSTATUS from '../../assets/helpModalAssets/PANEL-TASKSTATUS.webp'
-import HelpModal from '../../components/ui/HelpModal/HelpModal'
+import HelpModal from '../../components/Modals/HelpModal/HelpModal'
 
-export const panelHelpContent = [
+const panelHelpContent = [
     {
         title: 'Spaces',
         description: 'Switch between spaces and group your tasks depending on your needs',

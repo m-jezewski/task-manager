@@ -5,6 +5,12 @@
 .modalContainer {
   @extend %baseModalContainer;
 
+  .closeButton {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+
   button {
     @extend %baseButton;
     @extend %darkeningHover;
@@ -12,10 +18,11 @@
 
   .panel {
     @extend %baseModalPanel;
-    padding: 0.5rem;
+    position: relative;
+    padding: 1rem;
 
     @include smScreen {
-      padding: 2rem;
+      padding: 3rem;
     }
 
     .title {
@@ -24,7 +31,7 @@
 
     .description {
       margin: 1rem auto;
-      max-width: 320px;
+      max-width: fit-content;
     }
 
     .presentation {
@@ -65,6 +72,7 @@
 .openHelp {
   @extend %baseButton;
   @extend %darkeningHover;
+  background-color: inherit;
   padding: 0;
   margin-left: auto;
   line-height: 0;

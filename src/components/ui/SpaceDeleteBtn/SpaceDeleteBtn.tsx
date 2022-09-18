@@ -4,7 +4,7 @@ import styles from './SpaceDeleteBtn.module.scss'
 import { Dialog } from "@headlessui/react";
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import DeleteModal from "../../Modals/DeleteModal/DeleteModal";
 
 interface SpaceDeleteBtnProps {
     space: Space

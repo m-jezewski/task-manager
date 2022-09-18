@@ -100,7 +100,7 @@
 }
 
 .settings {
-  button {
+  .logoutButton {
     @extend %baseButton;
     @extend %darkeningHover;
     width: 100%;
@@ -116,6 +116,11 @@
         display: inline;
       }
     }
+  }
+
+  .openHelp {
+    background-color: $bright-1;
+    margin: 0.5rem auto;
   }
 }
 

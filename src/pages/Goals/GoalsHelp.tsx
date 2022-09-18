@@ -5,7 +5,7 @@ import GOALS_CHECKBOXES from '../../assets/helpModalAssets/GOALS-CHECKBOXES.webp
 import GOALS_NUMBERSTEP from '../../assets/helpModalAssets/GOALS-NUMBERSTEP.webp'
 import GOALS_REMOVEGOAL from '../../assets/helpModalAssets/GOALS-REMOVEGOAL.webp'
 import GOALS_STEPTYPES from '../../assets/helpModalAssets/GOALS-STEPTYPES.webp'
-import HelpModal from '../../components/ui/HelpModal/HelpModal'
+import HelpModal from '../../components/Modals/HelpModal/HelpModal'
 
 const goalHelpContent = [
     {

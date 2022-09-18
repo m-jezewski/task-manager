@@ -4,7 +4,7 @@ import styles from './StatusDeleteBtn.module.scss'
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
 import { increment } from "firebase/firestore";
-import DeleteModal from "../DeleteModal/DeleteModal";
+import DeleteModal from "../../Modals/DeleteModal/DeleteModal";
 
 interface DeleteStatusDialogProps {
     status: Status

@@ -2,21 +2,24 @@ import { Dialog, Tab } from "@headlessui/react";
 import styles from './HelpModal.module.scss'
 import arrowRight from '../../../assets/icons/arrowRight.svg'
 import arrowLeft from '../../../assets/icons/arrowLeft.svg'
-import { useState } from 'react'
+import { useState, ComponentPropsWithoutRef } from 'react'
 import help from '../../../assets/icons/help.svg'
+import close from '../../../assets/icons/close.svg'
 
 interface HelpModalProps {
     slidesContent: { title: string, description: string, img: { src: string, alt: string } }[]
+    buttonStyles?: string
 }
 
-const HelpModal = ({ slidesContent }: HelpModalProps) => {
+const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalProps & ComponentPropsWithoutRef<'button'>) => {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
 
     return (
         <>
             <button
-                className={styles.openHelp}
+                className={`${styles.openHelp} ${buttonStyles}`}
+                {...buttonProps}
                 onClick={() => { setIsOpen(true) }}>
                 <img src={help} alt='Open help' />
             </button>
@@ -26,13 +29,16 @@ const HelpModal = ({ slidesContent }: HelpModalProps) => {
                 className={styles.modalContainer}
             >
                 <Dialog.Panel className={styles.panel}>
+                    <button className={styles.closeButton} onClick={() => { setIsOpen(false) }}>
+                        <img src={close} alt='close modal' />
+                    </button>
                     <Tab.Group
                         selectedIndex={selectedIndex}
                         onChange={setSelectedIndex}
                     >
-                        <Tab.Panels className={styles.panel}>
+                        <Tab.Panels>
                             {slidesContent.map(({ title, description, img }) => (
-                                <Tab.Panel key={title}>
+                                <Tab.Panel key={description}>
                                     <Dialog.Title className={styles.title}>{title}</Dialog.Title>
                                     <img
                                         className={styles.presentation}
@@ -48,7 +54,7 @@ const HelpModal = ({ slidesContent }: HelpModalProps) => {
                                 <img src={arrowLeft} alt=''></img>
                             </button>
                             {slidesContent.map((i, index) =>
-                                <Tab key={i.title} className={`${selectedIndex === index && styles.tabActive} ${styles.tab}`}></Tab>
+                                <Tab key={i.description} className={`${selectedIndex === index && styles.tabActive} ${styles.tab}`}></Tab>
                             )}
                             <button onClick={() => { selectedIndex < slidesContent.length - 1 && setSelectedIndex(selectedIndex + 1) }}>
                                 <img src={arrowRight} alt=''></img>

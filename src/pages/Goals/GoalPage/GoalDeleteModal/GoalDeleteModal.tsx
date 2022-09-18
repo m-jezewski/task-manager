@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
+import DeleteModal from "../../../../components/Modals/DeleteModal/DeleteModal";
 import useDataContext from "../../../../hooks/useDataContext";
 import useDb from "../../../../hooks/useDb";
 import { Goal, Task } from "../../../../interfaces";

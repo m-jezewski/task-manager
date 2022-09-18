@@ -11,6 +11,7 @@ import { useLogout } from '../../../hooks/useLogout'
 import { onClickOutside } from '../../../utils/onClickOutside';
 import dayjs from 'dayjs';
 import { useState, useRef } from 'react';
+import AppHelp from './AppHelp';
 
 const Sidebar = () => {
     const { logout } = useLogout()
@@ -41,7 +42,8 @@ const Sidebar = () => {
                     </nav>
                 </div>
                 <div className={styles.settings}>
-                    <button onClick={() => { logout() }}>
+                    <AppHelp />
+                    <button className={styles.logoutButton} onClick={() => { logout() }}>
                         <img src={logoutIcon} alt='Logout'></img><span>LOGOUT</span>
                     </button>
                 </div>

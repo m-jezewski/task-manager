@@ -7,9 +7,9 @@ import LIST_STATUSORDER from '../../assets/helpModalAssets/LIST-STATUSORDER.webp
 import LIST_TASKLINK from '../../assets/helpModalAssets/LIST-TASKLINK.webp'
 import LIST_TASKPRIO from '../../assets/helpModalAssets/LIST-TASKPRIO.webp'
 import LIST_TASKSTATUS from '../../assets/helpModalAssets/LIST-TASKSTATUS.webp'
-import HelpModal from '../../components/ui/HelpModal/HelpModal'
+import HelpModal from '../../components/Modals/HelpModal/HelpModal'
 
-export const listHelpContent = [
+const listHelpContent = [
     {
         title: 'Spaces',
         description: 'Switch between spaces and group your tasks depending on your needs',
@@ -45,7 +45,7 @@ export const listHelpContent = [
     },
     {
         title: 'Remove Tasks',
-        description: 'Remove tasks by clicking trashcan icon on the right',
+        description: 'Remove tasks by clicking trashcan icon on the right side of the task',
         img: {
             src: LIST_TASKPRIO,
             alt: 'Trashcan icon',
@@ -86,7 +86,7 @@ export const listHelpContent = [
     {
         title: 'Remove status',
         description:
-            'Remove status by clicking "X" icon on the right. Keep in mind that removing status also removes any associated with it tasks',
+            'Remove status by clicking "X" icon on the right top corner of each table. Keep in mind that removing status also removes any associated with it tasks',
         img: {
             src: LIST_REMOVESTATUS,
             alt: '"X" icon',

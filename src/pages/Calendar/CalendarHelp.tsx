@@ -5,7 +5,7 @@ import CALENDAR_DAYLINK_MONTH from '../../assets/helpModalAssets/CALENDAR-DAYLIN
 import CALENDAR_DAYLINKS from '../../assets/helpModalAssets/CALENDAR-DAYLINKS.webp'
 import CALENDAR_LINKS from '../../assets/helpModalAssets/CALENDAR-LINKS.webp'
 import CALENDAR_TASKLINK from '../../assets/helpModalAssets/CALENDAR-TASKLINK.webp'
-import HelpModal from '../../components/ui/HelpModal/HelpModal'
+import HelpModal from '../../components/Modals/HelpModal/HelpModal'
 
 const calendarHelpContent = [
     {

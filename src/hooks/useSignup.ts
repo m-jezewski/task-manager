@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { UserContext } from '../contexts/UserContext'
 import { useContext } from 'react'
 import { addDefaultContent } from '../utils/addDefaultContent'
+import { openAppHelp } from '../utils/openAppHelp'
 
 export const useSignup = () => {
   const { dispatch } = useContext(UserContext)
@@ -18,6 +19,7 @@ export const useSignup = () => {
         addDefaultContent(userCredential.user.uid)
         dispatch({ type: 'LOGIN', payload: userCredential.user })
         setisPending(false)
+        openAppHelp()
       })
       .catch((err) => {
         setError(err.message)
