@@ -11,7 +11,7 @@ import styles from './Sidebar.module.scss'
 
 const appHelpContent = [
     {
-        title: 'Welcome',
+        title: 'Task Manager',
         description: "Task Manager is an application to manage your daily tasks and track bigger goals. Now let's try to explain the main concepts of the application: Spaces, Statuses and Tasks.",
         img: {
             src: APP_LOGO,

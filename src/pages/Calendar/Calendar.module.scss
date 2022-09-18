@@ -62,7 +62,7 @@
     margin: 0;
     @extend %subtitle;
     font-family: 'Montserrat';
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
     font-size: 1.5rem;
 
     @include smScreen {
@@ -91,4 +91,12 @@
 }
 .subHeader:focus-within {
   z-index: 3000;
+}
+
+.helpBtn {
+  margin-left: 0;
+
+  @include smScreen {
+    margin-left: auto;
+  }
 }

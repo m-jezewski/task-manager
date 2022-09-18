@@ -6,6 +6,7 @@ import CALENDAR_DAYLINKS from '../../assets/helpModalAssets/CALENDAR-DAYLINKS.we
 import CALENDAR_LINKS from '../../assets/helpModalAssets/CALENDAR-LINKS.webp'
 import CALENDAR_TASKLINK from '../../assets/helpModalAssets/CALENDAR-TASKLINK.webp'
 import HelpModal from '../../components/Modals/HelpModal/HelpModal'
+import styles from './Calendar.module.scss'
 
 const calendarHelpContent = [
     {
@@ -69,7 +70,7 @@ const calendarHelpContent = [
 
 const CalendarHelp = () => {
     return (
-        <HelpModal slidesContent={calendarHelpContent} />
+        <HelpModal slidesContent={calendarHelpContent} buttonStyles={styles.helpBtn} />
     );
 }
 

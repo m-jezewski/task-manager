@@ -16,7 +16,7 @@ const StatusSection = ({ status }: StatusSectionProps) => {
     return (
         <>
             {showSection ?
-                <section className={styles.section}>
+                <section>
                     <div className={styles.sectionHeader} style={{ backgroundColor: status.color }}>
                         <div>
                             <StatusHideBtn setShowStatus={setShowSection} showStatus={showSection} />
