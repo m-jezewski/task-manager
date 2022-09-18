@@ -8,36 +8,38 @@ interface GoalStepNumButtonsProps {
 }
 
 const getIncChangeObj = (value: number, target: number, progress: number) => {
-    if (value + 1 < target && progress !== 1) {
-        return { value: value + 1, progress: value / target }
-    }
-    else if (value + 1 === target && progress !== 1) {
-        return { value: target, progress: 1 }
-    } else {
-        return {}
-    }
+    if (value + 1 < target && progress !== 1) return { value: value + 1, progress: value / target }
+    if (value + 1 === target && progress !== 1) return { value: target, progress: 1 }
+    return {}
 }
 
-const getDecChangeObj = (value: number, target: number, progress: number) => {
-    if (value > 0 && target >= value) {
-        return { value: value - 1, progress: (value - 1) / target }
-    } else {
-        return {}
-    }
+const getDecChangeObj = (value: number, target: number) => {
+    if (value > 0 && target >= value) return { value: value - 1, progress: (value - 1) / target }
+    return {}
 }
 
 const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalStepNumButtonsProps) => {
-
     const { updateDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
     const handleIncButtonClick = () => {
-        newGoalCtx ? newGoalCtx.updateStepInNewGoal(id!, getIncChangeObj(value, target, progress)) : updateDocument(id!, getIncChangeObj(value, target, progress))
-    }
-    const handleDecButtonClick = () => {
-        if (value > 0 && target >= value) {
-            newGoalCtx ? newGoalCtx.updateStepInNewGoal(id!, getDecChangeObj(value, target, progress)) : updateDocument(id!, getDecChangeObj(value, target, progress))
+        const updatedValues = getIncChangeObj(value, target, progress)
+
+        if (newGoalCtx) {
+            newGoalCtx.updateStepInNewGoal(id!, updatedValues)
+            return
         }
+        updateDocument(id!, updatedValues)
+    }
+
+    const handleDecButtonClick = () => {
+        const updatedValues = getDecChangeObj(value, target)
+
+        if (newGoalCtx) {
+            newGoalCtx.updateStepInNewGoal(id!, updatedValues)
+            return
+        }
+        updateDocument(id!, updatedValues)
     }
 
     return (

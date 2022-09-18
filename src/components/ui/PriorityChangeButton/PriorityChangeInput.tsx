@@ -5,15 +5,23 @@ interface PriorityChangeInputProps {
     setPriority: React.Dispatch<React.SetStateAction<string>>
 }
 
+const getPrio = (priority: string) => {
+    if (priority === 'low') return 'medium'
+    if (priority === 'medium') return 'high'
+    if (priority === 'high') return 'low'
+    return 'low'
+}
+
 const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps) => {
+
     const handleClick = () => {
-        priority === 'low' ? setPriority('medium') : priority === 'medium' ? setPriority('high') : setPriority('low')
+        setPriority(getPrio(priority))
     }
 
     return (
         <input
             type='button'
-            className={`${styles.PriorityChangeInput} ${priority}_prio`}
+            className={`${styles.PriorityChangeInput} ${styles[priority]}`}
             onClick={handleClick}
         />
     );

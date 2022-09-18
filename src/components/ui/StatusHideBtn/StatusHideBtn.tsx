@@ -7,7 +7,7 @@ interface StatusHideBtnProps {
 
 const StatusHideBtn = ({ showStatus, setShowStatus }: StatusHideBtnProps) => {
     return (
-        <button className={styles.hideButton} onClick={() => { setShowStatus(!showStatus) }}></button>
+        <button className={styles.hideButton} onClick={() => { setShowStatus(!showStatus) }} />
     );
 }
 

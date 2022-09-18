@@ -28,8 +28,6 @@ interface AddTaskFormProps {
     className?: string
 }
 
-dayjs.extend(customParseFormat)
-
 const AddTaskForm = ({
     defaultStatus,
     showDateInputs = false,
@@ -44,7 +42,7 @@ const AddTaskForm = ({
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
     const closePopover = useContext(ClosePopoverContext)
     const newGoalCtx = useNewGoalContext()
-    const { tasks, selectedSpace, statuses } = useDataContext()
+    const { selectedSpace, statuses } = useDataContext()
     const [openDateInputs, setOpenDateInputs] = useState(showDateInputs)
     const [taskRef, setTaskRef] = useState<DocumentReference<any> | null>(null)
     //form inputs
@@ -54,16 +52,25 @@ const AddTaskForm = ({
     const [priority, setPriority] = useState('low')
     const [fromDate, setFromDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
     const [dueDate, setDueDate] = useState(defaultDate.format('YYYY-MM-DDThh:mm'))
-    let classNames = [styles.form, className].filter(Boolean).join(" ").trim();
 
     useEffect(() => {
         if (!taskRef || !addGoalStep) return
 
         if (newGoalCtx) {
-            newGoalCtx.addStepInNewGoal({ type: 'task', progress: 0, taskID: taskRef.id! })
-        } else {
-            addGoalStepDocument({ type: 'task', progress: 0, taskID: taskRef.id!, goalID: goalID })
+            newGoalCtx.addStepInNewGoal({
+                type: 'task',
+                progress: 0,
+                taskID: taskRef.id!
+            })
+            return
         }
+
+        addGoalStepDocument({
+            type: 'task',
+            progress: 0,
+            taskID: taskRef.id!,
+            goalID: goalID
+        })
     }, [taskRef])
 
 
@@ -100,9 +107,9 @@ const AddTaskForm = ({
 
     return (
         !statuses || statuses.length === 0 ?
-            <NoStatuses className={classNames} />
+            <NoStatuses className={styles.form} />
             :
-            <form onSubmit={handleSubmit} className={classNames} {...props}>
+            <form onSubmit={handleSubmit} className={`${styles.form} ${className}`} {...props}>
                 {showSpaceSelect && <div>
                     <label htmlFor='spaceSelect'>
                         Space:
@@ -114,7 +121,7 @@ const AddTaskForm = ({
                     <br />
                     <StatusSelectInput status={status} setStatus={setStatus} space={space} />
                 </label>
-                <label style={{ flexGrow: 1 }}>
+                <label>
                     Description:
                     <br />
                     <input

@@ -17,7 +17,10 @@ const Sidebar = () => {
     const { logout } = useLogout()
     const [toggleSidebar, setToggleSidebar] = useState(false)
     const sidebarPanelRef = useRef<HTMLDivElement | null>(null)
-    toggleSidebar && sidebarPanelRef.current && onClickOutside(sidebarPanelRef.current, () => { setToggleSidebar(!toggleSidebar) })
+
+    if (toggleSidebar && sidebarPanelRef.current) {
+        onClickOutside(sidebarPanelRef.current, () => { setToggleSidebar(!toggleSidebar) })
+    }
 
     return (
         <>

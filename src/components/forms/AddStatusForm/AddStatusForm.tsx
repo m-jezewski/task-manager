@@ -23,6 +23,8 @@ const AddStatusForm = () => {
             color: color,
             spaceId: selectedSpace?.id
         })
+        setName('')
+        setColor('#FFFFFF')
     }
 
     return (

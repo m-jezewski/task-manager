@@ -3,3 +3,13 @@
 .prioButton {
   @extend %circle;
 }
+
+.low {
+  background-color: #86efac !important;
+}
+.medium {
+  background-color: #fbbf24 !important;
+}
+.high {
+  background-color: #f87171 !important;
+}

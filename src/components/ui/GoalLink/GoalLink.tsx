@@ -26,16 +26,13 @@ const GoalLink = ({ goal }: GoalLinkProps) => {
     const canvas = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
-        if (canvas.current) {
-            const ctx = canvas.current.getContext('2d')
-            canvas.current.width = canvas.current.height = 112
-            if (ctx) {
-                ctx.translate(112 / 2, 112 / 2)
-                ctx.rotate(-0.5 * Math.PI)
-                drawCircle('#e5e7eb', 100 / 100, ctx);
-                drawCircle('#86efac', goalProgress / 100, ctx);
-            }
-        }
+        if (!canvas.current) return
+        canvas.current.width = canvas.current.height = 112
+        const ctx = canvas.current.getContext('2d')!
+        ctx.translate(112 / 2, 112 / 2)
+        ctx.rotate(-0.5 * Math.PI)
+        drawCircle('#e5e7eb', 100 / 100, ctx);
+        drawCircle('#86efac', goalProgress / 100, ctx);
     }, [])
 
     return (

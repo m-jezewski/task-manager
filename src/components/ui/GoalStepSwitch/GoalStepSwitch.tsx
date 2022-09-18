@@ -9,12 +9,16 @@ interface GoalStepSwitchProps {
 }
 
 const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
-
     const { updateDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
     const handleChange = () => {
-        newGoalCtx ? newGoalCtx.updateStepInNewGoal(goalStep.id!, { progress: goalStep?.progress === 1 ? 0 : 1 }) : updateDocument(goalStep.id!, { progress: goalStep.progress === 1 ? 0 : 1 })
+        const updatedValues = { progress: goalStep.progress === 1 ? 0 : 1 }
+
+        if (newGoalCtx) {
+            newGoalCtx.updateStepInNewGoal(goalStep.id!, updatedValues)
+        }
+        updateDocument(goalStep.id!, updatedValues)
     }
 
     return (

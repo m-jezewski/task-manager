@@ -24,7 +24,7 @@
 .container {
   box-sizing: border-box;
   display: flex;
-  height: 100%;
+  flex-grow: 1;
   gap: 0.5rem;
   padding-bottom: 1rem;
   overflow-x: auto;

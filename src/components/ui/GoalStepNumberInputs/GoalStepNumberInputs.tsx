@@ -9,30 +9,18 @@ interface GoalStepNumberInputsProps {
 
 const getValueChangeObj = (input: string, target: number) => {
     const inputValue = parseInt(input)
-
-    if (input === '' || inputValue < 0) {
-        return { value: 0 }
-    } else if (inputValue < target) {
-        return { value: inputValue, progress: inputValue / target }
-    } else if (inputValue >= target) {
-        return { value: target, progress: 1 }
-    } else {
-        return {}
-    }
+    if (input === '' || inputValue < 0) return { value: 0 }
+    if (inputValue < target) return { value: inputValue, progress: inputValue / target }
+    if (inputValue >= target) return { value: target, progress: 1 }
+    return {}
 }
 
 const getTargetChangeObj = (input: string, value: number, target: number) => {
     const inputValue = parseInt(input)
-
-    if (input === '') {
-        return { target: 0, value: 0, progress: 0 }
-    } else if (inputValue > value) {
-        return { target: inputValue, progress: value / inputValue }
-    } else if (inputValue <= value) {
-        return { target: inputValue, value: inputValue, progress: 1 }
-    } else {
-        return {}
-    }
+    if (input === '') return { target: 0, value: 0, progress: 0 }
+    if (inputValue > value) return { target: inputValue, progress: value / inputValue }
+    if (inputValue <= value) return { target: inputValue, value: inputValue, progress: 1 }
+    return {}
 }
 
 const GoalStepNumberInputs = ({ goalStep: { value, target, id } }: GoalStepNumberInputsProps) => {
@@ -40,19 +28,21 @@ const GoalStepNumberInputs = ({ goalStep: { value, target, id } }: GoalStepNumbe
     const newGoalCtx = useNewGoalContext()
 
     const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const updatedValues = getValueChangeObj(e.target.value, target)
         if (newGoalCtx) {
-            newGoalCtx.updateStepInNewGoal(id!, getValueChangeObj(e.target.value, target))
-        } else {
-            updateDocument(id!, getValueChangeObj(e.target.value, target))
+            newGoalCtx.updateStepInNewGoal(id!, updatedValues)
+            return
         }
+        updateDocument(id!, updatedValues)
     }
 
     const handleTargetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const updatedValues = getTargetChangeObj(e.target.value, value, target)
         if (newGoalCtx) {
-            newGoalCtx.updateStepInNewGoal(id!, getTargetChangeObj(e.target.value, value, target))
-        } else {
-            updateDocument(id!, getTargetChangeObj(e.target.value, value, target))
+            newGoalCtx.updateStepInNewGoal(id!, updatedValues)
+            return
         }
+        updateDocument(id!, updatedValues)
     }
 
     return (

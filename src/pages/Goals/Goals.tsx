@@ -6,7 +6,7 @@ import styles from './Goals.module.scss'
 import GoalsHelp from './GoalsHelp';
 
 const Goals = () => {
-    const { goals, goalSteps } = useDataContext()
+    const { goals } = useDataContext()
 
     return (
         <Layout title='Goals'>

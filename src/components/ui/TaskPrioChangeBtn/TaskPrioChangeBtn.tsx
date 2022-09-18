@@ -7,18 +7,24 @@ interface TaskPrioChangeProps {
     task: Task
 }
 
-const TaskPrioChange = ({ task }: TaskPrioChangeProps) => {
+const getPrio = (priority: string) => {
+    if (priority === 'low') return 'medium'
+    if (priority === 'medium') return 'high'
+    if (priority === 'high') return 'low'
+    return 'low'
+}
+
+const TaskPrioChange = ({ task: { id, priority } }: TaskPrioChangeProps) => {
     const { updateDocument, res } = useDb('tasks') // handle error res here
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        const newPrio = task.priority === 'low' ? 'medium' : task.priority === 'medium' ? 'high' : 'low'
-        updateDocument(task.id!, { priority: newPrio })
+        updateDocument(id!, { priority: getPrio(priority) })
     }
 
     return (
         <button
-            className={`${styles.prioButton} ${task.priority}_prio`}
+            className={`${styles.prioButton} ${styles[priority]}`}
             onClick={handleClick}
         />
     );

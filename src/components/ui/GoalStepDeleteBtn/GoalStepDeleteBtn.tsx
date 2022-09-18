@@ -13,7 +13,12 @@ const DeleteGoalStepBtn = ({ goalStep }: DeleteGoalStepBtnProps) => {
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        newGoalCtx ? newGoalCtx.removeStepInNewGoal(goalStep.id!) : removeDocument(goalStep.id!)
+        if (newGoalCtx) {
+            newGoalCtx.removeStepInNewGoal(goalStep.id!)
+            return
+        }
+
+        removeDocument(goalStep.id!)
     }
 
     return (

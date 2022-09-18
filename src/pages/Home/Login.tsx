@@ -11,13 +11,12 @@ const Login = ({ handleClosingForms }: LoginProps) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { login, error, isPending } = useLogin()
+    const { login, error } = useLogin()
 
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
         login(email, password)
-        //redirect
     }
 
     return (

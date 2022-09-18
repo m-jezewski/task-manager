@@ -20,9 +20,8 @@ const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
     const btnColor = currentTaskStatus && currentTaskStatus.color
 
     const handleStatusChange = (statusId: string) => {
-        if (statusId !== task.statusId) {
-            updateDocument(task.id!, { statusId: statusId })
-        }
+        if (statusId === task.statusId) return
+        updateDocument(task.id!, { statusId: statusId })
     }
 
     return (

@@ -15,16 +15,11 @@ const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtn
     const { updateDocument } = useDb('statuses')
 
     const handleClick = () => {
-        let inc = 0;
-        variant === 'up' || variant === 'left' ? inc = -1 : inc = 1
+        let inc = variant === 'up' || variant === 'left' ? -1 : 1
         const adjacent = currentSpaceStatuses && currentSpaceStatuses[currentSpaceStatuses.findIndex((status) => status.id === elemId) + inc]
         if (!adjacent) return
-        updateDocument(elemId, {
-            orderIndex: adjacent.orderIndex
-        })
-        updateDocument(adjacent.id!, {
-            orderIndex: current.orderIndex
-        })
+        updateDocument(elemId, { orderIndex: adjacent.orderIndex })
+        updateDocument(adjacent.id!, { orderIndex: current.orderIndex })
     }
 
     return (

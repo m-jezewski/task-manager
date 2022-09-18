@@ -7,9 +7,16 @@ interface GoalStepCheckboxProps {
 }
 
 const getChangesObj = (goalStep: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => {
-    return goalStep.type === 'number' ?
-        { progress: goalStep.progress === 1 ? 0 : 1, value: goalStep.target } :
-        { progress: goalStep.progress === 1 ? 0 : 1 }
+    let obj = {
+        progress: goalStep.progress === 1 ? 0 : 1
+    }
+
+    if (goalStep.type === 'number') return {
+        ...obj,
+        value: goalStep.target
+    }
+
+    return obj
 }
 
 const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
@@ -17,7 +24,12 @@ const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
     const newGoalCtx = useNewGoalContext()
 
     const handleChange = () => {
-        newGoalCtx ? newGoalCtx.updateStepInNewGoal(goalStep.id!, getChangesObj(goalStep)) : updateDocument(goalStep.id!, getChangesObj(goalStep))
+        if (newGoalCtx) {
+            newGoalCtx.updateStepInNewGoal(goalStep.id!, getChangesObj(goalStep))
+            return
+        }
+
+        updateDocument(goalStep.id!, getChangesObj(goalStep))
     }
 
     return (

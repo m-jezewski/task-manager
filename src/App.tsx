@@ -22,7 +22,7 @@ function App() {
   const { user, authReady } = useContext(UserContext)
 
   return (
-    <div className={styles.App}>
+    <>
       {authReady && <>{user ?
         <DataContextProvider uid={user.uid}>
           <Routes>
@@ -56,7 +56,7 @@ function App() {
         </Routes>
       }</>
       }
-    </div>
+    </>
   );
 }
 

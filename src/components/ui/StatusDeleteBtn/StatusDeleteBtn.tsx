@@ -15,14 +15,12 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
     const { removeDocument: removeStatus, updateDocument: updateStatus, res } = useDb('statuses') // handle error res here
     const { removeDocument: removeTask } = useDb('tasks')
     const { tasks, statuses } = useDataContext()
-
-    const statusTasks = tasks?.filter(task => task.statusId === status.id)
     const [isOpen, setIsOpen] = useState(false)
 
     const handleDelete = () => {
         statuses?.forEach(status => { updateStatus(status.id!, { orderIndex: increment(-1) }) });
         removeStatus(status.id!)
-        statusTasks && statusTasks.forEach(task => { removeTask(task.id!) })
+        tasks?.filter(task => task.statusId === status.id).forEach(task => { removeTask(task.id!) })
         setIsOpen(false)
     }
 
