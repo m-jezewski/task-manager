@@ -8,7 +8,7 @@ import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
 
 const AddStatusForm = () => {
-    const { addDocument, res } = useDb('statuses') // handle error res here
+    const { addDocument } = useDb('statuses')
     const closePopover = useContext(ClosePopoverContext)
     const { statuses, selectedSpace } = useDataContext()
     const [name, setName] = useState('')
@@ -16,13 +16,13 @@ const AddStatusForm = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        closePopover && closePopover()
         addDocument({
             name: name,
             orderIndex: statuses && statuses.length !== 0 ? statuses[statuses.length - 1].orderIndex + 1 : 0,
             color: color,
             spaceId: selectedSpace?.id
         })
+        closePopover && closePopover()
         setName('')
         setColor('#FFFFFF')
     }

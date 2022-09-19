@@ -1,7 +1,6 @@
 import { Space } from "../../../interfaces";
 import { useState, ComponentPropsWithoutRef } from 'react'
 import styles from './SpaceDeleteBtn.module.scss'
-import { Dialog } from "@headlessui/react";
 import useDataContext from "../../../hooks/useDataContext";
 import useDb from "../../../hooks/useDb";
 import DeleteModal from "../../Modals/DeleteModal/DeleteModal";

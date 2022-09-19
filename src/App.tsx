@@ -17,6 +17,7 @@ import GoalPage from './pages/Goals/GoalPage/GoalPage';
 import DayCal from './pages/Calendar/DayCal/DayCal';
 import WeekCal from './pages/Calendar/WeekCal/WeekCal';
 import MonthCal from './pages/Calendar/MonthCal/MonthCal';
+import ErrorPrompt from './components/ui/ErrorPrompt/ErrorPrompt';
 
 function App() {
   const { user, authReady } = useContext(UserContext)
@@ -56,6 +57,7 @@ function App() {
         </Routes>
       }</>
       }
+      <ErrorPrompt />
     </>
   );
 }

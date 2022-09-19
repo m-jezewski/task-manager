@@ -12,7 +12,7 @@ interface DeleteStatusDialogProps {
 
 
 const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
-    const { removeDocument: removeStatus, updateDocument: updateStatus, res } = useDb('statuses') // handle error res here
+    const { removeDocument: removeStatus, updateDocument: updateStatus } = useDb('statuses')
     const { removeDocument: removeTask } = useDb('tasks')
     const { tasks, statuses } = useDataContext()
     const [isOpen, setIsOpen] = useState(false)

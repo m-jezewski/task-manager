@@ -27,16 +27,16 @@ const TaskPage = () => {
     const [openSwitch, setOpenSwitch] = useState(false)
 
     useEffect(() => {
-        if (task && statuses && spaces) {
-            setDescription(task.description)
-            setSpace(spaces.find(space => space.id! === task.spaceId)!)
-            setStatus(statuses.find(status => status.id === task?.statusId)!)
-            setPriority(task?.priority)
-            if (task.dueDate && task.fromDate) {
-                setOpenSwitch(true)
-                setDueDate(dayjs.unix(task.dueDate).format('YYYY-MM-DDThh:mm'))
-                setFromDate(dayjs.unix(task.fromDate).format('YYYY-MM-DDThh:mm'))
-            }
+        if (!task || !statuses || !spaces) return
+
+        setDescription(task.description)
+        setSpace(spaces.find(space => space.id! === task.spaceId)!)
+        setStatus(statuses.find(status => status.id === task.statusId)!)
+        setPriority(task.priority)
+        if (task.dueDate && task.fromDate) {
+            setOpenSwitch(true)
+            setDueDate(dayjs.unix(task.dueDate).format('YYYY-MM-DDThh:mm'))
+            setFromDate(dayjs.unix(task.fromDate).format('YYYY-MM-DDThh:mm'))
         }
     }, [statuses, task, spaces])
 

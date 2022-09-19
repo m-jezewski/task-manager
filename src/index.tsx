@@ -7,6 +7,8 @@ import { UserContextProvider } from './contexts/UserContext';
 import locale from 'dayjs/locale/en-gb'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { ErrorPromptContextProvider } from './contexts/ErrorPromptContext';
+
 
 dayjs.locale(locale)
 dayjs.extend(customParseFormat)
@@ -15,11 +17,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  //<React.StrictMode>
+  <ErrorPromptContextProvider>
     <UserContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </UserContextProvider>
-  </React.StrictMode>
+  </ErrorPromptContextProvider>
+  //</React.StrictMode>
 );

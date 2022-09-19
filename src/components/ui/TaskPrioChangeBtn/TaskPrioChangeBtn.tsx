@@ -15,7 +15,7 @@ const getPrio = (priority: string) => {
 }
 
 const TaskPrioChange = ({ task: { id, priority } }: TaskPrioChangeProps) => {
-    const { updateDocument, res } = useDb('tasks') // handle error res here
+    const { updateDocument } = useDb('tasks') // handle error res here
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
