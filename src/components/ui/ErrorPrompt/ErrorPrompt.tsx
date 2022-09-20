@@ -1,6 +1,4 @@
 import { Dialog } from "@headlessui/react";
-import { useState, useEffect, useContext } from "react";
-import { ErrorPromptContext } from "../../../contexts/ErrorPromptContext";
 import useErrorPromptContext from "../../../hooks/useErrorPromptContext";
 import styles from './ErrorPrompt.module.scss'
 

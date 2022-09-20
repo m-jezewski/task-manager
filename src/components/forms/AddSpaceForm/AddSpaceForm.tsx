@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import useDb from '../../../hooks/useDb'
-import ErrorPrompt from '../../ui/ErrorPrompt/ErrorPrompt'
 import styles from './AddSpaceForm.module.scss'
 
 interface AddSpaceFormProps {
@@ -14,6 +13,7 @@ const AddSpaceForm = ({ handleShowAddSpaceForm }: AddSpaceFormProps) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         addDocument({ name: name })
+        handleShowAddSpaceForm()
     }
 
 

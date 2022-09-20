@@ -8,7 +8,7 @@ interface RegisterProps {
 }
 
 const Register = ({ handleClosingForms }: RegisterProps) => {
-    const { signup, error, isPending } = useSignup()
+    const { signup, errorMessage } = useSignup()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -44,7 +44,7 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
                     </button>
                 </div>
             </form>
-            {error && <p>{error}</p>}
+            {errorMessage && <p>{errorMessage}</p>}
         </>
     );
 }

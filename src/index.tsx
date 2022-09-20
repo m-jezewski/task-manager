@@ -17,13 +17,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  //<React.StrictMode>
-  <ErrorPromptContextProvider>
-    <UserContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </UserContextProvider>
-  </ErrorPromptContextProvider>
-  //</React.StrictMode>
+  <React.StrictMode>
+    <ErrorPromptContextProvider>
+      <UserContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserContextProvider>
+    </ErrorPromptContextProvider>
+  </React.StrictMode>
 );

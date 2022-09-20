@@ -1,5 +1,4 @@
 import styles from './Home.module.scss'
-import homeimg from '../../assets/homeimg.png'
 import { useState } from 'react';
 
 import Login from './Login'

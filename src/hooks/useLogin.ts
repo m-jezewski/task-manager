@@ -3,27 +3,26 @@ import { UserContext } from '../contexts/UserContext'
 import { auth } from '../firebase/config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import useErrorPromptContext from './useErrorPromptContext'
+import { getErrorMessage } from '../utils/getErrorMessage'
 
 export const useLogin = () => {
   const { dispatch } = useContext(UserContext)
-  const [error, setError] = useState(null)
-  const [isPending, setisPending] = useState(false)
-  const { isError, setIsError } = useErrorPromptContext()
-  // check for different types of errors, e.g. passing wrong email/password should not trigger errorPrompt
+  const [errorMessage, setErrorMessage] = useState<null | string>(null)
+  const { setIsError } = useErrorPromptContext()
 
   const login = (email: string, password: string) => {
-    setisPending(true)
-    setError(null)
+    setErrorMessage(null)
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         dispatch({ type: 'LOGIN', payload: response.user })
-        setisPending(false)
       })
       .catch((err) => {
-        setError(err.message)
-        setisPending(false)
+        const message = getErrorMessage(err.code)
+        setErrorMessage(message)
+        !message && setIsError(true)
+        // displays error message when user passes wrong email/password, every other auth error fires ErrorPrompt
       })
   }
 
-  return { error, login, isPending }
+  return { errorMessage, login }
 }
