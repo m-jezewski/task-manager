@@ -1,12 +1,12 @@
-import { addDoc, collection, deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore'
-import { useContext, useEffect, useReducer, useState } from 'react'
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
+import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import { db } from '../firebase/config'
 import useErrorPromptContext from './useErrorPromptContext'
 
 const useDb = (col: string) => {
   const { user } = useContext(UserContext)
-  const { isError, setIsError } = useErrorPromptContext()
+  const { setIsError } = useErrorPromptContext()
 
   const addDocument = async (doc: any) => {
     try {

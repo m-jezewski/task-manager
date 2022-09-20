@@ -53,8 +53,8 @@ const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
                     className={styles.textInput}
                     value={target}
                     pattern="^[0-9]*$"
-                    min={1}
-                    onChange={(e) => { setTarget(parseInt(e.target.value)) }}
+                    min={value}
+                    onChange={(e) => { parseInt(e.target.value) < value ? setTarget(value) : setTarget(parseInt(e.target.value)) }}
                     required={true}
                     placeholder='40' />
             </label>
@@ -66,7 +66,7 @@ const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
                     value={value}
                     min={0}
                     pattern="^[0-9]*$"
-                    onChange={(e) => { setValue(parseInt(e.target.value) > target ? target : parseInt(e.target.value)) }}
+                    onChange={(e) => { parseInt(e.target.value) > target ? setValue(target) : setValue(parseInt(e.target.value)) }}
                     required={true} />
             </label>
             <button className={styles.submitButton} type='submit'>Add step</button>
