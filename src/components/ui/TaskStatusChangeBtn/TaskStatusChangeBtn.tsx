@@ -25,7 +25,11 @@ const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
     }
 
     return (
-        <AnimatedPopover className={styles.outsideBtn} style={{ backgroundColor: btnColor }}>
+        <AnimatedPopover
+            className={styles.outsideBtn}
+            style={{ backgroundColor: btnColor }}
+            aria-label='Click to open list of available statuses'
+        >
             <div className={styles.container}>
                 {spaceStatuses && spaceStatuses.map((status) => (
                     <button

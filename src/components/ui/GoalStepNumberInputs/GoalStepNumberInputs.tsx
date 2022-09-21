@@ -50,12 +50,14 @@ const GoalStepNumberInputs = ({ goalStep: { value, target, id } }: GoalStepNumbe
             <input
                 className={styles.valueInput}
                 type="number"
+                aria-label='Current number step value'
                 max={target}
                 value={value}
                 onChange={handleValueChange} />
             <input
                 className={styles.targetInput}
                 type="number"
+                aria-label='Current number step target'
                 value={target}
                 min={value}
                 onChange={handleTargetChange} />

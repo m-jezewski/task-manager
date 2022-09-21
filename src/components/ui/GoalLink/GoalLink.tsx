@@ -39,6 +39,7 @@ const GoalLink = ({ goal }: GoalLinkProps) => {
         <Link
             to={`../../Goals/${goal.id}`}
             key={goal.id}
+            aria-label={`Go to ${goal.title} goal page`}
             className={styles.link}>
             <h3>{goal.title}</h3>
             <div

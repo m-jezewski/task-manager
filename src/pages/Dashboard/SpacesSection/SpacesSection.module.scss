@@ -57,6 +57,8 @@
     text-align: center;
     color: $bright-1;
     background-color: $purple-1;
+    font-size: 1rem;
+    margin: 0;
     width: 100%;
 
     @include smScreen {

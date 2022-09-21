@@ -24,6 +24,8 @@ const TaskPrioChange = ({ task: { id, priority } }: TaskPrioChangeProps) => {
 
     return (
         <button
+            type='button'
+            aria-label={`Current priorty: ${priority} click to change`}
             className={`${styles.prioButton} ${styles[priority]}`}
             onClick={handleClick}
         />

@@ -33,7 +33,13 @@ const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
     }
 
     return (
-        <input type='checkbox' checked={goalStep.progress === 1} onChange={handleChange} value={'true'} />
+        <input
+            type='checkbox'
+            aria-label="Mark goalstep as checked"
+            checked={goalStep.progress === 1}
+            onChange={handleChange}
+            value={'true'}
+        />
     );
 }
 

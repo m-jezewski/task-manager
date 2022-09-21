@@ -20,7 +20,7 @@ const Home = () => {
                 {!isSignupOpen && !isLoginOpen && <>
                     <p>
                         <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span><br /><br />
-                        Keep your goal progress and manage your tasks in a tasklist, calendar or kanban board in my highly customizable task managemant app.
+                        Keep your goal progress and manage your tasks in a tasklist, calendar or kanban board in my highly customizable task management app.
                     </p>
                     <button className={styles.signupBtn} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>
                     <button className={styles.loginBtn} onClick={() => { setIsLoginOpen(true) }}>Log In</button>

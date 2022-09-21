@@ -24,6 +24,7 @@ const TaskCard = ({ task, weekDay }: TaskCardProps) => {
             ref={badgeEl}
             className={styles.taskCard}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
+            aria-label='Click to move to task page'
             style={{
                 gridRowStart: fromDate.isSame(weekDay, 'day') ? fromDate.hour() + 1 : 1,
                 gridRowEnd: dueDate.isSame(weekDay, 'day') ? dueDate.hour() + 1 : 25,

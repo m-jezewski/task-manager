@@ -7,7 +7,7 @@ const GoalProgressSection = () => {
 
     return (
         <section className={styles.goalProgressSection}>
-            <span className={styles.goalProgressCaption}>Goal progress</span>
+            <h2 className={styles.goalProgressCaption}>Goal progress</h2>
             <div className={styles.goalLinks}>
                 {!goals || goals.length === 0 ?
                     <div className={styles.noTasks}>You don't have any goals created</div>

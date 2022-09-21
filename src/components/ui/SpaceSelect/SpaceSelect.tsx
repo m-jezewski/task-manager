@@ -17,9 +17,12 @@ const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps 
     return (
         <Listbox as='div' className={`${styles.spaceSelect} ${className}`} {...props} value={space} onChange={setSpace} >
             {space && <>
-                <Listbox.Button className={styles.selectButton}>
+                <Listbox.Button
+                    className={styles.selectButton}
+                    aria-label='Click to open list of available spaces'
+                >
                     {space.name}
-                    <img src={unfold} alt="" />
+                    <img src={unfold} alt="Two arrows pointing up and down" />
                 </Listbox.Button>
                 <Transition
                     as={Fragment}

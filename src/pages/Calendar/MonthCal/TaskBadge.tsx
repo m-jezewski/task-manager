@@ -18,6 +18,7 @@ const TaskBadge = ({ task }: TaskBadgeProps) => {
             onClick={(e) => { e.stopPropagation() }}
             to={`/Dashboard/${task.id}`}
             className={styles.taskBadge}
+            aria-label='Click to move to task page'
         />
     );
 }

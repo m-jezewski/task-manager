@@ -29,6 +29,8 @@
     box-sizing: border-box;
     text-align: center;
     background-color: $yellow-1;
+    font-size: 1rem;
+    margin: 0;
     width: 100%;
 
     @include smScreen {

@@ -29,7 +29,7 @@ const AddStatusForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h2>Add new status:</h2>
+            <h3>Add new status:</h3>
             <label>
                 Status name: <br />
                 (ex. „In Progress”)

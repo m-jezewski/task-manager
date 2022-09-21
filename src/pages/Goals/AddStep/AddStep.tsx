@@ -14,10 +14,10 @@ const AddStep = ({ goalID }: AddStepProps) => {
     return (
         <div className={styles.container}>
             <Tab.Group>
-                <h2 className={styles.subTitle}>
+                <p className={styles.subTitle}>
                     Break down your target into little steps <br />
                     How would you like to follow the progress of this step?
-                </h2>
+                </p>
                 <Tab.List className={styles.tabList}>
                     {({ selectedIndex }) => <>
                         <Tab className={`${styles.tab} ${selectedIndex === 0 && styles.tabActive}`} >Number</Tab>

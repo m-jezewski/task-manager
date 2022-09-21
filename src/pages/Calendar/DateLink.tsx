@@ -17,9 +17,10 @@ const DateLink = ({ move, by, date }: DateLinkProps) => {
                 `../../${date.subtract(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}` :
                 `../../${date.add(1, by).format('DD-MM-YYYY')}/${capitalizeFirstLetter(by)}`}
             replace={true}
+            aria-label={`move ${move} to ${move === 'forward' ? 'next' : 'previous'}  ${by}`}
         >
-            {move === "back" && <img src={arrowLeft} alt={`move back to previous ${by}`} />}
-            {move === 'forward' && <img src={arrowRight} alt={`move forward to next ${by}`} />}
+            {move === "back" && <img src={arrowLeft} alt={`move back arrow`} />}
+            {move === 'forward' && <img src={arrowRight} alt={`move forward arrow`} />}
         </Link>
     );
 }

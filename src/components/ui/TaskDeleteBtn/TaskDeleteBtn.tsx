@@ -24,7 +24,11 @@ const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
     }
 
     return (
-        <button className={styles.deleteBtn} onClick={handleClick} />
+        <button
+            className={styles.deleteBtn}
+            onClick={handleClick}
+            aria-label='Use to remove task'
+        />
     );
 }
 

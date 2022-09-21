@@ -23,7 +23,11 @@ const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtn
     }
 
     return (
-        <button className={`${styles[variant]} ${styles.orderButton}`} onClick={handleClick} />
+        <button
+            className={`${styles[variant]} ${styles.orderButton}`}
+            onClick={handleClick}
+            aria-label={`Change status section order to appear ${variant === 'up' || variant === 'left' ? 'before previous' : 'after next'} status section`}
+        />
     );
 }
 

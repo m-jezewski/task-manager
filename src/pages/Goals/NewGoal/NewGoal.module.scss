@@ -14,10 +14,9 @@
 
 .submitButton {
   @extend %baseButton;
-  background-color: $bright-1;
+  @extend %lightingHover;
+  background-color: $blue-1;
+  color: $bright-1;
+  margin-left: auto;
   align-self: flex-end;
-  margin-top: auto;
-}
-.submitButton:hover {
-  background-color: $bright-4;
 }

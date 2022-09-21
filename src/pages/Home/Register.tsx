@@ -39,8 +39,13 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
                 </label>
                 <div className={styles.button_row}>
                     <button type='submit' className={styles.signupBtn}>Sign up!</button>
-                    <button className={styles.return_button} onClick={handleClosingForms} type='button'>
-                        <img src={arrowback} alt='Go back' />
+                    <button
+                        className={styles.return_button}
+                        onClick={handleClosingForms}
+                        type='button'
+                        aria-label='Return button'
+                    >
+                        <img src={arrowback} alt='Back arrow' />
                     </button>
                 </div>
             </form>

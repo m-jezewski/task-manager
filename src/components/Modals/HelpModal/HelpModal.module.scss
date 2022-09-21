@@ -31,7 +31,15 @@
 
     .description {
       margin: 1rem auto;
-      max-width: fit-content;
+      width: 240px;
+
+      @include smScreen {
+        width: 350px;
+      }
+
+      @include xlScreen {
+        width: 450px;
+      }
     }
 
     .presentation {

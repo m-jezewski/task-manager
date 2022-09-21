@@ -19,6 +19,7 @@ const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, openSwitch = f
                 <Switch
                     className={`${styles.switch} ${openSwitch ? styles.switchEnabled : styles.switchDisabled}`}
                     checked={openSwitch}
+                    aria-label='Click to open or close date and time inputs'
                     onChange={setOpenSwitch}>
                     <span className={`${openSwitch ? styles.switchInnerEnabled : styles.switchInnerDisabled} ${styles.switchInner}`} />
                 </Switch>

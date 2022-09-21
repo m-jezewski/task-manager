@@ -20,8 +20,10 @@ const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalPro
             <button
                 className={`${styles.openHelp} ${buttonStyles}`}
                 {...buttonProps}
-                onClick={() => { setIsOpen(true) }}>
-                <img src={help} alt='Open help' />
+                onClick={() => { setIsOpen(true) }}
+                aria-label='Open window with help'
+            >
+                <img src={help} alt='Question mark' />
             </button>
             <Dialog
                 open={isOpen}
@@ -29,7 +31,11 @@ const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalPro
                 className={styles.modalContainer}
             >
                 <Dialog.Panel className={styles.panel}>
-                    <button className={styles.closeButton} onClick={() => { setIsOpen(false) }}>
+                    <button
+                        aria-label='close window'
+                        className={styles.closeButton}
+                        onClick={() => { setIsOpen(false) }}
+                    >
                         <img src={close} alt='close modal' />
                     </button>
                     <Tab.Group
@@ -50,14 +56,20 @@ const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalPro
                             ))}
                         </Tab.Panels>
                         <Tab.List className={styles.tabList}>
-                            <button onClick={() => { selectedIndex > 0 && setSelectedIndex(selectedIndex - 1) }}>
-                                <img src={arrowLeft} alt=''></img>
+                            <button
+                                onClick={() => { selectedIndex > 0 && setSelectedIndex(selectedIndex - 1) }}
+                                aria-label='Click to move to previous slide'
+                            >
+                                <img src={arrowLeft} alt='Move back arrow'></img>
                             </button>
                             {slidesContent.map((i, index) =>
                                 <Tab key={i.description} className={`${selectedIndex === index && styles.tabActive} ${styles.tab}`}></Tab>
                             )}
-                            <button onClick={() => { selectedIndex < slidesContent.length - 1 && setSelectedIndex(selectedIndex + 1) }}>
-                                <img src={arrowRight} alt=''></img>
+                            <button
+                                onClick={() => { selectedIndex < slidesContent.length - 1 && setSelectedIndex(selectedIndex + 1) }}
+                                aria-label='Click to move to next slide'
+                            >
+                                <img src={arrowRight} alt='Move forward arrow'></img>
                             </button>
                         </Tab.List>
                     </Tab.Group>

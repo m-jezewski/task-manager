@@ -26,6 +26,7 @@ const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
             className={styles.goalStepSwitch}
             checked={goalStep.progress === 1}
             onChange={handleChange}
+            aria-label='Check or uncheck current step as completed'
         >
             <span className={(goalStep.progress === 1) ? styles.switchInnerEnabled : styles.switchInnerDisabled} />
         </Switch>

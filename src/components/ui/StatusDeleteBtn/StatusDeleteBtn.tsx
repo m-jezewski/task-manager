@@ -29,6 +29,7 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
             <button
                 onClick={() => { setIsOpen(true) }}
                 className={styles.openDialogButton}
+                aria-label='Click to open window where you can remove status'
             />
             <DeleteModal
                 isOpen={isOpen}

@@ -21,6 +21,7 @@ const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps
     return (
         <input
             type='button'
+            aria-label={`Current priorty: ${priority} click to change`}
             className={`${styles.PriorityChangeInput} ${styles[priority]}`}
             onClick={handleClick}
         />

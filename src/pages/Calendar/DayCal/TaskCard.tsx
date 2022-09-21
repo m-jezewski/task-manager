@@ -24,6 +24,7 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
                 backgroundColor: statuses?.find((status) => task.statusId === status.id!)?.color,
             }}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
+            aria-label={'Click to move to task page'}
         >
             <p>
                 {task.description}

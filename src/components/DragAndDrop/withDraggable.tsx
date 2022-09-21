@@ -29,6 +29,7 @@ export const withDraggable = (WrappedComponent: React.ElementType) => ({ task, .
         ref={ref}
         draggable={true}
         onDragStart={handleDragStart}
+        aria-label='Click to move to task page'
         onDragEnd={handleDragEnd}
         onClick={handleClick}
         task={task}

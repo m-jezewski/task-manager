@@ -44,6 +44,7 @@ const Calendar = () => {
                     value={date.format('YYYY-MM-DD')}
                     type={'date'}
                     onChange={handleChange}
+                    aria-label='Select date to open it in calendar'
                 />
                 <CalendarHelp />
             </div>

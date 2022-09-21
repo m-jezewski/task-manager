@@ -44,8 +44,16 @@ const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalS
 
     return (
         <>
-            <button onClick={handleIncButtonClick} className={`${styles.incButton} ${styles.numButton}`}>+</button>
-            <button onClick={handleDecButtonClick} className={`${styles.decButton} ${styles.numButton}`}>-</button>
+            <button
+                onClick={handleIncButtonClick}
+                className={`${styles.incButton} ${styles.numButton}`}
+                aria-label='Increment current value by one'
+            >+</button>
+            <button
+                onClick={handleDecButtonClick}
+                className={`${styles.decButton} ${styles.numButton}`}
+                aria-label='Decrement current value by one'
+            >-</button>
         </>
     );
 }

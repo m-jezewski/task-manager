@@ -24,6 +24,7 @@ const DeleteGoalStepBtn = ({ goalStep }: DeleteGoalStepBtnProps) => {
     return (
         <button
             className={styles.deleteGoalStepBtn}
+            aria-label='Delete goal step'
             onClick={handleClick}
         />
     );

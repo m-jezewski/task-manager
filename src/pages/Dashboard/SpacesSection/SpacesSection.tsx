@@ -13,7 +13,7 @@ const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
 
     return (
         <section className={styles.spacesSection} {...props}>
-            <span className={`${styles.sectionHeader} ${styles.spacesCaption}`}>Spaces</span>
+            <h2 className={`${styles.sectionHeader} ${styles.spacesCaption}`}>Spaces</h2>
             <div className={styles.spaces}>
                 <ul>
                     {!spaces || spaces.length === 0 ?

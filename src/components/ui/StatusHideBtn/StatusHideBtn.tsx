@@ -7,7 +7,11 @@ interface StatusHideBtnProps {
 
 const StatusHideBtn = ({ showStatus, setShowStatus }: StatusHideBtnProps) => {
     return (
-        <button className={styles.hideButton} onClick={() => { setShowStatus(!showStatus) }} />
+        <button
+            className={styles.hideButton}
+            onClick={() => { setShowStatus(!showStatus) }}
+            aria-label='Click to collapse table'
+        />
     );
 }
 
