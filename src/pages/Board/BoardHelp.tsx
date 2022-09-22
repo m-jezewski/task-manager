@@ -12,7 +12,7 @@ import PANEL_TASKSTATUS from '../../assets/helpModalAssets/PANEL-TASKSTATUS.webp
 //components
 import { HelpModal } from '../../components/Modals/HelpModal/HelpModal'
 
-const panelHelpContent = [
+const Board = [
     {
         title: 'Spaces',
         description: 'Switch between spaces and group your tasks depending on your needs',
@@ -98,8 +98,8 @@ const panelHelpContent = [
     },
 ]
 
-export const PanelHelp = () => {
+export const BoardHelp = () => {
     return (
-        <HelpModal slidesContent={panelHelpContent} />
+        <HelpModal slidesContent={Board} />
     );
 }

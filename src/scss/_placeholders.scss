@@ -108,7 +108,8 @@
   font-size: 1rem;
   cursor: pointer;
 }
-%link:hover {
+%link:hover,
+%link:focus {
   color: $font-blue;
 }
 

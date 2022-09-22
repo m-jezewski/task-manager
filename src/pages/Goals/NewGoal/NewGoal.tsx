@@ -75,12 +75,22 @@ export const NewGoal = () => {
                     </label>
                     <label>
                         Description: (optional)
-                        <input className={styles.formInput} type="text" maxLength={200} value={description} onChange={(e) => { setDescription(e.target.value) }} />
+                        <input
+                            className={styles.formInput}
+                            type="text"
+                            maxLength={200}
+                            value={description}
+                            onChange={(e) => { setDescription(e.target.value) }} />
                     </label>
                     <GoalSteps steps={steps} />
                 </form>
                 <AddStep />
-                <button className={styles.submitButton} type='submit' form='newGoalForm'>Save new goal</button>
+                <button
+                    className={styles.submitButton}
+                    type='submit'
+                    form='newGoalForm'>
+                    Save new goal
+                </button>
             </NewGoalContext.Provider>
         </Layout>
     );

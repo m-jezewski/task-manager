@@ -14,6 +14,7 @@ export const DayCal = () => {
     const { date } = useCalendarOutletContext()
     const { tasks } = useDataContext()
     const hours = getHoursOfDate(date)
+    const tasksWihinDay = tasks && getTasksWithinDay(tasks, hours)
 
     return (
         <>
@@ -33,8 +34,8 @@ export const DayCal = () => {
                     </tbody>
                 </table>
                 <div className={styles.grid}>
-                    <div style={{ gridColumn: 1, gridRowStart: 1, gridRowEnd: 25, }} />
-                    {tasks && getTasksWithinDay(tasks, hours).map((task) =>
+                    <div className={styles.gridIndent} />
+                    {tasksWihinDay?.map((task) =>
                         <TaskCard
                             key={task.id}
                             task={task}

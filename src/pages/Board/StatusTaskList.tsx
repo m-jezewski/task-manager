@@ -4,7 +4,7 @@ import { Status } from "../../interfaces";
 //hooks
 import { useDataContext } from "../../hooks/useDataContext";
 //styles
-import styles from './Kanban.module.scss'
+import styles from './Board.module.scss'
 //components
 import { AnimatedPopover } from "../../components/AnimatedPopover/AnimatedPopover";
 import { DraggableTaskCard } from "./TaskCard";
@@ -17,6 +17,7 @@ interface StatusTaskListProps {
 
 const StatusTaskList = forwardRef(({ status, ...props }: StatusTaskListProps & ComponentPropsWithoutRef<'div'>, ref) => {
     const { tasks } = useDataContext()
+    const statusTasks = tasks?.filter(task => task.statusId === status.id!)
 
     return (
         <div className={styles.taskContainer} {...props} ref={ref as React.LegacyRef<HTMLDivElement>}>
@@ -25,7 +26,7 @@ const StatusTaskList = forwardRef(({ status, ...props }: StatusTaskListProps & C
                     defaultStatus={status}
                 />
             </AnimatedPopover>
-            {tasks?.filter(task => task.statusId === status.id!)?.map(task => (
+            {statusTasks?.map(task => (
                 <DraggableTaskCard
                     key={task.id}
                     task={task}

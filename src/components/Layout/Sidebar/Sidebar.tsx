@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 //hooks
 import { useLogout } from '../../../hooks/useLogout'
-import { useState, useRef } from 'react';
+import { useState, useRef, MouseEvent } from 'react';
 //utils
 import { onClickOutside } from '../../../utils/onClickOutside';
 //assets
@@ -27,10 +27,19 @@ export const Sidebar = () => {
         onClickOutside(sidebarPanelRef.current, () => { setToggleSidebar(!toggleSidebar) })
     }
 
+    const handleMenuToggleClick = (e: MouseEvent) => {
+        e.stopPropagation()
+        setToggleSidebar(!toggleSidebar)
+    }
+
+    const handleLogoutclick = () => {
+        logout()
+    }
+
     return (
         <>
             <button
-                onClick={(e) => { e.stopPropagation(); setToggleSidebar(!toggleSidebar) }}
+                onClick={handleMenuToggleClick}
                 className={`${styles.toggleSidebar} ${toggleSidebar ? styles.toggled : ''}`}>
                 <img src={menu} alt={'toggle menu'} />
             </button>
@@ -42,16 +51,31 @@ export const Sidebar = () => {
                         <hr />
                     </span>
                     <nav>
-                        <Link to='/Dashboard'><img src={home} alt='Dashboard' /><span>Dashboard</span></Link>
-                        <Link to='/Todo'><img src={checklist} alt='Todo List' /><span>To-Do List</span></Link>
-                        <Link to='/Kanban'><img src={width} alt='Kanban board' /><span>Kanban</span></Link>
-                        <Link to={`/Calendar/${dayjs().format('DD-MM-YYYY')}/Day`}><img src={calendar} alt='Calendar' /><span>Calendar</span></Link>
-                        <Link to='/Goals'><img src={monitoring} alt='Goals' /><span>Goals</span></Link>
+                        <Link to='/Dashboard'>
+                            <img src={home} alt='Dashboard' />
+                            <span>Dashboard</span>
+                        </Link>
+                        <Link to='/List'>
+                            <img src={checklist} alt='Todo List' />
+                            <span>List</span>
+                        </Link>
+                        <Link to='/Board'>
+                            <img src={width} alt='Board' />
+                            <span>Board</span>
+                        </Link>
+                        <Link to={`/Calendar/${dayjs().format('DD-MM-YYYY')}/Day`}>
+                            <img src={calendar} alt='Calendar' />
+                            <span>Calendar</span>
+                        </Link>
+                        <Link to='/Goals'>
+                            <img src={monitoring} alt='Goals' />
+                            <span>Goals</span>
+                        </Link>
                     </nav>
                 </div>
                 <div className={styles.settings}>
                     <AppHelp />
-                    <button className={styles.logoutButton} onClick={() => { logout() }}>
+                    <button className={styles.logoutButton} onClick={handleLogoutclick}>
                         <img src={logoutIcon} alt='Logout'></img><span>LOGOUT</span>
                     </button>
                 </div>

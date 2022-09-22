@@ -12,7 +12,7 @@ import { useDb } from "../../hooks/useDb";
 import { DateInputs } from "../../components/ui/DateInputs/DateInputs";
 import { PriorityChangeInput } from "../../components/ui/PriorityChangeInput/PriorityChangeInput";
 import { SpaceSelect } from "../../components/ui/SpaceSelect/SpaceSelect";
-import { StatusSelectInput } from "../../components/ui/StatusSelect/StatusSelectInput";
+import { StatusSelectInput } from "../../components/ui/StatusSelectInput/StatusSelectInput";
 import { Layout } from "../../components/Layout/Layout/Layout";
 import { TaskDeleteModal } from "./TaskDeleteModal/TaskDeleteModal";
 

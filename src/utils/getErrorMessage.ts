@@ -8,6 +8,8 @@ export const getErrorMessage = (errorCode: string) => {
       return 'Incorrect password for this email'
     case 'auth/user-not-found':
       return 'Sorry! User with this email not found'
+    case 'auth/invalid-email':
+      return "It looks like you've entered an invalid email, try again!"
     default:
       return null
   }

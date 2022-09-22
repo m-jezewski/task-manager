@@ -1,3 +1,6 @@
+//interfaces
+import { KeyboardEvent, MouseEvent } from 'react';
+import { Dayjs } from 'dayjs';
 //styles
 import styles from './MonthCal.module.scss'
 //hooks
@@ -19,6 +22,17 @@ export const MonthCal = () => {
     const monthDays = getDaysOfMonth(date)
     const weekDays = getDaysOfWeek(date)
     const weeksId = monthDays.map(monthDay => monthDay.week()).filter((value, index, self) => self.indexOf(value) === index)
+
+
+    const handleClick = (monthDay: Dayjs) => {
+        navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`)
+    }
+
+    const handleKeyDown = (e: KeyboardEvent, monthDay: Dayjs) => {
+        if (e.key === 'Space' || e.key === 'Enter') {
+            navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`)
+        }
+    }
 
     return (
         <>
@@ -45,8 +59,8 @@ export const MonthCal = () => {
                                     className={styles.day}
                                     tabIndex={0}
                                     aria-label={`Click to move to ${monthDay.format('YYYY-MM-DD')} day in calendar`}
-                                    onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}
-                                    onKeyDown={(e) => { if (e.key === 'Space' || e.key === 'Enter') navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}
+                                    onClick={() => { handleClick(monthDay) }}
+                                    onKeyDown={(e) => { handleKeyDown(e, monthDay) }}
                                     role='link'
                                 >
                                     <span>

@@ -28,7 +28,11 @@ export const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }:
             >
                 {buttonText}
             </Popover.Button>
-            <Transition enter={styles.transition} enterFrom={styles.transitionEnterFrom} enterTo={styles.transitionEnterTo}>
+            <Transition
+                enter={styles.transition}
+                enterFrom={styles.transitionEnterFrom}
+                enterTo={styles.transitionEnterTo}
+            >
                 <Popover.Panel style={{ ...panelStyles }}>
                     <ClosePopoverContext.Provider value={closePopover}>
                         {children}

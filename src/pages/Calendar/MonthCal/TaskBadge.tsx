@@ -20,6 +20,7 @@ export const TaskBadge = ({ task }: TaskBadgeProps) => {
                 backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
             onClick={(e) => { e.stopPropagation() }}
+            onKeyDown={(e) => { e.stopPropagation() }}
             to={`/Dashboard/${task.id}`}
             className={styles.taskBadge}
             aria-label='Click to move to task page'

@@ -1,7 +1,7 @@
 //hooks
 import { useDataContext } from '../../hooks/useDataContext';
 //styles
-import styles from './Kanban.module.scss'
+import styles from './Board.module.scss'
 //components
 import { AddStatusForm } from '../../components/forms/AddStatusForm/AddStatusForm';
 import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover';
@@ -9,20 +9,20 @@ import { Layout } from '../../components/Layout/Layout/Layout';
 import { StatusSection } from './StatusSection';
 import { NoSpaces } from '../../components/NoSpaces/NoSpaces';
 import { SpaceSelect } from '../../components/ui/SpaceSelect/SpaceSelect';
-import { PanelHelp } from './PanelHelp';
+import { BoardHelp } from './BoardHelp';
 
-export const Kanban = () => {
+export const Board = () => {
     const { statuses, selectedSpace, setSelectedSpace } = useDataContext()
 
     return (
-        <Layout title='Kanban'>
+        <Layout title='Board'>
             <div className={styles.row}>
                 <SpaceSelect
                     space={selectedSpace}
                     setSpace={setSelectedSpace}
                     className={styles.spaceSelect}
                 />
-                <PanelHelp />
+                <BoardHelp />
             </div>
             {selectedSpace ?
                 statuses && <div className={styles.container}>

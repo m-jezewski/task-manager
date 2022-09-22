@@ -1,3 +1,4 @@
+import { getNewPrio } from "../../../utils/getNewPrio";
 //interfaces
 import { Task } from "../../../interfaces";
 //hooks
@@ -10,19 +11,12 @@ interface TaskPrioChangeProps {
     task: Task
 }
 
-const getPrio = (priority: string) => {
-    if (priority === 'low') return 'medium'
-    if (priority === 'medium') return 'high'
-    if (priority === 'high') return 'low'
-    return 'low'
-}
-
 export const TaskPrioChangeBtn = ({ task: { id, priority } }: TaskPrioChangeProps) => {
     const { updateDocument } = useDb('tasks') // handle error res here
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-        updateDocument(id!, { priority: getPrio(priority) })
+        updateDocument(id!, { priority: getNewPrio(priority) })
     }
 
     return (

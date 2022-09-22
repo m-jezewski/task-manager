@@ -18,7 +18,7 @@ export const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInpu
 
     useEffect(() => {
         spaceStatuses?.find(s => s.id === status?.id) === undefined && setStatus((spaceStatuses && spaceStatuses[0]) || null)
-    }, [spaceStatuses])
+    }, [spaceStatuses, setStatus, status?.id])
 
 
     return (

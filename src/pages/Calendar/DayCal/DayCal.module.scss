@@ -28,6 +28,12 @@
     column-gap: 0.25rem;
     overflow-x: auto;
     width: 100%;
+
+    .gridIndent {
+      grid-column: 1;
+      grid-row-start: 1;
+      grid-row-end: 25;
+    }
   }
 
   .taskCard {

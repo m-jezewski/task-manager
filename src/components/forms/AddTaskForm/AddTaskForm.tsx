@@ -12,7 +12,7 @@ import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
 import { useDataContext } from '../../../hooks/useDataContext'
 import { useDb } from '../../../hooks/useDb'
 //components
-import { StatusSelectInput } from '../../ui/StatusSelect/StatusSelectInput'
+import { StatusSelectInput } from '../../ui/StatusSelectInput/StatusSelectInput'
 import { PriorityChangeInput } from '../../ui/PriorityChangeInput/PriorityChangeInput'
 import { DateInputs } from '../../ui/DateInputs/DateInputs'
 import { NoStatuses } from '../../NoStatuses/NoStatuses'
@@ -55,7 +55,6 @@ export const AddTaskForm = ({
 
     useEffect(() => {
         if (!taskRef || !addGoalStep) return
-
         if (newGoalCtx) {
             newGoalCtx.addStepInNewGoal({
                 type: 'task',
@@ -71,7 +70,7 @@ export const AddTaskForm = ({
             taskID: taskRef.id!,
             goalID: goalID
         })
-    }, [taskRef])
+    }, [taskRef]) //If form appeared inside newGoalContext it also adds task as a goalStep
 
 
     const handleSubmit = (e: FormEvent) => {
@@ -93,33 +92,46 @@ export const AddTaskForm = ({
             task = { ...task, fromDate: from.unix(), dueDate: due.unix() }
         }
 
-        addTaskDocument(task)
-            .then(ref => {
-                ref && setTaskRef(ref)
-                setText('')
-                setStatus(defaultStatus || (statuses && statuses[0]))
-                setPriority('low')
-                setOpenDateInputs(showDateInputs)
-                setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
-                setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
-            })
+        addTaskDocument(task).then(ref => {
+            ref && setTaskRef(ref)
+        })
+
+        setText('')
+        setStatus(defaultStatus || (statuses && statuses[0]))
+        setSpace(selectedSpace)
+        setPriority('low')
+        setOpenDateInputs(showDateInputs)
+        setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+        setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
     }
 
     return (
         !statuses || statuses.length === 0 ?
             <NoStatuses className={styles.form} />
             :
-            <form onSubmit={handleSubmit} className={`${styles.form} ${className}`} {...props}>
+            <form
+                onSubmit={handleSubmit}
+                className={`${styles.form} ${className}`}
+                {...props}
+            >
                 {showSpaceSelect && <div>
                     <label htmlFor='spaceSelect'>
                         Space:
                     </label>
-                    <SpaceSelect space={space} setSpace={setSpace} className={styles.spaceSelect} />
+                    <SpaceSelect
+                        space={space}
+                        setSpace={setSpace}
+                        className={styles.spaceSelect}
+                    />
                 </div>}
                 <label>
                     Status:
                     <br />
-                    <StatusSelectInput status={status} setStatus={setStatus} space={space} />
+                    <StatusSelectInput
+                        status={status}
+                        setStatus={setStatus}
+                        space={space}
+                    />
                 </label>
                 <label>
                     Description:

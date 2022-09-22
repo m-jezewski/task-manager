@@ -1,6 +1,6 @@
 import { useDataContext } from '../../hooks/useDataContext';
 //styles
-import styles from './ToDo.module.scss'
+import styles from './List.module.scss'
 //interfaces
 import { Status } from '../../interfaces'
 //components
@@ -12,11 +12,12 @@ import { NoSpaces } from '../../components/NoSpaces/NoSpaces';
 import { SpaceSelect } from '../../components/ui/SpaceSelect/SpaceSelect';
 import { ListHelp } from './ListHelp';
 
-export const TodoPage = () => {
+export const List = () => {
     const { statuses, selectedSpace, setSelectedSpace } = useDataContext()
+    const spaceStatuses = statuses?.filter(status => status.spaceId === selectedSpace?.id)
 
     return (
-        <Layout title='To-Do List'>
+        <Layout title='List'>
             <div className={styles.row}>
                 <SpaceSelect
                     space={selectedSpace}
@@ -32,13 +33,11 @@ export const TodoPage = () => {
                             <AddStatusForm />
                         </AnimatedPopover>
                     </div>
-                    {statuses && statuses
-                        .filter(status => status.spaceId === selectedSpace.id)
-                        .map((status: Status) =>
-                            <DropToTaskTable
-                                key={status.id}
-                                status={status}
-                            />)
+                    {spaceStatuses?.map((status: Status) =>
+                        <DropToTaskTable
+                            key={status.id}
+                            status={status}
+                        />)
                     }</>
                 : <NoSpaces />}
         </Layout>

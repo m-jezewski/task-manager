@@ -3,7 +3,7 @@ import { useDataContext } from '../../hooks/useDataContext'
 //interfaces
 import { Status, Task } from '../../interfaces'
 //styles
-import styles from './ToDo.module.scss'
+import styles from './List.module.scss'
 //components
 import { withOnDrop } from '../../components/DragAndDrop/withOnDrop'
 import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover'

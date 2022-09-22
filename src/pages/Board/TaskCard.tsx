@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 //interfaces
 import { Task } from "../../interfaces";
 //styles
-import styles from './Kanban.module.scss'
+import styles from './Board.module.scss'
 //components
 import { TaskStatusChangeBtn } from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
 import { TaskDeleteBtn } from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";

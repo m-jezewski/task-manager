@@ -3,7 +3,7 @@ import { Status } from "../../interfaces";
 //hooks
 import { useState } from "react";
 //styles
-import styles from './Kanban.module.scss'
+import styles from './Board.module.scss'
 //components
 import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
 import { StatusDeleteBtn } from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'

@@ -32,7 +32,7 @@ export const GoalSteps = ({ steps }: GoalStepsProps) => {
                                     step={step} />
                     ) :
                     <tr>
-                        <td>You did not created any steps yet</td>
+                        <td>You have not created any steps yet</td>
                     </tr>}
             </tbody>
         </table>

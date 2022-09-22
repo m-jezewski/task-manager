@@ -4,7 +4,7 @@ import { useDataContext } from "../../../hooks/useDataContext";
 import styles from './Layout.module.scss'
 //components
 import { Sidebar } from "../Sidebar/Sidebar";
-import { Loader } from "./Loader/Loader";
+import { Loader } from "../Loader/Loader";
 
 
 interface LayoutProps {

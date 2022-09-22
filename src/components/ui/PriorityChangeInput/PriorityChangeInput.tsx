@@ -1,3 +1,4 @@
+import { getNewPrio } from '../../../utils/getNewPrio'
 import styles from './PriorityChangeInput.module.scss'
 
 interface PriorityChangeInputProps {
@@ -5,16 +6,9 @@ interface PriorityChangeInputProps {
     setPriority: React.Dispatch<React.SetStateAction<string>>
 }
 
-const getPrio = (priority: string) => {
-    if (priority === 'low') return 'medium'
-    if (priority === 'medium') return 'high'
-    if (priority === 'high') return 'low'
-    return 'low'
-}
-
 export const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps) => {
     const handleClick = () => {
-        setPriority(getPrio(priority))
+        setPriority(getNewPrio(priority))
     }
 
     return (

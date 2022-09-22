@@ -6,8 +6,8 @@ import { DataContextProvider } from './contexts/DataContext'
 import { ErrorPrompt } from './components/ui/ErrorPrompt/ErrorPrompt';
 //pages
 import { Dashboard } from './pages/Dashboard/Dashboard';
-import { TodoPage } from './pages/ToDo/ToDoPage';
-import { Kanban } from './pages/Kanban/Kanban';
+import { List } from './pages/List/List';
+import { Board } from './pages/Board/Board';
 import { Calendar } from './pages/Calendar/Calendar';
 import { Goals } from './pages/Goals/Goals';
 import { Home } from './pages/Home/Home';
@@ -18,7 +18,7 @@ import { DayCal } from './pages/Calendar/DayCal/DayCal';
 import { WeekCal } from './pages/Calendar/WeekCal/WeekCal';
 import { MonthCal } from './pages/Calendar/MonthCal/MonthCal';
 
-function App() {
+export function App() {
   const { user, authReady } = useContext(UserContext)
 
   return (
@@ -30,8 +30,8 @@ function App() {
               <Route path=':taskID' element={<TaskPage />} />
               <Route index element={<Dashboard />} />
             </Route>
-            <Route path="Todo" element={<TodoPage />} />
-            <Route path="Kanban" element={<Kanban />} />
+            <Route path="List" element={<List />} />
+            <Route path="Board" element={<Board />} />
             <Route path="Calendar" element={<Calendar />}>
               <Route path=':date'>
                 <Route element={<DayCal />} path='Day' />
@@ -54,11 +54,8 @@ function App() {
             element={<Navigate to="/" replace />}
           />
         </Routes>
-      }</>
-      }
+      }</>}
       <ErrorPrompt />
     </>
   );
 }
-
-export default App;
