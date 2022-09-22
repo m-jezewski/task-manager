@@ -1,11 +1,14 @@
-import TaskStatusChangeBtn from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
-import TaskDeleteBtn from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
-import TaskPrioChangeBtn from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
-import { Task } from "../../interfaces";
-import styles from './Kanban.module.scss'
-import { withDraggable } from "../../components/DragAndDrop/withDraggable";
-import dayjs from "dayjs";
 import { forwardRef, ComponentPropsWithoutRef } from "react";
+import dayjs from "dayjs";
+//interfaces
+import { Task } from "../../interfaces";
+//styles
+import styles from './Kanban.module.scss'
+//components
+import { TaskStatusChangeBtn } from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
+import { TaskDeleteBtn } from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
+import { TaskPrioChangeBtn } from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
+import { withDraggable } from "../../components/DragAndDrop/withDraggable";
 
 interface TaskCardProps {
     task: Task
@@ -30,6 +33,4 @@ const TaskCard = forwardRef(({ task, ...props }: TaskCardProps & ComponentPropsW
     );
 })
 
-const DraggableTaskCard = withDraggable(TaskCard)
-
-export default DraggableTaskCard;
+export const DraggableTaskCard = withDraggable(TaskCard)

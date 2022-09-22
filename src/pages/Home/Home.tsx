@@ -1,10 +1,11 @@
-import styles from './Home.module.scss'
 import { useState } from 'react';
+//styles
+import styles from './Home.module.scss'
+//components
+import { Login } from './Login'
+import { Register } from './Register'
 
-import Login from './Login'
-import Register from './Register'
-
-const Home = () => {
+export const Home = () => {
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const [isLoginOpen, setIsLoginOpen] = useState(false)
 
@@ -35,5 +36,3 @@ const Home = () => {
         </div >
     );
 }
-
-export default Home;

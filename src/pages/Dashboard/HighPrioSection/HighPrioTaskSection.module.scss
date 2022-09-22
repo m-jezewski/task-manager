@@ -1,27 +1,12 @@
-@use '../../../scss/placeholders';
+@use '../dashboardPlaceholders';
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
 
 .highPrioSection {
+  @extend %tableSection;
+
   @include mdScreen {
     grid-column: 1;
-  }
-
-  table {
-    @extend %baseTable;
-    height: calc(100% - 37px);
-    border-radius: 0 0 0.5rem 0.5rem;
-    @include smScreen {
-      border-radius: 0 0.5rem 0.5rem 0.5rem;
-    }
-
-    caption {
-      @extend %baseTableCaption;
-
-      @include smScreen {
-        width: fit-content;
-      }
-    }
   }
 
   .highPrioTasksCaption {

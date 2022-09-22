@@ -1,17 +1,18 @@
-import dayjs from "dayjs";
+//styles
 import styles from './MonthCal.module.scss'
-import TaskBadge from "./TaskBadge";
-import SubHeader from "../SubHeader";
+//hooks
+import { useCalendarOutletContext } from "../Calendar";
+import { useDataContext } from "../../../hooks/useDataContext";
 import { useNavigate } from "react-router-dom";
+//utils
 import { getTasksWithinMonth } from '../../../utils/getTasksWithinMonth'
 import { getDaysOfMonth } from '../../../utils/getDaysOfMonth'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
-import weekOfYear from 'dayjs/plugin/weekOfYear'
-import { useCalendarOutletContext } from "../Calendar";
-import useDataContext from "../../../hooks/useDataContext";
-dayjs.extend(weekOfYear)
+//components
+import { TaskBadge } from "./TaskBadge";
+import { SubHeader } from "../Subheader/SubHeader";
 
-const MonthCal = () => {
+export const MonthCal = () => {
     const navigate = useNavigate()
     const { date } = useCalendarOutletContext()
     const { tasks } = useDataContext()
@@ -65,5 +66,3 @@ const MonthCal = () => {
         </>
     );
 }
-
-export default MonthCal;

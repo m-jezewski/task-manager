@@ -1,13 +1,17 @@
-import React, { useRef } from 'react'
-import styles from './DragAndDrop.module.scss';
-import useDb from '../../hooks/useDb'
+//interfaces
+import { ElementType } from 'react';
 import { Status } from '../../interfaces';
+//hooks
+import { useRef } from 'react'
+import { useDb } from '../../hooks/useDb'
+//styles
+import styles from './DragAndDrop.module.scss';
 
 interface withOnDropProps {
     status: Status
 }
 
-export const withOnDrop = (WrappedComponent: React.ElementType) => ({ status, ...props }: withOnDropProps) => {
+export const withOnDrop = (WrappedComponent: ElementType) => ({ status, ...props }: withOnDropProps) => {
     const ref = useRef<HTMLElement>(null)
     const { updateDocument } = useDb('tasks')
 

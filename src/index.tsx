@@ -7,11 +7,13 @@ import { UserContextProvider } from './contexts/UserContext';
 import locale from 'dayjs/locale/en-gb'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import weekOfYear from 'dayjs/plugin/weekOfYear'
 import { ErrorPromptContextProvider } from './contexts/ErrorPromptContext';
 
 
 dayjs.locale(locale)
 dayjs.extend(customParseFormat)
+dayjs.extend(weekOfYear)
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

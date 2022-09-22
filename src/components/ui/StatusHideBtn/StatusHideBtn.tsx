@@ -5,7 +5,7 @@ interface StatusHideBtnProps {
     setShowStatus: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const StatusHideBtn = ({ showStatus, setShowStatus }: StatusHideBtnProps) => {
+export const StatusHideBtn = ({ showStatus, setShowStatus }: StatusHideBtnProps) => {
     return (
         <button
             className={styles.hideButton}
@@ -14,5 +14,3 @@ const StatusHideBtn = ({ showStatus, setShowStatus }: StatusHideBtnProps) => {
         />
     );
 }
-
-export default StatusHideBtn;

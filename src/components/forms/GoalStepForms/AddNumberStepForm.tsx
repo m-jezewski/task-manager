@@ -1,15 +1,17 @@
 import { FormEvent, useState } from 'react'
-import useDb from '../../../hooks/useDb'
-import useNewGoalContext from '../../../hooks/useNewGoalContext'
-import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../../interfaces'
+//interfaces
+import { NumberGoalStep } from '../../../interfaces'
+//hooks
+import { useDb } from '../../../hooks/useDb'
+import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+//styles
 import styles from './AddGoalStepForm.module.scss'
 
 interface AddNumberStepFormProps {
     goalID: string | undefined
 }
 
-const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
-
+export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
     const { addDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
     const [description, setDescription] = useState('')
@@ -73,5 +75,3 @@ const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
         </form>
     );
 }
-
-export default AddNumberStepForm;

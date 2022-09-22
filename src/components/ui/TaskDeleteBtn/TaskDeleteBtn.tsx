@@ -1,14 +1,17 @@
 import React from 'react'
-import useDataContext from '../../../hooks/useDataContext'
-import useDb from '../../../hooks/useDb'
+//interfaces
 import { Task } from '../../../interfaces'
+//hooks
+import { useDataContext } from '../../../hooks/useDataContext'
+import { useDb } from '../../../hooks/useDb'
+//styles
 import styles from './TaskDeleteBtn.module.scss'
 
 interface TaskDeleteBtnProps {
     task: Task
 }
 
-const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
+export const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
     const { removeDocument: removeTask } = useDb('tasks')
     const { removeDocument: removeGoalStep } = useDb('goalSteps')
     const { goalSteps } = useDataContext()
@@ -31,5 +34,3 @@ const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
         />
     );
 }
-
-export default TaskDeleteBtn;

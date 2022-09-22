@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
-import GoalLink from '../../components/ui/GoalLink/GoalLink';
-import Layout from '../../components/Layout/Layout/Layout'
-import useDataContext from '../../hooks/useDataContext';
+//hooks
+import { useDataContext } from '../../hooks/useDataContext';
+//styles
 import styles from './Goals.module.scss'
-import GoalsHelp from './GoalsHelp';
+//components
+import { Link } from 'react-router-dom';
+import { GoalsHelp } from './GoalsHelp';
+import { GoalLink } from '../../components/ui/GoalLink/GoalLink';
+import { Layout } from '../../components/Layout/Layout/Layout'
 
-const Goals = () => {
+export const Goals = () => {
     const { goals } = useDataContext()
 
     return (
@@ -25,5 +28,3 @@ const Goals = () => {
         </Layout>
     );
 }
-
-export default Goals;

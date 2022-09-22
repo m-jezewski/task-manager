@@ -1,17 +1,20 @@
-import { Dialog, Tab } from "@headlessui/react";
-import styles from './HelpModal.module.scss'
+import { useState, ComponentPropsWithoutRef } from 'react'
+//assets
 import arrowRight from '../../../assets/icons/arrowRight.svg'
 import arrowLeft from '../../../assets/icons/arrowLeft.svg'
-import { useState, ComponentPropsWithoutRef } from 'react'
 import help from '../../../assets/icons/help.svg'
 import close from '../../../assets/icons/close.svg'
+//styles
+import styles from './HelpModal.module.scss'
+//components
+import { Dialog, Tab } from "@headlessui/react";
 
 interface HelpModalProps {
     slidesContent: { title: string, description: string, img: { src: string, alt: string } }[]
     buttonStyles?: string
 }
 
-const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalProps & ComponentPropsWithoutRef<'button'>) => {
+export const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalProps & ComponentPropsWithoutRef<'button'>) => {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
 
@@ -82,5 +85,3 @@ const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalPro
         </>
     )
 }
-
-export default HelpModal;

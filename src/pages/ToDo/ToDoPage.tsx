@@ -1,20 +1,19 @@
-
+import { useDataContext } from '../../hooks/useDataContext';
+//styles
+import styles from './ToDo.module.scss'
 //interfaces
 import { Status } from '../../interfaces'
-
 //components
-import Layout from "../../components/Layout/Layout/Layout";
-import AddStatusForm from "../../components/forms/AddStatusForm/AddStatusForm";
-import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
-import TaskTable from './TaskTable'
-import useDataContext from '../../hooks/useDataContext';
-import styles from './ToDo.module.scss'
-import NoSpaces from '../../components/NoSpaces/NoSpaces';
-import SpaceSelect from '../../components/ui/SpaceSelect/SpaceSelect';
-import ListHelp from './ListHelp';
+import { AnimatedPopover } from "../../components/AnimatedPopover/AnimatedPopover";
+import { Layout } from "../../components/Layout/Layout/Layout";
+import { AddStatusForm } from "../../components/forms/AddStatusForm/AddStatusForm";
+import { DropToTaskTable } from './TaskTable'
+import { NoSpaces } from '../../components/NoSpaces/NoSpaces';
+import { SpaceSelect } from '../../components/ui/SpaceSelect/SpaceSelect';
+import { ListHelp } from './ListHelp';
 
-const TodoPage = () => {
-    const { tasks, statuses, selectedSpace, setSelectedSpace } = useDataContext()
+export const TodoPage = () => {
+    const { statuses, selectedSpace, setSelectedSpace } = useDataContext()
 
     return (
         <Layout title='To-Do List'>
@@ -27,16 +26,16 @@ const TodoPage = () => {
                 <ListHelp />
             </div>
             {selectedSpace ?
-                tasks && statuses && <>
+                <>
                     <div className={styles.newStatusContainer}>
                         <AnimatedPopover className={styles.newStatusButton} buttonText="ADD NEW STATUS">
                             <AddStatusForm />
                         </AnimatedPopover>
                     </div>
-                    {statuses
+                    {statuses && statuses
                         .filter(status => status.spaceId === selectedSpace.id)
                         .map((status: Status) =>
-                            <TaskTable
+                            <DropToTaskTable
                                 key={status.id}
                                 status={status}
                             />)
@@ -45,5 +44,3 @@ const TodoPage = () => {
         </Layout>
     );
 }
-
-export default TodoPage;

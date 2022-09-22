@@ -1,14 +1,17 @@
+//interfaces
 import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from '../../../interfaces';
-import BooleanStep from './BooleanStep';
-import NumberStep from './NumberStep';
+//styles
 import styles from './Steps.module.scss'
-import TaskStep from './TaskStep';
+//components
+import { BooleanStep } from './BooleanStep';
+import { NumberStep } from './NumberStep';
+import { TaskStep } from './TaskStep';
 
 interface GoalStepsProps {
     steps: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | undefined
 }
 
-const GoalSteps = ({ steps }: GoalStepsProps) => {
+export const GoalSteps = ({ steps }: GoalStepsProps) => {
     return (
         <table className={styles.gsTable}>
             <caption>Current goal steps</caption>
@@ -35,5 +38,3 @@ const GoalSteps = ({ steps }: GoalStepsProps) => {
         </table>
     );
 }
-
-export default GoalSteps;

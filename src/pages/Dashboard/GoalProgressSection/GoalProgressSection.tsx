@@ -1,8 +1,11 @@
-import GoalLink from '../../../components/ui/GoalLink/GoalLink';
-import useDataContext from '../../../hooks/useDataContext';
+//hooks
+import { useDataContext } from '../../../hooks/useDataContext';
+//styles
 import styles from './GoalProgressSection.module.scss'
+//components
+import { GoalLink } from '../../../components/ui/GoalLink/GoalLink';
 
-const GoalProgressSection = () => {
+export const GoalProgressSection = () => {
     const { goals } = useDataContext()
 
     return (
@@ -18,5 +21,3 @@ const GoalProgressSection = () => {
         </section>
     );
 }
-
-export default GoalProgressSection;

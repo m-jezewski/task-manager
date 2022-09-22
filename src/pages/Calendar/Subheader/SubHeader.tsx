@@ -1,15 +1,18 @@
-import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
-import AddTaskForm from "../../components/forms/AddTaskForm/AddTaskForm";
-import DateLink from "./DateLink";
-import styles from './Calendar.module.scss'
-import { useCalendarOutletContext } from "./Calendar";
+//styles
+import styles from '../Calendar.module.scss'
+//hooks
+import { useCalendarOutletContext } from "../Calendar";
+//components
+import { AnimatedPopover } from "../../../components/AnimatedPopover/AnimatedPopover";
+import { AddTaskForm } from "../../../components/forms/AddTaskForm/AddTaskForm";
+import { DateLink } from "./DateLink";
 
 interface SubHeaderProps {
     moveBy: 'day' | 'week' | 'month'
     dateHeader: string
 }
 
-const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
+export const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
     const { date } = useCalendarOutletContext()
 
     return (
@@ -38,5 +41,3 @@ const SubHeader = ({ moveBy, dateHeader }: SubHeaderProps) => {
         </div>
     );
 }
-
-export default SubHeader;

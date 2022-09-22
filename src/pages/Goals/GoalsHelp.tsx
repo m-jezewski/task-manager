@@ -1,3 +1,4 @@
+//assets
 import GOALS_ADDGOAL from '../../assets/helpModalAssets/GOALS-ADDGOAL.webp'
 import GOALS_ADDSTEPS from '../../assets/helpModalAssets/GOALS-ADDSTEPS.webp'
 import GOALS_BOOLTASKDESC from '../../assets/helpModalAssets/GOALS-BOOLTASKDESC.webp'
@@ -5,7 +6,8 @@ import GOALS_CHECKBOXES from '../../assets/helpModalAssets/GOALS-CHECKBOXES.webp
 import GOALS_NUMBERSTEP from '../../assets/helpModalAssets/GOALS-NUMBERSTEP.webp'
 import GOALS_REMOVEGOAL from '../../assets/helpModalAssets/GOALS-REMOVEGOAL.webp'
 import GOALS_STEPTYPES from '../../assets/helpModalAssets/GOALS-STEPTYPES.webp'
-import HelpModal from '../../components/Modals/HelpModal/HelpModal'
+//components
+import { HelpModal } from '../../components/Modals/HelpModal/HelpModal'
 
 const goalHelpContent = [
     {
@@ -67,10 +69,8 @@ const goalHelpContent = [
     },
 ]
 
-const GoalsHelp = () => {
+export const GoalsHelp = () => {
     return (
         <HelpModal slidesContent={goalHelpContent} />
     );
 }
-
-export default GoalsHelp;

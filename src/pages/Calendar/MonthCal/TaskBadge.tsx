@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
-import useDataContext from "../../../hooks/useDataContext";
+//interfaces
 import { Task } from "../../../interfaces";
+//hooks
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
 import styles from './MonthCal.module.scss'
+//components
+import { Link } from "react-router-dom";
 
 interface TaskBadgeProps {
     task: Task
 }
 
-const TaskBadge = ({ task }: TaskBadgeProps) => {
+export const TaskBadge = ({ task }: TaskBadgeProps) => {
     const { statuses } = useDataContext()
 
     return (
@@ -22,5 +26,3 @@ const TaskBadge = ({ task }: TaskBadgeProps) => {
         />
     );
 }
-
-export default TaskBadge;

@@ -1,9 +1,15 @@
-import { Listbox, Transition } from "@headlessui/react";
+//hooks
+import { useDataContext } from "../../../hooks/useDataContext";
+//interfaces
 import { Space } from "../../../interfaces";
-import { ComponentPropsWithoutRef, Fragment } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
+//styles
 import styles from './SpaceSelect.module.scss'
+//assets
 import unfold from '../../../assets/icons/unfold.svg'
-import useDataContext from "../../../hooks/useDataContext";
+//components
+import { Fragment } from 'react'
+import { Listbox, Transition } from "@headlessui/react";
 
 interface SpaceSelectProps {
     space: Space | null
@@ -11,7 +17,7 @@ interface SpaceSelectProps {
     className?: string
 }
 
-const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps & ComponentPropsWithoutRef<'div'>) => {
+export const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps & ComponentPropsWithoutRef<'div'>) => {
     const { spaces } = useDataContext()
 
     return (
@@ -49,5 +55,3 @@ const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps 
         </Listbox>
     );
 }
-
-export default SpaceSelect;

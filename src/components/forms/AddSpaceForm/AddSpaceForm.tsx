@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
-import useDb from '../../../hooks/useDb'
+//hooks
+import { useState } from 'react'
+import { useDb } from '../../../hooks/useDb'
+//styles
 import styles from './AddSpaceForm.module.scss'
 
 interface AddSpaceFormProps {
     handleShowAddSpaceForm: () => void
 }
 
-const AddSpaceForm = ({ handleShowAddSpaceForm }: AddSpaceFormProps) => {
+export const AddSpaceForm = ({ handleShowAddSpaceForm }: AddSpaceFormProps) => {
     const [name, setName] = useState('')
     const { addDocument } = useDb('spaces')
 
@@ -30,5 +32,3 @@ const AddSpaceForm = ({ handleShowAddSpaceForm }: AddSpaceFormProps) => {
         </div>
     );
 }
-
-export default AddSpaceForm;

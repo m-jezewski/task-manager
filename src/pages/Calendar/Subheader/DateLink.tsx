@@ -1,8 +1,11 @@
 import { Dayjs } from "dayjs";
+//assets
+import arrowLeft from '../../../assets/icons/arrowLeft.svg'
+import arrowRight from '../../../assets/icons/arrowRight.svg'
+//utils
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter'
+//components
 import { Link } from "react-router-dom";
-import arrowLeft from '../../assets/icons/arrowLeft.svg'
-import arrowRight from '../../assets/icons/arrowRight.svg'
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter'
 
 interface DateLinkProps {
     move: 'forward' | 'back'
@@ -10,7 +13,7 @@ interface DateLinkProps {
     date: Dayjs
 }
 
-const DateLink = ({ move, by, date }: DateLinkProps) => {
+export const DateLink = ({ move, by, date }: DateLinkProps) => {
     return (
         <Link
             to={move === 'back' ?
@@ -24,5 +27,3 @@ const DateLink = ({ move, by, date }: DateLinkProps) => {
         </Link>
     );
 }
-
-export default DateLink;

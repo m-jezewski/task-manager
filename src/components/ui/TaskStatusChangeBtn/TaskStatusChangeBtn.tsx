@@ -1,16 +1,20 @@
 import React from 'react';
-import useDataContext from '../../../hooks/useDataContext';
-import useDb from '../../../hooks/useDb';
+//interfaces
 import { Space, Task } from '../../../interfaces';
-import AnimatedPopover from '../../AnimatedPopover/AnimatedPopover'
+//hooks
+import { useDataContext } from '../../../hooks/useDataContext';
+import { useDb } from '../../../hooks/useDb';
+//styles
 import styles from './TaskStatusChangeBtn.module.scss'
+//components
+import { AnimatedPopover } from '../../AnimatedPopover/AnimatedPopover'
 
 interface TaskStatusChangeBtnProps {
     task: Task
     space?: Space
 }
 
-const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
+export const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
     const { updateDocument } = useDb('tasks')
     const { statuses, spaces } = useDataContext()
 
@@ -43,5 +47,3 @@ const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
         </AnimatedPopover>
     );
 }
-
-export default TaskStatusChangeBtn;

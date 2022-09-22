@@ -1,12 +1,15 @@
+import { UserContext } from '../contexts/UserContext'
+//hooks
 import { useState } from 'react'
+import { useContext } from 'react'
+import { useErrorPromptContext } from './useErrorPromptContext'
+//utils
+import { openAppHelp } from '../utils/openAppHelp'
+import { getErrorMessage } from '../utils/getErrorMessage'
+//firebase
 import { auth } from '../firebase/config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { UserContext } from '../contexts/UserContext'
-import { useContext } from 'react'
 import { addDefaultContent } from '../utils/addDefaultContent'
-import { openAppHelp } from '../utils/openAppHelp'
-import useErrorPromptContext from './useErrorPromptContext'
-import { getErrorMessage } from '../utils/getErrorMessage'
 
 export const useSignup = () => {
   const { dispatch } = useContext(UserContext)

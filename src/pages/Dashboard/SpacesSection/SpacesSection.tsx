@@ -1,10 +1,13 @@
-import styles from './SpacesSection.module.scss'
-import AddSpaceForm from "../../../components/forms/AddSpaceForm/AddSpaceForm";
-import SpaceDeleteBtn from "../../../components/ui/SpaceDeleteBtn/SpaceDeleteBtn";
-import useDataContext from '../../../hooks/useDataContext';
 import { useState, ComponentPropsWithoutRef } from 'react'
+//hooks
+import { useDataContext } from '../../../hooks/useDataContext';
+//styles
+import styles from './SpacesSection.module.scss'
+//components
+import { AddSpaceForm } from "../../../components/forms/AddSpaceForm/AddSpaceForm";
+import { SpaceDeleteBtn } from "../../../components/ui/SpaceDeleteBtn/SpaceDeleteBtn";
 
-const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
+export const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
     const { spaces, statuses, tasks } = useDataContext()
     const [showAddSpace, setShowAddSpace] = useState(false)
     const handleShowAddSpace = () => {
@@ -39,5 +42,3 @@ const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
         </section>
     );
 }
-
-export default SpacesSection;

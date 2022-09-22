@@ -1,10 +1,14 @@
 import { forwardRef, ComponentPropsWithoutRef } from "react";
-import AnimatedPopover from "../../components/AnimatedPopover/AnimatedPopover";
-import AddTaskForm from "../../components/forms/AddTaskForm/AddTaskForm";
-import useDataContext from "../../hooks/useDataContext";
+//interfaces
 import { Status } from "../../interfaces";
-import DraggableTaskCard from "./TaskCard";
+//hooks
+import { useDataContext } from "../../hooks/useDataContext";
+//styles
 import styles from './Kanban.module.scss'
+//components
+import { AnimatedPopover } from "../../components/AnimatedPopover/AnimatedPopover";
+import { DraggableTaskCard } from "./TaskCard";
+import { AddTaskForm } from "../../components/forms/AddTaskForm/AddTaskForm";
 import { withOnDrop } from "../../components/DragAndDrop/withOnDrop";
 
 interface StatusTaskListProps {
@@ -31,6 +35,4 @@ const StatusTaskList = forwardRef(({ status, ...props }: StatusTaskListProps & C
     );
 })
 
-const DropToStatusTaskList = withOnDrop(StatusTaskList)
-
-export default DropToStatusTaskList;
+export const DropToStatusTaskList = withOnDrop(StatusTaskList)

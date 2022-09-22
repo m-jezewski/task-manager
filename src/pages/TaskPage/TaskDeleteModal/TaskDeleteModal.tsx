@@ -1,17 +1,20 @@
-import { Dialog } from "@headlessui/react";
+//hooks
+import { useDb } from "../../../hooks/useDb";
+import { useDataContext } from "../../../hooks/useDataContext";
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "../../../components/Modals/DeleteModal/DeleteModal";
-import useDataContext from "../../../hooks/useDataContext";
-import useDb from "../../../hooks/useDb";
+//interfaces
 import { Task } from "../../../interfaces";
+//styles
 import styles from './TaskDeleteModal.module.scss'
+//components
+import { DeleteModal } from "../../../components/Modals/DeleteModal/DeleteModal";
 
 interface TaskDeleteModalProps {
     task: Task
 }
 
-const TaskDeleteModal = ({ task }: TaskDeleteModalProps) => {
+export const TaskDeleteModal = ({ task }: TaskDeleteModalProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const { goalSteps } = useDataContext()
     const navigate = useNavigate()
@@ -47,5 +50,3 @@ const TaskDeleteModal = ({ task }: TaskDeleteModalProps) => {
         </>
     );
 }
-
-export default TaskDeleteModal;

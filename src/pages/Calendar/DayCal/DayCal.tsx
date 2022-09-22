@@ -1,12 +1,16 @@
-import TaskCard from "./TaskCard";
-import styles from './DayCal.module.scss'
-import SubHeader from '../SubHeader'
+//hooks
+import { useCalendarOutletContext } from "../Calendar";
+import { useDataContext } from "../../../hooks/useDataContext";
+//utils
 import { getTasksWithinDay } from '../../../utils/getTasksWithinDay'
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
-import { useCalendarOutletContext } from "../Calendar";
-import useDataContext from "../../../hooks/useDataContext";
+//styles
+import styles from './DayCal.module.scss'
+//components
+import { TaskCard } from "./TaskCard";
+import { SubHeader } from '../Subheader/SubHeader'
 
-const DayCal = () => {
+export const DayCal = () => {
     const { date } = useCalendarOutletContext()
     const { tasks } = useDataContext()
     const hours = getHoursOfDate(date)
@@ -42,5 +46,3 @@ const DayCal = () => {
         </>
     );
 }
-
-export default DayCal;

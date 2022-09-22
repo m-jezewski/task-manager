@@ -1,17 +1,21 @@
 import dayjs from "dayjs";
-import { BooleanGoalStep, GoalStep, NumberGoalStep, Task, TaskGoalStep } from "../../../interfaces";
-import GoalStepCheckbox from "../../../components/ui/GoalStepCheckbox/GoalStepCheckbox";
-import TaskPrioChangeBtn from "../../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
-import TaskStatusChangeBtn from "../../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
-import TaskDeleteBtn from "../../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
+//interfaces
+import { TaskGoalStep } from "../../../interfaces";
+//hooks
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
 import styles from './Steps.module.scss'
-import useDataContext from "../../../hooks/useDataContext";
+//components
+import { GoalStepCheckbox } from "../../../components/ui/GoalStepCheckbox/GoalStepCheckbox";
+import { TaskPrioChangeBtn } from "../../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
+import { TaskStatusChangeBtn } from "../../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
+import { TaskDeleteBtn } from "../../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
 
 interface TaskStepProps {
     step: TaskGoalStep
 }
 
-const TaskStep = ({ step }: TaskStepProps) => {
+export const TaskStep = ({ step }: TaskStepProps) => {
     const { tasks } = useDataContext()
     const task = tasks?.find(task => task.id === step.taskID)!
 
@@ -42,5 +46,3 @@ const TaskStep = ({ step }: TaskStepProps) => {
         </tr>
     );
 }
-
-export default TaskStep;

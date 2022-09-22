@@ -1,14 +1,17 @@
+//interfaces
 import { BooleanGoalStep } from "../../../interfaces";
-import GoalStepCheckbox from "../../../components/ui/GoalStepCheckbox/GoalStepCheckbox";
-import GoalStepSwitch from "../../../components/ui/GoalStepSwitch/GoalStepSwitch";
-import GoalStepDeleteBtn from "../../../components/ui/GoalStepDeleteBtn/GoalStepDeleteBtn";
+//styles
 import styles from './Steps.module.scss';
+//components
+import { GoalStepCheckbox } from "../../../components/ui/GoalStepCheckbox/GoalStepCheckbox";
+import { GoalStepSwitch } from "../../../components/ui/GoalStepSwitch/GoalStepSwitch";
+import { GoalStepDeleteBtn } from "../../../components/ui/GoalStepDeleteBtn/GoalStepDeleteBtn";
 
 interface BooleanStepProps {
     step: BooleanGoalStep
 }
 
-const BooleanStep = ({ step }: BooleanStepProps) => {
+export const BooleanStep = ({ step }: BooleanStepProps) => {
     return (
         <tr>
             <td className={styles.smallCell}>
@@ -25,5 +28,3 @@ const BooleanStep = ({ step }: BooleanStepProps) => {
         </tr>
     );
 }
-
-export default BooleanStep;

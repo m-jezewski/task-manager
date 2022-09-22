@@ -1,5 +1,10 @@
-import { Link } from 'react-router-dom';
-import styles from './Sidebar.module.scss'
+import dayjs from 'dayjs';
+//hooks
+import { useLogout } from '../../../hooks/useLogout'
+import { useState, useRef } from 'react';
+//utils
+import { onClickOutside } from '../../../utils/onClickOutside';
+//assets
 import calendar from '../../../assets/icons/calendar.svg'
 import checklist from '../../../assets/icons/checklist.svg'
 import home from '../../../assets/icons/home.svg'
@@ -7,13 +12,13 @@ import width from '../../../assets/icons/width.svg'
 import monitoring from '../../../assets/icons/monitoring.svg'
 import menu from '../../../assets/icons/menu.svg'
 import logoutIcon from '../../../assets/icons/logout.svg'
-import { useLogout } from '../../../hooks/useLogout'
-import { onClickOutside } from '../../../utils/onClickOutside';
-import dayjs from 'dayjs';
-import { useState, useRef } from 'react';
-import AppHelp from './AppHelp';
+//styles
+import styles from './Sidebar.module.scss'
+//components
+import { Link } from 'react-router-dom';
+import { AppHelp } from './AppHelp';
 
-const Sidebar = () => {
+export const Sidebar = () => {
     const { logout } = useLogout()
     const [toggleSidebar, setToggleSidebar] = useState(false)
     const sidebarPanelRef = useRef<HTMLDivElement | null>(null)
@@ -54,5 +59,3 @@ const Sidebar = () => {
         </>
     );
 }
-
-export default Sidebar;

@@ -1,11 +1,15 @@
 import dayjs from 'dayjs';
-import { forwardRef, ComponentPropsWithoutRef } from 'react';
+import { forwardRef } from 'react';
+//interfaces
 import { Task } from '../../interfaces';
-import { withDraggable } from '../DragAndDrop/withDraggable';
-import TaskDeleteBtn from '../ui/TaskDeleteBtn/TaskDeleteBtn';
-import TaskPrioChange from '../ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
-import TaskStatusChangeBtn from '../ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
+import { ComponentPropsWithoutRef } from 'react'
+//styles
 import styles from './TaskTableItem.module.scss'
+//components
+import { withDraggable } from '../DragAndDrop/withDraggable';
+import { TaskDeleteBtn } from '../ui/TaskDeleteBtn/TaskDeleteBtn';
+import { TaskPrioChangeBtn } from '../ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
+import { TaskStatusChangeBtn } from '../ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
 
 interface TaskTableItemProps {
     task: Task
@@ -24,7 +28,7 @@ const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps & Compo
                 {task.dueDate ? dayjs.unix(task.dueDate).format('DD/MM') : '-/-'}
             </td>
             <td className={styles.smallCell}>
-                <TaskPrioChange task={task} />
+                <TaskPrioChangeBtn task={task} />
             </td>
             <td className={styles.smallCell}>
                 <TaskDeleteBtn task={task} />
@@ -33,6 +37,4 @@ const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps & Compo
     );
 })
 
-const DraggableTaskTableItem = withDraggable(TaskTableItem)
-
-export default DraggableTaskTableItem;
+export const DraggableTaskTableItem = withDraggable(TaskTableItem)

@@ -1,14 +1,16 @@
-import Layout from '../../components/Layout/Layout/Layout'
-import styles from './Dashboard.module.scss'
-import GoalProgressSection from './GoalProgressSection/GoalProgressSection';
-import SpacesSection from './SpacesSection/SpacesSection';
-import HighPrioTaskSection from './HighPrioSection/HighPrioTasksSection';
-import TodaySection from './TodaySection/TodaySection';
-import { Outlet } from 'react-router-dom';
 import dayjs from 'dayjs';
-import DashboardHelp from './DashboardHelp';
+//styles
+import styles from './Dashboard.module.scss'
+//components
+import { Layout } from '../../components/Layout/Layout/Layout'
+import { GoalProgressSection } from './GoalProgressSection/GoalProgressSection';
+import { SpacesSection } from './SpacesSection/SpacesSection';
+import { HighPrioTaskSection } from './HighPrioSection/HighPrioTasksSection';
+import { TodaySection } from './TodaySection/TodaySection';
+import { DashboardHelp } from './DashboardHelp';
+import { Outlet } from 'react-router-dom';
 
-const Dashboard = () => {
+export const Dashboard = () => {
     return (
         <Layout title="Dashboard">
             <div className={styles.subheader}>
@@ -27,5 +29,3 @@ const Dashboard = () => {
         </Layout>
     );
 }
-
-export default Dashboard;

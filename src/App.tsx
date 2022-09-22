@@ -1,23 +1,22 @@
-import styles from './App.module.scss';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from './contexts/UserContext';
 import { DataContextProvider } from './contexts/DataContext'
 
+import { ErrorPrompt } from './components/ui/ErrorPrompt/ErrorPrompt';
 //pages
-import Dashboard from './pages/Dashboard/Dashboard';
-import TodoPage from './pages/ToDo/ToDoPage';
-import Kanban from './pages/Kanban/Kanban';
-import Calendar from './pages/Calendar/Calendar';
-import Goals from './pages/Goals/Goals';
-import Home from './pages/Home/Home';
-import TaskPage from './pages/TaskPage/TaskPage';
-import NewGoal from './pages/Goals/NewGoal/NewGoal';
-import GoalPage from './pages/Goals/GoalPage/GoalPage';
-import DayCal from './pages/Calendar/DayCal/DayCal';
-import WeekCal from './pages/Calendar/WeekCal/WeekCal';
-import MonthCal from './pages/Calendar/MonthCal/MonthCal';
-import ErrorPrompt from './components/ui/ErrorPrompt/ErrorPrompt';
+import { Dashboard } from './pages/Dashboard/Dashboard';
+import { TodoPage } from './pages/ToDo/ToDoPage';
+import { Kanban } from './pages/Kanban/Kanban';
+import { Calendar } from './pages/Calendar/Calendar';
+import { Goals } from './pages/Goals/Goals';
+import { Home } from './pages/Home/Home';
+import { TaskPage } from './pages/TaskPage/TaskPage';
+import { NewGoal } from './pages/Goals/NewGoal/NewGoal';
+import { GoalPage } from './pages/Goals/GoalPage/GoalPage';
+import { DayCal } from './pages/Calendar/DayCal/DayCal';
+import { WeekCal } from './pages/Calendar/WeekCal/WeekCal';
+import { MonthCal } from './pages/Calendar/MonthCal/MonthCal';
 
 function App() {
   const { user, authReady } = useContext(UserContext)

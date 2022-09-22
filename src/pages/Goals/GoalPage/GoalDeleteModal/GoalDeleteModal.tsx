@@ -1,17 +1,20 @@
-import { Dialog } from "@headlessui/react";
+//interfaces
+import { Goal } from "../../../../interfaces";
+//hooks
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "../../../../components/Modals/DeleteModal/DeleteModal";
-import useDataContext from "../../../../hooks/useDataContext";
-import useDb from "../../../../hooks/useDb";
-import { Goal, Task } from "../../../../interfaces";
+import { useDataContext } from "../../../../hooks/useDataContext";
+import { useDb } from "../../../../hooks/useDb";
+//styles
 import styles from './GoalDeleteModal.module.scss'
+//components
+import { DeleteModal } from "../../../../components/Modals/DeleteModal/DeleteModal";
 
 interface GoalDeleteModalProps {
     goal: Goal
 }
 
-const GoalDeleteModal = ({ goal }: GoalDeleteModalProps) => {
+export const GoalDeleteModal = ({ goal }: GoalDeleteModalProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const navigate = useNavigate()
     const { goalSteps } = useDataContext()
@@ -44,5 +47,3 @@ const GoalDeleteModal = ({ goal }: GoalDeleteModalProps) => {
         </>
     );
 }
-
-export default GoalDeleteModal

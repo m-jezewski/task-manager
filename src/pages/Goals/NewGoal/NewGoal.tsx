@@ -1,12 +1,16 @@
 import { createContext, FormEvent, useEffect, useState } from "react";
-import Layout from "../../../components/Layout/Layout/Layout";
-import useDb from "../../../hooks/useDb";
-import styles from './NewGoal.module.scss'
-import AddStep from "../AddStep/AddStep";
-import GoalSteps from "../GoalSteps/GoalSteps";
-import { BooleanGoalStep, Goal, GoalStep, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
-import { useNavigate } from "react-router-dom";
+//interfaces
 import { DocumentReference } from "firebase/firestore";
+import { BooleanGoalStep, Goal, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
+//hooks
+import { useNavigate } from "react-router-dom";
+import { useDb } from "../../../hooks/useDb";
+//styles
+import styles from './NewGoal.module.scss'
+//components
+import { AddStep } from "../AddStep/AddStep";
+import { GoalSteps } from "../GoalSteps/GoalSteps";
+import { Layout } from "../../../components/Layout/Layout/Layout";
 
 export const NewGoalContext = createContext<{
     addStepInNewGoal: (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => void;
@@ -14,7 +18,7 @@ export const NewGoalContext = createContext<{
     removeStepInNewGoal: (stepId: string) => void
 } | null>(null)
 
-const NewGoal = () => {
+export const NewGoal = () => {
     const navigate = useNavigate()
     const { addDocument: addGoal } = useDb('goals')
     const { addDocument: addGoalStep } = useDb('goalSteps')
@@ -81,5 +85,3 @@ const NewGoal = () => {
         </Layout>
     );
 }
-
-export default NewGoal;

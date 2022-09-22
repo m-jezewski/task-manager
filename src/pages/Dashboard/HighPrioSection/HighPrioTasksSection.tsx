@@ -1,9 +1,12 @@
-import TaskTableItem from '../../../components/TaskTableItem/TaskTableItem';
-import useDataContext from '../../../hooks/useDataContext';
+//hooks
+import { useDataContext } from '../../../hooks/useDataContext';
+//styles
 import styles from './HighPrioTaskSection.module.scss'
+//components
+import { DraggableTaskTableItem } from '../../../components/TaskTableItem/TaskTableItem';
 
 
-const HighPrioTaskSection = () => {
+export const HighPrioTaskSection = () => {
     const { tasks } = useDataContext()
     const highPrioTasks = tasks && tasks.filter(task => task.priority === 'high')
 
@@ -17,7 +20,7 @@ const HighPrioTaskSection = () => {
                             <td className={styles.noTasks}>You don't have any high priority tasks right now</td>
                         </tr>
                         : highPrioTasks.map(task =>
-                            <TaskTableItem key={task.id} task={task} />
+                            <DraggableTaskTableItem key={task.id} task={task} />
                         )
                     }
                 </tbody>
@@ -25,5 +28,3 @@ const HighPrioTaskSection = () => {
         </section>
     );
 }
-
-export default HighPrioTaskSection;

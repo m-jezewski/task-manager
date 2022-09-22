@@ -1,15 +1,18 @@
 import dayjs, { Dayjs } from "dayjs";
-import styles from './TaskCard.module.scss'
-import { Status, Task } from "../../../interfaces";
+//interfaces
+import { Task } from "../../../interfaces";
+//hooks
 import { useNavigate } from "react-router-dom";
-import useDataContext from "../../../hooks/useDataContext";
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
+import styles from './DayCal.module.scss'
 
 interface TaskCardProps {
     task: Task
     date: Dayjs
 }
 
-const TaskCard = ({ task, date }: TaskCardProps) => {
+export const TaskCard = ({ task, date }: TaskCardProps) => {
     const navigate = useNavigate()
     const { statuses } = useDataContext()
     const fromDate = dayjs.unix(task.fromDate!)
@@ -17,7 +20,7 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
 
     return (
         <div
-            className={styles.container}
+            className={styles.taskCard}
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() + 1 : 1,
                 gridRowEnd: dueDate.isSame(date, 'day') ? dueDate.hour() + 1 : 25,
@@ -41,5 +44,3 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
         </div>
     );
 }
-
-export default TaskCard;

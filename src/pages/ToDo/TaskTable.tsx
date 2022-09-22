@@ -1,17 +1,17 @@
 import { forwardRef, useState, ComponentPropsWithoutRef } from 'react'
+import { useDataContext } from '../../hooks/useDataContext'
 //interfaces
 import { Status, Task } from '../../interfaces'
-//css
+//styles
 import styles from './ToDo.module.scss'
 //components
-import AnimatedPopover from '../../components/AnimatedPopover/AnimatedPopover'
-import AddTaskForm from '../../components/forms/AddTaskForm/AddTaskForm'
-import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
-import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
-import StatusHideBtn from '../../components/ui/StatusHideBtn/StatusHideBtn'
-import useDataContext from '../../hooks/useDataContext'
-import TaskTableItem from '../../components/TaskTableItem/TaskTableItem'
 import { withOnDrop } from '../../components/DragAndDrop/withOnDrop'
+import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover'
+import { AddTaskForm } from '../../components/forms/AddTaskForm/AddTaskForm'
+import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
+import { StatusDeleteBtn } from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
+import { StatusHideBtn } from '../../components/ui/StatusHideBtn/StatusHideBtn'
+import { DraggableTaskTableItem } from '../../components/TaskTableItem/TaskTableItem'
 
 interface TaskTableProps {
     status: Status
@@ -74,7 +74,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
                             </td>
                         </tr>
                         : statusTasks.map((task: Task) => (
-                            <TaskTableItem key={task.id} task={task} />
+                            <DraggableTaskTableItem key={task.id} task={task} />
                         ))}</>
                     :
                     <tr>
@@ -87,6 +87,5 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
     );
 })
 
-const DropToTaskTable = withOnDrop(TaskTable)
+export const DropToTaskTable = withOnDrop(TaskTable)
 
-export default DropToTaskTable;

@@ -1,18 +1,22 @@
 import dayjs from "dayjs";
 import { FormEvent, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import DateInputs from "../../components/ui/DateInputs/DateInputs";
-import PriorityChangeInput from "../../components/ui/PriorityChangeButton/PriorityChangeInput";
-import SpaceSelect from "../../components/ui/SpaceSelect/SpaceSelect";
-import StatusSelectInput from "../../components/ui/StatusSelect/StatusSelectInput";
-import Layout from "../../components/Layout/Layout/Layout";
-import useDataContext from "../../hooks/useDataContext";
-import useDb from "../../hooks/useDb";
+//interfaces
 import { Space, Status, Task } from "../../interfaces";
+//styles
 import styles from './TaskPage.module.scss'
-import TaskDeleteModal from "./TaskDeleteModal/TaskDeleteModal";
+//hooks
+import { useNavigate, useParams } from "react-router-dom";
+import { useDataContext } from "../../hooks/useDataContext";
+import { useDb } from "../../hooks/useDb";
+//components
+import { DateInputs } from "../../components/ui/DateInputs/DateInputs";
+import { PriorityChangeInput } from "../../components/ui/PriorityChangeInput/PriorityChangeInput";
+import { SpaceSelect } from "../../components/ui/SpaceSelect/SpaceSelect";
+import { StatusSelectInput } from "../../components/ui/StatusSelect/StatusSelectInput";
+import { Layout } from "../../components/Layout/Layout/Layout";
+import { TaskDeleteModal } from "./TaskDeleteModal/TaskDeleteModal";
 
-const TaskPage = () => {
+export const TaskPage = () => {
     const navigate = useNavigate()
     const { tasks, statuses, spaces } = useDataContext()
     const { taskID } = useParams()
@@ -119,5 +123,3 @@ const TaskPage = () => {
         </Layout>
     );
 }
-
-export default TaskPage;

@@ -1,9 +1,14 @@
+//interfaces
+import { Goal } from "../../../interfaces";
+//hooks
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import useDataContext from "../../../hooks/useDataContext";
-import { BooleanGoalStep, Goal, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
+import { useDataContext } from "../../../hooks/useDataContext";
+//utils
 import { getGoalStepProgess } from "../../../utils/getGoalStepProgress";
+//styles
 import styles from './GoalLink.module.scss'
+//components
+import { Link } from "react-router-dom";
 
 interface GoalLinkProps {
     goal: Goal
@@ -19,7 +24,7 @@ const drawCircle = (color: string, percent: number, ctx: CanvasRenderingContext2
     ctx.stroke()
 }
 
-const GoalLink = ({ goal }: GoalLinkProps) => {
+export const GoalLink = ({ goal }: GoalLinkProps) => {
     const { goalSteps } = useDataContext()
     const steps = goalSteps && goalSteps.filter(gs => gs.goalID === goal.id!)
     const goalProgress = steps ? getGoalStepProgess(steps) : 0
@@ -33,7 +38,7 @@ const GoalLink = ({ goal }: GoalLinkProps) => {
         ctx.rotate(-0.5 * Math.PI)
         drawCircle('#e5e7eb', 100 / 100, ctx);
         drawCircle('#86efac', goalProgress / 100, ctx);
-    }, [])
+    }, [goalProgress])
 
     return (
         <Link
@@ -48,9 +53,11 @@ const GoalLink = ({ goal }: GoalLinkProps) => {
                 <span>
                     {goalProgress.toFixed()}%
                 </span>
-                <canvas ref={canvas} aria-label={`circle showing progress completion, current: ${goalProgress.toFixed()}%`} />
+                <canvas
+                    ref={canvas}
+                    aria-label={`circle showing progress completion, current: ${goalProgress.toFixed()}%`}
+                />
             </div>
         </Link>
     );
 }
-export default GoalLink;

@@ -1,3 +1,4 @@
+//assets
 import PANEL_ADDSTATUS from '../../assets/helpModalAssets/PANEL-ADDSTATUS.webp'
 import PANEL_ADDTASK from '../../assets/helpModalAssets/PANEL-ADDTASK.webp'
 import PANEL_HIDESTATUS from '../../assets/helpModalAssets/PANEL-HIDESTATUS.webp'
@@ -8,7 +9,8 @@ import PANEL_STATUSORDER from '../../assets/helpModalAssets/PANEL-STATUSORDER.we
 import PANEL_TASKLINK from '../../assets/helpModalAssets/PANEL-TASKLINK.webp'
 import PANEL_TASKPRIO from '../../assets/helpModalAssets/PANEL-TASKPRIO.webp'
 import PANEL_TASKSTATUS from '../../assets/helpModalAssets/PANEL-TASKSTATUS.webp'
-import HelpModal from '../../components/Modals/HelpModal/HelpModal'
+//components
+import { HelpModal } from '../../components/Modals/HelpModal/HelpModal'
 
 const panelHelpContent = [
     {
@@ -96,10 +98,8 @@ const panelHelpContent = [
     },
 ]
 
-const PanelHelp = () => {
+export const PanelHelp = () => {
     return (
         <HelpModal slidesContent={panelHelpContent} />
     );
 }
-
-export default PanelHelp;

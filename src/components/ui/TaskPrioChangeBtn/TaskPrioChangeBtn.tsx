@@ -1,5 +1,8 @@
-import useDb from "../../../hooks/useDb";
+//interfaces
 import { Task } from "../../../interfaces";
+//hooks
+import { useDb } from "../../../hooks/useDb";
+//styles
 import styles from './TaskPrioChangeBtn.module.scss'
 
 
@@ -14,7 +17,7 @@ const getPrio = (priority: string) => {
     return 'low'
 }
 
-const TaskPrioChange = ({ task: { id, priority } }: TaskPrioChangeProps) => {
+export const TaskPrioChangeBtn = ({ task: { id, priority } }: TaskPrioChangeProps) => {
     const { updateDocument } = useDb('tasks') // handle error res here
 
     const handleClick = (e: React.MouseEvent) => {
@@ -31,5 +34,3 @@ const TaskPrioChange = ({ task: { id, priority } }: TaskPrioChangeProps) => {
         />
     );
 }
-
-export default TaskPrioChange;

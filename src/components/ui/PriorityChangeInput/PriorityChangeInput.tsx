@@ -12,8 +12,7 @@ const getPrio = (priority: string) => {
     return 'low'
 }
 
-const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps) => {
-
+export const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps) => {
     const handleClick = () => {
         setPriority(getPrio(priority))
     }
@@ -27,5 +26,3 @@ const PriorityChangeInput = ({ priority, setPriority }: PriorityChangeInputProps
         />
     );
 }
-
-export default PriorityChangeInput;

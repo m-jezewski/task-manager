@@ -2,15 +2,15 @@
 import styles from './AddStep.module.scss'
 //components
 import { Tab } from '@headlessui/react';
-import AddTaskForm from '../../../components/forms/AddTaskForm/AddTaskForm';
-import AddNumberStepForm from '../../../components/forms/GoalStepForms/AddNumberStepForm';
-import AddBooleanStepForm from '../../../components/forms/GoalStepForms/AddBooleanStepForm';
+import { AddTaskForm } from '../../../components/forms/AddTaskForm/AddTaskForm';
+import { AddNumberStepForm } from '../../../components/forms/GoalStepForms/AddNumberStepForm';
+import { AddBooleanStepForm } from '../../../components/forms/GoalStepForms/AddBooleanStepForm';
 
 interface AddStepProps {
     goalID?: string
 }
 
-const AddStep = ({ goalID }: AddStepProps) => {
+export const AddStep = ({ goalID }: AddStepProps) => {
     return (
         <div className={styles.container}>
             <Tab.Group>
@@ -47,5 +47,3 @@ const AddStep = ({ goalID }: AddStepProps) => {
         </div>
     );
 }
-
-export default AddStep;

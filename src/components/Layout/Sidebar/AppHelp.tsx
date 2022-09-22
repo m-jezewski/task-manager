@@ -1,4 +1,4 @@
-import HelpModal from "../../Modals/HelpModal/HelpModal";
+//assets
 import APP_DEFAULTCONTENT from '../../../assets/helpModalAssets/APP-DEFAULTCONTENT.webp'
 import APP_DIAGRAM_SPACES from '../../../assets/helpModalAssets/APP-DIAGRAM-SPACES.webp'
 import APP_DIAGRAM_STATUSES from '../../../assets/helpModalAssets/APP-DIAGRAM-STATUSES.webp'
@@ -7,7 +7,10 @@ import APP_DIAGRAM from '../../../assets/helpModalAssets/APP-DIAGRAM.webp'
 import APP_GOALS from '../../../assets/helpModalAssets/APP-GOALS.webp'
 import APP_HELP from '../../../assets/helpModalAssets/APP-HELP.webp'
 import APP_LOGO from '../../../assets/helpModalAssets/APP-LOGO.webp'
+//styles
 import styles from './Sidebar.module.scss'
+//components
+import { HelpModal } from "../../Modals/HelpModal/HelpModal";
 
 const appHelpContent = [
     {
@@ -79,7 +82,7 @@ const appHelpContent = [
 ]
 
 
-const AppHelp = () => {
+export const AppHelp = () => {
     return (
         <HelpModal
             slidesContent={appHelpContent}
@@ -88,5 +91,3 @@ const AppHelp = () => {
         />
     );
 }
-
-export default AppHelp;

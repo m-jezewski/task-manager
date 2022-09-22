@@ -1,13 +1,16 @@
 import { FormEvent, MouseEventHandler, useState } from 'react';
+//assets
 import arrowback from '../../assets/icons/arrowback.svg'
+//styles
 import styles from './Home.module.scss'
+//hooks
 import { useLogin } from '../../hooks/useLogin'
 
 interface LoginProps {
     handleClosingForms: MouseEventHandler<HTMLButtonElement>
 }
 
-const Login = ({ handleClosingForms }: LoginProps) => {
+export const Login = ({ handleClosingForms }: LoginProps) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -54,5 +57,3 @@ const Login = ({ handleClosingForms }: LoginProps) => {
         </>
     );
 }
-
-export default Login;

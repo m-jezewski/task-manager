@@ -1,4 +1,5 @@
 @use '../../../scss/placeholders';
+@use '../dashboardPlaceholders';
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
 
@@ -8,34 +9,16 @@
   }
 
   .goalLinks {
+    @extend %nonTableSectionContent;
     position: relative;
-    display: flex;
-    height: calc(100% - 37px);
     align-items: center;
-    gap: 0.5rem;
     padding: 0 0.5rem;
-    border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $bright-1;
     overflow-x: auto;
-
-    @include smScreen {
-      border-radius: 0 0.5rem 0.5rem 0.5rem;
-    }
   }
 
   .goalProgressCaption {
-    @extend %baseTableCaption;
-    display: block;
-    box-sizing: border-box;
-    text-align: center;
+    @extend %nonTableSectionCaption;
     background-color: $yellow-1;
-    font-size: 1rem;
-    margin: 0;
-    width: 100%;
-
-    @include smScreen {
-      width: fit-content;
-    }
   }
 
   .noTasks {

@@ -1,10 +1,12 @@
-import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
+//hooks/contexts
+import { useContext } from 'react'
+import { useErrorPromptContext } from './useErrorPromptContext'
+//firebase
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
-import useErrorPromptContext from './useErrorPromptContext'
 
-const useDb = (col: string) => {
+export const useDb = (col: string) => {
   const { user } = useContext(UserContext)
   const { setIsError } = useErrorPromptContext()
 
@@ -35,5 +37,3 @@ const useDb = (col: string) => {
 
   return { addDocument, removeDocument, updateDocument }
 }
-
-export default useDb

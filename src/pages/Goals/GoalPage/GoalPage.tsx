@@ -1,15 +1,19 @@
+//hooks
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import AddStep from "../AddStep/AddStep";
-import GoalSteps from "../GoalSteps/GoalSteps";
-import Layout from "../../../components/Layout/Layout/Layout";
-import useDataContext from "../../../hooks/useDataContext";
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
 import styles from './GoalPage.module.scss'
+//utils
 import { getGoalStepProgess } from "../../../utils/getGoalStepProgress";
-import GoalDeleteModal from "./GoalDeleteModal/GoalDeleteModal";
-import GoalsHelp from "../GoalsHelp";
+//components
+import { GoalDeleteModal } from "./GoalDeleteModal/GoalDeleteModal";
+import { GoalsHelp } from "../GoalsHelp";
+import { AddStep } from "../AddStep/AddStep";
+import { GoalSteps } from "../GoalSteps/GoalSteps";
+import { Layout } from "../../../components/Layout/Layout/Layout";
 
-const GoalPage = () => {
+export const GoalPage = () => {
     const { goalID } = useParams()
     const { goals, goalSteps } = useDataContext()
     const [openAddStep, setOpenAddStep] = useState(false)
@@ -44,5 +48,3 @@ const GoalPage = () => {
         </Layout>
     );
 }
-
-export default GoalPage;

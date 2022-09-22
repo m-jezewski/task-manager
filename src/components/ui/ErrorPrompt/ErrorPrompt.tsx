@@ -1,8 +1,11 @@
-import { Dialog } from "@headlessui/react";
-import useErrorPromptContext from "../../../hooks/useErrorPromptContext";
+//hooks
+import { useErrorPromptContext } from "../../../hooks/useErrorPromptContext";
+//styles
 import styles from './ErrorPrompt.module.scss'
+//components
+import { Dialog } from "@headlessui/react";
 
-const ErrorPrompt = () => {
+export const ErrorPrompt = () => {
     const { isError, setIsError } = useErrorPromptContext()
 
     return (
@@ -17,5 +20,3 @@ const ErrorPrompt = () => {
         </Dialog>
     );
 }
-
-export default ErrorPrompt;

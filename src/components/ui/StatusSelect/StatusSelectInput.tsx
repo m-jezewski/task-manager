@@ -1,7 +1,10 @@
-import useDataContext from "../../../hooks/useDataContext";
+//interfaces
 import { Space, Status } from "../../../interfaces";
-import styles from './StatusSelectInput.module.scss'
+//hooks
 import { useEffect } from 'react'
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
+import styles from './StatusSelectInput.module.scss'
 
 interface StatusSelectInputProps {
     space: Space | null
@@ -9,7 +12,7 @@ interface StatusSelectInputProps {
     setStatus: React.Dispatch<React.SetStateAction<Status | null>>
 }
 
-const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInputProps) => {
+export const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInputProps) => {
     const { statuses, selectedSpace } = useDataContext()
     const spaceStatuses = space ? statuses?.filter(s => s.spaceId === space.id) : statuses?.filter(s => s.spaceId === selectedSpace?.id)
 
@@ -49,4 +52,3 @@ const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInputProps)
     );
 }
 
-export default StatusSelectInput;

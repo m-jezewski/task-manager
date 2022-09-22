@@ -1,14 +1,18 @@
-import { Switch } from "@headlessui/react";
-import useDb from "../../../hooks/useDb";
-import useNewGoalContext from "../../../hooks/useNewGoalContext";
+//interfaces
 import { BooleanGoalStep } from "../../../interfaces";
+//hooks
+import { useDb } from "../../../hooks/useDb";
+import { useNewGoalContext } from "../../../hooks/useNewGoalContext";
+//styles
 import styles from './GoalStepSwitch.module.scss'
+//components
+import { Switch } from "@headlessui/react";
 
 interface GoalStepSwitchProps {
     goalStep: BooleanGoalStep
 }
 
-const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
+export const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
     const { updateDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
@@ -32,5 +36,3 @@ const GoalStepSwitch = ({ goalStep }: GoalStepSwitchProps) => {
         </Switch>
     );
 }
-
-export default GoalStepSwitch;

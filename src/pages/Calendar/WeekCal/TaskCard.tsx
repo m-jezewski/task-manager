@@ -1,10 +1,14 @@
 import dayjs, { Dayjs } from "dayjs";
+//interfaces
+import { Task } from "../../../interfaces";
+//hooks
 import { useRef } from "react";
-import { Status, Task } from "../../../interfaces";
-import styles from './WeekCal.module.scss'
-import isBetween from 'dayjs/plugin/isBetween'
 import { useNavigate } from "react-router-dom";
-import useDataContext from "../../../hooks/useDataContext";
+import { useDataContext } from "../../../hooks/useDataContext";
+//utils
+import isBetween from 'dayjs/plugin/isBetween'
+//styles
+import styles from './WeekCal.module.scss'
 
 dayjs.extend(isBetween)
 
@@ -13,7 +17,7 @@ interface TaskCardProps {
     weekDay: Dayjs
 }
 
-const TaskCard = ({ task, weekDay }: TaskCardProps) => {
+export const TaskCard = ({ task, weekDay }: TaskCardProps) => {
     const { statuses } = useDataContext()
     const navigate = useNavigate()
     const fromDate = dayjs.unix(task.fromDate!)
@@ -38,5 +42,3 @@ const TaskCard = ({ task, weekDay }: TaskCardProps) => {
         </div>
     );
 }
-
-export default TaskCard;

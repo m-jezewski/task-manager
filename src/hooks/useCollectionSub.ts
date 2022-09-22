@@ -1,9 +1,11 @@
-import { collection, FirestoreError, onSnapshot, query, where } from 'firebase/firestore'
+//interfaces
 import { Task, Space, Status, GoalStep, Goal } from '../interfaces'
+//hooks
 import { useState, useEffect } from 'react'
+import { useErrorPromptContext } from './useErrorPromptContext'
+//firebase
+import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { db } from '../firebase/config'
-import { getRandomIntFromInterval } from '../utils/getRandomIntFromInterval'
-import useErrorPromptContext from './useErrorPromptContext'
 
 type Data = Task[] | Space[] | Status[] | Goal[] | GoalStep[]
 

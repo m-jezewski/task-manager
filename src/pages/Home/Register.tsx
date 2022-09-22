@@ -1,13 +1,16 @@
 import { useState, MouseEventHandler, FormEvent } from 'react';
-import arrowback from '../../assets/icons/arrowback.svg'
-import styles from './Home.module.scss'
+//hooks
 import { useSignup } from '../../hooks/useSignup'
+//assets
+import arrowback from '../../assets/icons/arrowback.svg'
+//styles
+import styles from './Home.module.scss'
 
 interface RegisterProps {
     handleClosingForms: MouseEventHandler<HTMLButtonElement>
 }
 
-const Register = ({ handleClosingForms }: RegisterProps) => {
+export const Register = ({ handleClosingForms }: RegisterProps) => {
     const { signup, errorMessage } = useSignup()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -53,5 +56,3 @@ const Register = ({ handleClosingForms }: RegisterProps) => {
         </>
     );
 }
-
-export default Register;

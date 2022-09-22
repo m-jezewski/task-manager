@@ -1,9 +1,12 @@
-import { useState, useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
+//hooks
+import { useErrorPromptContext } from './useErrorPromptContext'
+import { useState, useContext } from 'react'
+//utils
+import { getErrorMessage } from '../utils/getErrorMessage'
+//firebase
 import { auth } from '../firebase/config'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import useErrorPromptContext from './useErrorPromptContext'
-import { getErrorMessage } from '../utils/getErrorMessage'
 
 export const useLogin = () => {
   const { dispatch } = useContext(UserContext)

@@ -1,5 +1,7 @@
-import { Dialog } from "@headlessui/react";
+//styles
 import styles from './DeleteModal.module.scss'
+//components
+import { Dialog } from "@headlessui/react";
 
 interface DeleteModalProps {
     isOpen: boolean
@@ -9,7 +11,7 @@ interface DeleteModalProps {
     description: string
 }
 
-const DeleteModal = ({ isOpen, setIsOpen, handleDeleteBtnClick, title, description }: DeleteModalProps) => {
+export const DeleteModal = ({ isOpen, setIsOpen, handleDeleteBtnClick, title, description }: DeleteModalProps) => {
     return (
         <Dialog
             open={isOpen}
@@ -35,5 +37,3 @@ const DeleteModal = ({ isOpen, setIsOpen, handleDeleteBtnClick, title, descripti
         </Dialog>
     );
 }
-
-export default DeleteModal;

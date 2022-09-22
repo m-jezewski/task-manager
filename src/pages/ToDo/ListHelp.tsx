@@ -1,3 +1,4 @@
+//assets
 import LIST_ADDSTATUS from '../../assets/helpModalAssets/LIST-ADDSTATUS.webp'
 import LIST_ADDTASK from '../../assets/helpModalAssets/LIST-ADDTASK.webp'
 import LIST_HIDESTATUS from '../../assets/helpModalAssets/LIST-HIDESTATUS.webp'
@@ -7,7 +8,8 @@ import LIST_STATUSORDER from '../../assets/helpModalAssets/LIST-STATUSORDER.webp
 import LIST_TASKLINK from '../../assets/helpModalAssets/LIST-TASKLINK.webp'
 import LIST_TASKPRIO from '../../assets/helpModalAssets/LIST-TASKPRIO.webp'
 import LIST_TASKSTATUS from '../../assets/helpModalAssets/LIST-TASKSTATUS.webp'
-import HelpModal from '../../components/Modals/HelpModal/HelpModal'
+//components
+import { HelpModal } from '../../components/Modals/HelpModal/HelpModal'
 
 const listHelpContent = [
     {
@@ -95,10 +97,8 @@ const listHelpContent = [
 ]
 
 
-const ListHelp = () => {
+export const ListHelp = () => {
     return (
         <HelpModal slidesContent={listHelpContent} />
     );
 }
-
-export default ListHelp;

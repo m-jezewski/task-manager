@@ -1,6 +1,8 @@
-import useDb from "../../../hooks/useDb";
-import useNewGoalContext from "../../../hooks/useNewGoalContext";
+//interfaces
 import { BooleanGoalStep, NumberGoalStep, TaskGoalStep } from "../../../interfaces";
+//hooks
+import { useDb } from "../../../hooks/useDb";
+import { useNewGoalContext } from "../../../hooks/useNewGoalContext";
 
 interface GoalStepCheckboxProps {
     goalStep: NumberGoalStep | BooleanGoalStep | TaskGoalStep
@@ -19,7 +21,7 @@ const getChangesObj = (goalStep: NumberGoalStep | BooleanGoalStep | TaskGoalStep
     return obj
 }
 
-const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
+export const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
     const { updateDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
@@ -35,12 +37,9 @@ const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
     return (
         <input
             type='checkbox'
-            aria-label="Mark goalstep as checked"
+            aria-label="Mark or unmark goalstep as checked"
             checked={goalStep.progress === 1}
             onChange={handleChange}
-            value={'true'}
         />
     );
 }
-
-export default GoalStepCheckbox;

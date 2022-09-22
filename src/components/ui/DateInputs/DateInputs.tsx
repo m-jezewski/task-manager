@@ -1,6 +1,8 @@
-import { Switch } from '@headlessui/react'
-import styles from './DateInputs.module.scss'
 import dayjs from 'dayjs'
+//styles
+import styles from './DateInputs.module.scss'
+//components
+import { Switch } from '@headlessui/react'
 
 interface DateInputsProps {
     fromDate: string
@@ -11,7 +13,7 @@ interface DateInputsProps {
     setOpenSwitch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, openSwitch = false, setOpenSwitch }: DateInputsProps) => {
+export const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, openSwitch = false, setOpenSwitch }: DateInputsProps) => {
     return (
         <div>
             <label className={styles.dateEnabledSwitch}>
@@ -52,5 +54,3 @@ const DateInputs = ({ fromDate, dueDate, setFromDate, setDueDate, openSwitch = f
         </div>
     );
 }
-
-export default DateInputs;

@@ -1,15 +1,19 @@
 import { Dayjs } from "dayjs";
+//styles
 import styles from './WeekCal.module.scss'
-import TaskCard from "./TaskCard";
-import SubHeader from "../SubHeader";
-import { Link } from "react-router-dom";
+//hooks
+import { useCalendarOutletContext } from "../Calendar";
+import { useDataContext } from "../../../hooks/useDataContext";
+//utils
 import { getTasksWithinWeek } from '../../../utils/getTasksWithinWeek'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
-import { useCalendarOutletContext } from "../Calendar";
-import useDataContext from "../../../hooks/useDataContext";
+//components
+import { TaskCard } from "./TaskCard";
+import { SubHeader } from "../Subheader/SubHeader";
+import { Link } from "react-router-dom";
 
-const WeekCal = () => {
+export const WeekCal = () => {
     const { date } = useCalendarOutletContext()
     const { tasks } = useDataContext()
     const weekDays: Dayjs[] = getDaysOfWeek(date)
@@ -63,5 +67,3 @@ const WeekCal = () => {
         </>
     );
 }
-
-export default WeekCal;

@@ -1,4 +1,5 @@
 @use '../../../scss/placeholders';
+@use '../dashboardPlaceholders';
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
 
@@ -10,16 +11,8 @@
   }
 
   .spaces {
-    height: calc(100% - 37px);
-    border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $bright-1;
-    display: flex;
+    @extend %nonTableSectionContent;
     flex-direction: column;
-    gap: 0.5rem;
-
-    @include smScreen {
-      border-radius: 0 0.5rem 0.5rem 0.5rem;
-    }
 
     ul {
       @extend %baseList;
@@ -51,19 +44,9 @@
   }
 
   .spacesCaption {
-    @extend %baseTableCaption;
-    display: block;
-    box-sizing: border-box;
-    text-align: center;
-    color: $bright-1;
+    @extend %nonTableSectionCaption;
     background-color: $purple-1;
-    font-size: 1rem;
-    margin: 0;
-    width: 100%;
-
-    @include smScreen {
-      width: fit-content;
-    }
+    color: $bright-1;
   }
 
   .noTasks {

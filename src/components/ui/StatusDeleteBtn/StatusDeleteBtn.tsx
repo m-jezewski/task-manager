@@ -1,17 +1,21 @@
-import { useState } from "react";
-import { Status } from "../../../interfaces";
-import styles from './StatusDeleteBtn.module.scss'
-import useDataContext from "../../../hooks/useDataContext";
-import useDb from "../../../hooks/useDb";
 import { increment } from "firebase/firestore";
-import DeleteModal from "../../Modals/DeleteModal/DeleteModal";
+//interfaces
+import { Status } from "../../../interfaces";
+//hooks
+import { useState } from "react";
+import { useDataContext } from "../../../hooks/useDataContext";
+import { useDb } from "../../../hooks/useDb";
+//styles
+import styles from './StatusDeleteBtn.module.scss'
+//components
+import { DeleteModal } from "../../Modals/DeleteModal/DeleteModal";
 
 interface DeleteStatusDialogProps {
     status: Status
 }
 
 
-const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
+export const StatusDeleteBtn = ({ status }: DeleteStatusDialogProps) => {
     const { removeDocument: removeStatus, updateDocument: updateStatus } = useDb('statuses')
     const { removeDocument: removeTask } = useDb('tasks')
     const { tasks, statuses } = useDataContext()
@@ -41,5 +45,3 @@ const DeleteStatusDialog = ({ status }: DeleteStatusDialogProps) => {
         </>
     );
 }
-
-export default DeleteStatusDialog;

@@ -1,18 +1,17 @@
 import { useNavigate, Outlet, useParams, NavLink, useOutletContext } from 'react-router-dom'
+import dayjs, { Dayjs } from 'dayjs'
 //styles
 import styles from './Calendar.module.scss'
-//dayjs
-import dayjs, { Dayjs } from 'dayjs'
 //components
-import Layout from '../../components/Layout/Layout/Layout'
-import CalendarHelp from './CalendarHelp'
+import { Layout } from '../../components/Layout/Layout/Layout'
+import { CalendarHelp } from './CalendarHelp'
 
 
 export const useCalendarOutletContext = () => {
     return useOutletContext<{ date: Dayjs }>()
 }
 
-const Calendar = () => {
+export const Calendar = () => {
     const navigate = useNavigate()
     const { date: dateParams } = useParams()
     const date = dayjs(dateParams, 'DD-MM-YYYY').isValid() ? dayjs(dateParams, 'DD-MM-YYYY') : dayjs()
@@ -52,5 +51,3 @@ const Calendar = () => {
         </Layout>
     );
 }
-
-export default Calendar;

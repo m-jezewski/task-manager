@@ -1,6 +1,9 @@
-import useDb from "../../../hooks/useDb";
-import useNewGoalContext from "../../../hooks/useNewGoalContext";
+//interfaces
 import { NumberGoalStep } from "../../../interfaces";
+//hooks
+import { useDb } from "../../../hooks/useDb";
+import { useNewGoalContext } from "../../../hooks/useNewGoalContext";
+//styles
 import styles from './GoalStepNumButtons.module.scss'
 
 interface GoalStepNumButtonsProps {
@@ -18,7 +21,7 @@ const getDecChangeObj = (value: number, target: number) => {
     return {}
 }
 
-const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalStepNumButtonsProps) => {
+export const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalStepNumButtonsProps) => {
     const { updateDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
@@ -57,5 +60,3 @@ const GoalStepNumButtons = ({ goalStep: { id, value, target, progress } }: GoalS
         </>
     );
 }
-
-export default GoalStepNumButtons;

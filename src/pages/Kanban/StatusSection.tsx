@@ -1,16 +1,20 @@
+//interfaces
 import { Status } from "../../interfaces";
-import styles from './Kanban.module.scss'
-import StatusOrderChangeBtn from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
+//hooks
 import { useState } from "react";
-import StatusDeleteBtn from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
-import StatusHideBtn from "../../components/ui/StatusHideBtn/StatusHideBtn";
-import StatusTaskList from "./StatusTaskList";
+//styles
+import styles from './Kanban.module.scss'
+//components
+import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
+import { StatusDeleteBtn } from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
+import { StatusHideBtn } from "../../components/ui/StatusHideBtn/StatusHideBtn";
+import { DropToStatusTaskList } from "./StatusTaskList";
 
 interface StatusSectionProps {
     status: Status
 }
 
-const StatusSection = ({ status }: StatusSectionProps) => {
+export const StatusSection = ({ status }: StatusSectionProps) => {
     const [showSection, setShowSection] = useState(true)
 
     return (
@@ -28,7 +32,7 @@ const StatusSection = ({ status }: StatusSectionProps) => {
                             <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>
-                    <StatusTaskList status={status} />
+                    <DropToStatusTaskList status={status} />
                 </section > :
                 <section className={`${styles.section} ${styles.sectionHidden}`} style={{ backgroundColor: status.color }}>
                     <StatusHideBtn showStatus={showSection} setShowStatus={setShowSection} />
@@ -37,5 +41,3 @@ const StatusSection = ({ status }: StatusSectionProps) => {
         </>
     );
 }
-
-export default StatusSection;

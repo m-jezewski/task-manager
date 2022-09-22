@@ -1,13 +1,16 @@
-import useDb from '../../../hooks/useDb'
-import useNewGoalContext from '../../../hooks/useNewGoalContext'
+//interfaces
 import { GoalStep } from '../../../interfaces'
+//hooks
+import { useDb } from '../../../hooks/useDb'
+import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+//styles
 import styles from './GoalStepDeleteBtn.module.scss'
 
-interface DeleteGoalStepBtnProps {
+interface GoalStepDeleteBtnProps {
     goalStep: GoalStep
 }
 
-const DeleteGoalStepBtn = ({ goalStep }: DeleteGoalStepBtnProps) => {
+export const GoalStepDeleteBtn = ({ goalStep }: GoalStepDeleteBtnProps) => {
     const { removeDocument } = useDb('goalSteps')
     const newGoalCtx = useNewGoalContext()
 
@@ -29,5 +32,3 @@ const DeleteGoalStepBtn = ({ goalStep }: DeleteGoalStepBtnProps) => {
         />
     );
 }
-
-export default DeleteGoalStepBtn;

@@ -1,7 +1,10 @@
-import styles from './StatusOrderChangeBtn.module.scss'
+//interfaces
 import { Status } from '../../../interfaces'
-import useDb from '../../../hooks/useDb'
-import useDataContext from '../../../hooks/useDataContext'
+//styles
+import styles from './StatusOrderChangeBtn.module.scss'
+//hooks
+import { useDb } from '../../../hooks/useDb'
+import { useDataContext } from '../../../hooks/useDataContext'
 
 interface StatusOrderChangeBtnProps {
     variant: 'up' | 'down' | 'left' | 'right'
@@ -9,7 +12,7 @@ interface StatusOrderChangeBtnProps {
     current: Status
 }
 
-const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtnProps) => {
+export const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtnProps) => {
     const { statuses, selectedSpace } = useDataContext()
     const currentSpaceStatuses = statuses?.filter(s => s.spaceId === selectedSpace?.id!)
     const { updateDocument } = useDb('statuses')
@@ -30,5 +33,3 @@ const StatusOrderChangeBtn = ({ variant, elemId, current }: StatusOrderChangeBtn
         />
     );
 }
-
-export default StatusOrderChangeBtn;

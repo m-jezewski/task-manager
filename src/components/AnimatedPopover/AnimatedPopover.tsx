@@ -12,7 +12,7 @@ interface AnimatedPopoverProps {
 
 export const ClosePopoverContext = createContext<(() => void) | null>(null)
 
-const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }: AnimatedPopoverProps & ComponentPropsWithoutRef<'button'>) => {
+export const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }: AnimatedPopoverProps & ComponentPropsWithoutRef<'button'>) => {
 
     const closeButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -38,5 +38,3 @@ const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }: Animat
         </Popover>
     );
 }
-
-export default AnimatedPopover;

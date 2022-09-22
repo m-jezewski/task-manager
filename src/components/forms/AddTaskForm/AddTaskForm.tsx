@@ -1,22 +1,22 @@
-import { useState, useContext, FormEvent, useEffect, ComponentPropsWithoutRef } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { ClosePopoverContext } from '../../AnimatedPopover/AnimatedPopover'
 //interaces
+import { FormEvent, ComponentPropsWithoutRef } from 'react'
+import { DocumentReference } from 'firebase/firestore'
 import { Status, Task } from '../../../interfaces'
 //styles
 import styles from './AddTaskForm.module.scss'
 //hooks
-import useDataContext from '../../../hooks/useDataContext'
-import useDb from '../../../hooks/useDb'
+import { useState, useContext, useEffect } from 'react'
+import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+import { useDataContext } from '../../../hooks/useDataContext'
+import { useDb } from '../../../hooks/useDb'
 //components
-import { ClosePopoverContext } from '../../AnimatedPopover/AnimatedPopover'
-import StatusSelectInput from '../../ui/StatusSelect/StatusSelectInput'
-import PriorityChangeInput from '../../ui/PriorityChangeButton/PriorityChangeInput'
-import DateInputs from '../../ui/DateInputs/DateInputs'
-import { DocumentReference } from 'firebase/firestore'
-import useNewGoalContext from '../../../hooks/useNewGoalContext'
-import NoStatuses from '../../NoStatuses/NoStatuses'
-import SpaceSelect from '../../ui/SpaceSelect/SpaceSelect'
+import { StatusSelectInput } from '../../ui/StatusSelect/StatusSelectInput'
+import { PriorityChangeInput } from '../../ui/PriorityChangeInput/PriorityChangeInput'
+import { DateInputs } from '../../ui/DateInputs/DateInputs'
+import { NoStatuses } from '../../NoStatuses/NoStatuses'
+import { SpaceSelect } from '../../ui/SpaceSelect/SpaceSelect'
 
 interface AddTaskFormProps {
     defaultStatus?: Status
@@ -28,7 +28,7 @@ interface AddTaskFormProps {
     className?: string
 }
 
-const AddTaskForm = ({
+export const AddTaskForm = ({
     defaultStatus,
     showDateInputs = false,
     showSpaceSelect = false,
@@ -153,5 +153,3 @@ const AddTaskForm = ({
             </form>
     )
 }
-
-export default AddTaskForm;

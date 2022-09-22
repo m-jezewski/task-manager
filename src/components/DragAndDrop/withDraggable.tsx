@@ -1,13 +1,17 @@
-import React, { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styles from './DragAndDrop.module.scss'
+//interfaces
+import { ElementType } from 'react'
 import { Task } from '../../interfaces'
+//hooks
+import { useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
+//styles
+import styles from './DragAndDrop.module.scss'
 
 interface withDraggableProps {
     task: Task
 }
 
-export const withDraggable = (WrappedComponent: React.ElementType) => ({ task, ...props }: withDraggableProps) => {
+export const withDraggable = (WrappedComponent: ElementType) => ({ task, ...props }: withDraggableProps) => {
     const navigate = useNavigate()
     const ref = useRef<HTMLElement>(null)
 

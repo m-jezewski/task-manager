@@ -4,10 +4,10 @@ import { ClosePopoverContext } from "../../AnimatedPopover/AnimatedPopover";
 //styles
 import styles from './AddStatusForm.module.scss'
 //hooks
-import useDataContext from "../../../hooks/useDataContext";
-import useDb from "../../../hooks/useDb";
+import { useDataContext } from "../../../hooks/useDataContext";
+import { useDb } from "../../../hooks/useDb";
 
-const AddStatusForm = () => {
+export const AddStatusForm = () => {
     const { addDocument } = useDb('statuses')
     const closePopover = useContext(ClosePopoverContext)
     const { statuses, selectedSpace } = useDataContext()
@@ -57,5 +57,3 @@ const AddStatusForm = () => {
         </form>
     )
 }
-
-export default AddStatusForm;

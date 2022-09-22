@@ -1,7 +1,10 @@
-import useDataContext from "../../../hooks/useDataContext";
-import Sidebar from "../Sidebar/Sidebar";
+//hooks
+import { useDataContext } from "../../../hooks/useDataContext";
+//styles
 import styles from './Layout.module.scss'
-import Loader from "./Loader/Loader";
+//components
+import { Sidebar } from "../Sidebar/Sidebar";
+import { Loader } from "./Loader/Loader";
 
 
 interface LayoutProps {
@@ -9,7 +12,7 @@ interface LayoutProps {
     title: string
 }
 
-const Layout = ({ children, title }: LayoutProps) => {
+export const Layout = ({ children, title }: LayoutProps) => {
 
     const { isPending } = useDataContext()
 
@@ -30,5 +33,3 @@ const Layout = ({ children, title }: LayoutProps) => {
         </>
     );
 }
-
-export default Layout;

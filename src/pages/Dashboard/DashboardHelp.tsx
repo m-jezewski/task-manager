@@ -1,9 +1,11 @@
-import HelpModal from "../../components/Modals/HelpModal/HelpModal";
+//assets
 import DASHBOARD_ADDSPACES from '../../assets/helpModalAssets/DASHBOARD-ADDSPACES.webp'
 import DASHBOARD_GOALS from '../../assets/helpModalAssets/DASHBOARD-GOALS.webp'
 import DASHBOARD_HIGHPRIOTASKS from '../../assets/helpModalAssets/DASHBOARD-HIGHPRIOTASKS.webp'
 import DASHBOARD_REMOVESPACES from '../../assets/helpModalAssets/DASHBOARD-REMOVESPACES.webp'
 import DASHBOARD_TODAYSTASKS from '../../assets/helpModalAssets/DASHBOARD-TODAYSTASKS.webp'
+//components
+import { HelpModal } from "../../components/Modals/HelpModal/HelpModal";
 
 const dashboardHelpContent = [
     {
@@ -48,10 +50,8 @@ const dashboardHelpContent = [
     },
 ]
 
-const DashboardHelp = () => {
+export const DashboardHelp = () => {
     return (
         <HelpModal slidesContent={dashboardHelpContent} />
     );
 }
-
-export default DashboardHelp;

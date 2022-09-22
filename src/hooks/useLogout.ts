@@ -1,7 +1,9 @@
+import { UserContext } from '../contexts/UserContext'
+//hooks
+import { useState, useContext } from 'react'
+//firebase
 import { auth } from '../firebase/config'
 import { signOut } from 'firebase/auth'
-import { useState, useContext } from 'react'
-import { UserContext } from '../contexts/UserContext'
 
 export const useLogout = () => {
   const { dispatch } = useContext(UserContext)
