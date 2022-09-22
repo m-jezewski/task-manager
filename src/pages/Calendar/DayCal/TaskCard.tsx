@@ -24,7 +24,10 @@ const TaskCard = ({ task, date }: TaskCardProps) => {
                 backgroundColor: statuses?.find((status) => task.statusId === status.id!)?.color,
             }}
             onClick={() => { navigate(`/Dashboard/${task.id}`) }}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === 'Space') navigate(`/Dashboard/${task.id}`) }}
             aria-label={'Click to move to task page'}
+            role='link'
+            tabIndex={0}
         >
             <p>
                 {task.description}

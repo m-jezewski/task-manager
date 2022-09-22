@@ -42,7 +42,12 @@ const MonthCal = () => {
                                 <div
                                     key={monthDay.date()}
                                     className={styles.day}
-                                    onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}>
+                                    tabIndex={0}
+                                    aria-label={`Click to move to ${monthDay.format('YYYY-MM-DD')} day in calendar`}
+                                    onClick={() => { navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}
+                                    onKeyDown={(e) => { if (e.key === 'Space' || e.key === 'Enter') navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`) }}
+                                    role='link'
+                                >
                                     <span>
                                         {monthDay.format('YYYY-MM-DD')}
                                     </span>

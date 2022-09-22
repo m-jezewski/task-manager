@@ -26,7 +26,7 @@
     position: relative;
     z-index: 3000;
   }
-  li:hover {
+  .optionActive {
     background-color: $bright-4;
   }
 

@@ -63,7 +63,11 @@ const HelpModal = ({ slidesContent, buttonStyles, ...buttonProps }: HelpModalPro
                                 <img src={arrowLeft} alt='Move back arrow'></img>
                             </button>
                             {slidesContent.map((i, index) =>
-                                <Tab key={i.description} className={`${selectedIndex === index && styles.tabActive} ${styles.tab}`}></Tab>
+                                <Tab
+                                    key={i.description}
+                                    className={`${selectedIndex === index && styles.tabActive} ${styles.tab}`}
+                                    aria-label={`${index} slide, currently ${selectedIndex} slide opened`}
+                                />
                             )}
                             <button
                                 onClick={() => { selectedIndex < slidesContent.length - 1 && setSelectedIndex(selectedIndex + 1) }}

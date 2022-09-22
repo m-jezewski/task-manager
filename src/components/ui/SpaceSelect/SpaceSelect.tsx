@@ -35,8 +35,13 @@ const SpaceSelect = ({ space, setSpace, className, ...props }: SpaceSelectProps 
                             <Listbox.Option
                                 key={space.id}
                                 value={space}
+                                as={Fragment}
                             >
-                                {space.name}
+                                {({ active }) => (
+                                    <li
+                                        className={`${active ? styles.optionActive : ''}`}
+                                    >{space.name}</li>
+                                )}
                             </Listbox.Option>
                         ))}
                     </Listbox.Options>

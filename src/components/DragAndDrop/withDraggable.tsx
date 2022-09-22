@@ -25,13 +25,23 @@ export const withDraggable = (WrappedComponent: React.ElementType) => ({ task, .
         navigate(`/Dashboard/${task.id}`)
     }
 
+    const handleOnKeyDown = (e: React.KeyboardEvent) => {
+        e.stopPropagation()
+        if (document.activeElement === ref.current && (e.code === 'Enter' || e.code === 'Space')) {
+            navigate(`/Dashboard/${task.id}`)
+        }
+    }
+
     return <WrappedComponent
         ref={ref}
         draggable={true}
         onDragStart={handleDragStart}
         aria-label='Click to move to task page'
+        role='link'
+        tabIndex={0}
         onDragEnd={handleDragEnd}
         onClick={handleClick}
+        onKeyDown={handleOnKeyDown}
         task={task}
         {...props}
     />

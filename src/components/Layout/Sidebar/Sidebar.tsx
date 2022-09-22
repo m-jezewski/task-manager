@@ -26,7 +26,7 @@ const Sidebar = () => {
         <>
             <button
                 onClick={(e) => { e.stopPropagation(); setToggleSidebar(!toggleSidebar) }}
-                className={styles.toggleSidebar}>
+                className={`${styles.toggleSidebar} ${toggleSidebar ? styles.toggled : ''}`}>
                 <img src={menu} alt={'toggle menu'} />
             </button>
             <div className={` ${toggleSidebar && styles.sideBarOpen} ${styles.container}`} ref={sidebarPanelRef}>

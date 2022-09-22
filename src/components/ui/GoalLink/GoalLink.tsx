@@ -48,7 +48,7 @@ const GoalLink = ({ goal }: GoalLinkProps) => {
                 <span>
                     {goalProgress.toFixed()}%
                 </span>
-                <canvas ref={canvas} />
+                <canvas ref={canvas} aria-label={`circle showing progress completion, current: ${goalProgress.toFixed()}%`} />
             </div>
         </Link>
     );

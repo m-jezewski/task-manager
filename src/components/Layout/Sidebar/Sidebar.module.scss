@@ -99,6 +99,14 @@
   background-color: $brighterTransparent;
 }
 
+.toggleSidebar.toggled {
+  position: fixed;
+  img {
+    transition: 150ms all ease-out;
+    rotate: 90deg;
+  }
+}
+
 .settings {
   .logoutButton {
     @extend %baseButton;

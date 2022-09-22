@@ -68,7 +68,15 @@ const TaskPage = () => {
     return (
         <Layout title='Update task'>
             <form className={styles.taskForm} onSubmit={handleSubmit}>
-                <textarea value={description} onChange={(e: any) => { setDescription(e.target.value) }} rows={10} />
+                <label>
+                    Description:
+                    <textarea
+                        value={description}
+                        onChange={(e: any) => { setDescription(e.target.value) }}
+                        rows={10}
+                        maxLength={550}
+                    />
+                </label>
                 <div className={styles.row}>
                     <label style={{ flexGrow: 1 }}>
                         Status:<br />

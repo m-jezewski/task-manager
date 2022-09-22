@@ -33,7 +33,10 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
                 </span>
                 <AnimatedPopover
                     className={styles.addTaskBtn}
-                    buttonText='+'>
+                    buttonText='+'
+                    aria-label='Click to open window where you can add new task'
+                    type='button'
+                >
                     <AddTaskForm
                         className={styles.addTaskForm}
                         defaultStatus={status}
@@ -42,7 +45,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
             </caption>
             <tbody>
                 <tr>
-                    <th colSpan={2} />
+                    <th colSpan={2} aria-hidden='true' />
                     <th className={`${styles.thDueDate} ${styles.smallCell}`}>
                         Due:
                     </th>

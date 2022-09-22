@@ -85,6 +85,8 @@
       width: 100%;
       bottom: 0;
       top: 4.5rem;
+      scrollbar-color: rgb(190, 190, 190) $bright-3;
+      scrollbar-width: thin;
 
       .addTaskBtn {
         @extend %baseButton;
