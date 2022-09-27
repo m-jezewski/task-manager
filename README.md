@@ -67,7 +67,7 @@ You can enter any, even non-existent, email. I strongly recommend creating your 
 
 ## Installation
 
-> git https://github.com/Karriuz/task-maganer/ <br />
+> git clone https://github.com/Karriuz/task-maganer/ <br />
 > npm install <br />
 > npm run start
 
