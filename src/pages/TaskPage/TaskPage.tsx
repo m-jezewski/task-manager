@@ -13,7 +13,7 @@ import { DateInputs } from "../../components/ui/DateInputs/DateInputs";
 import { PriorityChangeInput } from "../../components/ui/PriorityChangeInput/PriorityChangeInput";
 import { SpaceSelect } from "../../components/ui/SpaceSelect/SpaceSelect";
 import { StatusSelectInput } from "../../components/ui/StatusSelectInput/StatusSelectInput";
-import { Layout } from "../../components/Layout/Layout/Layout";
+import { Layout } from "../../components/layout/Layout/Layout";
 import { TaskDeleteModal } from "./TaskDeleteModal/TaskDeleteModal";
 
 export const TaskPage = () => {
@@ -54,17 +54,10 @@ export const TaskPage = () => {
             priority: priority,
             spaceId: space ? space.id! : '',
             statusId: status ? status.id! : '',
-            fromDate: null,
-            dueDate: null,
+            fromDate: openSwitch && (from.isBefore(due) || from.isSame(due)) ? from.unix() : null,
+            dueDate: openSwitch && (from.isBefore(due) || from.isSame(due)) ? due.unix() : null,
         }
 
-        if (openSwitch && (from.isBefore(due) || from.isSame(due))) {
-            updatedTask = {
-                ...updatedTask,
-                fromDate: from.unix(),
-                dueDate: due.unix()
-            }
-        }
         task && updateDocument(task.id!, updatedTask)
         navigate(-1)
     }

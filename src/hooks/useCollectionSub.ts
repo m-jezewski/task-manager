@@ -9,17 +9,12 @@ import { db } from '../firebase/config'
 
 type Data = Task[] | Space[] | Status[] | Goal[] | GoalStep[]
 
-export const useCollectionSub = (c: string, uid: string | undefined) => {
+export const useCollectionSub = (c: string, uid: string) => {
   const [isPending, setIsPending] = useState(false)
   const [data, setData] = useState<Data | null>(null)
   const { setIsError } = useErrorPromptContext()
 
   useEffect(() => {
-    if (!uid) {
-      setData(null)
-      return
-    }
-
     setIsPending(true)
     const col = query(collection(db, c), where('uid', '==', uid))
     const unsubscribe = onSnapshot(
@@ -40,7 +35,7 @@ export const useCollectionSub = (c: string, uid: string | undefined) => {
     return () => {
       unsubscribe()
     }
-  }, [c, uid])
+  }, [c, uid, setIsError])
 
   return { data, isPending }
 }

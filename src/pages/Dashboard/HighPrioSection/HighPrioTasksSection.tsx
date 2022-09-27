@@ -3,7 +3,7 @@ import { useDataContext } from '../../../hooks/useDataContext';
 //styles
 import styles from './HighPrioTaskSection.module.scss'
 //components
-import { DraggableTaskTableItem } from '../../../components/TaskTableItem/TaskTableItem';
+import { LinkTaskTableItem } from '../../../components/TaskTableItem/TaskTableItem';
 
 
 export const HighPrioTaskSection = () => {
@@ -20,7 +20,7 @@ export const HighPrioTaskSection = () => {
                             <td className={styles.noTasks}>You don't have any high priority tasks right now</td>
                         </tr>
                         : highPrioTasks.map(task =>
-                            <DraggableTaskTableItem key={task.id} task={task} />
+                            <LinkTaskTableItem key={task.id} task={task} />
                         )
                     }
                 </tbody>

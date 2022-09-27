@@ -5,25 +5,26 @@ import { useDataContext } from "../../../hooks/useDataContext";
 //styles
 import styles from './MonthCal.module.scss'
 //components
-import { Link } from "react-router-dom";
+import { withTaskLink } from "../../../components/hoc/withTaskLink";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 interface TaskBadgeProps {
     task: Task
 }
 
-export const TaskBadge = ({ task }: TaskBadgeProps) => {
+const TaskBadge = forwardRef<HTMLDivElement, TaskBadgeProps & ComponentPropsWithoutRef<'div'>>(({ task, ...props }, ref) => {
     const { statuses } = useDataContext()
 
     return (
-        <Link
+        <div
+            ref={ref}
+            {...props}
             style={{
                 backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
-            onClick={(e) => { e.stopPropagation() }}
-            onKeyDown={(e) => { e.stopPropagation() }}
-            to={`/Dashboard/${task.id}`}
             className={styles.taskBadge}
-            aria-label='Click to move to task page'
         />
     );
-}
+})
+
+export const TaskBadgeLink = withTaskLink(TaskBadge)

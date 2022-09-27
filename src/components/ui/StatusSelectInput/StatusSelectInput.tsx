@@ -17,9 +17,15 @@ export const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInpu
     const spaceStatuses = space ? statuses?.filter(s => s.spaceId === space.id) : statuses?.filter(s => s.spaceId === selectedSpace?.id)
 
     useEffect(() => {
-        spaceStatuses?.find(s => s.id === status?.id) === undefined && setStatus((spaceStatuses && spaceStatuses[0]) || null)
-    }, [spaceStatuses, setStatus, status?.id])
+        if (!spaceStatuses) {
+            setStatus(null)
+            return
+        } // if space have no statuses set status to null 
 
+        if (spaceStatuses.find(s => s.id === status?.id) === undefined) {
+            setStatus(spaceStatuses[0])
+        } //if space does not contain status passed by props, set status to first one in selected space
+    }, [spaceStatuses, setStatus, status?.id])
 
     return (
         <select
@@ -28,7 +34,7 @@ export const StatusSelectInput = ({ space, status, setStatus }: StatusSelectInpu
             value={status?.id}
             required
             onChange={(e) => {
-                setStatus(spaceStatuses?.find(i => i.id === e.target.value)!)
+                setStatus(spaceStatuses?.find(s => s.id === e.target.value)!)
             }}
             style={{ backgroundColor: status?.color }}
         >

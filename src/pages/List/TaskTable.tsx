@@ -5,13 +5,13 @@ import { Status, Task } from '../../interfaces'
 //styles
 import styles from './List.module.scss'
 //components
-import { withOnDrop } from '../../components/DragAndDrop/withOnDrop'
+import { withOnDrop } from '../../components/hoc/withOnDrop'
 import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover'
 import { AddTaskForm } from '../../components/forms/AddTaskForm/AddTaskForm'
 import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
-import { StatusDeleteBtn } from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
+import { StatusDeleteModal } from '../../components/ui/StatusDeleteModal/StatusDeleteModal'
 import { StatusHideBtn } from '../../components/ui/StatusHideBtn/StatusHideBtn'
-import { DraggableTaskTableItem } from '../../components/TaskTableItem/TaskTableItem'
+import { DraggableLinkTaskTableItem } from '../../components/TaskTableItem/TaskTableItem'
 
 interface TaskTableProps {
     status: Status
@@ -61,7 +61,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
                             current={status} />
                     </th>
                     <th className={styles.smallCell}>
-                        <StatusDeleteBtn status={status} />
+                        <StatusDeleteModal status={status} />
                     </th>
                 </tr>
                 {showTable ? <>
@@ -74,7 +74,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
                             </td>
                         </tr>
                         : statusTasks.map((task: Task) => (
-                            <DraggableTaskTableItem key={task.id} task={task} />
+                            <DraggableLinkTaskTableItem key={task.id} task={task} />
                         ))}</>
                     :
                     <tr>

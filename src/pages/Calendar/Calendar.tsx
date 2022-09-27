@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from 'dayjs'
 //styles
 import styles from './Calendar.module.scss'
 //components
-import { Layout } from '../../components/Layout/Layout/Layout'
+import { Layout } from '../../components/layout/Layout/Layout'
 import { CalendarHelp } from './CalendarHelp'
 
 

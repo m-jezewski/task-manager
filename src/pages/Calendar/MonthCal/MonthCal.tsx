@@ -1,5 +1,5 @@
 //interfaces
-import { KeyboardEvent, MouseEvent } from 'react';
+import { KeyboardEvent } from 'react';
 import { Dayjs } from 'dayjs';
 //styles
 import styles from './MonthCal.module.scss'
@@ -12,7 +12,7 @@ import { getTasksWithinMonth } from '../../../utils/getTasksWithinMonth'
 import { getDaysOfMonth } from '../../../utils/getDaysOfMonth'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 //components
-import { TaskBadge } from "./TaskBadge";
+import { TaskBadgeLink } from "./TaskBadge";
 import { SubHeader } from "../Subheader/SubHeader";
 
 export const MonthCal = () => {
@@ -68,7 +68,7 @@ export const MonthCal = () => {
                                     </span>
                                     <div className={styles.taskBadgeContainer}>
                                         {tasks && getTasksWithinMonth(tasks, monthDay).map((task) =>
-                                            <TaskBadge
+                                            <TaskBadgeLink
                                                 key={task.id}
                                                 task={task}
                                             />)}

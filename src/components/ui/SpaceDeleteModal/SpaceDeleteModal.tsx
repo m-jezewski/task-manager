@@ -2,20 +2,20 @@
 import { Space } from "../../../interfaces";
 import { ComponentPropsWithoutRef } from 'react'
 //styles
-import styles from './SpaceDeleteBtn.module.scss'
+import styles from './SpaceDeleteModal.module.scss'
 //hooks
 import { useState } from 'react'
 import { useDataContext } from "../../../hooks/useDataContext";
 import { useDb } from "../../../hooks/useDb";
 //components
-import { DeleteModal } from "../../Modals/DeleteModal/DeleteModal";
+import { DeleteModal } from "../../modals/DeleteModal/DeleteModal";
 
-interface SpaceDeleteBtnProps {
+interface SpaceDeleteModalProps {
     space: Space
     className: string
 }
 
-export const SpaceDeleteBtn = ({ space, className, ...props }: SpaceDeleteBtnProps & ComponentPropsWithoutRef<'button'>) => {
+export const SpaceDeleteModal = ({ space, className, ...props }: SpaceDeleteModalProps & ComponentPropsWithoutRef<'button'>) => {
     const [isOpen, setIsOpen] = useState(false)
     const { tasks, statuses } = useDataContext()
     const { removeDocument: removeTask } = useDb('tasks')

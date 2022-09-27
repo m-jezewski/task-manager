@@ -5,13 +5,16 @@ import styles from './Steps.module.scss'
 //components
 import { BooleanStep } from './BooleanStep';
 import { NumberStep } from './NumberStep';
-import { TaskStep } from './TaskStep';
+import { TaskStepWithLink } from './TaskStep';
+import { useDataContext } from '../../../hooks/useDataContext';
 
 interface GoalStepsProps {
     steps: (NumberGoalStep | BooleanGoalStep | TaskGoalStep)[] | undefined
 }
 
 export const GoalSteps = ({ steps }: GoalStepsProps) => {
+    const { tasks } = useDataContext()
+
     return (
         <table className={styles.gsTable}>
             <caption>Current goal steps</caption>
@@ -19,8 +22,9 @@ export const GoalSteps = ({ steps }: GoalStepsProps) => {
                 {steps !== undefined && steps.length !== 0
                     ? steps.map(step =>
                         step.type === 'task' ?
-                            <TaskStep
+                            <TaskStepWithLink
                                 key={step.id!}
+                                task={tasks?.find(t => t.id === step.taskID)!}
                                 step={step}
                             />
                             : step.type === 'number' ?

@@ -33,8 +33,6 @@
     cursor: auto;
   }
   tr {
-    @extend %link;
-
     .itemDate {
       margin: 0;
       font-size: 0.8rem;

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, ChangeEvent, useState } from 'react';
 //interfaces
 import { BooleanGoalStep } from '../../../interfaces';
 //hooks
@@ -27,6 +27,10 @@ export const AddBooleanStepForm = ({ goalID }: AddBooleanStepFormProps) => {
         setDescription('')
     }
 
+    const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setDescription(e.target.value)
+    }
+
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <label>
@@ -36,7 +40,7 @@ export const AddBooleanStepForm = ({ goalID }: AddBooleanStepFormProps) => {
                     type="text"
                     placeholder='Is something done or not?'
                     value={description}
-                    onChange={(e) => { setDescription(e.target.value) }}
+                    onChange={handleDescriptionChange}
                     required={true}
                 />
             </label>

@@ -7,9 +7,9 @@ import { useDataContext } from "../../hooks/useDataContext";
 import styles from './Board.module.scss'
 //components
 import { AnimatedPopover } from "../../components/AnimatedPopover/AnimatedPopover";
-import { DraggableTaskCard } from "./TaskCard";
+import { DraggableTaskLinkCard } from "./TaskCard";
 import { AddTaskForm } from "../../components/forms/AddTaskForm/AddTaskForm";
-import { withOnDrop } from "../../components/DragAndDrop/withOnDrop";
+import { withOnDrop } from "../../components/hoc/withOnDrop";
 
 interface StatusTaskListProps {
     status: Status
@@ -27,7 +27,7 @@ const StatusTaskList = forwardRef(({ status, ...props }: StatusTaskListProps & C
                 />
             </AnimatedPopover>
             {statusTasks?.map(task => (
-                <DraggableTaskCard
+                <DraggableTaskLinkCard
                     key={task.id}
                     task={task}
                 />

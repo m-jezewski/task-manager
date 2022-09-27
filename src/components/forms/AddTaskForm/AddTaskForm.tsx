@@ -55,6 +55,7 @@ export const AddTaskForm = ({
 
     useEffect(() => {
         if (!taskRef || !addGoalStep) return
+
         if (newGoalCtx) {
             newGoalCtx.addStepInNewGoal({
                 type: 'task',
@@ -77,19 +78,14 @@ export const AddTaskForm = ({
         e.preventDefault()
         const from = dayjs(fromDate, `YYYY-MM-DDThh:mm`)
         const due = dayjs(dueDate, `YYYY-MM-DDThh:mm`)
-        closePopover && closePopover()
 
         let task: Task = {
             description: text,
             priority: priority,
             spaceId: selectedSpace ? selectedSpace.id! : '',
             statusId: status ? status.id! : '',
-            fromDate: null,
-            dueDate: null,
-        }
-
-        if (openDateInputs && (from.isBefore(due) || from.isSame(due))) {
-            task = { ...task, fromDate: from.unix(), dueDate: due.unix() }
+            fromDate: openDateInputs && (from.isBefore(due) || from.isSame(due)) ? from.unix() : null,
+            dueDate: openDateInputs && (from.isBefore(due) || from.isSame(due)) ? due.unix() : null,
         }
 
         addTaskDocument(task).then(ref => {
@@ -103,6 +99,7 @@ export const AddTaskForm = ({
         setOpenDateInputs(showDateInputs)
         setDueDate(defaultDate.format('YYYY-MM-DDThh:mm'))
         setFromDate(defaultDate.format('YYYY-MM-DDThh:mm'))
+        closePopover && closePopover()
     }
 
     return (

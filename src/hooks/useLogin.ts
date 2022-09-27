@@ -21,7 +21,6 @@ export const useLogin = () => {
       })
       .catch((err) => {
         const message = getErrorMessage(err.code)
-        console.log(err.code)
         setErrorMessage(message)
         !message && setIsError(true)
         // displays error message when user passes wrong email/password, every other auth error fires ErrorPrompt

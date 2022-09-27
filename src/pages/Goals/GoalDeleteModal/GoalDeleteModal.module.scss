@@ -1,5 +1,5 @@
-@use '../../../../scss/placeholders';
-@import '../../../../scss/variables';
+@use '../../../scss/placeholders';
+@import '../../../scss/variables';
 
 .openModalButton {
   @extend %baseButton;

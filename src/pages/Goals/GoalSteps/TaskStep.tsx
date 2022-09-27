@@ -1,8 +1,6 @@
 import dayjs from "dayjs";
 //interfaces
-import { TaskGoalStep } from "../../../interfaces";
-//hooks
-import { useDataContext } from "../../../hooks/useDataContext";
+import { Task, TaskGoalStep } from "../../../interfaces";
 //styles
 import styles from './Steps.module.scss'
 //components
@@ -10,22 +8,22 @@ import { GoalStepCheckbox } from "../../../components/ui/GoalStepCheckbox/GoalSt
 import { TaskPrioChangeBtn } from "../../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
 import { TaskStatusChangeBtn } from "../../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
 import { TaskDeleteBtn } from "../../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
+import { withTaskLink } from "../../../components/hoc/withTaskLink";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
-interface TaskStepProps {
+type TaskStepProps = {
     step: TaskGoalStep
+    task: Task
 }
 
-export const TaskStep = ({ step }: TaskStepProps) => {
-    const { tasks } = useDataContext()
-    const task = tasks?.find(task => task.id === step.taskID)!
-
+const TaskStep = forwardRef<HTMLTableRowElement, TaskStepProps & ComponentPropsWithoutRef<'tr'>>(({ step, task, ...props }, ref) => {
     return (
-        <tr>
+        <tr ref={ref} {...props}>
             {task && <>
                 <td className={styles.smallCell}>
                     <GoalStepCheckbox goalStep={step} />
                 </td>
-                <td>
+                <td className={styles.numberInputCell}>
                     <div className={styles.icon}>
                         <TaskStatusChangeBtn task={task} />
                     </div>
@@ -45,4 +43,6 @@ export const TaskStep = ({ step }: TaskStepProps) => {
             </>}
         </tr>
     );
-}
+})
+
+export const TaskStepWithLink = withTaskLink(TaskStep)

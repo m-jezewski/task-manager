@@ -6,16 +6,16 @@ import { useState } from "react";
 import { useDataContext } from "../../../hooks/useDataContext";
 import { useDb } from "../../../hooks/useDb";
 //styles
-import styles from './StatusDeleteBtn.module.scss'
+import styles from './StatusDeleteModal.module.scss'
 //components
-import { DeleteModal } from "../../Modals/DeleteModal/DeleteModal";
+import { DeleteModal } from "../../modals/DeleteModal/DeleteModal";
 
-interface DeleteStatusDialogProps {
+interface StatusDeleteModalProps {
     status: Status
 }
 
 
-export const StatusDeleteBtn = ({ status }: DeleteStatusDialogProps) => {
+export const StatusDeleteModal = ({ status }: StatusDeleteModalProps) => {
     const { removeDocument: removeStatus, updateDocument: updateStatus } = useDb('statuses')
     const { removeDocument: removeTask } = useDb('tasks')
     const { tasks, statuses } = useDataContext()

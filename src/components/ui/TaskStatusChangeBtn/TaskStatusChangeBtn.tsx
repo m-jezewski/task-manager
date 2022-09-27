@@ -1,5 +1,5 @@
-import React from 'react';
 //interfaces
+import { MouseEvent } from 'react';
 import { Space, Task } from '../../../interfaces';
 //hooks
 import { useDataContext } from '../../../hooks/useDataContext';
@@ -23,7 +23,8 @@ export const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) =
     const spaceStatuses = space ? statuses?.filter(s => s.spaceId === space.id!) : statuses?.filter(s => s.spaceId === currentTaskSpace?.id)
     const btnColor = currentTaskStatus && currentTaskStatus.color
 
-    const handleStatusChange = (statusId: string) => {
+    const handleClick = (e: MouseEvent, statusId: string) => {
+        e.stopPropagation();
         if (statusId === task.statusId) return
         updateDocument(task.id!, { statusId: statusId })
     }
@@ -38,7 +39,7 @@ export const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) =
                 {spaceStatuses && spaceStatuses.map((status) => (
                     <button
                         key={status.id}
-                        onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleStatusChange(status.id!) }}
+                        onClick={(e) => { handleClick(e, status.id!) }}
                         style={{ backgroundColor: status.color }}>
                         {status.name}
                     </button>

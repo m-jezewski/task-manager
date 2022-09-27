@@ -1,0 +1,5 @@
+@use '../../scss/placeholders';
+
+.link {
+  @extend %link;
+}

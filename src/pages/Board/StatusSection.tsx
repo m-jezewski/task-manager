@@ -6,7 +6,7 @@ import { useState } from "react";
 import styles from './Board.module.scss'
 //components
 import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
-import { StatusDeleteBtn } from '../../components/ui/StatusDeleteBtn/StatusDeleteBtn'
+import { StatusDeleteModal } from '../../components/ui/StatusDeleteModal/StatusDeleteModal'
 import { StatusHideBtn } from "../../components/ui/StatusHideBtn/StatusHideBtn";
 import { DropToStatusTaskList } from "./StatusTaskList";
 
@@ -28,7 +28,7 @@ export const StatusSection = ({ status }: StatusSectionProps) => {
                         </div>
                         <h2>{status.name}</h2>
                         <div>
-                            <StatusDeleteBtn status={status} />
+                            <StatusDeleteModal status={status} />
                             <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>

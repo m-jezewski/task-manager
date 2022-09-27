@@ -26,6 +26,7 @@
   }
 
   .booleanStatusCell {
+    width: 6rem;
     text-align: center;
     font-style: italic;
   }
@@ -51,6 +52,11 @@
 
   .icon {
     margin: auto;
-    width: fit-content;
+    position: relative;
+    width: 1rem;
+  }
+
+  .taskStep {
+    @extend %link;
   }
 }

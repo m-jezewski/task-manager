@@ -9,7 +9,7 @@ import { getTasksWithinWeek } from '../../../utils/getTasksWithinWeek'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 import { getHoursOfDate } from "../../../utils/getHoursOfDate";
 //components
-import { TaskCard } from "./TaskCard";
+import { TaskCardLink } from "./TaskCard";
 import { SubHeader } from "../Subheader/SubHeader";
 import { Link } from "react-router-dom";
 
@@ -53,10 +53,10 @@ export const WeekCal = () => {
                             {weekDays.map(weekDay =>
                                 <div className={styles.weekDayGrid} key={weekDay.date()}>
                                     {tasks && getTasksWithinWeek(tasks, weekDay).map((task) =>
-                                        <TaskCard
+                                        <TaskCardLink
                                             key={task.id}
                                             task={task}
-                                            weekDay={weekDay}
+                                            date={weekDay}
                                         />)}
                                 </div>
                             )}

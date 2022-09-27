@@ -19,7 +19,6 @@ export const TaskDeleteBtn = ({ task }: TaskDeleteBtnProps) => {
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
         removeTask(task.id!)
-
         const goalStep = goalSteps?.find(goalStep => goalStep.type === 'task' && goalStep.taskID === task.id)
         if (goalStep) {
             removeGoalStep(goalStep.id!)

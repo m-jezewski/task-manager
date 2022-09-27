@@ -1,14 +1,14 @@
 //interfaces
-import { Goal } from "../../../../interfaces";
+import { Goal } from "../../../interfaces";
 //hooks
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useDataContext } from "../../../../hooks/useDataContext";
-import { useDb } from "../../../../hooks/useDb";
+import { useDataContext } from "../../../hooks/useDataContext";
+import { useDb } from "../../../hooks/useDb";
 //styles
 import styles from './GoalDeleteModal.module.scss'
 //components
-import { DeleteModal } from "../../../../components/Modals/DeleteModal/DeleteModal";
+import { DeleteModal } from "../../../components/modals/DeleteModal/DeleteModal";
 
 interface GoalDeleteModalProps {
     goal: Goal

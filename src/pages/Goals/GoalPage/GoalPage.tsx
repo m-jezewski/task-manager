@@ -7,11 +7,11 @@ import styles from './GoalPage.module.scss'
 //utils
 import { getGoalStepProgess } from "../../../utils/getGoalStepProgress";
 //components
-import { GoalDeleteModal } from "./GoalDeleteModal/GoalDeleteModal";
+import { GoalDeleteModal } from "../GoalDeleteModal/GoalDeleteModal";
 import { GoalsHelp } from "../GoalsHelp";
 import { AddStep } from "../AddStep/AddStep";
 import { GoalSteps } from "../GoalSteps/GoalSteps";
-import { Layout } from "../../../components/Layout/Layout/Layout";
+import { Layout } from "../../../components/layout/Layout/Layout";
 
 export const GoalPage = () => {
     const { goalID } = useParams()
@@ -30,7 +30,9 @@ export const GoalPage = () => {
                     </h2>
                     <span>
                         Progress:
-                        <span className={styles.goalProgress}>{goalProgress.toFixed()}%</span>
+                        <span className={styles.goalProgress}>
+                            {goalProgress.toFixed()}%
+                        </span>
                         <GoalsHelp />
                     </span>
                 </div>

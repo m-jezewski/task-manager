@@ -5,7 +5,7 @@ import { useDataContext } from '../../../hooks/useDataContext';
 import styles from './SpacesSection.module.scss'
 //components
 import { AddSpaceForm } from "../../../components/forms/AddSpaceForm/AddSpaceForm";
-import { SpaceDeleteBtn } from "../../../components/ui/SpaceDeleteBtn/SpaceDeleteBtn";
+import { SpaceDeleteModal } from "../../../components/ui/SpaceDeleteModal/SpaceDeleteModal";
 
 export const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>) => {
     const { spaces, statuses, tasks } = useDataContext()
@@ -28,7 +28,7 @@ export const SpacesSection = ({ ...props }: ComponentPropsWithoutRef<'section'>)
                                 <span className={styles.itemDescription}>
                                     {statuses?.filter(t => t.spaceId === space.id!).length} statuses, {tasks?.filter(t => t.spaceId === space.id!).length} tasks
                                 </span>
-                                <SpaceDeleteBtn space={space} className={styles.spaceDeleteBtn} />
+                                <SpaceDeleteModal space={space} className={styles.spaceDeleteBtn} />
                             </li>
                         )}
                 </ul>

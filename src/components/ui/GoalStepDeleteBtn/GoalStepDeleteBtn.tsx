@@ -20,7 +20,6 @@ export const GoalStepDeleteBtn = ({ goalStep }: GoalStepDeleteBtnProps) => {
             newGoalCtx.removeStepInNewGoal(goalStep.id!)
             return
         }
-
         removeDocument(goalStep.id!)
     }
 

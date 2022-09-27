@@ -8,15 +8,16 @@ import styles from './Board.module.scss'
 import { TaskStatusChangeBtn } from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
 import { TaskDeleteBtn } from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
 import { TaskPrioChangeBtn } from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
-import { withDraggable } from "../../components/DragAndDrop/withDraggable";
+import { withDraggable } from "../../components/hoc/withDraggable";
+import { withTaskLink } from "../../components/hoc/withTaskLink";
 
 interface TaskCardProps {
     task: Task
 }
 
-const TaskCard = forwardRef(({ task, ...props }: TaskCardProps & ComponentPropsWithoutRef<'div'>, ref) => {
+const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithoutRef<'div'>>(({ task, className, ...props }, ref) => {
     return (
-        <div className={styles.taskCard} ref={ref as React.LegacyRef<HTMLDivElement>} {...props}>
+        <div className={`${className} ${styles.taskCard}`} ref={ref} {...props}>
             <p>{task.description}</p>
             {task.dueDate && task.fromDate && <span className={styles.date}>
                 {dayjs.unix(task.fromDate).format('DD/MM HH:mm')}  -  {dayjs.unix(task.dueDate).format('DD/MM HH:mm')}
@@ -33,4 +34,4 @@ const TaskCard = forwardRef(({ task, ...props }: TaskCardProps & ComponentPropsW
     );
 })
 
-export const DraggableTaskCard = withDraggable(TaskCard)
+export const DraggableTaskLinkCard = withTaskLink(withDraggable(TaskCard))

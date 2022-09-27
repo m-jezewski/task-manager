@@ -17,11 +17,12 @@ export const Home = () => {
     return (
         <div className={styles.container}>
             <section>
-                <h1>Task <br /> Manager</h1>
+                <h1>Task<br />Manager</h1>
                 {!isSignupOpen && !isLoginOpen && <>
                     <p>
-                        <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span><br /><br />
-                        Keep your goal progress and manage your tasks in a tasklist, calendar or kanban board in my highly customizable task management app.
+                        <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span>
+                        Manage your tasks in a to-do list, calendar or semi-kanban board in my highly customizable task management app.
+                        Keep your goal progress and make your dreams come true!
                     </p>
                     <button className={styles.signupBtn} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>
                     <button className={styles.loginBtn} onClick={() => { setIsLoginOpen(true) }}>Log In</button>

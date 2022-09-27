@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, ChangeEvent, useState } from 'react'
 //interfaces
 import { NumberGoalStep } from '../../../interfaces'
 //hooks
@@ -20,7 +20,6 @@ export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-
         const step: NumberGoalStep = {
             type: 'number',
             description: description,
@@ -35,6 +34,28 @@ export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
         setTarget(0)
     }
 
+    const handleTargetChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = parseInt(e.target.value)
+        if (inputValue < value) {
+            setTarget(value)
+        } else {
+            setTarget(inputValue)
+        }
+    }
+
+    const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = parseInt(e.target.value)
+        if (inputValue > target) {
+            setValue(target)
+        } else {
+            setValue(inputValue)
+        }
+    }
+
+    const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setDescription(e.target.value)
+    }
+
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <label>
@@ -43,7 +64,7 @@ export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
                     className={styles.textInput}
                     type="text"
                     value={description}
-                    onChange={(e) => { setDescription(e.target.value) }}
+                    onChange={handleDescriptionChange}
                     placeholder='ex. I have to write 40 pages'
                     required={true}
                 />
@@ -56,7 +77,7 @@ export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
                     value={target}
                     pattern="^[0-9]*$"
                     min={value}
-                    onChange={(e) => { parseInt(e.target.value) < value ? setTarget(value) : setTarget(parseInt(e.target.value)) }}
+                    onChange={handleTargetChange}
                     required={true}
                     placeholder='40' />
             </label>
@@ -68,7 +89,7 @@ export const AddNumberStepForm = ({ goalID }: AddNumberStepFormProps) => {
                     value={value}
                     min={0}
                     pattern="^[0-9]*$"
-                    onChange={(e) => { parseInt(e.target.value) > target ? setValue(target) : setValue(parseInt(e.target.value)) }}
+                    onChange={handleValueChange}
                     required={true} />
             </label>
             <button className={styles.submitButton} type='submit'>Add step</button>

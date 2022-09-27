@@ -10,7 +10,7 @@ import APP_LOGO from '../../../assets/helpModalAssets/APP-LOGO.webp'
 //styles
 import styles from './Sidebar.module.scss'
 //components
-import { HelpModal } from "../../Modals/HelpModal/HelpModal";
+import { HelpModal } from "../../modals/HelpModal/HelpModal";
 
 const appHelpContent = [
     {
@@ -40,7 +40,7 @@ const appHelpContent = [
     },
     {
         title: 'Spaces - Statuses - Tasks',
-        description: 'Tasks are elements containing your daily pieces of work. These are displayed in list, panel and calendar pages. Each has its own subpage which you can enter by clicking on a specific task',
+        description: 'Tasks are elements containing your daily pieces of work. These are displayed in list, board and calendar pages. Each has its own subpage which you can enter by clicking on a specific task',
         img: {
             src: APP_DIAGRAM_TASKS,
             alt: 'diagram with spaces, statuses and tasks',

@@ -50,6 +50,8 @@
 
     .subtitle {
       @extend %subtitle;
+      display: block;
+      margin-bottom: 1rem;
       letter-spacing: -1px;
     }
 

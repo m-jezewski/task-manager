@@ -5,7 +5,7 @@ import styles from './Board.module.scss'
 //components
 import { AddStatusForm } from '../../components/forms/AddStatusForm/AddStatusForm';
 import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover';
-import { Layout } from '../../components/Layout/Layout/Layout';
+import { Layout } from '../../components/layout/Layout/Layout';
 import { StatusSection } from './StatusSection';
 import { NoSpaces } from '../../components/NoSpaces/NoSpaces';
 import { SpaceSelect } from '../../components/ui/SpaceSelect/SpaceSelect';
@@ -13,6 +13,7 @@ import { BoardHelp } from './BoardHelp';
 
 export const Board = () => {
     const { statuses, selectedSpace, setSelectedSpace } = useDataContext()
+    const spaceStatuses = statuses?.filter(s => s.spaceId === selectedSpace?.id)
 
     return (
         <Layout title='Board'>
@@ -25,15 +26,13 @@ export const Board = () => {
                 <BoardHelp />
             </div>
             {selectedSpace ?
-                statuses && <div className={styles.container}>
-                    {statuses
-                        .filter(s => s.spaceId === selectedSpace.id)
-                        .map(status => (
-                            <StatusSection
-                                key={status.id}
-                                status={status}
-                            />
-                        ))}
+                <div className={styles.container}>
+                    {spaceStatuses?.map(status => (
+                        <StatusSection
+                            key={status.id}
+                            status={status}
+                        />
+                    ))}
                     <AnimatedPopover
                         className={styles.addStatusButton}
                         buttonText='ADD NEW STATUS'

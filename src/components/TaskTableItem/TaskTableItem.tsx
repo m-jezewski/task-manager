@@ -6,18 +6,19 @@ import { ComponentPropsWithoutRef } from 'react'
 //styles
 import styles from './TaskTableItem.module.scss'
 //components
-import { withDraggable } from '../DragAndDrop/withDraggable';
+import { withDraggable } from '../hoc/withDraggable';
 import { TaskDeleteBtn } from '../ui/TaskDeleteBtn/TaskDeleteBtn';
 import { TaskPrioChangeBtn } from '../ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
 import { TaskStatusChangeBtn } from '../ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
+import { withTaskLink } from '../hoc/withTaskLink';
 
 interface TaskTableItemProps {
     task: Task
 }
 
-const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps & ComponentPropsWithoutRef<'tr'>, ref) => {
+export const TaskTableItem = forwardRef<HTMLTableRowElement, TaskTableItemProps & ComponentPropsWithoutRef<'tr'>>(({ task, ...props }, ref) => {
     return (
-        <tr className={styles.tableRow} {...props} ref={ref as React.LegacyRef<HTMLTableRowElement>}>
+        <tr className={styles.tableRow} {...props} ref={ref}>
             <td className={styles.smallCell}>
                 <TaskStatusChangeBtn task={task} />
             </td>
@@ -37,4 +38,6 @@ const TaskTableItem = forwardRef(({ task, ...props }: TaskTableItemProps & Compo
     );
 })
 
-export const DraggableTaskTableItem = withDraggable(TaskTableItem)
+export const LinkTaskTableItem = withTaskLink(TaskTableItem)
+
+export const DraggableLinkTaskTableItem = withDraggable(withTaskLink(TaskTableItem))

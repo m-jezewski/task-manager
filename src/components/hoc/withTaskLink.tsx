@@ -1,28 +1,22 @@
 //interfaces
-import { ElementType } from 'react'
-import { Task } from '../../interfaces'
+import { ComponentPropsWithRef, ElementType } from 'react'
+import { Task, TaskGoalStep } from '../../interfaces'
 //hooks
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 //styles
-import styles from './DragAndDrop.module.scss'
+import styles from './withTaskLink.module.scss'
+import { Dayjs } from 'dayjs'
 
-interface withDraggableProps {
+interface withTaskLinkProps {
     task: Task
-}
+    step?: TaskGoalStep
+    date?: Dayjs
+} // those step? date? are ugly but sadly I have no idea how to type it properly
 
-export const withDraggable = (WrappedComponent: ElementType) => ({ task, ...props }: withDraggableProps) => {
+export const withTaskLink = (WrappedComponent: ElementType) => ({ task, ...props }: withTaskLinkProps & ComponentPropsWithRef<'tr' | 'div'>) => {
     const navigate = useNavigate()
     const ref = useRef<HTMLElement>(null)
-
-    const handleDragStart = (e: React.DragEvent) => {
-        e.dataTransfer.setData('text/json', JSON.stringify(task))
-        ref.current?.classList.add(styles.dragging)
-    }
-
-    const handleDragEnd = () => {
-        ref.current?.classList.remove(styles.dragging)
-    }
 
     const handleClick = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -38,12 +32,10 @@ export const withDraggable = (WrappedComponent: ElementType) => ({ task, ...prop
 
     return <WrappedComponent
         ref={ref}
-        draggable={true}
-        onDragStart={handleDragStart}
+        className={styles.link}
         aria-label='Click to move to task page'
         role='link'
         tabIndex={0}
-        onDragEnd={handleDragEnd}
         onClick={handleClick}
         onKeyDown={handleOnKeyDown}
         task={task}

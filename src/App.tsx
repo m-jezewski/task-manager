@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from './contexts/UserContext';
 import { DataContextProvider } from './contexts/DataContext'
 
-import { ErrorPrompt } from './components/ui/ErrorPrompt/ErrorPrompt';
+import { ErrorPrompt } from './components/modals/ErrorPrompt/ErrorPrompt';
 //pages
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { List } from './pages/List/List';
@@ -23,8 +23,8 @@ export function App() {
 
   return (
     <>
-      {authReady && <>{user ?
-        <DataContextProvider uid={user.uid}>
+      {authReady && <>
+        {user ? <DataContextProvider uid={user.uid}>
           <Routes>
             <Route path="Dashboard" >
               <Route path=':taskID' element={<TaskPage />} />
@@ -46,15 +46,15 @@ export function App() {
             </Route>
             <Route path="*" element={<Navigate to='/Dashboard' replace />} />
           </Routes>
-        </DataContextProvider> :
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route
-            path="*"
-            element={<Navigate to="/" replace />}
-          />
-        </Routes>
-      }</>}
+        </DataContextProvider>
+          : <Routes>
+            <Route path='/' element={<Home />} />
+            <Route
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
+          </Routes>}
+      </>}
       <ErrorPrompt />
     </>
   );

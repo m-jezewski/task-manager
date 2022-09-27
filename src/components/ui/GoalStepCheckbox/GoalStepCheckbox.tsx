@@ -30,7 +30,6 @@ export const GoalStepCheckbox = ({ goalStep }: GoalStepCheckboxProps) => {
             newGoalCtx.updateStepInNewGoal(goalStep.id!, getChangesObj(goalStep))
             return
         }
-
         updateDocument(goalStep.id!, getChangesObj(goalStep))
     }
 
