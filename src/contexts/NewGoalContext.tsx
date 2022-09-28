@@ -17,7 +17,7 @@ export const NewGoalContextProvider = ({ children }: NewGoalContextProviderProps
     const [steps, setSteps] = useState<(NumberGoalStep | BooleanGoalStep | TaskGoalStep)[]>([])
 
     const addStepInNewGoal = (step: NumberGoalStep | BooleanGoalStep | TaskGoalStep) => {
-        setSteps(current => [...current, { ...step, id: (Math.random() * 100000).toString() }])
+        setSteps(current => [...current, { ...step, id: ((new Date()).getTime()).toString() }])
     }
 
     const updateStepInNewGoal = (stepId: string, changeObj: {}) => {

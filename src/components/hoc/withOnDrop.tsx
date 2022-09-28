@@ -11,7 +11,7 @@ interface withOnDropProps {
     status: Status
 }
 
-export const withOnDrop = (WrappedComponent: ElementType) => ({ status, ...props }: withOnDropProps) => {
+export const withOnDrop = <T extends withOnDropProps>(WrappedComponent: React.ComponentType<T>) => ({ status, ...props }: T) => {
     const ref = useRef<HTMLElement>(null)
     const { updateDocument } = useDb('tasks')
 
@@ -44,12 +44,13 @@ export const withOnDrop = (WrappedComponent: ElementType) => ({ status, ...props
         }
     }
 
+    const newProps = { status, ...props } as T
+
     return <WrappedComponent
         ref={ref}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
-        status={status}
-        {...props}
+        {...newProps}
     />
 }
 

@@ -1,20 +1,16 @@
 //interfaces
-import { ComponentPropsWithRef, ElementType } from 'react'
-import { Task, TaskGoalStep } from '../../interfaces'
+import { Task } from '../../interfaces'
 //hooks
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 //styles
 import styles from './withTaskLink.module.scss'
-import { Dayjs } from 'dayjs'
 
 interface withTaskLinkProps {
     task: Task
-    step?: TaskGoalStep
-    date?: Dayjs
-} // those step? date? are ugly but sadly I have no idea how to type it properly
+}
 
-export const withTaskLink = (WrappedComponent: ElementType) => ({ task, ...props }: withTaskLinkProps & ComponentPropsWithRef<'tr' | 'div'>) => {
+export const withTaskLink = <T extends withTaskLinkProps>(WrappedComponent: React.ComponentType<T>) => ({ task, ...props }: T) => {
     const navigate = useNavigate()
     const ref = useRef<HTMLElement>(null)
 
@@ -30,6 +26,8 @@ export const withTaskLink = (WrappedComponent: ElementType) => ({ task, ...props
         }
     }
 
+    const newProps = { ...props, task } as T;
+
     return <WrappedComponent
         ref={ref}
         className={styles.link}
@@ -38,7 +36,6 @@ export const withTaskLink = (WrappedComponent: ElementType) => ({ task, ...props
         tabIndex={0}
         onClick={handleClick}
         onKeyDown={handleOnKeyDown}
-        task={task}
-        {...props}
+        {...newProps}
     />
 }

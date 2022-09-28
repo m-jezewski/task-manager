@@ -40,4 +40,4 @@ export const TaskTableItem = forwardRef<HTMLTableRowElement, TaskTableItemProps 
 
 export const LinkTaskTableItem = withTaskLink(TaskTableItem)
 
-export const DraggableLinkTaskTableItem = withDraggable(withTaskLink(TaskTableItem))
+export const DraggableLinkTaskTableItem = withTaskLink(withDraggable(TaskTableItem))
