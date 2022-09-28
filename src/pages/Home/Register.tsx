@@ -20,7 +20,6 @@ export const Register = ({ handleClosingForms }: RegisterProps) => {
         signup(email, password)
     }
 
-
     return (
         <>
             <h2 className={styles.subtitle}>Register</h2>

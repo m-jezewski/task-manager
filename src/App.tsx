@@ -17,6 +17,7 @@ import { GoalPage } from './pages/Goals/GoalPage/GoalPage';
 import { DayCal } from './pages/Calendar/DayCal/DayCal';
 import { WeekCal } from './pages/Calendar/WeekCal/WeekCal';
 import { MonthCal } from './pages/Calendar/MonthCal/MonthCal';
+import { NewGoalContextProvider } from './contexts/NewGoalContext';
 
 export function App() {
   const { user, authReady } = useContext(UserContext)
@@ -40,7 +41,7 @@ export function App() {
               </Route>
             </Route>
             <Route path="Goals" >
-              <Route path="NewGoal" element={<NewGoal />}></Route>
+              <Route path="NewGoal" element={<NewGoalContextProvider><NewGoal /></NewGoalContextProvider>}></Route>
               <Route path=":goalID" element={<GoalPage />}></Route>
               <Route index element={<Goals />}></Route>
             </Route>

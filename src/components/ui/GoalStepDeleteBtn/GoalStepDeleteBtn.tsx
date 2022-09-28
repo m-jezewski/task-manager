@@ -2,7 +2,7 @@
 import { GoalStep } from '../../../interfaces'
 //hooks
 import { useDb } from '../../../hooks/useDb'
-import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+import { useNewGoalContext } from "../../../hooks/useNewGoalContext";
 //styles
 import styles from './GoalStepDeleteBtn.module.scss'
 

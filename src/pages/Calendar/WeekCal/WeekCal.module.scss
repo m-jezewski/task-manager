@@ -69,6 +69,10 @@
       overflow-x: auto;
       overflow-y: hidden;
     }
+
+    .gridEmptyColumn {
+      grid-column: 1;
+    }
   }
 
   .taskCard {

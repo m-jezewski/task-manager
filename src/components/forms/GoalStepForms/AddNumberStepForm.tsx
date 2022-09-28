@@ -3,7 +3,7 @@ import { FormEvent, ChangeEvent, useState } from 'react'
 import { NumberGoalStep } from '../../../interfaces'
 //hooks
 import { useDb } from '../../../hooks/useDb'
-import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+import { useNewGoalContext } from "../../../hooks/useNewGoalContext";
 //styles
 import styles from './AddGoalStepForm.module.scss'
 

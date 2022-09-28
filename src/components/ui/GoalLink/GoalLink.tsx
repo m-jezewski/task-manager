@@ -28,12 +28,12 @@ export const GoalLink = ({ goal }: GoalLinkProps) => {
     const { goalSteps } = useDataContext()
     const steps = goalSteps && goalSteps.filter(gs => gs.goalID === goal.id!)
     const goalProgress = steps ? getGoalStepProgess(steps) : 0
-    const canvas = useRef<HTMLCanvasElement>(null)
+    const canvasRef = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
-        if (!canvas.current) return
-        canvas.current.width = canvas.current.height = 112
-        const ctx = canvas.current.getContext('2d')!
+        if (!canvasRef.current) return
+        canvasRef.current.width = canvasRef.current.height = 112
+        const ctx = canvasRef.current.getContext('2d')!
         ctx.translate(112 / 2, 112 / 2)
         ctx.rotate(-0.5 * Math.PI)
         drawCircle('#e5e7eb', 100 / 100, ctx);
@@ -54,7 +54,7 @@ export const GoalLink = ({ goal }: GoalLinkProps) => {
                     {goalProgress.toFixed()}%
                 </span>
                 <canvas
-                    ref={canvas}
+                    ref={canvasRef}
                     aria-label={`circle showing progress completion, current: ${goalProgress.toFixed()}%`}
                 />
             </div>

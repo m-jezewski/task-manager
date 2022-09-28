@@ -49,7 +49,7 @@ export const WeekCal = () => {
                     </table>
                     <div className={styles.grid}>
                         <>
-                            <div style={{ gridColumn: 1 }}></div>
+                            <div className={styles.gridEmptyColumn}></div>
                             {weekDays.map(weekDay =>
                                 <div className={styles.weekDayGrid} key={weekDay.date()}>
                                     {tasks && getTasksWithinWeek(tasks, weekDay).map((task) =>

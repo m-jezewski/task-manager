@@ -17,7 +17,6 @@ interface TaskStatusChangeBtnProps {
 export const TaskStatusChangeBtn = ({ task, space }: TaskStatusChangeBtnProps) => {
     const { updateDocument } = useDb('tasks')
     const { statuses, spaces } = useDataContext()
-
     const currentTaskStatus = statuses?.find(status => status.id === task.statusId)
     const currentTaskSpace = spaces?.find(space => space.id === task.spaceId)
     const spaceStatuses = space ? statuses?.filter(s => s.spaceId === space.id!) : statuses?.filter(s => s.spaceId === currentTaskSpace?.id)

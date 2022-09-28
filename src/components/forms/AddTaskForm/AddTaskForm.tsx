@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs'
-import { ClosePopoverContext } from '../../AnimatedPopover/AnimatedPopover'
+import { usePopoverContext } from '../../AnimatedPopover/AnimatedPopover'
 //interaces
 import { FormEvent, ComponentPropsWithoutRef } from 'react'
 import { DocumentReference } from 'firebase/firestore'
@@ -7,8 +7,8 @@ import { Status, Task } from '../../../interfaces'
 //styles
 import styles from './AddTaskForm.module.scss'
 //hooks
-import { useState, useContext, useEffect } from 'react'
-import { useNewGoalContext } from '../../../hooks/useNewGoalContext'
+import { useState, useEffect } from 'react'
+import { useNewGoalContext } from '../../../hooks/useNewGoalContext';
 import { useDataContext } from '../../../hooks/useDataContext'
 import { useDb } from '../../../hooks/useDb'
 //components
@@ -40,7 +40,7 @@ export const AddTaskForm = ({
 }: AddTaskFormProps & ComponentPropsWithoutRef<'form'>) => {
     const { addDocument: addTaskDocument } = useDb('tasks')
     const { addDocument: addGoalStepDocument } = useDb('goalSteps')
-    const closePopover = useContext(ClosePopoverContext)
+    const closePopover = usePopoverContext()
     const newGoalCtx = useNewGoalContext()
     const { selectedSpace, statuses } = useDataContext()
     const [openDateInputs, setOpenDateInputs] = useState(showDateInputs)

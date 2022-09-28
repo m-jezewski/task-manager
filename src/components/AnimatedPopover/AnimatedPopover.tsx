@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, createContext, useRef, ComponentPropsWithoutRef, CSSProperties } from 'react'
+import { Fragment, ReactNode, createContext, useContext, useRef, ComponentPropsWithoutRef, CSSProperties } from 'react'
 //components
 import { Popover, Transition } from '@headlessui/react'
 //styles
@@ -10,7 +10,11 @@ interface AnimatedPopoverProps {
     buttonText?: ReactNode
 }
 
-export const ClosePopoverContext = createContext<(() => void) | null>(null)
+const closePopoverContext = createContext<(() => void) | null>(null)
+
+export const usePopoverContext = () => {
+    return useContext(closePopoverContext)
+}
 
 export const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }: AnimatedPopoverProps & ComponentPropsWithoutRef<'button'>) => {
 
@@ -34,9 +38,9 @@ export const AnimatedPopover = ({ buttonText, children, panelStyles, ...props }:
                 enterTo={styles.transitionEnterTo}
             >
                 <Popover.Panel style={{ ...panelStyles }}>
-                    <ClosePopoverContext.Provider value={closePopover}>
+                    <closePopoverContext.Provider value={closePopover}>
                         {children}
-                    </ClosePopoverContext.Provider>
+                    </closePopoverContext.Provider>
                 </Popover.Panel>
             </Transition>
         </Popover>

@@ -1,15 +1,14 @@
-import { FormEvent, useContext, useState } from "react";
-//contexts
-import { ClosePopoverContext } from "../../AnimatedPopover/AnimatedPopover";
+import { FormEvent, useState } from "react";
 //styles
 import styles from './AddStatusForm.module.scss'
 //hooks
+import { usePopoverContext } from "../../AnimatedPopover/AnimatedPopover";
 import { useDataContext } from "../../../hooks/useDataContext";
 import { useDb } from "../../../hooks/useDb";
 
 export const AddStatusForm = () => {
     const { addDocument } = useDb('statuses')
-    const closePopover = useContext(ClosePopoverContext)
+    const closePopover = usePopoverContext()
     const { statuses, selectedSpace } = useDataContext()
     const [name, setName] = useState('')
     const [color, setColor] = useState('#FFFFFF')
