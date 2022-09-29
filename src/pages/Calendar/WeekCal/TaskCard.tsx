@@ -2,13 +2,13 @@ import dayjs, { Dayjs } from "dayjs";
 //interfaces
 import { Task } from "../../../interfaces";
 //hooks
-import { ComponentPropsWithoutRef, forwardRef } from "react";
+import { useRef } from "react";
+import { useTaskLink } from "../../../hooks/useTaskLink";
 import { useDataContext } from "../../../hooks/useDataContext";
 //utils
 import isBetween from 'dayjs/plugin/isBetween'
 //styles
 import styles from './WeekCal.module.scss'
-import { withTaskLink } from "../../../components/hoc/withTaskLink";
 
 dayjs.extend(isBetween)
 
@@ -17,14 +17,17 @@ interface TaskCardProps {
     date: Dayjs
 }
 
-const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithoutRef<'div'>>(({ task, date, ...props }, ref) => {
+export const TaskCard = ({ task, date }: TaskCardProps) => {
+    const ref = useRef<HTMLDivElement>(null)
+    const { linkAttributes } = useTaskLink(task, ref)
     const { statuses } = useDataContext()
     const fromDate = dayjs.unix(task.fromDate!)
     const dueDate = dayjs.unix(task.dueDate!)
 
     return (
         <div
-            {...props}
+            ref={ref}
+            {...linkAttributes}
             className={styles.taskCard}
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() + 1 : 1,
@@ -35,6 +38,4 @@ const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithou
             <p>{task.description}</p>
         </div>
     );
-})
-
-export const TaskCardLink = withTaskLink(TaskCard)
+}

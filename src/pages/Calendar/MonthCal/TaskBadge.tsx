@@ -2,29 +2,28 @@
 import { Task } from "../../../interfaces";
 //hooks
 import { useDataContext } from "../../../hooks/useDataContext";
+import { useRef } from "react";
+import { useTaskLink } from "../../../hooks/useTaskLink";
 //styles
 import styles from './MonthCal.module.scss'
-//components
-import { withTaskLink } from "../../../components/hoc/withTaskLink";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 interface TaskBadgeProps {
     task: Task
 }
 
-const TaskBadge = forwardRef<HTMLDivElement, TaskBadgeProps & ComponentPropsWithoutRef<'div'>>(({ task, ...props }, ref) => {
+export const TaskBadge = ({ task }: TaskBadgeProps) => {
     const { statuses } = useDataContext()
+    const ref = useRef<HTMLDivElement>(null)
+    const { linkAttributes } = useTaskLink(task, ref)
 
     return (
         <div
             ref={ref}
-            {...props}
+            {...linkAttributes}
             style={{
                 backgroundColor: statuses?.find((status) => status.id! === task.statusId)?.color,
             }}
             className={styles.taskBadge}
         />
     );
-})
-
-export const TaskBadgeLink = withTaskLink(TaskBadge)
+}

@@ -17,9 +17,9 @@
   }
 
   @include xlScreen {
-    padding: 2rem;
-    margin-left: 13rem;
-    max-width: calc(100% - 13rem);
+    padding: 1.5rem 2rem 2rem 2rem;
+    margin-left: 12rem;
+    max-width: calc(100% - 12rem);
   }
 
   main {
@@ -57,8 +57,8 @@
 
     h1 {
       margin: 0;
-      font-size: 2.5rem;
-      line-height: 2.5rem;
+      font-size: 2.2rem;
+      line-height: 2.2rem;
       color: $bright-1;
       text-align: center;
 

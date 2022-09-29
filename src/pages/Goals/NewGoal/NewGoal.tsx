@@ -33,7 +33,6 @@ export const NewGoal = () => {
 
     useEffect(() => {
         if (!goalRef) return
-
         newGoalCtx?.steps.forEach(step => {
             delete step.id
             addGoalStep({ ...step, goalID: goalRef.id })

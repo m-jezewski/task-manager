@@ -5,7 +5,7 @@ import styles from './Steps.module.scss'
 //components
 import { BooleanStep } from './BooleanStep';
 import { NumberStep } from './NumberStep';
-import { TaskStepWithLink } from './TaskStep';
+import { TaskStep } from './TaskStep';
 import { useDataContext } from '../../../hooks/useDataContext';
 
 interface GoalStepsProps {
@@ -22,7 +22,7 @@ export const GoalSteps = ({ steps }: GoalStepsProps) => {
                 {steps !== undefined && steps.length !== 0
                     ? steps.map(step =>
                         step.type === 'task' ?
-                            <TaskStepWithLink
+                            <TaskStep
                                 key={step.id!}
                                 task={tasks?.find(t => t.id === step.taskID)!}
                                 step={step}

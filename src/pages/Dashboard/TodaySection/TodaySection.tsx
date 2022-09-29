@@ -7,7 +7,7 @@ import { getTasksWithinDay } from "../../../utils/getTasksWithinDay";
 //styles
 import styles from './TodaySection.module.scss'
 //components
-import { LinkTaskTableItem } from "../../../components/TaskTableItem/TaskTableItem";
+import { TaskTableItem } from "../../../components/TaskTableItem/TaskTableItem";
 
 export const TodaySection = () => {
     const { tasks } = useDataContext()
@@ -24,7 +24,7 @@ export const TodaySection = () => {
                             <td className={styles.noTasks}>No task has been scheduled for today</td>
                         </tr> :
                         todaysTasks?.map(task =>
-                            <LinkTaskTableItem key={task.id} task={task} />
+                            <TaskTableItem key={task.id} task={task} />
                         )}
                 </tbody>
             </table>

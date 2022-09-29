@@ -22,7 +22,7 @@ export const Home = () => {
                     <p>
                         <span className={styles.subtitle}>Track your tasks and progress towards your goals.</span>
                         Manage your tasks in a to-do list, calendar or semi-kanban board in my highly customizable task management app.
-                        Keep your goal progress and make your dreams come true!
+                        Keep track of your goal progress and make your dreams come true!
                     </p>
                     <button className={styles.signupBtn} onClick={() => { setIsSignupOpen(true) }}>Sign Up</button>
                     <button className={styles.loginBtn} onClick={() => { setIsLoginOpen(true) }}>Log In</button>

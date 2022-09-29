@@ -10,3 +10,12 @@ body {
   background-color: $blue-1;
   min-height: 100vh;
 }
+
+.dragging {
+  opacity: 0.5;
+}
+
+.dragOver {
+  filter: brightness(95%);
+  transition: all 150ms ease-out;
+}

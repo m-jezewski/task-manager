@@ -7,7 +7,7 @@ import { Status } from '../../interfaces'
 import { AnimatedPopover } from "../../components/AnimatedPopover/AnimatedPopover";
 import { Layout } from "../../components/layout/Layout/Layout";
 import { AddStatusForm } from "../../components/forms/AddStatusForm/AddStatusForm";
-import { DropToTaskTable } from './TaskTable'
+import { TaskTable } from './TaskTable'
 import { NoSpaces } from '../../components/NoSpaces/NoSpaces';
 import { SpaceSelect } from '../../components/ui/SpaceSelect/SpaceSelect';
 import { ListHelp } from './ListHelp';
@@ -34,7 +34,7 @@ export const List = () => {
                         </AnimatedPopover>
                     </div>
                     {spaceStatuses?.map((status: Status) =>
-                        <DropToTaskTable
+                        <TaskTable
                             key={status.id}
                             status={status}
                         />)

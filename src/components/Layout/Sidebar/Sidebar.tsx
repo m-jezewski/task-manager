@@ -46,8 +46,7 @@ export const Sidebar = () => {
             <div className={` ${toggleSidebar && styles.sideBarOpen} ${styles.container}`} ref={sidebarPanelRef}>
                 <div>
                     <span className={styles.logo}>
-                        Task<br />
-                        Manager
+                        Task<br /> Manager
                         <hr />
                     </span>
                     <nav>

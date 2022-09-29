@@ -1,27 +1,29 @@
 import dayjs, { Dayjs } from "dayjs";
 //interfaces
 import { Task } from "../../../interfaces";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
+import { useRef } from "react";
 //hooks
+import { useTaskLink } from "../../../hooks/useTaskLink";
 import { useDataContext } from "../../../hooks/useDataContext";
 //styles
 import styles from './DayCal.module.scss'
-import { withTaskLink } from "../../../components/hoc/withTaskLink";
 
 interface TaskCardProps {
     task: Task
     date: Dayjs
 }
 
-const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithoutRef<'div'>>(({ task, date, ...props }, ref) => {
+export const TaskCard = ({ task, date }: TaskCardProps) => {
     const { statuses } = useDataContext()
+    const ref = useRef<HTMLDivElement>(null)
+    const { linkAttributes } = useTaskLink(task, ref)
     const fromDate = dayjs.unix(task.fromDate!)
     const dueDate = dayjs.unix(task.dueDate!)
 
     return (
         <div
             ref={ref}
-            {...props}
+            {...linkAttributes}
             className={styles.taskCard}
             style={{
                 gridRowStart: fromDate.isSame(date, 'day') ? fromDate.hour() + 1 : 1,
@@ -40,6 +42,4 @@ const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithou
             </p>
         </div>
     );
-})
-
-export const TaskCardLink = withTaskLink(TaskCard)
+}

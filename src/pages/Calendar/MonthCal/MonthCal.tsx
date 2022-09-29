@@ -12,7 +12,7 @@ import { getTasksWithinMonth } from '../../../utils/getTasksWithinMonth'
 import { getDaysOfMonth } from '../../../utils/getDaysOfMonth'
 import { getDaysOfWeek } from "../../../utils/getDaysOfWeek";
 //components
-import { TaskBadgeLink } from "./TaskBadge";
+import { TaskBadge } from "./TaskBadge";
 import { SubHeader } from "../Subheader/SubHeader";
 
 export const MonthCal = () => {
@@ -22,7 +22,6 @@ export const MonthCal = () => {
     const monthDays = getDaysOfMonth(date)
     const weekDays = getDaysOfWeek(date)
     const weeksId = monthDays.map(monthDay => monthDay.week()).filter((value, index, self) => self.indexOf(value) === index)
-
 
     const handleClick = (monthDay: Dayjs) => {
         navigate(`../../${monthDay.format('DD-MM-YYYY')}/Day`)
@@ -68,7 +67,7 @@ export const MonthCal = () => {
                                     </span>
                                     <div className={styles.taskBadgeContainer}>
                                         {tasks && getTasksWithinMonth(tasks, monthDay).map((task) =>
-                                            <TaskBadgeLink
+                                            <TaskBadge
                                                 key={task.id}
                                                 task={task}
                                             />)}

@@ -8,7 +8,7 @@ import styles from './Board.module.scss'
 import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
 import { StatusDeleteModal } from '../../components/ui/StatusDeleteModal/StatusDeleteModal'
 import { StatusHideBtn } from "../../components/ui/StatusHideBtn/StatusHideBtn";
-import { DropToStatusTaskList } from "./StatusTaskList";
+import { StatusTaskList } from "./StatusTaskList";
 
 interface StatusSectionProps {
     status: Status
@@ -32,7 +32,7 @@ export const StatusSection = ({ status }: StatusSectionProps) => {
                             <StatusOrderChangeBtn variant='right' elemId={status.id!} current={status} />
                         </div>
                     </div>
-                    <DropToStatusTaskList status={status} />
+                    <StatusTaskList status={status} />
                 </section > :
                 <section className={`${styles.section} ${styles.sectionHidden}`} style={{ backgroundColor: status.color }}>
                     <StatusHideBtn showStatus={showSection} setShowStatus={setShowSection} />

@@ -1,29 +1,33 @@
-import { forwardRef, useState, ComponentPropsWithoutRef } from 'react'
-import { useDataContext } from '../../hooks/useDataContext'
 //interfaces
 import { Status, Task } from '../../interfaces'
+//hooks
+import { useState, useRef } from 'react'
+import { useDataContext } from '../../hooks/useDataContext'
+import { useStatusOnDrop } from '../../hooks/useStatusOnDrop'
 //styles
 import styles from './List.module.scss'
 //components
-import { withOnDrop } from '../../components/hoc/withOnDrop'
 import { AnimatedPopover } from '../../components/AnimatedPopover/AnimatedPopover'
 import { AddTaskForm } from '../../components/forms/AddTaskForm/AddTaskForm'
 import { StatusOrderChangeBtn } from '../../components/ui/StatusOrderChangeBtn/StatusOrderChangeBtn'
 import { StatusDeleteModal } from '../../components/ui/StatusDeleteModal/StatusDeleteModal'
 import { StatusHideBtn } from '../../components/ui/StatusHideBtn/StatusHideBtn'
-import { DraggableLinkTaskTableItem } from '../../components/TaskTableItem/TaskTableItem'
+import { TaskTableItem } from '../../components/TaskTableItem/TaskTableItem'
 
 interface TaskTableProps {
     status: Status
 }
 
-const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPropsWithoutRef<'table'>, ref) => {
+export const TaskTable = ({ status }: TaskTableProps) => {
+
+    const ref = useRef<HTMLTableElement>(null)
     const { tasks } = useDataContext()
     const [showTable, setShowTable] = useState(true)
     const statusTasks = tasks?.filter((i: Task) => i.statusId === status.id)
+    const { statusOnDropAttributes } = useStatusOnDrop(status, ref)
 
     return (
-        <table className={styles.listContainer} ref={ref as React.LegacyRef<HTMLTableElement>} {...props}>
+        <table className={styles.listContainer} ref={ref} {...statusOnDropAttributes}>
             <caption>
                 <StatusHideBtn showStatus={showTable} setShowStatus={setShowTable} />
                 <span
@@ -74,7 +78,7 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
                             </td>
                         </tr>
                         : statusTasks.map((task: Task) => (
-                            <DraggableLinkTaskTableItem key={task.id} task={task} />
+                            <TaskTableItem key={task.id} task={task} draggable />
                         ))}</>
                     :
                     <tr>
@@ -85,7 +89,5 @@ const TaskTable = forwardRef(({ status, ...props }: TaskTableProps & ComponentPr
             </tbody>
         </table >
     );
-})
-
-export const DropToTaskTable = withOnDrop(TaskTable)
+}
 

@@ -1,5 +1,8 @@
-import { forwardRef, ComponentPropsWithoutRef } from "react";
 import dayjs from "dayjs";
+//hooks
+import { useRef } from "react";
+import { useTaskLink } from "../../hooks/useTaskLink";
+import { useTaskDraggable } from "../../hooks/useTaskDraggable";
 //interfaces
 import { Task } from "../../interfaces";
 //styles
@@ -8,16 +11,18 @@ import styles from './Board.module.scss'
 import { TaskStatusChangeBtn } from "../../components/ui/TaskStatusChangeBtn/TaskStatusChangeBtn";
 import { TaskDeleteBtn } from "../../components/ui/TaskDeleteBtn/TaskDeleteBtn";
 import { TaskPrioChangeBtn } from "../../components/ui/TaskPrioChangeBtn/TaskPrioChangeBtn";
-import { withDraggable } from "../../components/hoc/withDraggable";
-import { withTaskLink } from "../../components/hoc/withTaskLink";
 
 interface TaskCardProps {
     task: Task
 }
 
-const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithoutRef<'div'>>(({ task, className, ...props }, ref) => {
+export const TaskCard = ({ task }: TaskCardProps) => {
+    const ref = useRef<HTMLDivElement>(null)
+    const { linkAttributes } = useTaskLink(task, ref)
+    const { draggableAttributes } = useTaskDraggable(task, ref)
+
     return (
-        <div className={`${className} ${styles.taskCard}`} ref={ref} {...props}>
+        <div className={styles.taskCard} ref={ref} {...linkAttributes} {...draggableAttributes}>
             <p>{task.description}</p>
             {task.dueDate && task.fromDate && <span className={styles.date}>
                 {dayjs.unix(task.fromDate).format('DD/MM HH:mm')}  -  {dayjs.unix(task.dueDate).format('DD/MM HH:mm')}
@@ -32,6 +37,4 @@ const TaskCard = forwardRef<HTMLDivElement, TaskCardProps & ComponentPropsWithou
             </div>
         </div>
     );
-})
-
-export const DraggableTaskLinkCard = withTaskLink(withDraggable(TaskCard))
+}

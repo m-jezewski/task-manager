@@ -98,6 +98,7 @@
       }
 
       .taskCard {
+        @extend %link;
         box-sizing: border-box;
         border-radius: 0.5rem;
         margin-top: 0.5rem;

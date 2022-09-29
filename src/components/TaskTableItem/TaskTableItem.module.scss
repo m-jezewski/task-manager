@@ -1,6 +1,8 @@
+@use '../../scss/placeholders';
 @import '../../scss/variables';
 
 .tableRow {
+  @extend %link;
   .smallCell {
     width: 1rem;
   }
@@ -10,9 +12,4 @@
     font-size: 0.8rem;
     color: $dark-1;
   }
-}
-
-.tableRow:hover {
-  color: $font-blue;
-  cursor: pointer;
 }

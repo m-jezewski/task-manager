@@ -1,24 +1,35 @@
 import dayjs from 'dayjs';
-import { forwardRef } from 'react';
 //interfaces
 import { Task } from '../../interfaces';
-import { ComponentPropsWithoutRef } from 'react'
+//hooks
+import { useRef } from 'react';
+import { useTaskLink } from '../../hooks/useTaskLink';
+import { useTaskDraggable } from '../../hooks/useTaskDraggable';
 //styles
 import styles from './TaskTableItem.module.scss'
 //components
-import { withDraggable } from '../hoc/withDraggable';
 import { TaskDeleteBtn } from '../ui/TaskDeleteBtn/TaskDeleteBtn';
 import { TaskPrioChangeBtn } from '../ui/TaskPrioChangeBtn/TaskPrioChangeBtn';
 import { TaskStatusChangeBtn } from '../ui/TaskStatusChangeBtn/TaskStatusChangeBtn';
-import { withTaskLink } from '../hoc/withTaskLink';
 
 interface TaskTableItemProps {
     task: Task
+    draggable?: boolean
 }
 
-export const TaskTableItem = forwardRef<HTMLTableRowElement, TaskTableItemProps & ComponentPropsWithoutRef<'tr'>>(({ task, ...props }, ref) => {
+export const TaskTableItem = ({ task, draggable }: TaskTableItemProps) => {
+    const ref = useRef<HTMLTableRowElement>(null)
+    const { linkAttributes } = useTaskLink(task, ref)
+    const { draggableAttributes } = useTaskDraggable(task, ref)
+    const dragAttributes = draggable ? draggableAttributes : {}
+
     return (
-        <tr className={styles.tableRow} {...props} ref={ref}>
+        <tr
+            ref={ref}
+            className={styles.tableRow}
+            {...linkAttributes}
+            {...dragAttributes}
+        >
             <td className={styles.smallCell}>
                 <TaskStatusChangeBtn task={task} />
             </td>
@@ -36,8 +47,4 @@ export const TaskTableItem = forwardRef<HTMLTableRowElement, TaskTableItemProps 
             </td>
         </tr>
     );
-})
-
-export const LinkTaskTableItem = withTaskLink(TaskTableItem)
-
-export const DraggableLinkTaskTableItem = withTaskLink(withDraggable(TaskTableItem))
+}

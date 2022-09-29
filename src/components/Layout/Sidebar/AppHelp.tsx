@@ -24,7 +24,7 @@ const appHelpContent = [
     {
         title: 'Spaces - Statuses - Tasks',
         description:
-            'Spaces are "containers" with statuses and tasks. hou can use them to part your content thematically. E.g. Separate work tasks from household chores. Although using just one space for everything is also completely fine.',
+            'Spaces are "containers" with statuses and tasks. You can use them to part your content thematically. E.g. Separate work tasks from household chores. Although using just one space for everything is also completely fine.',
         img: {
             src: APP_DIAGRAM_SPACES,
             alt: 'diagram with spaces, statuses and tasks',

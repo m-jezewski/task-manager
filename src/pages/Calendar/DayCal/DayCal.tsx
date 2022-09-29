@@ -7,7 +7,7 @@ import { getHoursOfDate } from "../../../utils/getHoursOfDate";
 //styles
 import styles from './DayCal.module.scss'
 //components
-import { TaskCardLink } from "./TaskCard";
+import { TaskCard } from "./TaskCard";
 import { SubHeader } from '../Subheader/SubHeader'
 
 export const DayCal = () => {
@@ -36,7 +36,7 @@ export const DayCal = () => {
                 <div className={styles.grid}>
                     <div className={styles.gridIndent} />
                     {tasksWihinDay?.map((task) =>
-                        <TaskCardLink
+                        <TaskCard
                             key={task.id}
                             task={task}
                             date={date}
