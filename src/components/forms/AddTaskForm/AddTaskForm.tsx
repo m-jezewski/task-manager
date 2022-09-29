@@ -55,7 +55,6 @@ export const AddTaskForm = ({
 
     useEffect(() => {
         if (!taskRef || !addGoalStep) return
-
         if (newGoalCtx) {
             newGoalCtx.addStepInNewGoal({
                 type: 'task',
@@ -71,7 +70,7 @@ export const AddTaskForm = ({
             taskID: taskRef.id!,
             goalID: goalID
         })
-    }, [taskRef]) //If form appeared inside newGoalContext it also adds task as a goalStep
+    }, [taskRef]) //If form appeares in AddStep(goalsteps) it also adds task as a goalStep.
 
 
     const handleSubmit = (e: FormEvent) => {

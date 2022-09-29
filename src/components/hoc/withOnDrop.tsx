@@ -1,5 +1,4 @@
 //interfaces
-import { ElementType } from 'react';
 import { Status } from '../../interfaces';
 //hooks
 import { useRef } from 'react'

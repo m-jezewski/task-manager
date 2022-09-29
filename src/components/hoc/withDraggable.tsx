@@ -10,7 +10,6 @@ interface withDraggableProps {
 
 export const withDraggable = <T extends withDraggableProps>(WrappedComponent: React.ComponentType<T>) => forwardRef<HTMLElement, T>(({ task, ...props }, ref) => {
     const handleDragStart = (e: React.DragEvent) => {
-        console.log(ref)
         if (typeof ref === 'function') return
         e.dataTransfer.setData('text/json', JSON.stringify(task))
         ref && ref.current?.classList.add(styles.dragging)

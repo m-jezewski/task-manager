@@ -22,6 +22,7 @@ export const TaskPage = () => {
     const { taskID } = useParams()
     const { updateDocument } = useDb('tasks')
     const task = tasks && tasks.find(i => i.id === taskID)
+
     const [dueDate, setDueDate] = useState('')
     const [fromDate, setFromDate] = useState('')
     const [priority, setPriority] = useState('low')
@@ -32,7 +33,6 @@ export const TaskPage = () => {
 
     useEffect(() => {
         if (!task || !statuses || !spaces) return
-
         setDescription(task.description)
         setSpace(spaces.find(space => space.id! === task.spaceId)!)
         setStatus(statuses.find(status => status.id === task.statusId)!)
@@ -57,7 +57,6 @@ export const TaskPage = () => {
             fromDate: openSwitch && (from.isBefore(due) || from.isSame(due)) ? from.unix() : null,
             dueDate: openSwitch && (from.isBefore(due) || from.isSame(due)) ? due.unix() : null,
         }
-
         task && updateDocument(task.id!, updatedTask)
         navigate(-1)
     }
