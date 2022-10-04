@@ -73,7 +73,7 @@ You can enter any, even non-existent, email. I strongly recommend creating your 
 
 ## Installation
 
-> git clone https://github.com/Karriuz/task-maganer/ <br />
+> git clone https://github.com/Karriuz/task-manager.git <br />
 > npm install <br />
 > npm run start
 
