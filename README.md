@@ -27,7 +27,7 @@ Task Manager is a fairly customizable work management app that uses some popular
 
 ## Live:
 
-https://karriuz-taskmanager.netlify.app/
+https://mjezewski-taskmanager.netlify.app/
 
 ## Feature overview:
 
