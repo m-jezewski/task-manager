@@ -1,6 +1,6 @@
 # Task Manager
 
-Task Manager is a fairly customizable work management app that uses some popular task tracking solutions. App includes a calendar, to-do list, semi-kanban board, and goal progress tracking.
+Task Manager is a fairly customizable work management app that uses some popular task tracking solutions. The app includes a calendar, to-do list, semi-kanban board, and goal progress tracking.
 
 ## Table of contents:
 
@@ -33,11 +33,11 @@ https://mjezewski-taskmanager.netlify.app/
 
 In this project user is able to:
 
-- Regiter, log in and log out
+- Register, log in and log out
 - Add, edit and remove tasks
 - Separate and allocate tasks to logical containers (spaces, statuses)
 - That also means adding and removing above-mentioned, additionally, user can select status color displayed in the section headers
-- Display tasks in following ways:
+- Display tasks in the following ways:
   - To-Do List
   - Semi-Kanban Board
   - Calendar (day, week, month)
