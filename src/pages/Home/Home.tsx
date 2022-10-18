@@ -33,6 +33,7 @@ export const Home = () => {
                 {isLoginOpen &&
                     <Login handleClosingForms={handleClosingForms} />
                 }
+                <p>Test account: <br /> login: test@test.com <br /> password: test12345 </p>
             </section >
         </div >
     );
