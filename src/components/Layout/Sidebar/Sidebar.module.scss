@@ -2,9 +2,6 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
 
-%sideBarButton {
-}
-
 .sideBarOpen {
   display: flex !important;
   animation: moveFormRight 0.25s forwards;
@@ -61,7 +58,7 @@
 
   a {
     @extend %baseButton;
-    padding: 0.3rem;
+    padding: 0.45rem;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -49,7 +49,8 @@ export function App() {
               <Route path="*" element={<Navigate to='/Dashboard' replace />} />
             </Routes>
           </DataContextProvider>
-          : <Routes>
+          :
+          <Routes>
             <Route path='/' element={<Home />} />
             <Route
               path="*"

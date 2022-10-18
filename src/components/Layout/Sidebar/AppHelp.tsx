@@ -15,7 +15,7 @@ import { HelpModal } from "../../modals/HelpModal/HelpModal";
 const appHelpContent = [
     {
         title: 'Task Manager',
-        description: "Task Manager is an application to manage your daily tasks and track bigger goals. Now let's try to explain the main concepts of the application: Spaces, Statuses and Tasks.",
+        description: "Task Manager is an application to manage your daily tasks and track bigger goals. Now let's try to explain the main concepts of the application: Spaces, Statuses, and Tasks.",
         img: {
             src: APP_LOGO,
             alt: '"Task Manager" App logo',
@@ -32,7 +32,7 @@ const appHelpContent = [
     },
     {
         title: 'Spaces - Statuses - Tasks',
-        description: 'Statuses are smaller "boxes" inside of spaces, by design I wanted them to define "status" as task progress phase, but as a user you can name and use all elements of the application as you see fit',
+        description: 'Statuses are smaller "boxes" inside of spaces, by design I wanted them to define "status" as a task progress phase, but as a user, you can name and use all elements of the application as you see fit',
         img: {
             src: APP_DIAGRAM_STATUSES,
             alt: 'diagram with spaces, statuses and tasks',
@@ -40,7 +40,7 @@ const appHelpContent = [
     },
     {
         title: 'Spaces - Statuses - Tasks',
-        description: 'Tasks are elements containing your daily pieces of work. These are displayed in list, board and calendar pages. Each has its own subpage which you can enter by clicking on a specific task',
+        description: 'Tasks are elements containing your daily pieces of work. These are displayed in the list, board, and calendar pages. Each has its subpage which you can enter by clicking on a specific task',
         img: {
             src: APP_DIAGRAM_TASKS,
             alt: 'diagram with spaces, statuses and tasks',
@@ -48,7 +48,7 @@ const appHelpContent = [
     },
     {
         title: 'Spaces - Statuses - Tasks',
-        description: 'Feel free to add as many spaces, statuses and tasks as you want. You can create and delete new spaces in Dashboard, new statuses in Panel or List pages.',
+        description: 'Feel free to add as many spaces, statuses, and tasks as you want. You can create and delete new spaces in Dashboard, and new statuses in the Panel or List pages.',
         img: {
             src: APP_DIAGRAM,
             alt: 'diagram with spaces, statuses and tasks',
@@ -56,7 +56,7 @@ const appHelpContent = [
     },
     {
         title: 'Help',
-        description: 'Each page contains a short presentation of its functionality. Open it by clicking on the "?" icon in upper right corner.',
+        description: 'Each page contains a short presentation of its functionality. Open it by clicking on the "?" icon in the upper right corner.',
         img: {
             src: APP_HELP,
             alt: ' "?" icon ',
@@ -64,7 +64,7 @@ const appHelpContent = [
     },
     {
         title: 'Goals',
-        description: 'App also offers possibility to track larger goals and their progress in the goals page',
+        description: 'App also offers the possibility to track larger goals and their progress on the goals page',
         img: {
             src: APP_GOALS,
             alt: 'Goal links',
@@ -73,7 +73,7 @@ const appHelpContent = [
     {
         title: 'Default Content',
         description:
-            'For purpose of presenting the application I loaded some basic content after creating your account. You can modify it, or easily delete basic spaces in the Dashboard page and configure everything from scratch if you want. I hope you will enjoy my app!',
+            'For purpose of presenting the application, I loaded some basic content after creating your account. You can modify it, or easily delete basic spaces in the Dashboard page and configure everything from scratch if you want. I hope you will enjoy using my app!',
         img: {
             src: APP_DEFAULTCONTENT,
             alt: 'Table filled with tasks',
